@@ -1,0 +1,116 @@
+// submit-ad — إنشاء/تعديل إعلان مع تحقق كامل من الخادم (لا نثق بالواجهة)
+import { createClient } from 'npm:@supabase/supabase-js@2';
+
+const cors = { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type', 'Access-Control-Allow-Methods': 'POST, OPTIONS' };
+const J = (b: unknown, s = 200) => new Response(JSON.stringify(b), { status: s, headers: { ...cors, 'Content-Type': 'application/json' } });
+
+const CATS: Record<string, string[]> = {
+  clothes_wedding: ['karakou', 'gandoura_thakila', 'gandoura_constantine', 'chedda', 'takchita', 'bridal', 'caftan', 'wedding_top', 'jabador', 'melhfa', 'flower_girl', 'wedding_accessories'],
+  clothes_work: ['suit', 'shirt', 'abaya', 'pants', 'skirt', 'jacket', 'blouse', 'uniform', 'medical_wear'],
+  clothes_beach: ['swim', 'burkini', 'cover', 'bikini', 'one_piece', 'swim_shorts', 'beach_robe', 'beach_sandals', 'beach_hat'],
+  clothes_evening: ['dress', 'jump', 'evening_skirt', 'evening_top', 'evening_suit', 'evening_abaya', 'evening_cardigan'],
+  clothes_girls: ['g_dress', 'g_set', 'g_skirt', 'g_pants', 'g_shirt', 'g_jacket', 'g_sport', 'g_pyjamas', 'g_underwear', 'g_shoes', 'g_hair_accessories'],
+  shoes: ['heels', 'flats', 'sneakers', 'wedding_shoes', 'sandals', 'boots', 'ankle_boots', 'mules', 'flat_sneakers', 'medical_shoes', 'slippers'],
+  products: ['face_wash', 'shampoo', 'makeup_p', 'hair_dye', 'wig', 'nails_p', 'face_cream', 'serum', 'sunscreen', 'deodorant', 'perfume', 'hair_oils', 'hair_masks', 'makeup_tools', 'makeup_brushes', 'nail_polish', 'nail_remover', 'contact_lenses', 'intimate_products'],
+  services: ['haircut', 'nails', 'care', 'makeup', 'dj', 'cooking', 'events', 'rental', 'sweets', 'hair_coloring', 'hair_straightening', 'hair_curling', 'hair_extensions', 'waxing', 'skincare', 'massage', 'hammam', 'photography', 'videography', 'hall_decoration', 'chair_table_rental', 'waitstaff', 'bridal_transport', 'tailoring']
+};
+const BAD = ['fuck', 'shit', 'bitch', 'putain', 'merde', 'connard', 'salope', 'nique', 'شرموطة', 'قحبة', 'زبي', 'نيك', 'كلب', 'حمار', 'منيوك'];
+const SEP = '[\\s.\\-_#*/|,()]*';
+const PHONE = new RegExp('(?:(?:\\+|00)?' + SEP + '213|0)?' + SEP + '[567](?:' + SEP + '\\d){8}');
+const LONG = new RegExp('(?:\\d' + SEP + '){9,}');
+const latin = (s: string) => s.replace(/[٠-٩]/g, (c) => String('٠١٢٣٤٥٦٧٨٩'.indexOf(c))).replace(/[۰-۹]/g, (c) => String('۰۱۲۳۴۵۶۷۸۹'.indexOf(c)));
+const normBad = (s: string) => latin(s).toLowerCase().replace(/[\u064B-\u065F\u0640]/g, '').replace(/[أإآ]/g, 'ا').replace(/ى/g, 'ي').replace(/ة/g, 'ه').replace(/[^a-z0-9\u0621-\u064A ]/g, '');
+
+function txt(v: unknown, max: number, min = 0, allowPhone = false): string {
+  const s = String(v ?? '').replace(/<[^>]*>/g, '').replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u200B-\u200F\u202A-\u202E\u2066-\u2069\uFEFF]/g, '').replace(/\s+/g, ' ').trim();
+  if (s.length < min || s.length > max) throw new Error('INVALID_TEXT');
+  if (!allowPhone && (PHONE.test(latin(s)) || LONG.test(latin(s)))) throw new Error('PHONE_IN_TEXT');
+  const n = normBad(s); if (BAD.some((w) => n.includes(normBad(w)))) throw new Error('BAD_WORDS');
+  return s;
+}
+const VIDEO = /^(?:[a-z0-9-]+\.)?(?:facebook\.com|fb\.watch|tiktok\.com|instagram\.com|youtube\.com|youtu\.be)$/i;
+
+Deno.serve(async (req) => {
+  if (req.method === 'OPTIONS') return new Response('ok', { headers: cors });
+  try {
+    const url = Deno.env.get('SUPABASE_URL')!, srk = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!, anon = Deno.env.get('SUPABASE_ANON_KEY')!;
+    const uc = createClient(url, anon, { global: { headers: { Authorization: req.headers.get('Authorization') ?? '' } } });
+    const { data: { user } } = await uc.auth.getUser();
+    if (!user) return J({ error: 'UNAUTH' }, 401);
+    const db = createClient(url, srk);
+    const { mode, id, ad, images } = await req.json();
+    if (!/^[0-9a-f-]{36}$/i.test(String(id)) || !ad) throw new Error('BAD_REQUEST');
+
+    const { data: me } = await db.from('users').select('is_verified,registration_complete').eq('id', user.id).single();
+    if (!me || !me.registration_complete) throw new Error('PROFILE_INCOMPLETE');
+
+    // ===== تحقق =====
+    const cat = String(ad.category_id), sub = String(ad.subcategory_id);
+    if (!CATS[cat] || !CATS[cat].includes(sub)) throw new Error('BAD_CATEGORY');
+    const title = txt(ad.title, 100, 3), description = txt(ad.description, 500, 5);
+    const price = Number(ad.price);
+    if (!Number.isInteger(price) || price <= 0 || price > 100_000_000_000) throw new Error('PRICE_INVALID');
+    const { data: rs } = await db.from('categories').select('id,min_price,max_price').in('id', [sub, cat]);
+    const range = rs?.find((r) => r.id === sub && (r.min_price != null || r.max_price != null)) ?? rs?.find((r) => r.id === cat);
+    if (range && ((range.min_price != null && price < range.min_price) || (range.max_price != null && price > range.max_price))) throw new Error('PRICE_RANGE');
+    const discount = Math.min(90, Math.max(0, parseInt(ad.discount_pct, 10) || 0));
+    if (typeof ad.delivery !== 'boolean') throw new Error('DELIVERY_REQUIRED');
+    const showPhone = !!ad.show_phone;
+    let video: string | null = null;
+    if (ad.video_url) { const u = new URL(String(ad.video_url)); if (u.protocol !== 'https:' || !VIDEO.test(u.hostname) || String(ad.video_url).length > 300) throw new Error('BAD_VIDEO'); video = u.toString(); }
+    const attrs: Record<string, string> = {};
+    for (const [k, v] of Object.entries(ad.attrs ?? {}).slice(0, 5)) { if (/^[a-z_]{1,20}$/.test(k)) attrs[k] = txt(v, 30, 0, true); }
+    const faq = (Array.isArray(ad.faq) ? ad.faq : []).slice(0, 5).map((q: { q: string; a: string }) => ({ q: txt(q.q, 120, 2), a: txt(q.a, 300, 1) }));
+    const wid = Number(ad.wilaya_id), did = Number(ad.daira_id), cid = Number(ad.commune_id);
+    if (!wid || !did || !cid) throw new Error('LOCATION_REQUIRED');
+    const lat = ad.lat == null ? null : Number(ad.lat), lng = ad.lng == null ? null : Number(ad.lng);
+    if (lat != null && (!(lat >= -90 && lat <= 90) || !(lng! >= -180 && lng! <= 180))) throw new Error('BAD_COORDS');
+
+    let imgRows: Record<string, unknown>[] | null = null;
+    if (Array.isArray(images) && images.length) {
+      if (images.length > 10) throw new Error('IMAGES_COUNT');
+      const pre = `https://ik.imagekit.io/6injqmphyw/ads/${user.id}_${id}_`;
+      imgRows = images.map((im: Record<string, string>, i: number) => {
+        for (const k of ['path_thumb', 'path_medium', 'path_large']) if (typeof im[k] !== 'string' || !im[k].startsWith(pre) || !/^https:\/\/ik\.imagekit\.io\/6injqmphyw\/ads\/[\w.-]+\.webp$/.test(im[k])) throw new Error('BAD_IMAGE_PATH');
+        return { ad_id: id, path_thumb: im.path_thumb, path_medium: im.path_medium, path_large: im.path_large, position: i };
+      });
+    }
+
+    const fields = { category_id: cat, subcategory_id: sub, title, description, price, discount_pct: discount, negotiable: !!ad.negotiable, delivery: ad.delivery, show_phone: showPhone, video_url: video, wilaya_id: wid, daira_id: did, commune_id: cid, attrs, faq } as Record<string, unknown>;
+    if (lat != null) fields.location = `SRID=4326;POINT(${lng} ${lat})`;
+    let event: string | null = null;
+
+    if (mode === 'create') {
+      if (!imgRows) throw new Error('IMAGES_COUNT');
+      const since = new Date(Date.now() - 24 * 3600 * 1000).toISOString();
+      const { count } = await db.from('ads').select('id', { count: 'exact', head: true }).eq('user_id', user.id).gte('created_at', since);
+      if ((count ?? 0) >= 20) throw new Error('RATE_LIMIT');
+      const { error } = await db.from('ads').insert({ id, user_id: user.id, status: 'active', ...fields });
+      if (error) throw error;
+      const { error: imgErr } = await db.from('ad_images').insert(imgRows);
+      if (imgErr) throw imgErr;
+      event = 'new_ad';
+    } else if (mode === 'update') {
+      const { data: old } = await db.from('ads').select('user_id,price,price_edit_count,status').eq('id', id).single();
+      if (!old || old.user_id !== user.id || old.status === 'deleted' || old.status === 'sold') throw new Error('FORBIDDEN');
+      const upd: Record<string, unknown> = { ...fields, is_edited: true, updated_at: new Date().toISOString() };
+      if (price !== old.price) {
+        if ((old.price_edit_count ?? 0) >= 3) throw new Error('PRICE_EDITS');
+        await db.from('price_history').insert({ ad_id: id, old_price: old.price, new_price: price });
+        upd.price_edit_count = (old.price_edit_count ?? 0) + 1;
+        if (price < old.price) event = 'price_drop';
+      }
+      const { error } = await db.from('ads').update(upd).eq('id', id);
+      if (error) throw error;
+      if (imgRows) { await db.from('ad_images').delete().eq('ad_id', id); await db.from('ad_images').insert(imgRows); }
+    } else throw new Error('BAD_MODE');
+
+    if (event) {
+      try { await fetch(`${url}/functions/v1/notify-fanout`, { method: 'POST', headers: { Authorization: `Bearer ${srk}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ type: event, ad_id: id }) }); } catch (_) { /* الإشعارات لا تُفشل النشر */ }
+    }
+    return J({ ok: true, id });
+  } catch (e) {
+    console.error('[submit-ad]', e);
+    return J({ error: (e as Error).message || 'ERROR' }, 400);
+  }
+});
