@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leffa - تجريب الملابس الافتراضي</title>
+    <script type="module">
+        import { Client } from "https://cdn.jsdelivr.net/npm/@gradio/client@1.7.1/dist/index.min.js";
+        window.GradioClient = Client;
+    </script>
+    <style>
+        body { font-family: Tahoma, sans-serif; background: #f4f7f6; margin: 0; padding: 20px; direction: rtl; }
+        .container { max-width: 600px; margin: auto; background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input[type="text"], input[type="file"], select { width: 100%; padding: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 6px; }
+        button { background: #007bff; color: white; border: none; padding: 12px 20px; width: 100%; border-radius: 6px; font-size: 16px; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        .result-box { margin-top: 20px; text-align: center; }
+        .result-box img { max-width: 100%; border-radius: 8px; border: 1px solid #ddd; }
+        #console { background: #1e1e1e; color: #00ff00; padding: 10px; border-radius: 6px; font-family: monospace; font-size: 13px; height: 150px; overflow-y: auto; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Leffa - تجريب الملابس الافتراضي</h2>
+    
+    <div class="form-group">
+        <label>مفتاح Hugging Face Token (اختياري):</label>
+        <input type="text" id="token" placeholder="hf_... (اتركه فارغاً إذا لم يكن مطلوباً)">
+    </div>
+
+    <div class="form-group">
+        <label>صورة الشخص:</label>
+        <input type="file" id="personImg" accept="image/*">
+    </div>
+
+    <div class="form-group">
+        <label>صورة قطعة الملابس:</label>
+        <input type="file" id="garmentImg" accept="image/*">
+    </div>
+
+    <div class="form-group">
+        <label>نوع الملابس:</label>
+        <select id="garmentType">
+            <option value="upper_body">ملابس علوية</option>
+            <option value="lower_body">ملابس سفلية</option>
+            <option value="dresses">فساتين</option>
+        </select>
+    </div>
+
+    <button onclick="runTryOn()">إرسال وبدء التجريب</button>
+
+    <div class="result-box">
+        <h3>النتيجة:</h3>
+        <div id="resultContainer">لم يتم توليد أي صورة بعد.</div>
+    </div>
+
+    <h3>سجل الأخطاء (Console):</h3>
+    <div id="console">جاري التحقق من جاهزية المكتبة...</div>
+</div>
+
+<script>
+    function log(message, isError = false) {
+        const consoleBox = document.getElementById('console');
+        const time = new Date().toLocaleTimeString();
+        consoleBox.innerHTML += `<div style="color: ${isError ? '#ff6b6b' : '#00ff00'}">[${time}] ${message}</div>`;
+        consoleBox.scrollTop = consoleBox.scrollHeight;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+            if (window.GradioClient) {
+                log("مكتبة الاتصال جاهزة.");
+            } else {
+                log("تنبيه: تأكد من اتصال الإنترنت ليتم جلب مكتبة Gradio عبر الـ CDN.", true);
+            }
+        }, 500);
+    });
+
+    async function runTryOn() {
+        const token = document.getElementById('token').value.trim();
+        const personInput = document.getElementById('personImg').files[0];
+        const garmentInput = document.getElementById('garmentImg').files[0];
+        const garmentType = document.getElementById('garmentType').value;
+        const resultContainer = document.getElementById('resultContainer');
+
+        if (!personInput || !garmentInput) {
+            log("خطأ: يرجى رفع كلا الصورتين.", true);
+            alert("يرجى رفع صورة الشخص وصورة الملابس.");
+            return;
+        }
+
+        if (!window.GradioClient) {
+            log("خطأ: لم يتم تحميل مكتبة الاتصال بعد.", true);
+            return;
+        }
+
+        log("جاري الاتصال بـ Leffa Space...");
+        resultContainer.innerHTML = "جاري المعالجة...";
+
+        try {
+            // الاتصال بـ Leffa Space (بدون توكن إذا كان عاماً)
+            const client = await window.GradioClient.connect("salma2323/Leffa", 
+                token ? { hf_token: token } : {}
+            );
+            log("تم الاتصال بنجاح، جاري معالجة الصور...");
+
+            // تحويل الملفات إلى Blob
+            const personBlob = new Blob([personInput], { type: personInput.type });
+            const garmentBlob = new Blob([garmentInput], { type: garmentInput.type });
+
+            // استدعاء الدالة الصحيحة: /leffa_predict_vt
+            // المدخلات حسب ترتيب View API
+            const result = await client.predict("/leffa_predict_vt", {
+                src_image_path: personBlob,
+                ref_image_path: garmentBlob,
+                ref_acceleration: false,
+                step: 30,
+                scale: 2.5,
+                seed: 42,
+                vt_model_type: "viton_hd",
+                vt_garment_type: garmentType,
+                vt_repaint: false
+            });
+
+            log("تمت العملية بنجاح!");
+            
+            if (result && result.data && result.data[0]) {
+                const imgUrl = result.data[0].url || result.data[0];
+                resultContainer.innerHTML = `<img src="${imgUrl}" alt="النتيجة النهائية">`;
+            } else {
+                resultContainer.innerHTML = "لم يتم إرجاع رابط صورة صالح.";
+                log("النتيجة غير متوقعة: " + JSON.stringify(result), true);
+            }
+
+        } catch (error) {
+            log("خطأ أثناء التنفيذ: " + error.message, true);
+            resultContainer.innerHTML = "حدث خطأ، راجع مربع الكونسول في الأسفل.";
+        }
+    }
+</script>
+
+</body>
+</html>

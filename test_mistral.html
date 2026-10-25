@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>دردشة Mistral AI — نسخة متقدمة</title>
+<style>
+  * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
+  body {
+    margin: 0; padding: 20px;
+    background: linear-gradient(135deg, #1e1e2e, #2d2d44);
+    color: #e0e0e0; min-height: 100vh;
+  }
+  .container { max-width: 1000px; margin: 0 auto; }
+  h1 { text-align: center; color: #ff7000; margin-bottom: 20px; }
+
+  .panel {
+    background: #2a2a3e; padding: 15px; border-radius: 10px;
+    margin-bottom: 15px; border: 1px solid #3a3a55;
+  }
+
+  .api-section {
+    display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+  }
+  .api-section label { white-space: nowrap; font-weight: bold; }
+  .api-section input[type="password"] {
+    flex: 1; min-width: 200px; padding: 10px; border-radius: 6px;
+    border: 1px solid #444; background: #1e1e2e; color: #fff;
+  }
+
+  .model-section {
+    display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+    margin-top: 10px;
+  }
+  .model-section label { white-space: nowrap; font-weight: bold; }
+  select {
+    flex: 1; min-width: 220px; padding: 10px; border-radius: 6px;
+    border: 1px solid #444; background: #1e1e2e; color: #fff;
+    font-size: 14px;
+  }
+  .model-badge {
+    display: inline-block; padding: 3px 8px; border-radius: 6px;
+    background: #3a3a55; color: #ffb070; font-size: 11px;
+    margin-right: 8px; font-family: monospace;
+  }
+
+  #chatBox {
+    background: #2a2a3e; border-radius: 10px; padding: 15px;
+    height: 420px; overflow-y: auto; margin-bottom: 15px;
+    border: 1px solid #444;
+  }
+  .msg {
+    padding: 10px 14px; border-radius: 10px; margin: 8px 0;
+    max-width: 85%; word-wrap: break-word; line-height: 1.6;
+    white-space: pre-wrap;
+  }
+  .user { background: #ff7000; color: #fff; margin-right: auto; margin-left: 0; }
+  .bot { background: #3a3a55; color: #e0e0e0; margin-left: auto; margin-right: 0; }
+  .error { background: #5a1e1e; color: #ffb0b0; border: 1px solid #a03030; }
+  .info { background: #1e3a5a; color: #b0d0ff; font-size: 13px; }
+
+  .input-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  #userInput {
+    flex: 1; min-width: 200px; padding: 12px; border-radius: 8px;
+    border: 1px solid #444; background: #1e1e2e; color: #fff;
+    font-size: 15px;
+  }
+  button {
+    padding: 12px 20px; border: none; border-radius: 8px;
+    background: #ff7000; color: #fff; cursor: pointer;
+    font-weight: bold; font-size: 14px;
+    transition: background 0.2s;
+  }
+  button:hover { background: #e06300; }
+  button:disabled { background: #555; cursor: not-allowed; }
+  button.secondary { background: #4a4a6a; }
+  button.secondary:hover { background: #5a5a7a; }
+  button.danger { background: #a03030; }
+  button.danger:hover { background: #b04040; }
+
+  #console {
+    margin-top: 15px; background: #111; color: #0f0;
+    border-radius: 8px; padding: 10px; height: 220px;
+    overflow-y: auto; font-family: monospace; font-size: 12px;
+    border: 1px solid #333; direction: ltr; text-align: left;
+  }
+  #console .err { color: #ff5555; }
+  #console .info { color: #55aaff; }
+  #console .warn { color: #ffaa00; }
+  #console .success { color: #55ff55; }
+  #console .dim { color: #888; }
+
+  .compare-grid {
+    display: grid; gap: 10px; margin-top: 15px;
+  }
+  .compare-card {
+    background: #2a2a3e; border: 1px solid #444; border-radius: 8px;
+    padding: 10px 14px;
+  }
+  .compare-card .head {
+    color: #ffb070; font-weight: bold; font-size: 13px;
+    font-family: monospace; margin-bottom: 6px;
+    display: flex; justify-content: space-between;
+  }
+  .compare-card .head .ok { color: #55ff55; }
+  .compare-card .head .fail { color: #ff5555; }
+  .compare-card .body { color: #e0e0e0; font-size: 14px; white-space: pre-wrap; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>🤖 دردشة Mistral AI — نسخة متقدمة</h1>
+
+  <!-- الإعدادات -->
+  <div class="panel">
+    <div class="api-section">
+      <label>🔑 API Key:</label>
+      <input type="password" id="apiKey" placeholder="أدخل مفتاح Mistral API هنا...">
+      <button class="secondary" id="loadModelsBtn" onclick="loadModels()">جلب النماذج</button>
+    </div>
+
+    <div class="model-section">
+      <label>🧠 النموذج:</label>
+      <select id="modelSelect">
+        <option value="__auto__">🤖 تلقائي (تجربة النماذج حسب الأولوية)</option>
+      </select>
+      <button class="danger" id="clearChatBtn" onclick="clearChat()">مسح المحادثة</button>
+    </div>
+  </div>
+
+  <!-- الدردشة -->
+  <div id="chatBox"></div>
+
+  <!-- الإدخال -->
+  <div class="input-row">
+    <input type="text" id="userInput" placeholder="اكتب رسالتك..." onkeypress="if(event.key==='Enter' && !event.shiftKey)sendMsg()">
+    <button id="sendBtn" onclick="sendMsg()">إرسال</button>
+    <button class="secondary" id="compareBtn" onclick="compareModels()">⚖️ قارن النماذج</button>
+  </div>
+
+  <!-- نتائج المقارنة -->
+  <div id="compareBox" class="compare-grid"></div>
+
+  <!-- الكونسول -->
+  <div id="console"></div>
+</div>
+
+<script>
+const API_BASE = "https://api.mistral.ai/v1";
+
+// أولوية النماذج للمحادثة العامة (الأفضل أولاً)
+const MODEL_PRIORITY = [
+  "mistral-large-latest",
+  "mistral-medium-latest",
+  "mistral-medium-2604",
+  "mistral-medium-3.5",
+  "mistral-medium-3",
+  "mistral-small-latest",
+  "mistral-small-2603",
+  "ministral-14b-latest",
+  "ministral-8b-latest",
+  "magistral-medium-latest",
+  "magistral-small-latest",
+  "ministral-3b-latest",
+];
+
+// النماذج المستبعدة من المحادثة العامة (متخصصة في الكود أو الصوت)
+const MODEL_BLOCKLIST = [
+  "codestral",
+  "voxtral",
+  "vibe-cli",
+  "fim",
+  "labs-",
+];
+
+// عناصر DOM
+const chatBox = document.getElementById('chatBox');
+const userInput = document.getElementById('userInput');
+const apiKeyInput = document.getElementById('apiKey');
+const sendBtn = document.getElementById('sendBtn');
+const compareBtn = document.getElementById('compareBtn');
+const consoleBox = document.getElementById('console');
+const modelSelect = document.getElementById('modelSelect');
+const compareBox = document.getElementById('compareBox');
+
+let messages = [
+  { role: "system", content: "أنت مساعد ذكي ودود. أجب بالعربية بشكل مختصر ومفيد." }
+];
+let availableModels = [];   // كل النماذج التي تدعم المحادثة
+let currentModel = null;    // آخر نموذج نجح
+
+// ===== أدوات مساعدة =====
+
+function log(msg, type = 'info') {
+  const line = document.createElement('div');
+  line.className = type;
+  const time = new Date().toLocaleTimeString('ar-EG');
+  line.textContent = `[${time}] ${msg}`;
+  consoleBox.appendChild(line);
+  consoleBox.scrollTop = consoleBox.scrollHeight;
+  if (type === 'err') console.error(msg);
+  else if (type === 'warn') console.warn(msg);
+  else console.log(msg);
+}
+
+function addMessage(text, sender, isError = false, isInfo = false, modelName = null) {
+  const div = document.createElement('div');
+  let cls = 'msg ';
+  if (isInfo) cls += 'info';
+  else if (isError) cls += 'error';
+  else cls += sender;
+  div.className = cls;
+
+  if (modelName) {
+    const badge = document.createElement('span');
+    badge.className = 'model-badge';
+    badge.textContent = modelName;
+    div.appendChild(badge);
+  }
+  const span = document.createElement('span');
+  span.textContent = text;
+  div.appendChild(span);
+
+  chatBox.appendChild(div);
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+function clearChat() {
+  chatBox.innerHTML = "";
+  compareBox.innerHTML = "";
+  messages = [{ role: "system", content: "أنت مساعد ذكي ودود. أجب بالعربية بشكل مختصر ومفيد." }];
+  log("🧹 تم مسح المحادثة.", "info");
+}
+
+function isBlocked(modelId) {
+  return MODEL_BLOCKLIST.some(b => modelId.toLowerCase().includes(b));
+}
+
+// ترتيب النماذج حسب الأولوية
+function sortModelsByPriority(models) {
+  return [...models].sort((a, b) => {
+    const ia = MODEL_PRIORITY.indexOf(a.id);
+    const ib = MODEL_PRIORITY.indexOf(b.id);
+    if (ia === -1 && ib === -1) return a.id.localeCompare(b.id);
+    if (ia === -1) return 1;
+    if (ib === -1) return -1;
+    return ia - ib;
+  });
+}
+
+// ===== جلب النماذج =====
+
+async function loadModels() {
+  const apiKey = apiKeyInput.value.trim();
+  if (!apiKey) {
+    log("⚠️ أدخل API Key أولاً.", "err");
+    addMessage("⚠️ الرجاء إدخال مفتاح Mistral API أولاً", "bot", true);
+    return;
+  }
+
+  log("🔍 جاري جلب قائمة النماذج...");
+  try {
+    const res = await fetch(`${API_BASE}/models`, {
+      headers: { "Authorization": `Bearer ${apiKey}` }
+    });
+
+    if (!res.ok) {
+      const errText = await res.text();
+      log(`❌ فشل جلب النماذج (${res.status}): ${errText}`, "err");
+      return;
+    }
+
+    const data = await res.json();
+    const all = data.data || [];
+    log(`✅ تم جلب ${all.length} نموذجاً.`);
+
+    // فلترة: تدعم المحادثة + ليست في القائمة السوداء
+    const chatModels = all.filter(m =>
+      m.capabilities && m.capabilities.completion_chat === true
+    );
+
+    const usable = chatModels.filter(m => !isBlocked(m.id));
+    const blocked = chatModels.filter(m => isBlocked(m.id));
+
+    log(`📋 ${chatModels.length} نموذجاً يدعم المحادثة.`, "info");
+    if (blocked.length) {
+      log(`⛔ تم استبعاد ${blocked.length} نموذجاً متخصصاً (كود/صوت):`, "warn");
+      blocked.forEach(m => log(`   ⛔ ${m.id}`, "dim"));
+    }
+
+    // ترتيب حسب الأولوية
+    availableModels = sortModelsByPriority(usable);
+    log(`🎯 ${availableModels.length} نموذجاً متاحاً للمحادثة العامة.`, "success");
+
+    // تحديث القائمة المنسدلة
+    modelSelect.innerHTML = '<option value="__auto__">🤖 تلقائي (تجربة النماذج حسب الأولوية)</option>';
+    availableModels.forEach(m => {
+      const opt = document.createElement('option');
+      opt.value = m.id;
+      opt.textContent = m.id;
+      modelSelect.appendChild(opt);
+    });
+
+    log("📝 تم تحديث القائمة المنسدلة.", "success");
+  } catch (e) {
+    log(`🚨 خطأ: ${e.message}`, "err");
+  }
+}
+
+// ===== استدعاء النموذج =====
+
+async function callModel(apiKey, modelId, history) {
+  const res = await fetch(`${API_BASE}/chat/completions`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${apiKey}`
+    },
+    body: JSON.stringify({
+      model: modelId,
+      messages: history,
+      temperature: 0.7
+    })
+  });
+
+  if (!res.ok) {
+    const errText = await res.text();
+    let shortErr = errText;
+    try {
+      const p = JSON.parse(errText);
+      shortErr = p.message || p.error?.message || errText;
+    } catch (e) { /* ignore */ }
+    return { ok: false, status: res.status, error: shortErr };
+  }
+
+  const data = await res.json();
+  const reply = data?.choices?.[0]?.message?.content || "(لا يوجد رد)";
+  const usedModel = data?.model || modelId;
+  return { ok: true, reply, usedModel };
+}
+
+// ===== الإرسال العادي =====
+
+async function sendMsg() {
+  const text = userInput.value.trim();
+  const apiKey = apiKeyInput.value.trim();
+
+  if (!apiKey) {
+    addMessage("⚠️ الرجاء إدخال مفتاح Mistral API أولاً", "bot", true);
+    log("لم يتم إدخال API Key", "err");
+    return;
+  }
+  if (!text) return;
+
+  addMessage(text, "user");
+  messages.push({ role: "user", content: text });
+  userInput.value = "";
+  sendBtn.disabled = true;
+  compareBtn.disabled = true;
+  sendBtn.textContent = "...";
+
+  // إذا لم تُجلب النماذج بعد، اجلبها
+  if (availableModels.length === 0) {
+    await loadModels();
+    if (availableModels.length === 0) {
+      addMessage("⚠️ لا توجد نماذج متاحة. تأكد من صحة الـ API Key.", "bot", true);
+      sendBtn.disabled = false;
+      compareBtn.disabled = false;
+      sendBtn.textContent = "إرسال";
+      return;
+    }
+  }
+
+  // تحديد النموذج
+  const selected = modelSelect.value;
+  let modelsToTry;
+
+  if (selected === "__auto__") {
+    modelsToTry = [...availableModels];
+    // ضع النموذج الذي نجح سابقاً في المقدمة
+    if (currentModel) {
+      const idx = modelsToTry.findIndex(m => m.id === currentModel);
+      if (idx > 0) {
+        const [chosen] = modelsToTry.splice(idx, 1);
+        modelsToTry.unshift(chosen);
+      }
+    }
+  } else {
+    const found = availableModels.find(m => m.id === selected);
+    if (!found) {
+      addMessage(`⚠️ النموذج ${selected} غير متاح.`, "bot", true);
+      sendBtn.disabled = false;
+      compareBtn.disabled = false;
+      sendBtn.textContent = "إرسال";
+      return;
+    }
+    modelsToTry = [found];
+  }
+
+  let success = false;
+  let lastError = null;
+
+  for (const model of modelsToTry) {
+    log(`📤 محاولة باستخدام: ${model.id} ...`);
+    try {
+      const result = await callModel(apiKey, model.id, messages);
+      if (result.ok) {
+        log(`✅ نجح: ${result.usedModel}`, "success");
+        addMessage(result.reply, "bot", false, false, result.usedModel);
+        messages.push({ role: "assistant", content: result.reply });
+        currentModel = result.usedModel;
+        success = true;
+        break;
+      } else {
+        log(`⚠️ فشل ${model.id} (${result.status}): ${result.error}`, "warn");
+        lastError = `آخر خطأ من ${model.id}: ${result.error}`;
+        // إذا كان الخطأ 401 (مفتاح خاطئ) توقف عن المحاولة
+        if (result.status === 401) {
+          addMessage("❌ مفتاح API غير صحيح.", "bot", true);
+          log("⛔ إيقاف المحاولات: مفتاح غير صحيح (401).", "err");
+          sendBtn.disabled = false;
+          compareBtn.disabled = false;
+          sendBtn.textContent = "إرسال";
+          return;
+        }
+      }
+    } catch (err) {
+      log(`🚨 خطأ شبكة مع ${model.id}: ${err.message}`, "err");
+      lastError = err.message;
+    }
+    await new Promise(r => setTimeout(r, 300));
+  }
+
+  if (!success) {
+    addMessage(`❌ فشلت جميع المحاولات. ${lastError || ''}`, "bot", true);
+    log(`❌ فشل كل شيء. آخر خطأ: ${lastError}`, "err");
+  }
+
+  sendBtn.disabled = false;
+  compareBtn.disabled = false;
+  sendBtn.textContent = "إرسال";
+  userInput.focus();
+}
+
+// ===== مقارنة النماذج =====
+
+async function compareModels() {
+  const text = userInput.value.trim();
+  const apiKey = apiKeyInput.value.trim();
+
+  if (!apiKey) {
+    addMessage("⚠️ الرجاء إدخال مفتاح Mistral API أولاً", "bot", true);
+    log("لم يتم إدخال API Key", "err");
+    return;
+  }
+  if (!text) {
+    addMessage("⚠️ اكتب رسالة أولاً لمقارنتها بين النماذج.", "bot", true);
+    return;
+  }
+
+  if (availableModels.length === 0) {
+    await loadModels();
+    if (availableModels.length === 0) return;
+  }
+
+  // اختيار أفضل 5 نماذج للمقارنة
+  const topN = availableModels.slice(0, 5);
+  log(`⚖️ بدء المقارنة بين ${topN.length} نماذج...`, "info");
+
+  addMessage(text, "user");
+  // نستخدم نفس السياق لكل النماذج
+  const compareHistory = [...messages, { role: "user", content: text }];
+
+  userInput.value = "";
+  compareBox.innerHTML = "";
+  sendBtn.disabled = true;
+  compareBtn.disabled = true;
+  compareBtn.textContent = "⏳ جاري المقارنة...";
+
+  // إنشاء بطاقات فارغة أولاً
+  const cards = {};
+  topN.forEach(m => {
+    const card = document.createElement('div');
+    card.className = 'compare-card';
+    card.innerHTML = `
+      <div class="head">
+        <span>${m.id}</span>
+        <span class="status">⏳</span>
+      </div>
+      <div class="body">في الانتظار...</div>
+    `;
+    compareBox.appendChild(card);
+    cards[m.id] = card;
+  });
+
+  // تشغيل الطلبات بالتوازي
+  const promises = topN.map(async (m) => {
+    const card = cards[m.id];
+    const statusEl = card.querySelector('.status');
+    const bodyEl = card.querySelector('.body');
+    try {
+      const result = await callModel(apiKey, m.id, compareHistory);
+      if (result.ok) {
+        statusEl.textContent = "✅";
+        statusEl.className = 'status ok';
+        bodyEl.textContent = result.reply;
+        log(`✅ ${m.id} نجح.`, "success");
+      } else {
+        statusEl.textContent = `❌ ${result.status}`;
+        statusEl.className = 'status fail';
+        bodyEl.textContent = result.error;
+        log(`⚠️ ${m.id} فشل (${result.status}): ${result.error}`, "warn");
+      }
+    } catch (e) {
+      statusEl.textContent = "🚨";
+      statusEl.className = 'status fail';
+      bodyEl.textContent = e.message;
+      log(`🚨 ${m.id}: ${e.message}`, "err");
+    }
+  });
+
+  await Promise.all(promises);
+
+  log("⚖️ انتهت المقارنة.", "info");
+  sendBtn.disabled = false;
+  compareBtn.disabled = false;
+  compareBtn.textContent = "⚖️ قارن النماذج";
+}
+
+// ===== اعتراض الأخطاء العامة =====
+window.addEventListener('error', e => log(`خطأ عام: ${e.message}`, 'err'));
+window.addEventListener('unhandledrejection', e => log(`Promise مرفوض: ${e.reason}`, 'err'));
+
+log("✅ الصفحة جاهزة.", "info");
+log("💡 الخطوة 1: أدخل API Key ثم اضغط «جلب النماذج».", "info");
+log("💡 الخطوة 2: اختر النموذج (أو اتركه تلقائياً) وابدأ الدردشة.", "info");
+userInput.focus();
+</script>
+</body>
+</html>

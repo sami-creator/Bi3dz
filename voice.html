@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تحويل الكلام إلى نص</title>
+<style>
+  * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, sans-serif; }
+  body {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    min-height: 100vh; display: flex; align-items: center;
+    justify-content: center; margin: 0; padding: 20px;
+  }
+  .container {
+    background: #fff; border-radius: 20px; padding: 40px;
+    width: 100%; max-width: 600px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.3); text-align: center;
+  }
+  h1 { color: #333; margin-bottom: 10px; font-size: 1.6rem; }
+  .status { color: #888; font-size: .95rem; margin-bottom: 25px; min-height: 22px; }
+  .status.recording { color: #e53935; font-weight: bold; }
+  .status.ok { color: #2e7d32; font-weight: bold; }
+  #recordBtn {
+    background: #667eea; color: #fff; border: none; border-radius: 50px;
+    padding: 15px 40px; font-size: 1.1rem; cursor: pointer;
+    transition: all .3s; display: inline-flex; align-items: center;
+    gap: 10px; box-shadow: 0 5px 15px rgba(102,126,234,.4);
+  }
+  #recordBtn:hover { background: #5568d3; transform: translateY(-2px); }
+  #recordBtn.recording {
+    background: #e53935; box-shadow: 0 5px 15px rgba(229,57,53,.4);
+    animation: pulse 1.5s infinite;
+  }
+  #recordBtn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+  @keyframes pulse {
+    0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); }
+  }
+  .mic-icon { width: 20px; height: 20px; fill: currentColor; }
+  #output {
+    margin-top: 30px; padding: 20px; min-height: 150px;
+    background: #f7f8fc; border: 2px dashed #d0d4e4; border-radius: 12px;
+    text-align: right; font-size: 1.1rem; line-height: 1.8;
+    color: #333; white-space: pre-wrap; word-wrap: break-word;
+  }
+  #output:empty::before { content: 'سيظهر النص المكتوب هنا...'; color: #aaa; }
+  .actions { margin-top: 20px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .actions button {
+    background: #f0f1f5; color: #555; border: none; border-radius: 8px;
+    padding: 10px 20px; font-size: .9rem; cursor: pointer;
+  }
+  .actions button:hover { background: #e0e2ea; }
+  .notice {
+    padding: 15px; border-radius: 10px; margin-top: 20px; font-size: .9rem;
+    text-align: right; line-height: 1.7;
+  }
+  .notice.error { color: #b71c1c; background: #ffebee; }
+  .notice.info  { color: #0d47a1; background: #e3f2fd; }
+  .notice a { color: inherit; font-weight: bold; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>🎤 تحويل الكلام إلى نص</h1>
+  <p class="status" id="status">جارٍ التحقق من الصلاحيات...</p>
+
+  <button id="recordBtn" disabled>
+    <svg class="mic-icon" viewBox="0 0 24 24">
+      <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+      <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+    </svg>
+    <span id="btnText">تسجيل الصوت</span>
+  </button>
+
+  <div id="output"></div>
+
+  <div class="actions">
+    <button id="copyBtn">📋 نسخ النص</button>
+    <button id="clearBtn">🗑️ مسح</button>
+  </div>
+
+  <div id="notice"></div>
+</div>
+
+<script>
+const recordBtn = document.getElementById('recordBtn');
+const btnText   = document.getElementById('btnText');
+const statusEl  = document.getElementById('status');
+const output    = document.getElementById('output');
+const copyBtn   = document.getElementById('copyBtn');
+const clearBtn  = document.getElementById('clearBtn');
+const notice    = document.getElementById('notice');
+
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+let recognition = null;
+let isRecording = false;
+let finalTranscript = '';
+
+function showNotice(msg, type='info') {
+  notice.innerHTML = `<div class="notice ${type}">${msg}</div>`;
+}
+
+function setStatus(msg, cls='') {
+  statusEl.textContent = msg;
+  statusEl.className = 'status ' + cls;
+}
+
+/* ---------- 1) فحص الدعم والسياق الآمن ---------- */
+async function init() {
+  // فحص السياق الآمن (HTTPS أو localhost)
+  const isSecure = window.isSecureContext ||
+                   location.protocol === 'https:' ||
+                   location.hostname === 'localhost' ||
+                   location.hostname === '127.0.0.1';
+
+  if (!isSecure) {
+    recordBtn.disabled = true;
+    setStatus('⚠️ الصفحة يجب أن تُفتح عبر HTTPS', '');
+    showNotice(
+      'المتصفحات تمنع الوصول للميكروفون على <code>file://</code> أو <code>http://</code>.<br>' +
+      'الحلول:<br>' +
+      '• افتح الصفحة عبر <code>http://localhost</code> باستخدام سيرفر محلي.<br>' +
+      '• أو ارفعها على استضافة HTTPS (مثل GitHub Pages أو Netlify).<br>' +
+      '• أو جرّب في Chrome: اذهب إلى <code>chrome://flags/#unsafely-treat-insecure-origin-as-secure</code> وأضف رابط موقعك.',
+      'error'
+    );
+    return;
+  }
+
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+    recordBtn.disabled = true;
+    setStatus('⚠️ المتصفح لا يدعم الوصول للميكروفون');
+    showNotice('يرجى استخدام إصدار حديث من Chrome أو Edge.', 'error');
+    return;
+  }
+
+  if (!SpeechRecognition) {
+    recordBtn.disabled = true;
+    setStatus('⚠️ المتصفح لا يدعم التعرف على الكلام');
+    showNotice('استخدم Google Chrome أو Microsoft Edge.', 'error');
+    return;
+  }
+
+  // إعداد محرك التعرف
+  recognition = new SpeechRecognition();
+  recognition.lang = 'ar-SA';
+  recognition.continuous = true;
+  recognition.interimResults = true;
+  recognition.maxAlternatives = 1;
+
+  recognition.onstart = () => {
+    isRecording = true;
+    recordBtn.classList.add('recording');
+    btnText.textContent = 'إيقاف التسجيل';
+    setStatus('🔴 جارٍ التسجيل... تحدث الآن', 'recording');
+  };
+
+  recognition.onresult = (event) => {
+    let interim = '';
+    for (let i = event.resultIndex; i < event.results.length; i++) {
+      const t = event.results[i][0].transcript;
+      if (event.results[i].isFinal) finalTranscript += t + ' ';
+      else interim += t;
+    }
+    output.textContent = finalTranscript + interim;
+  };
+
+  recognition.onerror = (e) => {
+    console.error('Speech error:', e.error);
+    if (e.error === 'not-allowed' || e.error === 'service-not-allowed') {
+      setStatus('⚠️ تم رفض الوصول للميكروفون');
+      showNotice(getPermissionHelp(), 'error');
+      isRecording = false;
+    } else if (e.error === 'no-speech') {
+      setStatus('لم يتم اكتشاف صوت، حاول مجددًا');
+    } else if (e.error === 'audio-capture') {
+      setStatus('⚠️ لم يتم العثور على ميكروفون');
+      showNotice('تأكد من توصيل ميكروفون وأنه يعمل.', 'error');
+      isRecording = false;
+    } else {
+      setStatus('خطأ: ' + e.error);
+    }
+  };
+
+  recognition.onend = () => {
+    if (isRecording) {
+      try { recognition.start(); } catch(_) {}
+    } else {
+      recordBtn.classList.remove('recording');
+      btnText.textContent = 'تسجيل الصوت';
+      setStatus('تم إيقاف التسجيل');
+    }
+  };
+
+  // الآن اطلب صلاحية الميكروفون فورًا
+  await requestMicPermission();
+}
+
+/* ---------- 2) طلب صلاحية الميكروفون ---------- */
+async function requestMicPermission() {
+  try {
+    // نتحقق أولاً من حالة الإذن إن كانت متاحة
+    if (navigator.permissions && navigator.permissions.query) {
+      const perm = await navigator.permissions.query({ name: 'microphone' });
+      if (perm.state === 'denied') {
+        setStatus('⚠️ صلاحية الميكروفون مرفوضة');
+        showNotice(getPermissionHelp(), 'error');
+        recordBtn.disabled = true;
+        return;
+      }
+    }
+
+    setStatus('🎙️ يرجى السماح بالوصول إلى الميكروفون...');
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+
+    // أوقف المسارات مباشرة (نحتاجها فقط لطلب الإذن)
+    stream.getTracks().forEach(t => t.stop());
+
+    // تم منح الإذن
+    setStatus('✅ تم منح صلاحية الميكروفون. اضغط للتسجيل', 'ok');
+    recordBtn.disabled = false;
+    showNotice('');
+  } catch (err) {
+    console.error('getUserMedia error:', err);
+    recordBtn.disabled = true;
+
+    let msg = getPermissionHelp();
+    if (err.name === 'NotFoundError' || err.name === 'DevicesNotFoundError') {
+      msg = '⚠️ لا يوجد ميكروفون متصل بالجهاز.';
+    } else if (err.name === 'NotReadableError') {
+      msg = '⚠️ الميكروفون مستخدم من قبل تطبيق آخر.';
+    }
+    setStatus('⚠️ تعذر الوصول للميكروفون');
+    showNotice(msg, 'error');
+  }
+}
+
+function getPermissionHelp() {
+  return `
+    <b>لماذا لا تظهر نافذة طلب الإذن؟</b><br>
+    غالبًا لأنك رفضت الإذن سابقًا، أو لأن الصفحة ليست على HTTPS.<br><br>
+    <b>لإعادة تمكين الإذن في Chrome:</b><br>
+    1. اضغط على أيقونة 🔒 أو ℹ️ بجانب شريط العنوان.<br>
+    2. اختر <b>إعدادات الموقع (Site settings)</b>.<br>
+    3. غيّر صلاحية <b>الميكروفون (Microphone)</b> إلى <b>السماح (Allow)</b>.<br>
+    4. أعد تحميل الصفحة.<br><br>
+    أو اذهب مباشرة إلى: <code>chrome://settings/content/microphone</code> وأزل الموقع من قائمة الحظر.
+  `;
+}
+
+/* ---------- 3) التحكم بالتسجيل ---------- */
+recordBtn.addEventListener('click', async () => {
+  if (!recognition) return;
+
+  if (!isRecording) {
+    // تحقق من الإذن مجددًا قبل البدء
+    try {
+      const perm = navigator.permissions
+        ? await navigator.permissions.query({ name: 'microphone' })
+        : { state: 'granted' };
+      if (perm.state !== 'granted') {
+        await requestMicPermission();
+        if (recordBtn.disabled) return;
+      }
+    } catch(_) {}
+
+    finalTranscript = output.textContent ? output.textContent + ' ' : '';
+    try { recognition.start(); }
+    catch(e) { console.error(e); }
+  } else {
+    isRecording = false;
+    recognition.stop();
+  }
+});
+
+/* ---------- 4) نسخ ومسح ---------- */
+copyBtn.addEventListener('click', async () => {
+  const text = output.textContent.trim();
+  if (!text) return;
+  try {
+    await navigator.clipboard.writeText(text);
+    const orig = copyBtn.textContent;
+    copyBtn.textContent = '✅ تم النسخ';
+    setTimeout(() => copyBtn.textContent = orig, 1500);
+  } catch { alert('تعذر النسخ'); }
+});
+
+clearBtn.addEventListener('click', () => { output.textContent = ''; });
+
+/* تشغيل */
+init();
+</script>
+</body>
+</html>

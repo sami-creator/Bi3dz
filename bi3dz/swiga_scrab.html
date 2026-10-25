@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>إعلانات السيارات - سويقة</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0f0f0f;
+    color: #f0f0f0;
+    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+    direction: rtl;
+  }
+  header {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid #e74c3c;
+  }
+  header h1 { font-size: 1.8rem; color: #e74c3c; }
+  header p { color: #aaa; margin-top: 5px; font-size: 0.9rem; }
+  .search-bar {
+    padding: 15px 20px;
+    background: #1a1a2e;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .search-bar input {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    background: #0f0f0f;
+    color: white;
+    font-size: 1rem;
+    width: 250px;
+  }
+  .search-bar input::placeholder { color: #666; }
+  .count { text-align: center; color: #888; padding: 10px; font-size: 0.9rem; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1400px;
+    margin: auto;
+  }
+  .card {
+    background: #1a1a1a;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #2a2a2a;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(231,76,60,0.2);
+  }
+  /* Gallery */
+  .gallery {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    background: #111;
+    overflow: hidden;
+  }
+  .slides { width: 100%; height: 100%; }
+  .slide {
+    display: none;
+    width: 100%;
+    height: 100%;
+  }
+  .slide.active { display: block; }
+  .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.6);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 1rem;
+    z-index: 10;
+    transition: background 0.2s;
+  }
+  .prev:hover, .next:hover { background: rgba(231,76,60,0.8); }
+  .prev { right: 8px; }
+  .next { left: 8px; }
+  .dots {
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+  }
+  .dot {
+    display: inline-block;
+    width: 7px; height: 7px;
+    background: rgba(255,255,255,0.4);
+    border-radius: 50%;
+    margin: 0 3px;
+    cursor: pointer;
+  }
+  .dot.active { background: #e74c3c; }
+  .no-img {
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555;
+    font-size: 1.2rem;
+    background: #111;
+  }
+  /* Info */
+  .info { padding: 15px; }
+  .title {
+    font-size: 1rem;
+    color: #fff;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  .meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .meta span { color: #aaa; font-size: 0.85rem; }
+  .price {
+    background: #e74c3c;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+  }
+  .price.call {
+    background: #2ecc71;
+  }
+  .desc {
+    color: #bbb;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    border-right: 3px solid #e74c3c;
+    padding-right: 8px;
+  }
+  .specs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+  .spec {
+    background: #2a2a2a;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    color: #ccc;
+  }
+  .footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-top: 10px;
+    border-top: 1px solid #2a2a2a;
+    padding-top: 10px;
+  }
+  .btn {
+    padding: 7px 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: bold;
+    transition: opacity 0.2s;
+  }
+  .btn:hover { opacity: 0.85; }
+  .btn.phone { background: #27ae60; color: white; }
+  .btn.link { background: #2980b9; color: white; }
+  .seller { color: #888; font-size: 0.78rem; margin-right: auto; }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🚗 إعلانات السيارات</h1>
+  <p>منصة سويقة — 20 إعلان</p>
+</header>
+
+<div class="search-bar">
+  <input type="text" id="search" placeholder="🔍 ابحث بالاسم أو المدينة..." oninput="filterCards()">
+</div>
+<div class="count" id="count">عرض 20 إعلان</div>
+
+<div class="grid" id="grid">
+
+    <div class="card">
+        
+        <div class="gallery">
+            <div class="slides"><div class="slide active"><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/ads/2026/10/656502855_1792595906.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/01/2090100569_1768590020.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/12/1606025711_1766066443.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/12/882067820_1765287387.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/03/505916756_1741478994.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/01/368577593_1737615541.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2024/11/239141827_1732909099.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/10/942961633_1792521722.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/10/1693313139_1792440103.webp" alt="صورة السيارة" loading="lazy"></div></div>
+            <button class="prev" onclick="changeSlide(this,-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(this,1)">&#10095;</button>
+            <div class="dots"><span class="dot active"></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span></div>
+        </div>
+        <div class="info">
+            <h2 class="title">فيات Doblo الاغواط</h2>
+            <div class="meta">
+                <span>📍 ادرار</span>
+                <span class="price">السعر عند الاتصال</span>
+            </div>
+            <p class='desc'>فيات بانوراما لاتوت اوبسيون معمرة Club جديدة 00 2026</p>
+            
+            <div class="footer">
+                <a href='tel:+21354128863' class='btn phone'>📞 +21354128863</a>
+                <a href="https://swigaapp.com/ar/fyat-doblo-alaghoat-d305801" target="_blank" class="btn link">🔗 عرض الإعلان</a>
+                <span class='seller'>👤 عضو منذ 2026</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        
+        <div class="gallery">
+            <div class="slides"><div class="slide active"><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/ads/2026/10/553816921_1792593715.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/08/1685388446_1754693093.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/07/698573561_1753724518.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/06/190329325_1751126261.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2024/11/1103564789_1732919798.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2024/11/438564415_1732888344.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/09/1609947238_1789917494.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/07/1327970146_1783002956.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/06/936454485_1782679321.webp" alt="صورة السيارة" loading="lazy"></div></div>
+            <button class="prev" onclick="changeSlide(this,-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(this,1)">&#10095;</button>
+            <div class="dots"><span class="dot active"></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span></div>
+        </div>
+        <div class="info">
+            <h2 class="title">اودي 2011 ام البواقي</h2>
+            <div class="meta">
+                <span>📍 بجاية</span>
+                <span class="price">0 230 مليون</span>
+            </div>
+            <p class='desc'>متور محطوط باطة اوتو</p>
+            
+            <div class="footer">
+                <a href='tel:+21378409371' class='btn phone'>📞 +21378409371</a>
+                <a href="https://swigaapp.com/ar/aody-2011-am-alboaky-d305799" target="_blank" class="btn link">🔗 عرض الإعلان</a>
+                <span class='seller'>👤 عضو منذ 2026</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        
+        <div class="gallery">
+            <div class="slides"><div class="slide active"><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/ads/2026/10/2121582952_1792590558.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/08/1717583754_1786658656.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/08/894931827_1786656844.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/03/359877555_1773574884.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/12/1127753792_1766759930.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/08/1298488751_1755385801.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/06/2098345356_1751229855.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/04/1764896052_1744701922.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/04/1809276855_1744103905.webp" alt="صورة السيارة" loading="lazy"></div></div>
+            <button class="prev" onclick="changeSlide(this,-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(this,1)">&#10095;</button>
+            <div class="dots"><span class="dot active"></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span></div>
+        </div>
+        <div class="info">
+            <h2 class="title">اوبل Grandland الجزائر</h2>
+            <div class="meta">
+                <span>📍 الجزائر</span>
+                <span class="price">السعر عند الاتصال</span>
+            </div>
+            <p class='desc'>je met en vente Opel crosslandx première main importer de France Propre. Bien entretenu qui est intéressé me c...</p>
+            
+            <div class="footer">
+                <a href='tel:+21354251384' class='btn phone'>📞 +21354251384</a>
+                <a href="https://swigaapp.com/ar/aobl-grandland-algzayr-d305797" target="_blank" class="btn link">🔗 عرض الإعلان</a>
+                <span class='seller'>👤 عضو منذ 2026</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        
+        <div class="gallery">
+            <div class="slides"><div class="slide active"><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/10/100828679_1792584728.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/09/274520813_1789649344.webp" alt="صورة السيارة" loading="lazy"></div></div>
+            <button class="prev" onclick="changeSlide(this,-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(this,1)">&#10095;</button>
+            <div class="dots"><span class="dot active"></span><span class="dot "></span></div>
+        </div>
+        <div class="info">
+            <h2 class="title">هونداي Accent 2012 ادرار</h2>
+            <div class="meta">
+                <span>📍 ادرار</span>
+                <span class="price">0 100 مليون</span>
+            </div>
+            <p class='desc'>للبيع</p>
+            
+            <div class="footer">
+                <a href='tel:+21355918501' class='btn phone'>📞 +21355918501</a>
+                <a href="https://swigaapp.com/ar/honday-accent-2012-adrar-d305796" target="_blank" class="btn link">🔗 عرض الإعلان</a>
+                <span class='seller'>👤 عضو منذ 2026</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        
+        <div class="gallery">
+            <div class="slides"><div class="slide active"><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/10/100828679_1792584728.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/09/274520813_1789649344.webp" alt="صورة السيارة" loading="lazy"></div></div>
+            <button class="prev" onclick="changeSlide(this,-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(this,1)">&#10095;</button>
+            <div class="dots"><span class="dot active"></span><span class="dot "></span></div>
+        </div>
+        <div class="info">
+            <h2 class="title">هونداي Accent 2012 ادرار</h2>
+            <div class="meta">
+                <span>📍 ادرار</span>
+                <span class="price">0 1000 مليون</span>
+            </div>
+            <p class='desc'>للبيع</p>
+            
+            <div class="footer">
+                <a href='tel:+21355918501' class='btn phone'>📞 +21355918501</a>
+                <a href="https://swigaapp.com/ar/honday-accent-2012-adrar-d305795" target="_blank" class="btn link">🔗 عرض الإعلان</a>
+                <span class='seller'>👤 عضو منذ 2026</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        
+        <div class="gallery">
+            <div class="slides"><div class="slide active"><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/10/100828679_1792584728.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/09/274520813_1789649344.webp" alt="صورة السيارة" loading="lazy"></div></div>
+            <button class="prev" onclick="changeSlide(this,-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(this,1)">&#10095;</button>
+            <div class="dots"><span class="dot active"></span><span class="dot "></span></div>
+        </div>
+        <div class="info">
+            <h2 class="title">هونداي Accent 2012 ادرار</h2>
+            <div class="meta">
+                <span>📍 ادرار</span>
+                <span class="price">0 100 مليون</span>
+            </div>
+            <p class='desc'>للبيع</p>
+            
+            <div class="footer">
+                <a href='tel:+21355918501' class='btn phone'>📞 +21355918501</a>
+                <a href="https://swigaapp.com/ar/honday-accent-2012-adrar-d305794" target="_blank" class="btn link">🔗 عرض الإعلان</a>
+                <span class='seller'>👤 عضو منذ 2026</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        
+        <div class="gallery">
+            <div class="slides"><div class="slide active"><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/10/100828679_1792584728.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/09/274520813_1789649344.webp" alt="صورة السيارة" loading="lazy"></div></div>
+            <button class="prev" onclick="changeSlide(this,-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(this,1)">&#10095;</button>
+            <div class="dots"><span class="dot active"></span><span class="dot "></span></div>
+        </div>
+        <div class="info">
+            <h2 class="title">هونداي Accent 2012 ادرار</h2>
+            <div class="meta">
+                <span>📍 ادرار</span>
+                <span class="price">0 200 مليون</span>
+            </div>
+            <p class='desc'>للبيع</p>
+            
+            <div class="footer">
+                <a href='tel:+21355918501' class='btn phone'>📞 +21355918501</a>
+                <a href="https://swigaapp.com/ar/honday-accent-2012-adrar-d305793" target="_blank" class="btn link">🔗 عرض الإعلان</a>
+                <span class='seller'>👤 عضو منذ 2026</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        
+        <div class="gallery">
+            <div class="slides"><div class="slide active"><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/10/100828679_1792584728.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/09/274520813_1789649344.webp" alt="صورة السيارة" loading="lazy"></div></div>
+            <button class="prev" onclick="changeSlide(this,-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(this,1)">&#10095;</button>
+            <div class="dots"><span class="dot active"></span><span class="dot "></span></div>
+        </div>
+        <div class="info">
+            <h2 class="title">هونداي Accent 2012 ادرار</h2>
+            <div class="meta">
+                <span>📍 ادرار</span>
+                <span class="price">0 1000 مليون</span>
+            </div>
+            <p class='desc'>للبيع</p>
+            
+            <div class="footer">
+                <a href='tel:+21355918501' class='btn phone'>📞 +21355918501</a>
+                <a href="https://swigaapp.com/ar/honday-accent-2012-adrar-d305792" target="_blank" class="btn link">🔗 عرض الإعلان</a>
+                <span class='seller'>👤 عضو منذ 2026</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        
+        <div class="gallery">
+            <div class="slides"><div class="slide active"><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/10/100828679_1792584728.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/09/274520813_1789649344.webp" alt="صورة السيارة" loading="lazy"></div></div>
+            <button class="prev" onclick="changeSlide(this,-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(this,1)">&#10095;</button>
+            <div class="dots"><span class="dot active"></span><span class="dot "></span></div>
+        </div>
+        <div class="info">
+            <h2 class="title">هونداي Accent 2012 ادرار</h2>
+            <div class="meta">
+                <span>📍 ادرار</span>
+                <span class="price">0 210 مليون</span>
+            </div>
+            <p class='desc'>للبيع</p>
+            
+            <div class="footer">
+                <a href='tel:+21355918501' class='btn phone'>📞 +21355918501</a>
+                <a href="https://swigaapp.com/ar/honday-accent-2012-adrar-d305791" target="_blank" class="btn link">🔗 عرض الإعلان</a>
+                <span class='seller'>👤 عضو منذ 2026</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        
+        <div class="gallery">
+            <div class="slides"><div class="slide active"><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/10/100828679_1792584728.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/09/274520813_1789649344.webp" alt="صورة السيارة" loading="lazy"></div></div>
+            <button class="prev" onclick="changeSlide(this,-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(this,1)">&#10095;</button>
+            <div class="dots"><span class="dot active"></span><span class="dot "></span></div>
+        </div>
+        <div class="info">
+            <h2 class="title">هونداي Accent 2012 ادرار</h2>
+            <div class="meta">
+                <span>📍 ادرار</span>
+                <span class="price">0 210 مليون</span>
+            </div>
+            <p class='desc'>للبيع</p>
+            
+            <div class="footer">
+                <a href='tel:+21355918501' class='btn phone'>📞 +21355918501</a>
+                <a href="https://swigaapp.com/ar/honday-accent-2012-adrar-d305790" target="_blank" class="btn link">🔗 عرض الإعلان</a>
+                <span class='seller'>👤 عضو منذ 2026</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        
+        <div class="gallery">
+            <div class="slides"><div class="slide active"><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/ads/2026/10/100828679_1792584728.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/09/274520813_1789649344.webp" alt="صورة السيارة" loading="lazy"></div></div>
+            <button class="prev" onclick="changeSlide(this,-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(this,1)">&#10095;</button>
+            <div class="dots"><span class="dot active"></span><span class="dot "></span></div>
+        </div>
+        <div class="info">
+            <h2 class="title">هونداي Accent 2012 ادرار</h2>
+            <div class="meta">
+                <span>📍 ادرار</span>
+                <span class="price">السعر عند الاتصال</span>
+            </div>
+            <p class='desc'>للبيع</p>
+            
+            <div class="footer">
+                <a href='tel:+21355918501' class='btn phone'>📞 +21355918501</a>
+                <a href="https://swigaapp.com/ar/honday-accent-2012-adrar-d305789" target="_blank" class="btn link">🔗 عرض الإعلان</a>
+                <span class='seller'>👤 عضو منذ 2026</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        
+        <div class="gallery">
+            <div class="slides"><div class="slide active"><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/ads/2026/10/942961633_1792521722.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2024/12/1707521034_1733615614.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/10/656502855_1792595906.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/10/1693313139_1792440103.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/10/41651744_1792418607.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/10/1253454035_1792244221.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/10/1930217390_1791977578.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/10/1247900207_1791794388.webp" alt="صورة السيارة" loading="lazy"></div></div>
+            <button class="prev" onclick="changeSlide(this,-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(this,1)">&#10095;</button>
+            <div class="dots"><span class="dot active"></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span></div>
+        </div>
+        <div class="info">
+            <h2 class="title">فيات Tipo Sedan 2024 ادرار</h2>
+            <div class="meta">
+                <span>📍 ادرار</span>
+                <span class="price">السعر عند الاتصال</span>
+            </div>
+            <p class='desc'>سيارة نقية الله يبارك. محرك 1.6 بنزين قابل للتفاوض. يرجى الاتصال على الرقم التالي:0793964309</p>
+            
+            <div class="footer">
+                <a href='tel:+21366349807' class='btn phone'>📞 +21366349807</a>
+                <a href="https://swigaapp.com/ar/fyat-tipo-sedan-2024-adrar-d305773" target="_blank" class="btn link">🔗 عرض الإعلان</a>
+                <span class='seller'>👤 عضو منذ 2024</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        
+        <div class="gallery">
+            <div class="slides"><div class="slide active"><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/ads/2026/10/1220493620_1792520356.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/06/1421134349_1781545262.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/11/775541111_1763817799.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/11/2055128665_1763156615.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/11/1722490965_1762711407.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/09/60455996_1757675787.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/06/377389517_1748750520.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/05/219054031_1747862027.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/05/1783664609_1746881932.webp" alt="صورة السيارة" loading="lazy"></div></div>
+            <button class="prev" onclick="changeSlide(this,-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(this,1)">&#10095;</button>
+            <div class="dots"><span class="dot active"></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span></div>
+        </div>
+        <div class="info">
+            <h2 class="title">فورد 2011 الجزائر</h2>
+            <div class="meta">
+                <span>📍 الجزائر</span>
+                <span class="price">0 200 مليون</span>
+            </div>
+            <p class='desc'>256</p>
+            
+            <div class="footer">
+                <a href='tel:+21356086370' class='btn phone'>📞 +21356086370</a>
+                <a href="https://swigaapp.com/ar/ford-2011-algzayr-d305772" target="_blank" class="btn link">🔗 عرض الإعلان</a>
+                <span class='seller'>👤 عضو منذ 2026</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        
+        <div class="gallery">
+            <div class="slides"><div class="slide active"><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/ads/2026/10/369626741_1792516741.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/10/102423031_1792097685.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/10/16331585_1792081142.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/09/864560447_1790281196.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/09/250161916_1790175454.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/09/346093124_1790174163.webp" alt="صورة السيارة" loading="lazy"></div></div>
+            <button class="prev" onclick="changeSlide(this,-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(this,1)">&#10095;</button>
+            <div class="dots"><span class="dot active"></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span></div>
+        </div>
+        <div class="info">
+            <h2 class="title">رينو Kadjar 2016 الجزائر</h2>
+            <div class="meta">
+                <span>📍 الجزائر</span>
+                <span class="price">0 380 مليون</span>
+            </div>
+            <p class='desc'>0549503083</p>
+            
+            <div class="footer">
+                <a href='tel:+21356121335' class='btn phone'>📞 +21356121335</a>
+                <a href="https://swigaapp.com/ar/ryno-kadjar-2016-algzayr-d305764" target="_blank" class="btn link">🔗 عرض الإعلان</a>
+                <span class='seller'>👤 عضو منذ 2026</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        
+        <div class="gallery">
+            <div class="slides"><div class="slide active"><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/ads/2026/10/1818199656_1792507780.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/08/2068307937_1756468223.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/08/1086081169_1756467858.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/04/406739810_1743940840.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/04/52192812_1743893639.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/03/599046283_1741357116.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/03/1130482867_1741342352.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/01/1744781751_1737490632.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/01/1962724698_1737484621.webp" alt="صورة السيارة" loading="lazy"></div></div>
+            <button class="prev" onclick="changeSlide(this,-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(this,1)">&#10095;</button>
+            <div class="dots"><span class="dot active"></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span></div>
+        </div>
+        <div class="info">
+            <h2 class="title">ستروين C3 2022 تيزيوزو</h2>
+            <div class="meta">
+                <span>📍 تيزيوزو</span>
+                <span class="price">0 350 مليون</span>
+            </div>
+            <p class='desc'>a vendre une Citroën C3 aircross 22 très bien entretenu, sans aucun problème ni aucun frais supplémentaire a p...</p>
+            
+            <div class="footer">
+                <a href='tel:+21354965785' class='btn phone'>📞 +21354965785</a>
+                <a href="https://swigaapp.com/ar/stroyn-c3-2022-tyzyozo-d305760" target="_blank" class="btn link">🔗 عرض الإعلان</a>
+                <span class='seller'>👤 عضو منذ 2026</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        
+        <div class="gallery">
+            <div class="slides"><div class="slide active"><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/ads/2026/10/1674675312_1792494581.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/06/1635632023_1751145462.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/03/1498356061_1740962338.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2024/12/609656594_1734986044.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2024/11/1798006419_1732577135.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2024/11/874790223_1730985564.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2024/10/QtFQ1dRVRUnkoMAfdC3srgoQWjKtttr2dD7ABSjn.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2024/10/xELvxCwDjc8dz2YEpABNJRWsiK9CpYxSvOJRselJ.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2024/10/rkrIqfljygyGw5XhKQvNGFOgylEiLo0pS919lrD3.webp" alt="صورة السيارة" loading="lazy"></div></div>
+            <button class="prev" onclick="changeSlide(this,-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(this,1)">&#10095;</button>
+            <div class="dots"><span class="dot active"></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span></div>
+        </div>
+        <div class="info">
+            <h2 class="title">رينو Megane 2022 ورقلة</h2>
+            <div class="meta">
+                <span>📍 ورقلة</span>
+                <span class="price">0 425 مليون</span>
+            </div>
+            <p class='desc'>Renault Mégane 4 Sedan, moteur 1.6 essence, année 2022, 140 000 km.Boite auto Parechoc avant w parechoc arrièr...</p>
+            
+            <div class="footer">
+                <a href='tel:+21377293010' class='btn phone'>📞 +21377293010</a>
+                <a href="https://swigaapp.com/ar/ryno-megane-2022-orkl-d305753" target="_blank" class="btn link">🔗 عرض الإعلان</a>
+                <span class='seller'>👤 عضو منذ 2026</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        
+        <div class="gallery">
+            <div class="slides"><div class="slide active"><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/ads/2026/10/1568802111_1792491102.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/10/494757292_1791191776.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/09/1203874075_1789639850.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/05/1940459771_1779180844.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/05/1767980072_1778875628.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/03/1477894448_1773689703.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/02/1555182437_1771848587.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/12/31387475_1764581405.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/11/1522081511_1764530040.webp" alt="صورة السيارة" loading="lazy"></div></div>
+            <button class="prev" onclick="changeSlide(this,-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(this,1)">&#10095;</button>
+            <div class="dots"><span class="dot active"></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span></div>
+        </div>
+        <div class="info">
+            <h2 class="title">رينو Clio 4 2019 الاغواط</h2>
+            <div class="meta">
+                <span>📍 الجزائر</span>
+                <span class="price">0 380 مليون</span>
+            </div>
+            <p class='desc'>Clio 4 gt line machia 110 mille</p>
+            
+            <div class="footer">
+                <a href='tel:+21367154465' class='btn phone'>📞 +21367154465</a>
+                <a href="https://swigaapp.com/ar/ryno-clio-4-2019-alaghoat-d305750" target="_blank" class="btn link">🔗 عرض الإعلان</a>
+                <span class='seller'>👤 عضو منذ 2023</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        
+        <div class="gallery">
+            <div class="slides"><div class="slide active"><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/ads/2026/10/1594362879_1792489223.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/06/1851990223_1780746457.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/02/1865511831_1770756075.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/11/372680968_1762631136.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2024/10/bndQDekaLLOGXKPtTZHfg79g5jrO7dJNo120N7NG.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2024/10/h24Hv6HJ7ior9JnoSYVjZ4GxvtQlXrMICNiN8M4q.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2024/03/RjLCwEEMKHhPNJQD2rqlXnPbA0oxkzx8e9xBbs5d.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/10/1550098776_1792242029.webp" alt="صورة السيارة" loading="lazy"></div></div>
+            <button class="prev" onclick="changeSlide(this,-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(this,1)">&#10095;</button>
+            <div class="dots"><span class="dot active"></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span></div>
+        </div>
+        <div class="info">
+            <h2 class="title">سيات Leon 2014 بومرداس</h2>
+            <div class="meta">
+                <span>📍 بومرداس</span>
+                <span class="price">0 280 مليون</span>
+            </div>
+            <p class='desc'>طنوبيل مشاء الله تاع كسيبة كلش مارش معاودة لاشان ليفتر سيسبنسيو طنوبيل زيرو مصروف</p>
+            
+            <div class="footer">
+                <a href='tel:+21355652240' class='btn phone'>📞 +21355652240</a>
+                <a href="https://swigaapp.com/ar/syat-leon-2014-bomrdas-d305747" target="_blank" class="btn link">🔗 عرض الإعلان</a>
+                <span class='seller'>👤 عضو منذ 2025</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        
+        <div class="gallery">
+            <div class="slides"><div class="slide active"><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/ads/2026/10/2024563799_1792479305.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/06/82465376_1782832613.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/04/1365738134_1776789124.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/04/2114963087_1775963755.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/04/766037355_1775939859.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/04/1272743296_1775928886.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/04/791556838_1775894483.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/04/147163736_1775845243.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/03/44346395_1774455930.webp" alt="صورة السيارة" loading="lazy"></div></div>
+            <button class="prev" onclick="changeSlide(this,-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(this,1)">&#10095;</button>
+            <div class="dots"><span class="dot active"></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span></div>
+        </div>
+        <div class="info">
+            <h2 class="title">جيلى Coolray 2026 قسنطينة</h2>
+            <div class="meta">
+                <span>📍 قسنطينة</span>
+                <span class="price">السعر عند الاتصال</span>
+            </div>
+            <p class='desc'>0784 62 13 40</p>
+            
+            <div class="footer">
+                <a href='tel:+21377377832' class='btn phone'>📞 +21377377832</a>
+                <a href="https://swigaapp.com/ar/gyl-coolray-2026-ksntyn-d305742" target="_blank" class="btn link">🔗 عرض الإعلان</a>
+                <span class='seller'>👤 عضو منذ 2025</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        
+        <div class="gallery">
+            <div class="slides"><div class="slide active"><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/ads/2026/10/1693313139_1792440103.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/06/428564132_1781514606.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2026/01/1558715773_1768486414.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/11/1971284357_1763809827.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/11/1773274268_1763116194.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/03/876462737_1743039269.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/03/594686608_1740847901.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/01/1193210444_1736692200.webp" alt="صورة السيارة" loading="lazy"></div><div class="slide "><img src="https://pub-59452a924c1542fa93269bd2b91c0a63.r2.dev/thumbs/ads/2025/01/685796681_1736449352.webp" alt="صورة السيارة" loading="lazy"></div></div>
+            <button class="prev" onclick="changeSlide(this,-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(this,1)">&#10095;</button>
+            <div class="dots"><span class="dot active"></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span><span class="dot "></span></div>
+        </div>
+        <div class="info">
+            <h2 class="title">فيات 2025 تلمسان</h2>
+            <div class="meta">
+                <span>📍 تلمسان</span>
+                <span class="price">0 293 مليون</span>
+            </div>
+            <p class='desc'>Une très belle voiture fiat 500 anné 2025 tel 0552837087</p>
+            
+            <div class="footer">
+                <a href='tel:+21355283708' class='btn phone'>📞 +21355283708</a>
+                <a href="https://swigaapp.com/ar/fyat-2025-tlmsan-d305731" target="_blank" class="btn link">🔗 عرض الإعلان</a>
+                <span class='seller'>👤 عضو منذ 2025</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function changeSlide(btn, dir) {
+  const gallery = btn.closest('.gallery');
+  const slides = gallery.querySelectorAll('.slide');
+  const dots = gallery.querySelectorAll('.dot');
+  let current = [...slides].findIndex(s => s.classList.contains('active'));
+  slides[current].classList.remove('active');
+  dots[current].classList.remove('active');
+  current = (current + dir + slides.length) % slides.length;
+  slides[current].classList.add('active');
+  dots[current].classList.add('active');
+}
+
+function filterCards() {
+  const q = document.getElementById('search').value.toLowerCase();
+  const cards = document.querySelectorAll('.card');
+  let visible = 0;
+  cards.forEach(card => {
+    const text = card.innerText.toLowerCase();
+    if (text.includes(q)) {
+      card.classList.remove('hidden');
+      visible++;
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+  document.getElementById('count').textContent = 'عرض ' + visible + ' إعلان';
+}
+</script>
+
+</body>
+</html>

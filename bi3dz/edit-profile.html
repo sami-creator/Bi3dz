@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="assets/images/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>edit — souk nsa</title>
+<link rel="stylesheet" href="css/themes.css?v=1.1.0">
+<link rel="stylesheet" href="css/base.css?v=1.1.0">
+<link rel="stylesheet" href="css/rtl.css?v=1.1.0">
+<link rel="stylesheet" href="css/components.css?v=1.1.0">
+<link rel="stylesheet" href="css/pages.css?v=1.1.0">
+</head>
+<body class="is-gated" data-page="edit-profile">
+<main class="container">
+  <h1 class="page-title" data-i18n="profile.edit"></h1>
+  <form id="form-edit" class="card-box" novalidate>
+    <div class="row" style="margin-bottom:12px"><img id="avatar-prev" class="avatar" style="width:64px;height:64px" alt="" src="assets/images/avatar.svg">
+      <label class="btn btn--ghost" for="avatar-file" data-i18n="edit.avatar"></label>
+      <input id="avatar-file" class="sr-only" type="file" accept="image/jpeg,image/png,image/webp"></div>
+    <div class="field"><label for="name" data-i18n="auth.name"></label><input id="name" class="input"></div>
+    <div class="field"><label for="bio"><span data-i18n="profile.bio"></span><span class="opt" data-i18n="common.optional"></span></label>
+      <textarea id="bio" class="input" rows="3" data-i18n-placeholder="profile.bio_ph"></textarea><div id="bio-count" class="char-count"></div><span class="error-text" id="bio-err"></span></div>
+    <div class="field"><label for="gender" data-i18n="auth.gender"></label>
+      <select id="gender" class="input"><option value="female" data-i18n="auth.female"></option><option value="male" data-i18n="auth.male"></option></select></div>
+    <div class="field"><label for="year" data-i18n="auth.birth_year"></label><select id="year" class="input"></select></div>
+    <div class="field"><label for="wilaya" data-i18n="geo.wilaya"></label><select id="wilaya" class="input"></select></div>
+    <div class="field"><label for="daira" data-i18n="geo.daira"></label><select id="daira" class="input"></select></div>
+    <div class="field"><label for="commune" data-i18n="geo.commune"></label><select id="commune" class="input"></select></div>
+    <h2 data-i18n="delivery.section"></h2>
+    <div class="field"><div id="delivery-sum" class="hint"></div><button id="btn-delivery" class="btn btn--ghost" type="button">🚚 <span data-i18n="delivery.set"></span></button></div>
+    <h2 data-i18n="edit.social"></h2>
+    <div class="field"><label for="l-facebook" data-i18n="link.facebook"></label><input id="l-facebook" class="input" type="url" inputmode="url"><span class="error-text"></span></div>
+    <div class="field"><label for="l-instagram" data-i18n="link.instagram"></label><input id="l-instagram" class="input" type="url" inputmode="url"><span class="error-text"></span></div>
+    <div class="field"><label for="l-tiktok" data-i18n="link.tiktok"></label><input id="l-tiktok" class="input" type="url" inputmode="url"><span class="error-text"></span></div>
+    <div class="field"><label for="l-telegram" data-i18n="link.telegram"></label><input id="l-telegram" class="input" type="url" inputmode="url"><span class="error-text"></span></div>
+    <div class="field"><label for="l-maps" data-i18n="profile.maps_link"></label><input id="l-maps" class="input" type="url" inputmode="url"></div>
+    <div class="field"><label for="phone" data-i18n="verify.phone"></label><input id="phone" class="input" type="tel" inputmode="tel" placeholder="05XXXXXXXX"></div>
+    <label class="row"><input id="show-phone" type="checkbox"><span data-i18n="profile.show_phone"></span></label>
+    <button id="btn-save" class="btn btn--primary btn--block" type="submit" data-i18n="common.save"></button>
+  </form>
+</main>
+<script src="js/env.js?v=1.1.0"></script>
+<script src="js/config.js?v=1.1.0"></script>
+<script src="js/console-logger.js?v=1.1.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="js/supabase.js?v=1.1.0"></script>
+<script src="js/sanitize.js?v=1.1.0"></script>
+<script src="js/utils.js?v=1.1.0"></script>
+<script src="js/ui.js?v=1.1.0"></script>
+<script src="js/i18n.js?v=1.1.0"></script>
+<script src="js/theme.js?v=1.1.0"></script>
+<script src="js/router.js?v=1.1.0"></script>
+<script src="js/auth.js?v=1.1.0"></script>
+<script src="js/geo.js?v=1.1.0"></script>
+<script src="js/categories.js?v=1.1.0"></script>
+<script src="js/price.js?v=1.1.0"></script>
+<script src="js/ads.js?v=1.1.0"></script>
+<script src="js/cards.js?v=1.1.0"></script>
+<script src="js/filters.js?v=1.1.0"></script>
+<script src="js/search.js?v=1.1.0"></script>
+<script src="js/offline-cache.js?v=1.1.0"></script>
+<script src="js/fingerprint.js?v=1.1.0"></script>
+<script src="js/interests.js?v=1.1.0"></script>
+<script src="js/likes.js?v=1.1.0"></script>
+<script src="js/notifications.js?v=1.1.0"></script>
+<script src="js/alerts.js?v=1.1.0"></script>
+<script src="js/tracking.js?v=1.1.0"></script>
+<script src="js/banners.js?v=1.1.0"></script>
+<script src="js/chat.js?v=1.1.0"></script>
+<script src="js/settings.js?v=1.1.0"></script>
+<script src="js/moderate.js?v=1.1.0"></script>
+<script src="js/upload.js?v=1.1.0"></script>
+<script src="js/delivery.js?v=1.1.0"></script>
+<script src="js/app.js?v=1.1.0"></script>
+<script src="js/profile.js?v=1.1.0"></script>
+<script src="js/logger.js?v=1.1.0"></script>
+</body></html>

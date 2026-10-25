@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>فحص الصور</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: sans-serif; background: #f0f2f5; padding: 24px; color: #222; }
+    h1 { text-align: center; margin-bottom: 24px; font-size: 1.4rem; }
+    .card { background: white; border-radius: 12px; padding: 20px; margin-bottom: 16px; box-shadow: 0 1px 4px #0001; }
+    label { display: block; margin-bottom: 6px; font-weight: bold; font-size: 0.9rem; color: #555; }
+    input[type="file"] { display: none; }
+    .upload-btn, .check-btn {
+      display: inline-block; padding: 10px 24px; border-radius: 8px;
+      cursor: pointer; font-size: 0.95rem; border: none;
+    }
+    .upload-btn { background: #e8f0fe; color: #1a73e8; border: 2px dashed #1a73e8; width: 100%; text-align: center; padding: 16px; }
+    .upload-btn:hover { background: #d2e3fc; }
+    .check-btn { background: #1a73e8; color: white; width: 100%; margin-top: 12px; padding: 12px; font-size: 1rem; }
+    .check-btn:hover { background: #1558b0; }
+    .check-btn:disabled { background: #aaa; cursor: not-allowed; }
+    #preview-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+    .img-wrap { position: relative; width: 140px; }
+    .img-wrap img { width: 140px; height: 110px; object-fit: cover; border-radius: 8px; border: 2px solid #ddd; }
+    .img-wrap .badge {
+      position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%);
+      color: white; font-size: 0.7rem; font-weight: bold;
+      padding: 3px 7px; border-radius: 4px; white-space: nowrap;
+    }
+    .badge.safe    { background: rgba(34,139,34,0.9); }
+    .badge.warning { background: rgba(255,140,0,0.9); }
+    .badge.unsafe  { background: rgba(200,0,0,0.9); }
+    .reason-box {
+      margin-top: 4px; font-size: 0.72rem; color: #c00;
+      text-align: center; width: 140px; word-break: break-word;
+    }
+    #console {
+      background: #1e1e1e; color: #d4d4d4; border-radius: 8px;
+      padding: 14px; font-family: monospace; font-size: 0.82rem;
+      min-height: 120px; max-height: 350px; overflow-y: auto;
+      direction: ltr; text-align: left; white-space: pre-wrap;
+    }
+    .log-info { color: #9cdcfe; }
+    .log-ok   { color: #4ec9b0; }
+    .log-err  { color: #f48771; }
+    .log-warn { color: #dcdcaa; }
+  </style>
+</head>
+<body>
+  <h1>🔍 فحص محتوى الصور</h1>
+
+  <div class="card">
+    <label>🖼️ الصور</label>
+    <label for="file-input" class="upload-btn">اضغط لاختيار صورة أو عدة صور</label>
+    <input type="file" id="file-input" accept="image/*" multiple />
+    <div id="preview-container"></div>
+    <button class="check-btn" id="check-btn" disabled>فحص الصور</button>
+  </div>
+
+  <div class="card">
+    <label>🖥️ Console</label>
+    <div id="console"></div>
+  </div>
+
+  <script>
+    // ========== قاموس المصطلحات مع الأوزان ==========
+    const CATEGORIES = {
+      sexual: {
+        label: 'محتوى جنسي',
+        words: {
+          nude:10, nudity:10, naked:10, explicit:9, pornographic:10,
+          pornography:10, porn:10, genitals:10, penis:10, vagina:10,
+          breast:8, nipple:9, topless:9, bottomless:9, intercourse:10,
+          orgasm:10, masturbation:10, erotic:8, sexual:8, sex:8,
+          lingerie:6, bikini:3, underwear:5, cleavage:6, buttocks:7,
+          seductive:6, provocative:5, revealing:5, skimpy:5,
+        }
+      },
+      drugs: {
+        label: 'مخدرات',
+        words: {
+          drug:9, drugs:9, cocaine:10, heroin:10, marijuana:9,
+          cannabis:9, weed:7, meth:10, methamphetamine:10, crack:8,
+          ecstasy:9, mdma:10, lsd:10, overdose:9, syringe:7,
+          needle:5, inject:6, snort:8, pill:4, pills:4,
+        }
+      },
+      violence: {
+        label: 'عنف',
+        words: {
+          blood:7, bloody:7, gore:9, wound:6, injury:5,
+          weapon:7, gun:6, knife:6, murder:9, kill:7,
+          dead:6, corpse:9, violence:8, brutal:8, torture:9,
+        }
+      },
+      other: {
+        label: 'محتوى آخر ممنوع',
+        words: {
+          alcohol:4, drunk:5, intoxicated:6, cigarette:3, smoking:3,
+          hate:6, racist:7, offensive:5, disturbing:6, graphic:5,
+        }
+      }
+    };
+
+    const THRESHOLD_UNSAFE  = 10;
+    const THRESHOLD_WARNING = 4;
+
+    function analyzeText(text) {
+      const lower = text.toLowerCase();
+      let totalScore = 0;
+      const foundWords = [];
+      const reasons = [];
+
+      for (const [catKey, cat] of Object.entries(CATEGORIES)) {
+        let catScore = 0;
+        for (const [word, weight] of Object.entries(cat.words)) {
+          const matches = lower.match(new RegExp(`\\b${word}\\b`, 'g'));
+          if (matches) {
+            const pts = weight * matches.length;
+            catScore += pts;
+            foundWords.push(`${word}(${weight}×${matches.length})`);
+          }
+        }
+        if (catScore > 0) {
+          totalScore += catScore;
+          reasons.push(`${cat.label} (${catScore} نقطة)`);
+        }
+      }
+
+      let category = 'SAFE';
+      if (totalScore >= THRESHOLD_UNSAFE) category = 'UNSAFE';
+      else if (totalScore >= THRESHOLD_WARNING) category = 'WARNING';
+
+      return { score: totalScore, category, foundWords, reasons };
+    }
+
+    // ========== واجهة المستخدم ==========
+    const fileInput = document.getElementById('file-input');
+    const previewContainer = document.getElementById('preview-container');
+    const checkBtn = document.getElementById('check-btn');
+    const consoleEl = document.getElementById('console');
+    let selectedFiles = [];
+
+    function log(msg, type = 'info') {
+      const span = document.createElement('span');
+      span.className = `log-${type}`;
+      span.textContent = `[${new Date().toLocaleTimeString()}] ${msg}\n`;
+      consoleEl.appendChild(span);
+      consoleEl.scrollTop = consoleEl.scrollHeight;
+    }
+
+    fileInput.addEventListener('change', () => {
+      selectedFiles = Array.from(fileInput.files);
+      previewContainer.innerHTML = '';
+      selectedFiles.forEach((file, i) => {
+        const wrap = document.createElement('div');
+        wrap.className = 'img-wrap';
+        wrap.id = `img-wrap-${i}`;
+        const img = document.createElement('img');
+        img.src = URL.createObjectURL(file);
+        wrap.appendChild(img);
+        previewContainer.appendChild(wrap);
+      });
+      checkBtn.disabled = selectedFiles.length === 0;
+      log(`تم اختيار ${selectedFiles.length} صورة`, 'info');
+    });
+
+    async function checkImage(file, index) {
+      log(`جاري فحص: ${file.name}`, 'info');
+      const buffer = await file.arrayBuffer();
+
+      try {
+        const res = await fetch(
+          'https://nsfw-checker.houssemhoussam25.workers.dev',
+          { method: 'POST', body: buffer }
+        );
+
+        if (!res.ok) {
+          log(`❌ خطأ HTTP ${res.status}: ${await res.text()}`, 'err');
+          return;
+        }
+
+        const data = await res.json();
+        const description = data.result?.description || '';
+        log(`📝 وصف: ${description}`, 'info');
+
+        const { score, category, foundWords, reasons } = analyzeText(description);
+        log(`🔢 النقاط: ${score} | التصنيف: ${category}`, category === 'SAFE' ? 'ok' : 'err');
+        if (foundWords.length > 0) log(`🔑 الكلمات: ${foundWords.join(', ')}`, 'warn');
+
+        const wrap = document.getElementById(`img-wrap-${index}`);
+        const cls = category === 'UNSAFE' ? 'unsafe' : category === 'WARNING' ? 'warning' : 'safe';
+        const icon = category === 'UNSAFE' ? '✘' : category === 'WARNING' ? '⚠' : '✔';
+        const labelText = category === 'UNSAFE' ? 'ممنوع' : category === 'WARNING' ? 'مشبوه' : 'آمن';
+
+        const badge = document.createElement('div');
+        badge.className = `badge ${cls}`;
+        badge.textContent = `${icon} ${labelText} (${score})`;
+        wrap.appendChild(badge);
+
+        // عرض الأسباب تحت الصورة
+        if (reasons.length > 0) {
+          const reasonBox = document.createElement('div');
+          reasonBox.className = 'reason-box';
+          reasonBox.textContent = 'بسبب: ' + reasons.join('، ');
+          wrap.appendChild(reasonBox);
+          log(`⚠ السبب: ${reasons.join(' | ')}`, 'warn');
+        }
+
+      } catch (e) {
+        log(`❌ استثناء: ${e.message}`, 'err');
+      }
+    }
+
+    checkBtn.addEventListener('click', async () => {
+      checkBtn.disabled = true;
+      log('--- بدء الفحص ---', 'warn');
+      for (let i = 0; i < selectedFiles.length; i++) {
+        await checkImage(selectedFiles[i], i);
+      }
+      log('--- انتهى الفحص ---', 'warn');
+      checkBtn.disabled = false;
+    });
+  </script>
+</body>
+</html>

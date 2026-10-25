@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="assets/images/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ad — souk nsa</title>
+<link rel="stylesheet" href="css/themes.css?v=1.1.0">
+<link rel="stylesheet" href="css/base.css?v=1.1.0">
+<link rel="stylesheet" href="css/rtl.css?v=1.1.0">
+<link rel="stylesheet" href="css/components.css?v=1.1.0">
+<link rel="stylesheet" href="css/pages.css?v=1.1.0">
+</head>
+<body class="is-gated" data-page="ad-details">
+<main class="container ad-page">
+
+  <!-- شريط علوي: رجوع + عنوان + (مفضلة، مقارنة، مشاركة، قراءة صوتية، المزيد) — يُملأ من ad-details.js -->
+  <header id="ad-topbar" class="ad-topbar"></header>
+
+  <!-- معرض الصور: صورة رئيسية + عدّاد + فيديو + مشاهدات/إعجابات + مصغّرات (يُملأ بواسطة Gallery.mount) -->
+  <section id="gallery" class="ad-gallery" aria-label="gallery"></section>
+
+  <!-- العنوان + الحالة + السعر (قديم/جديد/تخفيض) + قابل للتفاوض + الموقع + شارات الإعلان -->
+  <section id="info" class="ad-info"></section>
+
+  <!-- بطاقات معلومات سريعة: المقاس / الحالة / التوصيل (أو التنقل للخدمات) + سمات الإعلان -->
+  <section id="ad-facts" class="ad-facts" hidden></section>
+
+  <!-- بطاقة الناشرة: صورة، اسم، توثيق، تقييم، إحصائيات (قابلة للضغط → صفحتها) -->
+  <section id="seller-card" class="ad-seller" hidden></section>
+
+  <!-- أزرار التواصل: محادثة + واتساب + هاتف + فيسبوك + إنستغرام + تيك توك + تلغرام + خريطة -->
+  <section id="contact" class="ad-contact" hidden></section>
+
+  <!-- تقييمات الإعلان -->
+  <section class="reviews-section ad-card" id="sec-ratings-ad" hidden>
+    <h3 data-i18n="ad.rate_ad"></h3>
+    <div id="ratings-ad"></div>
+  </section>
+
+  <!-- وصف الإعلان + عرض المزيد + الأسعار السابقة + الأسئلة الشائعة + تاريخ النشر -->
+  <section id="ad-desc" class="ad-card ad-desc" hidden>
+    <h3 data-i18n="ad.description"></h3>
+    <div id="ad-desc-body"></div>
+  </section>
+
+  <!-- تقييمات الناشرة -->
+  <section class="reviews-section ad-card" id="sec-ratings-user" hidden>
+    <h3 data-i18n="ad.rate_seller"></h3>
+    <div id="ratings-user"></div>
+  </section>
+
+  <!-- إعلانات مشابهة (أفقي قابل للتمرير) -->
+  <section id="similar" class="similar-section ad-similar" hidden></section>
+
+</main>
+
+<!-- شريط الإجراء السفلي: رجوع + طلب شراء (أو تعديل/إحصائيات لصاحبة الإعلان) -->
+<div id="detail-footer" class="detail-footer" hidden></div>
+
+<script src="js/env.js?v=1.1.0"></script>
+<script src="js/config.js?v=1.1.0"></script>
+<script src="js/console-logger.js?v=1.1.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="js/supabase.js?v=1.1.0"></script>
+<script src="js/sanitize.js?v=1.1.0"></script>
+<script src="js/utils.js?v=1.1.0"></script>
+<script src="js/ui.js?v=1.1.0"></script>
+<script src="js/i18n.js?v=1.1.0"></script>
+<script src="js/theme.js?v=1.1.0"></script>
+<script src="js/router.js?v=1.1.0"></script>
+<script src="js/auth.js?v=1.1.0"></script>
+<script src="js/geo.js?v=1.1.0"></script>
+<script src="js/categories.js?v=1.1.0"></script>
+<script src="js/price.js?v=1.1.0"></script>
+<script src="js/ads.js?v=1.1.0"></script>
+<script src="js/cards.js?v=1.1.0"></script>
+<script src="js/filters.js?v=1.1.0"></script>
+<script src="js/search.js?v=1.1.0"></script>
+<script src="js/offline-cache.js?v=1.1.0"></script>
+<script src="js/fingerprint.js?v=1.1.0"></script>
+<script src="js/interests.js?v=1.1.0"></script>
+<script src="js/likes.js?v=1.1.0"></script>
+<script src="js/notifications.js?v=1.1.0"></script>
+<script src="js/alerts.js?v=1.1.0"></script>
+<script src="js/tracking.js?v=1.1.0"></script>
+<script src="js/banners.js?v=1.1.0"></script>
+<script src="js/chat.js?v=1.1.0"></script>
+<script src="js/settings.js?v=1.1.0"></script>
+<script src="js/darija-dict.js?v=1.1.0"></script>
+<script src="js/voice.js?v=1.1.0"></script>
+<script src="js/compare.js?v=1.1.0"></script>
+<script src="js/delivery.js?v=1.1.0"></script>
+<script src="js/app.js?v=1.1.0"></script>
+<script src="js/gallery.js?v=1.1.0"></script><script src="js/ratings.js?v=1.1.0"></script><script src="js/reports.js?v=1.1.0"></script>
+<script src="js/ad-details.js?v=1.1.0"></script>
+<script src="js/logger.js?v=1.1.0"></script>
+</body></html>

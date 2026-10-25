@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="assets/images/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>verify — souk nsa</title>
+<link rel="stylesheet" href="css/themes.css?v=1.1.0">
+<link rel="stylesheet" href="css/base.css?v=1.1.0">
+<link rel="stylesheet" href="css/rtl.css?v=1.1.0">
+<link rel="stylesheet" href="css/components.css?v=1.1.0">
+<link rel="stylesheet" href="css/pages.css?v=1.1.0">
+</head>
+<body class="is-gated" data-page="verify">
+<main class="container">
+  <h1 class="page-title" data-i18n="profile.verify"></h1>
+  <div id="state" class="card-box" hidden></div>
+  <form id="form-verify" class="card-box" novalidate hidden>
+    <div class="field"><label for="id-front" data-i18n="verify.id_front"></label><input id="id-front" class="input" type="file" accept="image/jpeg,image/png,image/webp"></div>
+    <div class="field"><label for="id-back" data-i18n="verify.id_back"></label><input id="id-back" class="input" type="file" accept="image/jpeg,image/png,image/webp"></div>
+    <div class="field"><label for="phone" data-i18n="verify.phone"></label>
+      <div class="row"><input id="phone" class="input" type="tel" inputmode="tel" maxlength="16" autocomplete="tel"><button id="btn-code" class="btn btn--ghost" type="button" data-i18n="verify.send_code"></button></div></div>
+    <div class="field"><label for="code" data-i18n="verify.code"></label><input id="code" class="input" inputmode="numeric" maxlength="6" autocomplete="one-time-code"></div>
+    <button id="btn-submit" class="btn btn--primary btn--block" type="submit" data-i18n="verify.submit"></button>
+  </form>
+</main>
+<script src="js/env.js?v=1.1.0"></script>
+<script src="js/config.js?v=1.1.0"></script>
+<script src="js/console-logger.js?v=1.1.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="js/supabase.js?v=1.1.0"></script>
+<script src="js/sanitize.js?v=1.1.0"></script>
+<script src="js/utils.js?v=1.1.0"></script>
+<script src="js/ui.js?v=1.1.0"></script>
+<script src="js/i18n.js?v=1.1.0"></script>
+<script src="js/theme.js?v=1.1.0"></script>
+<script src="js/router.js?v=1.1.0"></script>
+<script src="js/auth.js?v=1.1.0"></script>
+<script src="js/geo.js?v=1.1.0"></script>
+<script src="js/categories.js?v=1.1.0"></script>
+<script src="js/price.js?v=1.1.0"></script>
+<script src="js/ads.js?v=1.1.0"></script>
+<script src="js/cards.js?v=1.1.0"></script>
+<script src="js/filters.js?v=1.1.0"></script>
+<script src="js/search.js?v=1.1.0"></script>
+<script src="js/offline-cache.js?v=1.1.0"></script>
+<script src="js/fingerprint.js?v=1.1.0"></script>
+<script src="js/interests.js?v=1.1.0"></script>
+<script src="js/likes.js?v=1.1.0"></script>
+<script src="js/notifications.js?v=1.1.0"></script>
+<script src="js/alerts.js?v=1.1.0"></script>
+<script src="js/tracking.js?v=1.1.0"></script>
+<script src="js/banners.js?v=1.1.0"></script>
+<script src="js/chat.js?v=1.1.0"></script>
+<script src="js/settings.js?v=1.1.0"></script>
+<script src="js/app.js?v=1.1.0"></script>
+<script src="js/verify.js?v=1.1.0"></script>
+<script src="js/logger.js?v=1.1.0"></script>
+</body></html>

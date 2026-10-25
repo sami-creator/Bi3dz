@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دعم فني - Gemini</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: system-ui, sans-serif; background: #0f0f0f; color: #e0e0e0;
+    min-height: 100vh; display: flex; flex-direction: column;
+    padding: 16px; gap: 12px; max-width: 800px; margin: 0 auto;
+  }
+  h1 { font-size: 1.1rem; color: #8ab4f8; text-align: center; }
+  .key-row { display: flex; gap: 8px; }
+  .key-row input {
+    flex: 1; padding: 10px 14px; border-radius: 8px; border: 1px solid #333;
+    background: #1e1e1e; color: #e0e0e0; direction: ltr; text-align: left;
+  }
+  #chat {
+    flex: 1; min-height: 300px; overflow-y: auto; background: #1a1a1a;
+    border-radius: 12px; padding: 16px; display: flex;
+    flex-direction: column; gap: 12px;
+  }
+  .msg { padding: 10px 14px; border-radius: 12px; max-width: 85%; line-height: 1.6; white-space: pre-wrap; word-break: break-word; }
+  .msg.user { align-self: flex-start; background: #004a77; color: #d3e3fd; }
+  .msg.model { align-self: flex-end; background: #2a2a2a; }
+  .msg.system { align-self: center; background: #3a2a00; color: #ffd966; font-size: 0.9rem; }
+  .msg.score { align-self: center; background: #1a2a1a; color: #81c995; font-size: 0.8rem; font-family: monospace; }
+  .input-row { display: flex; gap: 8px; }
+  .input-row textarea {
+    flex: 1; padding: 12px 14px; border-radius: 10px; border: 1px solid #333;
+    background: #1e1e1e; color: #e0e0e0; resize: none; height: 52px; font-family: inherit;
+  }
+  button {
+    padding: 12px 24px; border-radius: 10px; border: none; background: #8ab4f8;
+    color: #0f0f0f; font-weight: 600; cursor: pointer;
+  }
+  button:disabled { opacity: 0.5; cursor: not-allowed; }
+  #console {
+    background: #111; border: 1px solid #333; border-radius: 10px; padding: 12px;
+    font-family: monospace; font-size: 0.8rem; color: #9aa0a6;
+    max-height: 140px; overflow-y: auto; direction: ltr; text-align: left;
+  }
+  #console .err { color: #f28b82; }
+  #console .ok { color: #81c995; }
+  #console .info { color: #8ab4f8; }
+  #console .warn { color: #ffd966; }
+  .console-title { font-size: 0.75rem; color: #666; direction: ltr; text-align: left; }
+</style>
+</head>
+<body>
+
+<h1>دعم فني</h1>
+
+<div class="key-row">
+  <input type="password" id="apiKey" placeholder="AIza... الصق مفتاح API هنا" />
+</div>
+
+<div id="chat">
+  <div class="msg model">مرحباً! اشرح مشكلتك وسأساعدك.</div>
+</div>
+
+<div class="input-row">
+  <textarea id="userInput" placeholder="اكتب رسالتك..." rows="1"></textarea>
+  <button id="sendBtn" onclick="sendMessage()">إرسال</button>
+</div>
+
+<div class="console-title">// Console</div>
+<div id="console"></div>
+
+<script>
+const chatEl = document.getElementById('chat');
+const inputEl = document.getElementById('userInput');
+const keyEl = document.getElementById('apiKey');
+const btnEl = document.getElementById('sendBtn');
+const consoleEl = document.getElementById('console');
+
+let history = [];
+
+// ============ كلمات ممنوعة مع أوزان ============
+const WEIGHTED_KEYWORDS = {
+  "مشكلة": 3, "مشكله": 3, "خطأ": 3, "خطا": 3, "لايعمل": 3, "لا يعمل": 3,
+  "معطل": 3, "توقف": 3, "انهار": 3, "crash": 3, "error": 3, "bug": 3,
+  "بطيء": 2, "بطئ": 2, "ثقيل": 2, "تعليق": 2, "يعلق": 2, "حسابي": 2,
+  "تسجيل": 2, "دخول": 2, "كلمة السر": 2, "باسورد": 2, "البحث": 2,
+  "نتائج": 2, "تحميل": 2, "رفع": 2, "إعلان": 2, "اعلان": 2, "صورة": 2,
+  "صور": 2, "فيديو": 2, "ملف": 2, "دفع": 2, "اشتراك": 2, "استرجاع": 2,
+  "تحديث": 2,
+  "تطبيق": 1, "برنامج": 1, "شاشة": 1, "زر": 1, "خيار": 1, "إعدادات": 1,
+  "اعدادات": 1, "رسالة": 1, "تنبيه": 1, "إشعار": 1, "اشعار": 1, "مسح": 1,
+  "حذف": 1, "تعديل": 1, "حفظ": 1, "مشاركة": 1, "رابط": 1, "كود": 1
+};
+
+const THRESHOLD_LOW = 3;
+const THRESHOLD_SEND = 5;
+
+// ============ قاعدة المعرفة (kb.json مدمج) ============
+const KB = {
+  "استرجاع كلمة السر": {
+    keywords: ["كلمة السر", "باسورد", "password", "نسيت", "استرجاع", "تغيير", "تعيين"],
+    answer: "لإعادة تعيين كلمة السر: افتح التطبيق > الإعدادات > الأمان > تغيير كلمة السر. أدخل بريدك الإلكتروني ثم اتبع الرابط المرسل إليك. إن لم يصلك البريد، تحقق من مجلد الرسائل غير المرغوبة."
+  },
+  "مشكلة في الدفع": {
+    keywords: ["دفع", "بطاقة", "فشل الدفع", "اشتراك", "paiement", "payment", "شراء"],
+    answer: "إذا فشل الدفع: 1) تحقق من صحة بيانات البطاقة. 2) تأكد من وجود رصيد كافٍ. 3) جرب بطاقة أخرى. 4) إن استمرت المشكلة، أرسل لنا رقم العملية وسنتحقق خلال 24 ساعة."
+  },
+  "استرجاع المبلغ": {
+    keywords: ["استرجاع", "استرداد", "إلغاء", "remboursement", "refund", "استرد"],
+    answer: "يمكن طلب استرجاع المبلغ خلال 14 يوماً من الشراء. اذهب إلى: حسابي > الطلبات > اختر الطلب > طلب استرجاع. تتم معالجة الطلب خلال 5-7 أيام عمل."
+  },
+  "التطبيق بطيء": {
+    keywords: ["بطيء", "بطئ", "ثقيل", "تعليق", "يعلق", "lent", "slow", "lag"],
+    answer: "لتحسين أداء التطبيق: 1) أغلق التطبيقات الأخرى في الخلفية. 2) امسح ذاكرة التخزين المؤقت من الإعدادات > التخزين > مسح الذاكرة. 3) تأكد من تحديث التطبيق لآخر إصدار. 4) أعد تشغيل الجهاز."
+  },
+  "التطبيق لا يعمل": {
+    keywords: ["لا يعمل", "لايعمل", "معطل", "توقف", "انهار", "crash", "ne fonctionne pas", "error"],
+    answer: "إذا كان التطبيق لا يعمل: 1) تأكد من تحديثه لآخر إصدار. 2) أعد تشغيل الجهاز. 3) أعد تثبيت التطبيق (لن تفقد بياناتك المسجلة). 4) إن استمرت المشكلة، أرسل لنا طراز جهازك وإصدار النظام."
+  },
+  "مشكلة في تسجيل الدخول": {
+    keywords: ["تسجيل", "دخول", "login", "connexion", "لا أستطيع الدخول", "حسابي"],
+    answer: "لمشاكل تسجيل الدخول: 1) تأكد من صحة البريد وكلمة السر. 2) استخدم \"نسيت كلمة السر\" لإعادة التعيين. 3) إن كان حسابك موقوفاً، تواصل معنا. 4) تأكد من اتصالك بالإنترنت."
+  },
+  "تعديل الملف الشخصي": {
+    keywords: ["ملف شخصي", "بروفايل", "profile", "صورة", "اسم", "تعديل"],
+    answer: "لتعديل ملفك الشخصي: اذهب إلى حسابي > الملف الشخصي > تعديل. يمكنك تغيير الصورة، الاسم، والبريد الإلكتروني. لا يمكن تغيير رقم الهاتف إلا بالتواصل مع الدعم."
+  },
+  "الإشعارات لا تصل": {
+    keywords: ["إشعار", "اشعار", "تنبيه", "notification", "لا تصل"],
+    answer: "إذا لم تصلك الإشعارات: 1) تحقق من إعدادات الإشعارات في هاتفك. 2) تأكد من تفعيل الإشعارات داخل التطبيق من الإعدادات. 3) تأكد من عدم تفعيل وضع \"عدم الإزعاج\"."
+  },
+  "البحث لا يعطي نتائج": {
+    keywords: ["بحث", "نتائج", "recherche", "search", "لا يجد"],
+    answer: "إذا لم يعطِ البحث نتائج: 1) تحقق من الإملاء. 2) جرب كلمات مفتاحية أقصر. 3) تأكد من تحديث التطبيق. 4) امسح ذاكرة التخزين المؤقت."
+  },
+  "حذف الحساب": {
+    keywords: ["حذف", "إلغاء الحساب", "الغاء", "supprimer", "delete", "إغلاق"],
+    answer: "لحذف حسابك نهائياً: اذهب إلى الإعدادات > الحساب > حذف الحساب. تحذير: هذا الإجراء لا يمكن التراجع عنه وستفقد جميع بياناتك. يمكنك تنزيل نسخة من بياناتك قبل الحذف."
+  }
+};
+
+function log(msg, type = 'info') {
+  const line = document.createElement('div');
+  line.className = type;
+  line.textContent = `[${new Date().toLocaleTimeString()}] ${msg}`;
+  consoleEl.appendChild(line);
+  consoleEl.scrollTop = consoleEl.scrollHeight;
+}
+
+function addMsg(text, role) {
+  const div = document.createElement('div');
+  div.className = `msg ${role}`;
+  div.textContent = text;
+  chatEl.appendChild(div);
+  chatEl.scrollTop = chatEl.scrollHeight;
+  return div;
+}
+
+function scoreMessage(text) {
+  const lower = text.toLowerCase();
+  let score = 0;
+  const matched = [];
+  for (const [word, weight] of Object.entries(WEIGHTED_KEYWORDS)) {
+    if (lower.includes(word.toLowerCase())) {
+      score += weight;
+      matched.push(`${word}(${weight})`);
+    }
+  }
+  return { score, matched };
+}
+
+// ============ البحث في قاعدة المعرفة ============
+function findKnowledge(text) {
+  const lower = text.toLowerCase();
+  let best = null;
+  let bestScore = 0;
+  for (const [topic, entry] of Object.entries(KB)) {
+    let matches = 0;
+    for (const kw of entry.keywords) {
+      if (lower.includes(kw.toLowerCase())) matches++;
+    }
+    if (matches > bestScore) {
+      bestScore = matches;
+      best = entry.answer;
+    }
+  }
+  return best;
+}
+
+// ============ المنطق الرئيسي ============
+async function sendMessage() {
+  const apiKey = keyEl.value.trim();
+  const text = inputEl.value.trim();
+
+  if (!apiKey) { log('API Key فارغ.', 'err'); return; }
+  if (!text) return;
+
+  btnEl.disabled = true;
+  inputEl.value = '';
+  addMsg(text, 'user');
+
+  const { score, matched } = scoreMessage(text);
+  log(`النقاط: ${score} | المطابقات: ${matched.length ? matched.join(', ') : 'لا شيء'}`);
+  addMsg(`النقاط: ${score} / ${THRESHOLD_SEND}`, 'score');
+
+  if (score < THRESHOLD_LOW) {
+    addMsg('عذراً، هذا الاستفسار خارج نطاق الدعم الفني.', 'system');
+    log(`مرفوض: ${score} < ${THRESHOLD_LOW}`, 'err');
+    btnEl.disabled = false; inputEl.focus();
+    return;
+  }
+
+  if (score < THRESHOLD_SEND) {
+    addMsg('عذراً لم أفهمك، الرجاء إعادة شرح مشكلتك.', 'system');
+    log(`يحتاج توضيح: ${score} بين ${THRESHOLD_LOW} و ${THRESHOLD_SEND}`, 'warn');
+    btnEl.disabled = false; inputEl.focus();
+    return;
+  }
+
+  log(`اجتاز الفلتر (${score}). إرسال إلى Gemini...`, 'ok');
+
+  const kbAnswer = findKnowledge(text);
+  if (kbAnswer) log('تم العثور على إجابة في قاعدة المعرفة.', 'ok');
+  else log('لا توجد إجابة في قاعدة المعرفة. سيعتمد على معرفته العامة.', 'warn');
+
+  const thinkingEl = addMsg('...', 'model thinking');
+
+  const contents = history.map(m => ({
+    role: m.role === 'assistant' ? 'model' : 'user',
+    parts: [{ text: m.content }]
+  }));
+  contents.push({ role: 'user', parts: [{ text: text }] });
+
+  const systemPrompt = `أنت وكيل دعم فني لتطبيق.
+أجب دائماً بنفس لغة رسالة المستخدم (عربي، فرنسي، إنجليزي...).
+${kbAnswer
+  ? `استخدم هذه المعلومات للإجابة على سؤال المستخدم:\n"""\n${kbAnswer}\n"""`
+  : 'لا توجد معلومات محددة في قاعدة المعرفة. اعتذر بلطف واطلب من المستخدم توضيحاً أكثر.'}
+إذا خرج المستخدم عن موضوع الدعم، اطلب منه بلطف العودة إلى مشكلة التطبيق.
+كن مختصراً ومفيداً.`;
+
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
+
+  const body = JSON.stringify({
+    contents: contents,
+    systemInstruction: { parts: [{ text: systemPrompt }] },
+    generationConfig: {
+      temperature: 1.0,
+      maxOutputTokens: 512,
+      thinkingConfig: { thinkingBudget: 0 }
+    }
+  });
+
+  const MAX_RETRIES = 3;
+  let attempt = 0, success = false;
+
+  while (attempt < MAX_RETRIES && !success) {
+    attempt++;
+    try {
+      log(`generateContent... (${attempt}/${MAX_RETRIES})`);
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: body
+      });
+      const data = await res.json();
+
+      if (res.ok) {
+        const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text;
+        if (reply) {
+          thinkingEl.remove();
+          log('تم استلام الرد.', 'ok');
+          addMsg(reply, 'model');
+          history.push({ role: 'user', content: text });
+          history.push({ role: 'assistant', content: reply });
+          success = true;
+          break;
+        }
+      }
+
+      const retryable = res.status === 503 || res.status === 429;
+      const errMsg = data?.error?.message || `HTTP ${res.status}`;
+
+      if (retryable && attempt < MAX_RETRIES) {
+        const wait = attempt * 2000;
+        log(`خطأ ${res.status}. انتظار ${wait/1000}s...`, 'warn');
+        await new Promise(r => setTimeout(r, wait));
+        continue;
+      }
+
+      thinkingEl.remove();
+      log(`خطأ ${res.status}: ${errMsg}`, 'err');
+      addMsg(`خطأ: ${errMsg}`, 'model');
+      break;
+
+    } catch (e) {
+      if (attempt < MAX_RETRIES) {
+        const wait = attempt * 2000;
+        log(`خطأ شبكة: ${e.message}. انتظار ${wait/1000}s...`, 'warn');
+        await new Promise(r => setTimeout(r, wait));
+        continue;
+      }
+      thinkingEl.remove();
+      log(`فشل نهائي: ${e.message}`, 'err');
+      addMsg(`فشل الاتصال: ${e.message}`, 'model');
+    }
+  }
+
+  btnEl.disabled = false;
+  inputEl.focus();
+}
+
+inputEl.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+});
+
+log('جاهز. الصق API Key.', 'info');
+</script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>إضافة علامة مائية - amine.com</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: system-ui, -apple-system, 'Segoe UI', Tahoma, sans-serif;
+    background: #f0f2f5;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0,0,0,.1);
+    padding: 30px;
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+  }
+  h1 { font-size: 22px; margin-bottom: 6px; color: #1a1a2e; }
+  .sub { color: #888; font-size: 14px; margin-bottom: 24px; }
+
+  /* Upload area */
+  .drop-zone {
+    border: 2px dashed #c0c8d8;
+    border-radius: 14px;
+    padding: 40px 20px;
+    cursor: pointer;
+    transition: all .2s;
+    background: #fafbfc;
+    margin-bottom: 20px;
+  }
+  .drop-zone:hover, .drop-zone.dragover {
+    border-color: #f60;
+    background: #fff7f0;
+  }
+  .drop-zone .icon { font-size: 48px; margin-bottom: 10px; }
+  .drop-zone p { color: #667; font-size: 15px; }
+  .drop-zone small { color: #aab; font-size: 12px; display: block; margin-top: 6px; }
+  input[type=file] { display: block; width: 100%; margin-bottom: 20px; padding: 10px; background: #fafbfc; border-radius: 10px; border: 1px solid #c0c8d8; cursor: pointer; }
+
+  /* Preview */
+  #previewWrap { display: none; margin-bottom: 20px; }
+  #previewWrap.show { display: block; }
+  #preview {
+    max-width: 100%;
+    max-height: 420px;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0,0,0,.12);
+    display: block;
+    margin: 0 auto 16px;
+  }
+
+  .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    padding: 13px 32px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: filter .2s, transform .1s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .btn:active { transform: scale(.97); }
+  .btn:hover { filter: brightness(1.07); }
+  .btn-primary { background: #f60; color: #fff; }
+  .btn-ghost { background: #fff; color: #f60; border: 2px solid #f60; }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h1>🖼️ إضافة علامة مائية</h1>
+  <div class="sub">ارفع صورة وستُضاف عليها العلامة <strong>amine.com</strong> تلقائياً</div>
+
+  <div class="drop-zone" id="dropZone">
+    <div class="icon">📤</div>
+    <p>اضغط لاختيار صورة أو اسحبها هنا</p>
+    <small>PNG / JPG / WEBP</small>
+  </div>
+  <input type="file" id="fileInput" accept="application/octet-stream">
+
+  <div id="previewWrap">
+    <img id="preview" alt="معاينة الصورة">
+    <div class="actions">
+      <a id="downloadBtn" class="btn btn-primary" download="amine-watermark.png">⬇️ تحميل الصورة</a>
+      <button class="btn btn-ghost" onclick="reset()">🔄 صورة أخرى</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const fileInput   = document.getElementById('fileInput');
+  const dropZone    = document.getElementById('dropZone');
+  const previewWrap = document.getElementById('previewWrap');
+  const preview     = document.getElementById('preview');
+  const downloadBtn = document.getElementById('downloadBtn');
+
+  const WATERMARK = 'amine.com';
+
+  dropZone.addEventListener('click', () => fileInput.click());
+
+  ['dragenter','dragover'].forEach(ev =>
+    dropZone.addEventListener(ev, e => { e.preventDefault(); dropZone.classList.add('dragover'); })
+  );
+  ['dragleave','drop'].forEach(ev =>
+    dropZone.addEventListener(ev, e => { e.preventDefault(); dropZone.classList.remove('dragover'); })
+  );
+  dropZone.addEventListener('drop', e => {
+    const file = e.dataTransfer.files[0];
+    if (file) handleFile(file);
+  });
+
+  fileInput.addEventListener('change', () => {
+    if (fileInput.files[0]) handleFile(fileInput.files[0]);
+  });
+
+  function handleFile(file) {
+    if (!file.type.startsWith('image/')) {
+      alert('الرجاء اختيار ملف صورة صالح.');
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = e => applyWatermark(e.target.result);
+    reader.readAsDataURL(file);
+  }
+
+  function applyWatermark(src) {
+    const img = new Image();
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width  = img.naturalWidth;
+      canvas.height = img.naturalHeight;
+      const ctx = canvas.getContext('2d');
+
+      // رسم الصورة الأصلية
+      ctx.drawImage(img, 0, 0);
+
+      // حجم الخط بناءً على أبعاد الصورة
+      const fontSize = Math.max(18, Math.round(canvas.width * 0.045));
+      ctx.font = `bold ${fontSize}px Arial, sans-serif`;
+      
+      // التعديل هنا: ضبط محاذاة النص للمنتصف
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+
+      // قياس النص
+      const metrics = ctx.measureText(WATERMARK);
+      const textW = metrics.width;
+      const padding = Math.round(fontSize * 0.5);
+
+      // التعديل هنا: الموضع في منتصف الصورة تماماً
+      const x = canvas.width / 2;
+      const y = canvas.height / 2;
+
+      // خلفية شبه شفافة للنص في المنتصف
+      const bgW = textW + padding * 2;
+      const bgH = fontSize + padding * 1.5;
+      const bgX = x - (bgW / 2);
+      const bgY = y - (bgH / 2);
+      
+      ctx.fillStyle = 'rgba(0,0,0,0.45)';
+      ctx.beginPath();
+      ctx.roundRect
+        ? ctx.roundRect(bgX, bgY, bgW, bgH, fontSize * 0.3)
+        : ctx.rect(bgX, bgY, bgW, bgH);
+      ctx.fill();
+
+      // النص
+      ctx.fillStyle = '#ffffff';
+      ctx.shadowColor = 'rgba(0,0,0,0.6)';
+      ctx.shadowBlur = 4;
+      ctx.fillText(WATERMARK, x, y); // تم إزالة إزاحة النص السابقة
+      ctx.shadowBlur = 0;
+
+      const dataUrl = canvas.toDataURL('image/png');
+      preview.src = dataUrl;
+      previewWrap.classList.add('show');
+      downloadBtn.href = dataUrl;
+      dropZone.style.display = 'none';
+    };
+    img.onerror = () => alert('تعذر تحميل الصورة.');
+    img.src = src;
+  }
+
+  function reset() {
+    previewWrap.classList.remove('show');
+    preview.src = '';
+    downloadBtn.href = '#';
+    fileInput.value = '';
+    dropZone.style.display = 'block';
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+/* rtl.css — بقية الاتجاهات تعتمد على الخصائص المنطقية؛ هنا فقط ما يحتاج قلبًا */
+[dir="rtl"] .flip{transform:scaleX(-1)}
+[dir="rtl"] .msg--me{margin-inline-start:auto}
+[dir="ltr"] .msg--me{margin-inline-start:auto}
+[dir="rtl"] input[type="tel"],[dir="rtl"] input[type="url"],[dir="rtl"] input[type="email"]{direction:ltr;text-align:right}

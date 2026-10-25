@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<link rel="icon" href="assets/images/favicon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>complete — souk nsa</title>
+<link rel="stylesheet" href="css/themes.css?v=1.1.0">
+<link rel="stylesheet" href="css/base.css?v=1.1.0">
+<link rel="stylesheet" href="css/rtl.css?v=1.1.0">
+<link rel="stylesheet" href="css/components.css?v=1.1.0">
+<link rel="stylesheet" href="css/pages.css?v=1.1.0">
+</head>
+<body class="is-gated" data-page="complete">
+<main class="container">
+  <h1 class="page-title" data-i18n="auth.complete_title"></h1>
+  <form id="form-complete" class="card-box" novalidate>
+    <div class="field"><label for="name" data-i18n="auth.name"></label><input id="name" class="input" autocomplete="name" required></div>
+    <div class="field"><label for="gender" data-i18n="auth.gender"></label>
+      <select id="gender" class="input" required><option value="" data-i18n="auth.gender"></option><option value="female" data-i18n="auth.female"></option><option value="male" data-i18n="auth.male"></option></select></div>
+    <div class="field"><label for="year" data-i18n="auth.birth_year"></label><select id="year" class="input" required></select><span class="hint" data-i18n="auth.min_age"></span></div>
+    <div class="field"><label for="wilaya" data-i18n="geo.wilaya"></label><select id="wilaya" class="input" required></select></div>
+    <div class="field"><label for="daira" data-i18n="geo.daira"></label><select id="daira" class="input" required></select></div>
+    <div class="field"><label for="commune" data-i18n="geo.commune"></label><select id="commune" class="input" required></select></div>
+    <button id="btn-save" class="btn btn--primary btn--block" type="submit" data-i18n="common.save"></button>
+  </form>
+  <section id="survey" class="card-box" hidden>
+    <h2 data-i18n="survey.title"></h2>
+    <div class="check-list">
+      <label><input type="radio" name="src" value="tiktok"><span data-i18n="survey.opt_tiktok"></span></label>
+      <label><input type="radio" name="src" value="facebook"><span data-i18n="survey.opt_facebook"></span></label>
+      <label><input type="radio" name="src" value="instagram"><span data-i18n="survey.opt_instagram"></span></label>
+      <label><input type="radio" name="src" value="friend"><span data-i18n="survey.opt_friend"></span></label>
+      <label><input type="radio" name="src" value="other"><span data-i18n="survey.opt_other"></span></label>
+    </div>
+    <input id="src-other" class="input" maxlength="100">
+    <div class="modal__row"><button id="btn-survey-send" class="btn btn--primary" type="button" data-i18n="common.send"></button><button id="btn-survey-skip" class="btn btn--ghost" type="button" data-i18n="survey.skip"></button></div>
+  </section>
+</main>
+<script src="js/env.js?v=1.1.0"></script>
+<script src="js/config.js?v=1.1.0"></script>
+<script src="js/console-logger.js?v=1.1.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="js/supabase.js?v=1.1.0"></script>
+<script src="js/sanitize.js?v=1.1.0"></script>
+<script src="js/utils.js?v=1.1.0"></script>
+<script src="js/ui.js?v=1.1.0"></script>
+<script src="js/i18n.js?v=1.1.0"></script>
+<script src="js/theme.js?v=1.1.0"></script>
+<script src="js/router.js?v=1.1.0"></script>
+<script src="js/auth.js?v=1.1.0"></script>
+<script src="js/geo.js?v=1.1.0"></script>
+<script src="js/categories.js?v=1.1.0"></script>
+<script src="js/price.js?v=1.1.0"></script>
+<script src="js/ads.js?v=1.1.0"></script>
+<script src="js/cards.js?v=1.1.0"></script>
+<script src="js/filters.js?v=1.1.0"></script>
+<script src="js/search.js?v=1.1.0"></script>
+<script src="js/offline-cache.js?v=1.1.0"></script>
+<script src="js/fingerprint.js?v=1.1.0"></script>
+<script src="js/interests.js?v=1.1.0"></script>
+<script src="js/likes.js?v=1.1.0"></script>
+<script src="js/notifications.js?v=1.1.0"></script>
+<script src="js/alerts.js?v=1.1.0"></script>
+<script src="js/tracking.js?v=1.1.0"></script>
+<script src="js/banners.js?v=1.1.0"></script>
+<script src="js/chat.js?v=1.1.0"></script>
+<script src="js/settings.js?v=1.1.0"></script>
+<script src="js/app.js?v=1.1.0"></script>
+<script src="js/profile.js?v=1.1.0"></script>
+<script src="js/logger.js?v=1.1.0"></script>
+</body></html>

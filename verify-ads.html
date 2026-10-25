@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>فحص الإعلان - محلي + Groq</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+    background: #f4f6f8;
+    margin: 0;
+    padding: 20px;
+    direction: rtl;
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+  h1 {
+    font-size: 20px;
+    margin: 0 0 20px;
+    color: #1a1a1a;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 12px;
+  }
+  label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #374151;
+    font-size: 14px;
+  }
+  input[type="password"], textarea, select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    margin-bottom: 16px;
+    background: #fafafa;
+  }
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: #2563eb;
+    background: #fff;
+  }
+  textarea {
+    min-height: 130px;
+    resize: vertical;
+    direction: rtl;
+  }
+  button {
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    padding: 11px 22px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    margin-inline-end: 8px;
+  }
+  button:hover:not(:disabled) { background: #1d4ed8; }
+  button:disabled { background: #9ca3af; cursor: not-allowed; }
+  button.secondary { background: #6b7280; }
+  button.secondary:hover:not(:disabled) { background: #4b5563; }
+  button.danger { background: #dc2626; }
+  button.danger:hover:not(:disabled) { background: #b91c1c; }
+
+  .status {
+    margin-top: 14px;
+    font-size: 14px;
+    color: #6b7280;
+  }
+  .status.error { color: #dc2626; }
+
+  .panel {
+    margin-top: 18px;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+  .panel.reject {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #991b1b;
+  }
+  .panel.ok {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    color: #166534;
+  }
+  .panel h3 {
+    margin: 0 0 8px;
+    font-size: 15px;
+  }
+  .panel ul {
+    margin: 6px 0;
+    padding-inline-start: 20px;
+  }
+  .panel li { margin-bottom: 3px; }
+
+  .result {
+    margin-top: 18px;
+    background: #0f172a;
+    color: #e2e8f0;
+    padding: 16px;
+    border-radius: 8px;
+    font-family: Consolas, 'Courier New', monospace;
+    font-size: 13px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    direction: ltr;
+    text-align: left;
+    max-height: 420px;
+    overflow: auto;
+  }
+  .hint { font-size: 12px; color: #6b7280; margin-top: -10px; margin-bottom: 16px; }
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>فحص الإعلان — محلي (بدون AI) + Groq</h1>
+
+  <label for="apiKey">مفتاح Groq API (اختياري، يُستخدم فقط عند الإصرار)</label>
+  <input type="password" id="apiKey" placeholder="gsk_..." autocomplete="off">
+  <div class="hint">المفتاح يبقى في المتصفح ولا يُرسل إلا إلى Groq.</div>
+
+  <label for="category">التصنيف المختار</label>
+  <select id="category">
+    <option value="ملابس">ملابس</option>
+    <option value="سيارات">سيارات</option>
+  </select>
+
+  <label for="text">نص الإعلان</label>
+  <textarea id="text" placeholder="اكتب هنا عنوان ووصف الإعلان..."></textarea>
+
+  <button id="sendBtn">إرسال</button>
+  <button id="forceBtn" class="secondary hidden">إصراري، أرسل إلى AI</button>
+
+  <div class="status" id="status"></div>
+
+  <div class="panel hidden" id="localPanel"></div>
+
+  <div class="result hidden" id="result"></div>
+</div>
+
+<script>
+/* =========================================================
+   1) JSON الكلمات (قواميس + أوزان)
+   الأوزان:
+     3 = كلمة قوية (علامة تجارية أو قطعة مميزة)
+     2 = كلمة متوسطة
+     1 = كلمة رمادية (أرقام، أو كلمات مشتركة)
+   ========================================================= */
+const KEYWORDS = {
+  "سيارات": {
+    "strong": [
+      "اودي","مرسيدس","بي إم دبليو","بي ام دبليو","رونو","بيجو","سيات","فولكسفاغن",
+      "تويوتا","طويوطا","هيونداي","كيا","نيسان","شيفروليه","فيات","سكودا","داسيا",
+      "رينو","كليو","ميغان","مگان","سيمبول","غولف","باسات","كورولا","ياريس",
+      "أودي","bmw","audi","mercedes","renault","peugeot","toyota","hyundai",
+      "motor","moteur","engine","kilometrage","كيلومتراج","محرك","بويت دي فوت",
+      "carte grise","بطاقة رمادية","رخصة سياقة","permis","chassis","شاسي"
+    ],
+    "medium": [
+      "سيارة","طوموبيل","سيارات","auto","voiture","vehicule","véhicule",
+      "بنزين","ديزل","essence","diesel","boite vitesse","صندوق سرعة",
+      "عجلات","pneus","frein","فرامل","embrayage","دبرياج",
+      "موديل","modele","modèle","سنة الصنع","année"
+    ],
+    "gray": [
+      "208","308","301","2008","3008","clio","golf","polo","ibiza","megane",
+      "i5","i7","v6","v8","1.6","2.0","hdi","tdi","gti"
+    ]
+  },
+
+  "ملابس": {
+    "strong": [
+      "zara","زارا","dolce","gabbana","دولتشي","غابانا","gucci","قوتشي",
+      "adidas","أديداس","nike","نايك","puma","بوما","hm","h&m",
+      "chanel","شانيل","dior","ديور","lacoste","لاكوست","levis","ليفايس",
+      "قميص","chemise","بنطال","pantalon","فستان","robe","جاكيت","veste",
+      "حذاء","chaussure","صandal","صندل","حجاب","hijab","عباية","abaya"
+    ],
+    "medium": [
+      "ملابس","لباس","أزياء","mode","vetement","vêtement","habit",
+      "قماش","tissu","مقاس","taille","pointure","قياس",
+      "قطن","coton","جلد","cuir","صوف","laine",
+      "تيشيرت","t-shirt","pull","سويت","sweat","سروال","short","تنورة","jupe"
+    ],
+    "gray": [
+      "s","m","l","xl","xxl","38","40","42","44","46",
+      "صغير","متوسط","كبير"
+    ]
+  },
+
+  "بذيئة": [
+    "كلب","كلبة","حمار","حمارة","خنزير","قحبة","قحب","شرموط","شرموطة",
+    "زب","زبي","طيز","كس","نيك","منيك","ينيك","زامل","زمال","عاهرة",
+    "خرا","زبالة","حقير","وسخ","قذر","غبي","أحمق","حثالة","نذل",
+    "زبي","طز","لعنة","تبا","خرا","قذارة",
+    "putain","merde","connard","salope","enculé","pute","bâtard"
+  ]
+};
+
+/* =========================================================
+   2) أدوات مساعدة
+   ========================================================= */
+function normalize(str) {
+  return (str || "")
+    .toLowerCase()
+    .replace(/[\u064B-\u065F\u0670]/g, "")        // إزالة التشكيل
+    .replace(/[أإآٱ]/g, "ا")
+    .replace(/ى/g, "ي")
+    .replace(/ة/g, "ه")
+    .replace(/[^\p{L}\p{N}\s]/gu, " ")             // إزالة الرموز
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function tokenize(str) {
+  return normalize(str).split(" ").filter(Boolean);
+}
+
+/* فحص وجود كلمة أو عبارة داخل النص (مع مراعاة العبارات المركبة) */
+function findMatches(text, list) {
+  const normText = " " + normalize(text) + " ";
+  const found = [];
+  for (const kw of list) {
+    const nkw = normalize(kw);
+    if (!nkw) continue;
+    if (nkw.includes(" ")) {
+      if (normText.includes(" " + nkw + " ")) found.push(kw);
+    } else {
+      const re = new RegExp("(^|\\s)" + escapeRegex(nkw) + "(\\s|$)", "u");
+      if (re.test(normText)) found.push(kw);
+    }
+  }
+  return found;
+}
+
+function escapeRegex(s) {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+/* =========================================================
+   3) الفحص المحلي
+   ========================================================= */
+function localCheck(selectedCategory, text) {
+  const result = {
+    rejected: false,
+    reasons: [],
+    scores: {},
+    profanity: [],
+    crossCategory: null,
+    crossWords: [],
+    crossScore: 0
+  };
+
+  // --- فحص الكلمات البذيئة ---
+  const profanity = findMatches(text, KEYWORDS["بذيئة"]);
+  if (profanity.length > 0) {
+    result.rejected = true;
+    result.profanity = profanity;
+    result.reasons.push("كلمات بذيئة: " + profanity.join("، "));
+  }
+
+  // --- حساب الأوزان لكل تصنيف ---
+  const otherCategory = selectedCategory === "ملابس" ? "سيارات" : "ملابس";
+  const dict = KEYWORDS[otherCategory];
+
+  const strongMatches = findMatches(text, dict.strong);
+  const mediumMatches = findMatches(text, dict.medium);
+  const grayMatches   = findMatches(text, dict.gray);
+
+  const score = strongMatches.length * 3
+              + mediumMatches.length * 2
+              + grayMatches.length   * 1;
+
+  result.scores[otherCategory] = {
+    strong: strongMatches,
+    medium: mediumMatches,
+    gray: grayMatches,
+    total: score
+  };
+
+  // --- قرار الرفض ---
+  // 1) كلمة قوية واحدة كافية للرفض
+  // 2) أو مجموع وزن >= 4
+  if (strongMatches.length >= 1 || score >= 4) {
+    result.rejected = true;
+    result.crossCategory = otherCategory;
+    result.crossWords = [...strongMatches, ...mediumMatches, ...grayMatches];
+    result.crossScore = score;
+    result.reasons.push(
+      "كلمات تنتمي لتصنيف «" + otherCategory + "» (وزن " + score + "): "
+      + result.crossWords.join("، ")
+    );
+  }
+
+  return result;
+}
+
+/* =========================================================
+   4) الواجهة
+   ========================================================= */
+const sendBtn   = document.getElementById("sendBtn");
+const forceBtn  = document.getElementById("forceBtn");
+const statusEl  = document.getElementById("status");
+const localPanel= document.getElementById("localPanel");
+const resultEl  = document.getElementById("result");
+
+let lastLocalResult = null;
+let lastPayload = null;
+
+sendBtn.addEventListener("click", () => {
+  const category = document.getElementById("category").value;
+  const text     = document.getElementById("text").value.trim();
+
+  if (!text) {
+    setStatus("الرجاء كتابة نص الإعلان.", true);
+    return;
+  }
+
+  resultEl.classList.add("hidden");
+  resultEl.textContent = "";
+  forceBtn.classList.add("hidden");
+  localPanel.classList.add("hidden");
+
+  const local = localCheck(category, text);
+  lastLocalResult = local;
+  lastPayload = { category, text };
+
+  if (local.rejected) {
+    showLocalReject(local, category);
+    setStatus("رُفض محليًا. يمكنك الإصرار لإرساله إلى AI.");
+    forceBtn.classList.remove("hidden");
+  } else {
+    showLocalPass();
+    setStatus("نجح الفحص المحلي. جارٍ الإرسال إلى AI...");
+    sendToGroq(category, text);
+  }
+});
+
+forceBtn.addEventListener("click", () => {
+  if (!lastPayload) return;
+  forceBtn.classList.add("hidden");
+  setStatus("جارٍ الإرسال إلى AI (بإصرارك)...");
+  sendToGroq(lastPayload.category, lastPayload.text);
+});
+
+function showLocalReject(local, category) {
+  localPanel.className = "panel reject";
+  let html = "<h3>❌ رفض محلي</h3>";
+  html += "<ul>";
+  for (const r of local.reasons) html += "<li>" + escapeHtml(r) + "</li>";
+  html += "</ul>";
+  if (local.crossCategory) {
+    html += "<div><b>التصنيف المكتشف:</b> " + escapeHtml(local.crossCategory) + "</div>";
+    html += "<div><b>الوزن الكلي:</b> " + local.crossScore + "</div>";
+    if (local.scores[local.crossCategory]) {
+      const s = local.scores[local.crossCategory];
+      html += "<div style='margin-top:6px;font-size:13px;'>";
+      html += "<b>كلمات قوية (×3):</b> " + (s.strong.join("، ") || "—") + "<br>";
+      html += "<b>كلمات متوسطة (×2):</b> " + (s.medium.join("، ") || "—") + "<br>";
+      html += "<b>كلمات رمادية (×1):</b> " + (s.gray.join("، ") || "—");
+      html += "</div>";
+    }
+  }
+  localPanel.innerHTML = html;
+  localPanel.classList.remove("hidden");
+}
+
+function showLocalPass() {
+  localPanel.className = "panel ok";
+  localPanel.innerHTML = "<h3>✅ نجح الفحص المحلي</h3><div>لا توجد كلمات مشبوهة أو بذيئة.</div>";
+  localPanel.classList.remove("hidden");
+}
+
+function setStatus(msg, isError = false) {
+  statusEl.textContent = msg;
+  statusEl.className = "status" + (isError ? " error" : "");
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  }[c]));
+}
+
+/* =========================================================
+   5) الإرسال إلى Groq
+   ========================================================= */
+async function sendToGroq(category, text) {
+  const apiKey = document.getElementById("apiKey").value.trim();
+  if (!apiKey) {
+    setStatus("لا يوجد مفتاح API. أضفه لإرسال الطلب إلى AI.", true);
+    return;
+  }
+
+  sendBtn.disabled = true;
+  forceBtn.disabled = true;
+
+  // اقتطاع النص لتقليل التوكنات
+  const trimmed = text.slice(0, 300);
+
+  const prompt =
+`أنت مدقق إعلانات. التصنيفات: "سيارات" و"ملابس".
+التصنيف المختار: ${category}
+النص: """${trimmed}"""
+أجب JSON فقط:
+{"correct_category":bool,"detected_category":"سيارات|ملابس|غير معروف","has_profanity":bool,"profanity_words":[],"reason":"قصير"}`;
+
+  try {
+    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + apiKey
+      },
+      body: JSON.stringify({
+        model: "openai/gpt-oss-20b",
+        messages: [
+          { role: "system", content: "أجب JSON فقط." },
+          { role: "user",   content: prompt }
+        ],
+        temperature: 0.1,
+        max_tokens: 120,
+        reasoning_effort: "low",
+        response_format: { type: "json_object" }
+      })
+    });
+
+    if (!response.ok) {
+      const errText = await response.text();
+      throw new Error("HTTP " + response.status + " — " + errText);
+    }
+
+    const data = await response.json();
+    const content = data.choices?.[0]?.message?.content ?? "";
+
+    let parsed;
+    try { parsed = JSON.parse(content); }
+    catch { parsed = { raw: content, parse_error: "رد غير JSON" }; }
+
+    resultEl.textContent = JSON.stringify(parsed, null, 2);
+    resultEl.classList.remove("hidden");
+    setStatus("تم.");
+  } catch (err) {
+    setStatus("خطأ: " + err.message, true);
+  } finally {
+    sendBtn.disabled = false;
+    forceBtn.disabled = false;
+  }
+}
+</script>
+
+</body>
+</html>

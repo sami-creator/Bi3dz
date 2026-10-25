@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مترجم إلى الدارجة الجزائرية</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'IBM Plex Sans Arabic', Tahoma, Arial, sans-serif;
+    background: #f4f6f8;
+    margin: 0;
+    padding: 20px;
+    direction: rtl;
+    color: #1a1a1a;
+  }
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+  h1 {
+    font-size: 20px;
+    margin: 0 0 18px;
+    color: #1a1a1a;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 12px;
+  }
+  label {
+    display: block;
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #374151;
+  }
+  input[type="password"], textarea {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1.5px solid #d1d5db;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s;
+    margin-bottom: 14px;
+  }
+  input[type="password"]:focus, textarea:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+  }
+  textarea { resize: vertical; min-height: 110px; line-height: 1.7; }
+  button {
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    width: 100%;
+    transition: 0.2s;
+  }
+  button:hover:not(:disabled) { background: #1d4ed8; }
+  button:disabled { background: #9ca3af; cursor: not-allowed; }
+  .output {
+    margin-top: 16px;
+    padding: 16px;
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
+    border-radius: 8px;
+    min-height: 80px;
+    font-size: 16px;
+    line-height: 1.9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  .output.empty { color: #94a3b8; font-style: italic; }
+  .status {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #6b7280;
+    text-align: center;
+  }
+  .status.error { color: #dc2626; }
+  .console {
+    margin-top: 18px;
+    background: #0f172a;
+    color: #e2e8f0;
+    padding: 14px;
+    border-radius: 8px;
+    font-family: Consolas, 'Courier New', monospace;
+    font-size: 12px;
+    direction: ltr;
+    text-align: left;
+    max-height: 220px;
+    overflow: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  .hint { font-size: 12px; color: #6b7280; margin: -10px 0 12px; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>🌍 مترجم إلى الدارجة الجزائرية</h1>
+
+  <label for="apiKey">مفتاح Groq API</label>
+  <input type="password" id="apiKey" placeholder="gsk_..." autocomplete="off">
+  <p class="hint">احصل على مفتاح مجاني من console.groq.com</p>
+
+  <label for="inputText">النص الأصلي (عربية / فرنسية / إنجليزية / خليط)</label>
+  <textarea id="inputText" placeholder="مثال:&#10;Bonjour les filles, je vous présente lemdella dyali salma&#10;أو&#10;راني حابة نشري صباط كحل"></textarea>
+
+  <button id="translateBtn">ترجم إلى الدارجة</button>
+
+  <div class="status" id="status"></div>
+
+  <label style="margin-top:16px;">الترجمة بالدارجة العربية</label>
+  <div class="output empty" id="output">لم يتم الترجمة بعد...</div>
+
+  <label style="margin-top:16px;">سجل الأخطاء (Console)</label>
+  <div class="console" id="console">[جاهز]</div>
+</div>
+
+<script>
+const apiKeyInput  = document.getElementById('apiKey');
+const inputText    = document.getElementById('inputText');
+const translateBtn = document.getElementById('translateBtn');
+const outputEl     = document.getElementById('output');
+const statusEl     = document.getElementById('status');
+const consoleEl    = document.getElementById('console');
+
+function log(msg, isError=false){
+  const time = new Date().toLocaleTimeString();
+  consoleEl.textContent += `\n[${time}] ${msg}`;
+  consoleEl.scrollTop = consoleEl.scrollHeight;
+  if(isError) console.error(msg);
+}
+
+function setStatus(msg, isError=false){
+  statusEl.textContent = msg;
+  statusEl.className = 'status' + (isError ? ' error' : '');
+}
+
+// حفظ مفتاح API في localStorage
+if(localStorage.getItem('groq_api_key')){
+  apiKeyInput.value = localStorage.getItem('groq_api_key');
+  log('تم استرجاع مفتاح API المحفوظ');
+}
+apiKeyInput.addEventListener('change', () => {
+  localStorage.setItem('groq_api_key', apiKeyInput.value.trim());
+  log('تم حفظ مفتاح API');
+});
+
+async function translate(){
+  const apiKey = apiKeyInput.value.trim();
+  const text   = inputText.value.trim();
+
+  if(!apiKey){ setStatus('الرجاء إدخال مفتاح Groq API', true); log('مفتاح API مفقود', true); return; }
+  if(!text){ setStatus('الرجاء إدخال نص للترجمة', true); return; }
+
+  translateBtn.disabled = true;
+  translateBtn.textContent = '⏳ جاري الترجمة...';
+  setStatus('جارٍ الاتصال بـ Groq...');
+  outputEl.textContent = '...';
+  outputEl.classList.remove('empty');
+
+  const systemPrompt = `أنت مترجم متخصص في الدارجة الجزائرية.
+مهمتك: ترجمة أي نص (عربي فصحى، فرنسي، إنجليزي، أو خليط بينهم، أو دارجة مكتوبة بالحروف الفرنسية) إلى الدارجة الجزائرية مكتوبة بالحروف العربية.
+
+القواعد:
+- اكتب الدارجة كما يتكلمها الجزائريون فعلاً، وليس ترجمة حرفية.
+- استخدم الكلمات الدارجة الشائعة (راني، حابة، نشري، صباط، قندورة، واش، كيفاش، بزاف...).
+- إذا كان النص أصلاً بالدارجة بحروف لاتينية، حوّله لحروف عربية مباشرة.
+- لا تشرح، لا تضيف تعليقات. أرجع الترجمة فقط.
+- إذا كان هناك اسم علم (شخص، مكان)، اكتبه كما هو أو بحروف عربية.
+- حافظ على النبرة: إذا كان النص ودياً، اجعله ودياً. إذا كان رسمياً، اجعله رسمياً قدر الإمكان في الدارجة.`;
+
+  try{
+    log('إرسال الطلب إلى Groq...');
+    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + apiKey
+      },
+      body: JSON.stringify({
+        model: 'openai/gpt-oss-120b',
+        messages: [
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: text }
+        ],
+        temperature: 0.3,
+        max_tokens: 1024
+      })
+    });
+
+    if(!response.ok){
+      const errText = await response.text();
+      throw new Error(`HTTP ${response.status}: ${errText}`);
+    }
+
+    const data = await response.json();
+    const translation = data?.choices?.[0]?.message?.content?.trim();
+
+    if(!translation) throw new Error('لم يتم استلام ترجمة من الخادم');
+
+    outputEl.textContent = translation;
+    setStatus('✅ تمت الترجمة');
+    log('الترجمة نجحت: ' + translation.substring(0,60) + '...');
+
+  }catch(err){
+    setStatus('❌ خطأ: ' + err.message, true);
+    log('خطأ: ' + err.message, true);
+    outputEl.textContent = 'فشلت الترجمة. راجع الكونسول.';
+    outputEl.classList.add('empty');
+  }finally{
+    translateBtn.disabled = false;
+    translateBtn.textContent = 'ترجم إلى الدارجة';
+  }
+}
+
+// ربط الزر بالدالة (لضمان العمل)
+document.getElementById('translateBtn').addEventListener('click', translate);
+</script>
+
+</body>
+</html>

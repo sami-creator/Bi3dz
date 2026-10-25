@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>سوق نسا | ابحثي بالدارجة أو بالصورة</title>
+<meta name="description" content="سوق نسا: ابحثي بالدارجة أو بأي لغة أو بصورة، وتصلك النتائج المناسبة. نسخة تجريبية مستقرة، جرّبيها وانشري إعلانك.">
+<meta name="theme-color" content="#DB2777">
+<meta property="og:title" content="سوق نسا | ابحثي بالدارجة أو بالصورة">
+<meta property="og:description" content="بحث ذكي بالدارجة وبأي لغة وبالصورة. جرّبي النسخة التجريبية المستقرة.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="landing/og.jpg">
+<link rel="icon" href="assets/images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://hbwkrpekqiouyeopgvpa.supabase.co" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --rose:#EC4899;--rose-d:#DB2777;--rose-dd:#9D174D;--blush:#FFF1F7;--wash:#FCE7F3;
+  --ink:#1F1020;--muted:#6B5560;--line:#F5D0E4;--ok:#0F9F6E;--white:#fff;
+  --display:'Noto Kufi Arabic','IBM Plex Sans Arabic',system-ui,sans-serif;
+  --body:'IBM Plex Sans Arabic','Noto Kufi Arabic',system-ui,sans-serif;
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--body);color:var(--ink);background:var(--white);line-height:1.8;overflow-x:hidden;font-size:16px}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--rose-dd);outline-offset:3px}
+.wrap{width:min(1140px,calc(100% - 32px));margin-inline:auto}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.5;margin:0;letter-spacing:-0.01em}
+h1{font-size:clamp(30px,4.8vw,50px);font-weight:800;line-height:1.4}
+h2{font-size:clamp(24px,3.4vw,36px);margin-bottom:14px;font-weight:700}
+h3{font-size:20px;margin-bottom:8px;font-weight:700}
+p{margin:0}
+.lead{color:var(--muted);font-size:17px;max-width:38em;line-height:1.9}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:12px 28px;border:0;border-radius:14px;font-weight:700;cursor:pointer;background:var(--rose-d);color:#fff;box-shadow:0 8px 20px rgba(219,39,119,.24);transition:background .2s,transform .15s;font-size:15px}
+.btn:hover{background:var(--rose-dd)}.btn:active{transform:scale(.98)}
+.btn[disabled]{opacity:.6;cursor:wait}
+.btn.ghost{background:#fff;color:var(--rose-dd);box-shadow:inset 0 0 0 2px var(--line)}
+.btn.ghost:hover{background:var(--blush)}
+
+/* header */
+.top{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;min-height:64px;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--display);font-size:20px;font-weight:800;color:var(--rose-dd)}
+.brand img{width:34px;height:34px;border-radius:10px}
+.top .btn{min-height:42px;padding:8px 20px;font-size:14px}
+
+/* hero */
+.hero{background:linear-gradient(180deg,var(--blush) 0%,#fff 100%);padding:48px 0 72px}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 16px;font-size:13px;font-weight:700;color:var(--rose-dd);margin-bottom:18px}
+.badge::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ok)}
+.hero h1{margin-bottom:18px;color:var(--ink)}
+.hero .lead{margin-bottom:28px;font-size:17px}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px}
+
+.hero-visual{
+  position:relative;
+  width:100%;
+  max-width:320px;
+  margin-inline:auto;
+  display:flex;
+  flex-direction:column;
+}
+.ph{background:linear-gradient(160deg,#F9A8D4,#EC4899 62%,#BE185D);overflow:hidden;position:relative}
+.ph img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.hero-img{
+  aspect-ratio:9/16;
+  border-radius:24px;
+  margin-bottom:-30px;
+  z-index:1;
+}
+.demo{
+  position:relative;
+  z-index:2;
+  inset:auto;
+  margin-inline:-6%;
+  background:#fff;
+  border-radius:18px;
+  padding:12px 14px;
+  box-shadow:0 20px 50px rgba(157,23,77,.22);
+  border:1px solid var(--line);
+}
+.demo-bar{display:flex;align-items:center;gap:10px;background:var(--blush);border-radius:12px;padding:10px 12px;min-height:46px}
+.demo-bar svg{flex:none;color:var(--rose-d)}
+.demo-q{flex:1;font-weight:500;font-size:14px;min-height:1.6em;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.demo-q::after{content:"";display:inline-block;width:2px;height:1.1em;background:var(--rose-d);margin-inline-start:3px;vertical-align:-3px;animation:blink 1s steps(2) infinite}
+.cam{flex:none;width:32px;height:32px;border-radius:50%;background:#fff;display:grid;place-items:center;color:var(--rose-dd)}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;min-height:26px}
+.tags span{background:var(--wash);color:var(--rose-dd);border-radius:999px;padding:3px 11px;font-size:11px;font-weight:700}
+.demo small{display:block;margin-top:8px;font-size:11px;color:var(--muted)}
+@keyframes blink{to{visibility:hidden}}
+
+/* sections */
+section{padding:72px 0}
+section.alt{background:var(--blush)}
+.head{max-width:680px;margin-bottom:36px}
+.head p{color:var(--muted);font-size:16px;line-height:1.9}
+.head.center{margin-inline:auto;text-align:center}
+
+/* ai grid */
+.ai-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.shot{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 4px 16px rgba(157,23,77,.06)}
+.shot .ph{aspect-ratio:9/16}
+.shot .txt{padding:20px 22px 24px}
+.shot p{color:var(--muted);font-size:15px;line-height:1.8}
+.shot q{display:block;margin-top:12px;font-weight:700;color:var(--rose-dd);font-size:14px;quotes:none;background:var(--blush);padding:10px 14px;border-radius:12px;border-inline-start:3px solid var(--rose)}
+
+/* features */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.feat{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:20px 18px;
+  max-width:280px;
+  width:100%;
+  margin-inline:auto;
+  transition:transform .2s,box-shadow .2s;
+}
+.feat:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(157,23,77,.10)}
+.feat .ic{width:50px;height:50px;border-radius:14px;background:var(--blush);display:grid;place-items:center;margin-bottom:14px;color:var(--rose-dd);font-size:22px}
+.feat h3{margin-bottom:8px}
+.feat p{color:var(--muted);font-size:15px;line-height:1.8}
+.feat-img{
+  position:relative;
+  aspect-ratio:9/16;
+  border-radius:12px;
+  margin-top:14px;
+  overflow:hidden;
+  width:100%;
+}
+.feat-img img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+
+/* trust */
+.trust{background:var(--ink);color:#fff}
+.trust .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.trust h2{color:#fff}
+.trust .lead{color:#E9D3DE}
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.checks li{display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,.07);border-radius:14px;padding:14px 16px;font-size:15px}
+.checks li::before{content:"✓";flex:none;width:26px;height:26px;border-radius:50%;background:var(--rose);color:#fff;display:grid;place-items:center;font-size:14px;font-weight:700}
+
+/* comparison */
+
+
+/* quality */
+.quality .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.quality .col{padding:6px 28px;border-inline-start:2px solid var(--line)}
+.quality .col:first-child{border-inline-start:0;padding-inline-start:0}
+.quality .col p{color:var(--muted);font-size:15px;line-height:1.85}
+
+/* join */
+.join .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:44px;align-items:start}
+.join .lead{margin-bottom:22px}
+form{background:#fff;border-radius:20px;padding:28px;display:grid;gap:14px;box-shadow:0 16px 44px rgba(157,23,77,.12);border:1px solid var(--line)}
+.f{display:grid;gap:6px}
+label{font-size:13px;font-weight:700}
+input,select{width:100%;min-height:48px;border:1.5px solid var(--line);border-radius:12px;padding:10px 14px;background:#fff;outline:none;transition:border-color .2s,box-shadow .2s}
+input:focus,select:focus{border-color:var(--rose-d);box-shadow:0 0 0 3px rgba(236,72,153,.15)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--muted);line-height:1.7}
+.consent input{width:20px;min-height:0;height:20px;margin-top:4px;flex:none;accent-color:var(--rose-d)}
+.hp{position:absolute;inset-inline-start:-9999px;width:1px;height:1px;overflow:hidden}
+.st{display:none;border-radius:12px;padding:12px 16px;font-size:14px}
+.st.show{display:block}.st.ok{background:#E6F7F0;color:#0B6B49}.st.err{background:#FDECEC;color:#9B1C1C}
+
+/* faq */
+.faq{max-width:800px;display:grid;gap:12px;margin-inline:auto}
+details{border:1.5px solid var(--line);border-radius:14px;padding:16px 20px;background:#fff}
+summary{cursor:pointer;font-weight:700;font-size:16px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:22px;color:var(--rose-d);font-weight:400;transition:transform .2s}
+details[open] summary::after{content:"−"}
+details p{color:var(--muted);font-size:15px;margin-top:10px;line-height:1.85}
+
+footer{background:var(--wash);padding:32px 0}
+footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:14px}
+footer nav{display:flex;gap:22px;color:var(--rose-dd);font-weight:700}
+
+/* ============ MOBILE FIRST TWEAKS ============ */
+@media(max-width:900px){
+  .hero{padding:36px 0 64px}
+  .hero .wrap{grid-template-columns:1fr;gap:36px;text-align:center}
+  .hero .lead{margin-inline:auto}
+  .cta-row{justify-content:center}
+  .hero-visual{max-width:280px}
+  .demo{margin-inline:-4%}
+  .trust .wrap,.join .wrap{grid-template-columns:1fr;gap:36px}
+  .ai-grid{grid-template-columns:1fr;max-width:340px;margin-inline:auto;gap:20px}
+  .feat-grid{grid-template-columns:repeat(2, 1fr);gap:16px}
+  .compare-grid{grid-template-columns:1fr;max-width:340px;margin-inline:auto;gap:20px}
+  .quality .cols{grid-template-columns:1fr;gap:18px}
+  .quality .col,.quality .col:first-child{border-inline-start:0;padding:0 0 18px;border-bottom:2px solid var(--line)}
+  .quality .col:last-child{border-bottom:0;padding-bottom:0}
+  section{padding:56px 0}
+}
+@media(max-width:560px){
+  .wrap{width:calc(100% - 24px)}
+  .row2{grid-template-columns:1fr}
+  .cta-row .btn{width:100%}
+  .cta-row{flex-direction:column;align-items:stretch}
+  form{padding:20px}
+  .feat-grid{grid-template-columns:1fr}
+  .top .wrap{min-height:58px}
+  .brand{font-size:17px}
+  .brand img{width:30px;height:30px}
+  .top .btn{padding:8px 16px;font-size:13px}
+  h1{font-size:26px;line-height:1.45}
+  h2{font-size:22px}
+  h3{font-size:17px}
+  .lead{font-size:15.5px}
+  section{padding:48px 0}
+  .hero{padding:28px 0 56px}
+  .hero-visual{max-width:260px}
+  .demo-q{font-size:13px}
+  .demo-bar{padding:9px 10px;min-height:42px}
+  .demo{padding:10px 12px; margin-inline:-2%}
+  .hero-img{border-radius:20px}
+  .shot .txt{padding:16px 18px 20px}
+  .shot p{font-size:14px}
+  .feat{padding:20px 18px; max-width:100%}
+  .checks li{font-size:14px;padding:12px 14px}
+  details{padding:14px 16px}
+  summary{font-size:15px}
+  footer .wrap{flex-direction:column;align-items:flex-start;gap:12px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.demo-q::after{animation:none}.feat{transition:none}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="landing_page.html" aria-label="سوق نسا">
+      <img src="assets/images/favicon.png" alt="" width="34" height="34">
+      سوق نسا
+    </a>
+    <a class="btn" href="index.html">جرّبي المنصة</a>
+  </div>
+</header>
+
+<main>
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="badge">نسخة تجريبية مستقرة</span>
+      <h1>اكتبي كما تتكلمين، وسوق نسا يفهمك</h1>
+      <p class="lead">ابحثي بالدارجة أو بأي لغة، أو ارفعي صورة لما تريدينه. نحوّل طلبك إلى فلاتر دقيقة ونعرض لك الإعلانات الأقرب إليه.</p>
+      <div class="cta-row">
+        <a class="btn" href="index.html">ابدئي البحث الآن</a>
+        <a class="btn ghost" href="#join">سجّلي في قائمة البائعات</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="ph hero-img">
+        <img src="landing/hero.webp" alt="امرأة تبحث عن منتج في تطبيق سوق نسا" width="720" height="1280" fetchpriority="high" onerror="this.hidden=true">
+      </div>
+      <div class="demo" aria-label="مثال توضيحي على البحث الذكي">
+        <div class="demo-bar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <span class="demo-q" id="dq">نحب صباط كعب عالي أكحل نمرو 38</span>
+          <span class="cam" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></span>
+        </div>
+        <div class="tags" id="dt" aria-live="off"><span>أحذية</span><span>كعب عالي</span><span>اللون: أكحل</span><span>المقاس: 38</span></div>
+        <small>أمثلة توضيحية لطريقة عمل البحث</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AI SEARCH ============ -->
+<section id="ai">
+  <div class="wrap">
+    <div class="head center">
+      <h2>بحث يفهم طلبك مهما كانت طريقتك</h2>
+      <p>لا تحتاجين إلى اختيار الكلمات الصحيحة أو ضبط عشرين فلتراً. اكتبي أو صوّري، ونحن نتكفل بالباقي.</p>
+    </div>
+    <div class="ai-grid">
+      <figure class="shot" style="margin:0">
+        <div class="ph"><img src="landing/darija.webp" alt="بحث بالدارجة داخل سوق نسا" loading="lazy" width="540" height="960" onerror="this.hidden=true"></div>
+        <div class="txt">
+          <h3>بالدارجة كما تنطقينها</h3>
+          <p>الكلمات الجزائرية والأخطاء الإملائية لا تمنعك من الوصول إلى النتيجة.</p>
+          <q>«نحب قندورة كحلة للعرس»</q>
+        </div>
+      </figure>
+      <figure class="shot" style="margin:0">
+        <div class="ph"><img src="landing/langues.webp" alt="بحث بالفرنسية والإنجليزية داخل سوق نسا" loading="lazy" width="540" height="960" onerror="this.hidden=true"></div>
+        <div class="txt">
+          <h3>بأي لغة تفضلينها</h3>
+          <p>عربية أو فرنسية أو إنجليزية أو خليط بينها، والبحث يفهم القصد.</p>
+          <q>«robe de soirée verte taille M»</q>
+        </div>
+      </figure>
+      <figure class="shot" style="margin:0">
+        <div class="ph"><img src="landing/image-search.webp" alt="بحث بالصورة داخل سوق نسا" loading="lazy" width="540" height="960" onerror="this.hidden=true"></div>
+        <div class="txt">
+          <h3>بصورة بدل الكلمات</h3>
+          <p>رأيتِ شيئاً أعجبك؟ ارفعي صورته لنعرض لك منتجات مشابهة.</p>
+          <q>التقطي صورة أو اختاريها من هاتفك</q>
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURES ============ -->
+<section class="alt" id="features">
+  <div class="wrap">
+    <div class="head center">
+      <h2>لماذا سوق نسا؟</h2>
+      <p>كل ما تحتاجينه للبيع والشراء بثقة وراحة، في مكان واحد.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="ic">🆓</div>
+        <h3>مجاني 100%</h3>
+        <p>نشر الإعلانات والبحث والتصفح كلها مجانية بالكامل، دون رسوم خفية أو اشتراكات إجبارية.</p>
+      </div>
+      <div class="feat">
+        <div class="ic">💬</div>
+        <h3>دعم 24/7</h3>
+        <p>دعم متواجد ليلاً ونهاراً للإجابة على أسئلتك ومساعدتك في أي مشكلة تواجهينها.</p>
+      </div>
+      <div class="feat">
+        <div class="ic">🎯</div>
+        <h3>فلاتر وتخصيص</h3>
+        <p>فلترة دقيقة حسب السعر، الولاية، المقاس، اللون، الحالة، وأكثر من ذلك بكثير.</p>
+      </div>
+      <div class="feat">
+        <div class="ic">📍</div>
+        <h3>بحث حتى بالبلدية</h3>
+        <p>لا تكتفي بالولاية — ابحثي في بلديتك بالضبط لتجدي ما هو قريب منك.</p>
+      </div>
+      <div class="feat">
+        <div class="ic">⚖️</div>
+        <h3>مقارنة المنتجات</h3>
+        <p>قارني بين عدة منتجات دفعة واحدة، ونقترح لك الأفضل حسب السعر والجودة والتقييمات.</p>
+      </div>
+      <div class="feat">
+        <div class="ic">🤖</div>
+        <h3>اقتراح الأفضل</h3>
+        <p>نظام ذكي يقترح لك المنتج الأنسب بناءً على بحثك وميزانيتك واهتماماتك.</p>
+      </div>
+      <div class="feat">
+        <div class="ic">🌐</div>
+        <h3>ترجمة فورية للإعلانات</h3>
+        <p>ترجمي أي إعلان من الإنجليزية أو الفرنسية أو حتى الدارجة المكتوبة بالفرنسية إلى الدارجة العربية بضغطة واحدة.</p>
+        <div class="ph feat-img"><img src="landing/translate.webp" alt="ترجمة إعلان من الفرنسية إلى الدارجة العربية" loading="lazy" width="540" height="960" onerror="this.hidden=true"></div>
+      </div>
+      <div class="feat">
+        <div class="ic">🔔</div>
+        <h3>تنبيه نزول منتج</h3>
+        <p>حدّدي المنتج والسعر والمكان مسبقاً، ونراسلك فور نزول منتج مطابق للبيع.</p>
+        <div class="ph feat-img"><img src="landing/alert-product.webp" alt="تنبيه عند نزول منتج بالسعر والمكان المحددين" loading="lazy" width="540" height="960" onerror="this.hidden=true"></div>
+      </div>
+      <div class="feat">
+        <div class="ic">📉</div>
+        <h3>إشعار انخفاض السعر</h3>
+        <p>أضيفي السلع التي تعجبك إلى المفضلة، ونشعرك فوراً عند تخفيض أسعارها.</p>
+        <div class="ph feat-img"><img src="landing/price-drop.webp" alt="إشعار عند تخفيض سعر سلعة في المفضلة" loading="lazy" width="540" height="960" onerror="this.hidden=true"></div>
+      </div>
+      <div class="feat">
+        <div class="ic">🏷️</div>
+        <h3>السعر إجباري</h3>
+        <p>لا إعلان بدون سعر واضح. نضمن لك معرفة الثمن قبل التواصل مع البائعة.</p>
+        <div class="ph feat-img"><img src="landing/price-required.webp" alt="حقل السعر إجباري عند نشر إعلان" loading="lazy" width="540" height="960" onerror="this.hidden=true"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST ============ -->
+<section class="trust">
+  <div class="wrap">
+    <div>
+      <h2>إعلانات نظيفة تطابق ما تبحثين عنه</h2>
+      <p class="lead">كل إعلان يُراجَع آلياً وفورياً قبل ظهوره، حتى تبقى النتائج مرتبطة بطلبك. وعلى كل إعلان زر إبلاغ إن رأيتِ ما يخالف القواعد.</p>
+    </div>
+    <ul class="checks">
+      <li>التأكد من أن الإعلان يطابق الصنف الذي نُشر فيه</li>
+      <li>منع الكلمات البذيئة</li>
+      <li>منع المحتوى الخارج عن موضوع الإعلان</li>
+      <li>مراجعة الصور بالذكاء الاصطناعي</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ COMPARISON ============ -->
+
+
+<!-- ============ QUALITY ============ -->
+<section class="alt quality">
+  <div class="wrap">
+    <div class="head center"><h2>مصمم ليعمل بسلاسة</h2></div>
+    <div class="cols">
+      <div class="col"><h3>مستقر</h3><p>نسخة تجريبية مستقرة، وإن واجهتِ أي مشكلة أخبرينا لنصلحها.</p></div>
+      <div class="col"><h3>سهل</h3><p>واجهة بسيطة وواضحة تعمل على هاتفك، وتجدين ما تريدينه بأقل عدد من الخطوات.</p></div>
+      <div class="col"><h3>سريع</h3><p>قسنا السرعة بأداة Google PageSpeed Insights وقارناها بمواقع الإعلانات المعروفة في الجزائر، فكان سوق نسا في المقدمة.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ JOIN ============ -->
+<section class="join" id="join">
+  <div class="wrap">
+    <div>
+      <h2>جرّبي وانشري إعلانك</h2>
+      <p class="lead">المنصة مفتوحة للتجربة الآن، ويمكن للبائعات والبائعين نشر إعلاناتهم. سجّلي وسيلة تواصل لنخبرك عند الانتقال إلى الدومين الرسمي.</p>
+      <a class="btn" href="index.html">افتحي المنصة</a>
+    </div>
+    <form id="f" novalidate>
+      <div class="f"><label for="n">اسمك أو اسم مشروعك</label><input id="n" name="name" required maxlength="100" autocomplete="name"></div>
+      <div class="row2">
+        <div class="f">
+          <label for="ct">وسيلة التواصل</label>
+          <select id="ct" name="contact_type" required>
+            <option value="">اختاري</option>
+            <option value="whatsapp">واتساب</option>
+            <option value="email">البريد الإلكتروني</option>
+            <option value="instagram">إنستغرام</option>
+            <option value="facebook">فيسبوك</option>
+          </select>
+        </div>
+        <div class="f"><label for="cv">رقمك أو حسابك</label><input id="cv" name="contact" required maxlength="180" dir="auto"></div>
+      </div>
+      <div class="row2">
+        <div class="f"><label for="w">الولاية</label><select id="w" name="wilaya" required><option value="">اختاري</option></select></div>
+        <div class="f"><label for="c">نوع نشاطك</label><select id="c" name="category" required><option value="">اختاري</option></select></div>
+      </div>
+      <div class="hp" aria-hidden="true"><label>الموقع<input name="website" tabindex="-1" autocomplete="off"></label></div>
+      <label class="consent">
+        <input type="checkbox" id="ok" required>
+        <span>أوافق على استخدام وسيلة التواصل لإرسال رابط الدومين الجديد وأخبار سوق نسا.</span>
+      </label>
+      <button class="btn" type="submit" id="b">سجّلي اهتمامك</button>
+      <div class="st" id="st" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="head center"><h2>أسئلة شائعة</h2></div>
+    <div class="faq">
+      <details><summary>هل سوق نسا مجاني؟</summary><p>نعم، مجاني 100%. نشر الإعلانات والبحث والتصفح كلها مجانية بالكامل، دون رسوم خفية.</p></details>
+      <details><summary>لماذا هي نسخة تجريبية؟</summary><p>المنصة مستقرة وتعمل، لكننا ننتظر الانتقال إلى الدومين الرسمي، وملاحظاتك الآن تساعدنا على تحسينها.</p></details>
+      <details><summary>كيف تُراجَع الإعلانات؟</summary><p>مراجعة آلية فورية تتحقق من مطابقة الصنف، وتمنع الكلمات البذيئة والمحتوى الخارج عن موضوع الإعلان، وتفحص الصور بالذكاء الاصطناعي. ويمكنك الإبلاغ عن أي إعلان مخالف.</p></details>
+      <details><summary>هل يوجد دعم على مدار الساعة؟</summary><p>نعم، الدعم متواجد 24/7 للإجابة على أسئلتك ومساعدتك في أي مشكلة.</p></details>
+      <details><summary>هل يمكنني البحث في بلديتي؟</summary><p>نعم، يمكنك البحث حتى مستوى البلدية لتجدي ما هو قريب منك بالضبط.</p></details>
+      <details><summary>لماذا أترك وسيلة تواصل؟</summary><p>لنرسل لك الرابط الجديد عند الانتقال إلى الدومين الرسمي، وبموافقتك فقط.</p></details>
+      <details><summary>هل يمكنني ترجمة إعلان؟</summary><p>نعم، يمكنك ترجمة أي إعلان من الإنجليزية أو الفرنسية أو الدارجة المكتوبة بالفرنسية إلى الدارجة العربية بضغطة واحدة.</p></details>
+      <details><summary>هل السعر إجباري في الإعلان؟</summary><p>نعم، تحديد السعر إجباري عند نشر أي إعلان، حتى تعرفي الثمن قبل التواصل.</p></details>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="y"></span> سوق نسا</span>
+    <nav>
+      <a href="index.html">المنصة</a>
+      <a href="privacy.html">سياسة الخصوصية</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="js/env.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js" defer></script>
+<script src="js/supabase.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  var $ = function(s){ return document.querySelector(s); };
+  $('#y').textContent = new Date().getFullYear();
+
+  /* ---- demo typing ---- */
+  var D = [
+    {q:'نحب صباط كعب عالي أكحل نمرو 38', t:['أحذية','كعب عالي','اللون: أكحل','المقاس: 38']},
+    {q:'robe de soirée verte taille M', t:['فساتين السهرة','اللون: أخضر','المقاس: M']},
+    {q:'gold earrings under 3000 DA', t:['إكسسوارات','أقراط','اللون: ذهبي','السعر: أقل من 3000 دج']}
+  ];
+  var q = $('#dq'), t = $('#dt'), i = 0;
+  function tags(a){ t.innerHTML=''; a.forEach(function(x){ var s=document.createElement('span'); s.textContent=x; t.appendChild(s); }); }
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    (function run(){
+      var d = D[i % D.length], k = 0;
+      q.textContent = ''; t.innerHTML = '';
+      (function type(){
+        if(k < d.q.length){ q.textContent += d.q[k++]; setTimeout(type, 55); }
+        else { tags(d.t); setTimeout(function(){ i++; run(); }, 2800); }
+      })();
+    })();
+  } else {
+    var d0 = D[0]; q.textContent = d0.q; tags(d0.t);
+  }
+
+  /* ---- form ---- */
+  var f = $('#f'), st = $('#st'), ct = $('#ct'), cv = $('#cv'), btn = $('#b');
+  var H = {
+    email:['name@example.com','email'],
+    whatsapp:['0550 12 34 56','tel'],
+    instagram:['@اسم_الحساب','text'],
+    facebook:['رابط الصفحة أو اسمها','text']
+  };
+  ct.addEventListener('change', function(){
+    var h = H[ct.value];
+    if(h){ cv.placeholder = h[0]; cv.type = h[1]; }
+  });
+  function ok(type, v){
+    if(type === 'email') return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+    if(type === 'whatsapp') return /^(\+?213|0)[567]\d{8}$/.test(v.replace(/[\s\-().]/g,''));
+    return v.length >= 3;
+  }
+  function msg(c, m){ st.className = 'st show ' + c; st.textContent = m; }
+
+  var loaded = false;
+  function fill(sel, items){
+    items.forEach(function(x){
+      var o = document.createElement('option');
+      o.value = o.textContent = x;
+      sel.appendChild(o);
+    });
+  }
+  function toText(sel){
+    var inp = document.createElement('input');
+    inp.id = sel.id; inp.name = sel.name; inp.required = true; inp.maxLength = 60;
+    sel.replaceWith(inp);
+  }
+  function lists(){
+    if(loaded) return; loaded = true;
+    fetch('data/wilayas.json').then(function(r){ return r.json(); })
+      .then(function(a){ fill($('#w'), a.map(function(x){ return x.ar; })); })
+      .catch(function(){ toText($('#w')); });
+    fetch('data/categories.json').then(function(r){ return r.json(); })
+      .then(function(a){ fill($('#c'), a.map(function(x){ return x.ar; }).concat(['أخرى'])); })
+      .catch(function(){ toText($('#c')); });
+  }
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(e, o){
+      if(e[0].isIntersecting){ lists(); o.disconnect(); }
+    }, { rootMargin:'400px' }).observe(f);
+  } else lists();
+  f.addEventListener('focusin', lists);
+
+  f.addEventListener('submit', function(e){
+    e.preventDefault(); lists();
+    var fd = new FormData(f);
+    var name = (fd.get('name')||'').trim();
+    var type = fd.get('contact_type');
+    var contact = (fd.get('contact')||'').trim();
+    var wilaya = (fd.get('wilaya')||'').trim();
+    var cat = (fd.get('category')||'').trim();
+
+    if(fd.get('website')){ msg('ok', 'تم تسجيلك. سنراسلك عند الانتقال إلى الدومين الرسمي.'); return; }
+    if(!name || !type || !contact || !wilaya || !cat){ msg('err', 'أكملي جميع الحقول.'); return; }
+    if(!ok(type, contact)){
+      msg('err', type === 'email' ? 'اكتبي بريداً إلكترونياً صحيحاً.' : type === 'whatsapp' ? 'اكتبي رقماً جزائرياً صحيحاً، مثل 0550123456.' : 'اكتبي اسم الحساب أو الرابط.');
+      return;
+    }
+    if(!$('#ok').checked){ msg('err', 'الموافقة على التواصل مطلوبة لإتمام التسجيل.'); return; }
+
+    var db = window.SB && window.SB.db;
+    if(!db){ msg('err', 'تعذّر الاتصال بالخدمة. أعيدي تحميل الصفحة وحاولي مرة أخرى.'); return; }
+
+    btn.disabled = true; btn.textContent = 'جارٍ الإرسال…';
+    db.from('seller_waitlist').insert({
+      name: name, contact_type: type, contact: contact,
+      wilaya: wilaya, category: cat, consent: true
+    })
+    .then(function(r){
+      var dup = r.error && (r.error.code === '23505');
+      if(r.error && !dup){ msg('err', 'لم يتم حفظ التسجيل. تحققي من اتصالك وحاولي مرة أخرى.'); return; }
+      msg('ok', 'تم تسجيلك. سنراسلك عند الانتقال إلى الدومين الرسمي.');
+      f.reset();
+    })
+    .catch(function(){ msg('err', 'لم يتم حفظ التسجيل. تحققي من اتصالك وحاولي مرة أخرى.'); })
+    .then(function(){ btn.disabled = false; btn.textContent = 'سجّلي اهتمامك'; });
+  });
+});
+</script>
+</body>
+</html>

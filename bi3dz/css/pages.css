@@ -1,0 +1,49 @@
+/* pages.css — تنسيقات خاصة بالصفحات */
+.auth-wrap{min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:20px}
+.google-btn{display:inline-flex;align-items:center;gap:10px;background:#fff;color:#333;border:1px solid #ddd;border-radius:14px;padding:11px 18px;font-weight:700}
+.profile-head{display:flex;flex-direction:column;align-items:center;gap:6px;padding:16px 0}
+.profile-stats{display:flex;gap:18px;justify-content:center;font-size:13px}
+.profile-stats b{display:block;font-size:17px;text-align:center}
+.menu-list{display:flex;flex-direction:column;gap:8px}
+.menu-list a,.menu-list button{display:flex;justify-content:space-between;align-items:center;padding:13px 14px;background:var(--surface);border:1px solid var(--border);border-radius:14px;text-align:start;width:100%}
+.profile-top-actions{display:flex;justify-content:space-between;align-items:center}
+.price-line{display:flex;flex-direction:column;gap:2px;margin:8px 0}
+.price-line .big{font-size:22px;font-weight:800;color:var(--c-primary-2)}
+.price-hist{font-size:13px;color:var(--muted)}
+.price-hist li{margin:2px 0}
+.detail-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.contact-links{display:flex;flex-wrap:wrap;gap:8px}
+.contact-links a{padding:6px 12px;border-radius:999px;background:var(--surface-2);font-size:13px}
+.faq-item{border-bottom:1px solid var(--border);padding:8px 0}.faq-item b{display:block}
+.presence{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--muted);margin-inline-end:4px}.presence.on{background:var(--ok)}
+.img-preview{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px;width:100%;box-sizing:border-box;overflow:hidden}
+.img-preview .ph{position:relative;aspect-ratio:1/1;border-radius:10px;overflow:hidden;background:var(--surface-2)}
+.img-preview img{width:100%;height:100%;object-fit:cover}
+.img-preview button{position:absolute;top:2px;inset-inline-end:2px;border:0;border-radius:50%;width:22px;height:22px;background:rgba(0,0,0,.6);color:#fff;cursor:pointer;pointer-events:auto}
+.char-count{font-size:11px;color:var(--muted);text-align:end}
+.stats-table{width:100%;border-collapse:collapse;font-size:13px}
+.stats-table th,.stats-table td{padding:6px 8px;border-bottom:1px solid var(--border);text-align:start}
+.stat-boxes{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.stat-box{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:12px;text-align:center}.stat-box b{display:block;font-size:22px;color:var(--c-primary-2)}
+.notif-item{display:flex;gap:10px;padding:12px;background:var(--surface);border:1px solid var(--border);border-radius:14px;margin-bottom:8px}
+.notif-item.unread{border-color:var(--c-primary)}
+.settings-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--border)}
+.swatches{display:flex;gap:8px}.swatch{width:30px;height:30px;border-radius:50%;border:3px solid transparent}.swatch.active{border-color:var(--text)}
+.switch{position:relative;width:46px;height:26px;background:var(--border);border-radius:999px;border:0}
+.switch::after{content:"";position:absolute;top:3px;inset-inline-start:3px;width:20px;height:20px;background:#fff;border-radius:50%;transition:.2s}
+.switch[aria-checked="true"]{background:var(--c-primary)}.switch[aria-checked="true"]::after{inset-inline-start:23px}
+.prose{line-height:1.9}.prose h2{font-size:17px}
+
+/* ===== حسابي (مطابق للبروتوتايب) ===== */
+.profile-head .avatar{width:90px;height:90px;border:3px solid var(--c-primary);box-shadow:0 8px 20px color-mix(in srgb,var(--c-primary) 22%,transparent)}
+.profile-stats{gap:24px;margin:12px 0 20px}
+.profile-stats b{font-size:18px}
+.profile-stats span{color:var(--muted);font-size:12px}
+.menu-list{gap:0}
+.menu-list a,.menu-list button{background:none;border:0;border-bottom:1px solid var(--border);border-radius:8px;padding:14px 10px;font-weight:500;font-size:14px}
+.menu-list a:active,.menu-list button:active{background:var(--surface-2)}
+.user-ads{margin-top:16px}
+
+/* ===== النبذة ومشاركة الحساب ===== */
+.profile-bio{max-width:420px;text-align:center;font-size:13px;color:var(--muted);line-height:1.7;margin:2px 0 4px;white-space:pre-line;word-break:break-word}
+.profile-share{margin:0 auto 10px;min-height:38px;padding:8px 16px}

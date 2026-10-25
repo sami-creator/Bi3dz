@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Volkswagen Tiguan 2024 R line - Ouedkniss</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    background: #f5f5f5;
+    color: #222;
+    line-height: 1.6;
+  }
+  .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+
+  /* Header */
+  .header {
+    background: #fff;
+    border-bottom: 3px solid #f60;
+    padding: 15px 0;
+    margin-bottom: 20px;
+  }
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .logo { font-size: 26px; font-weight: 800; color: #f60; letter-spacing: -1px; }
+  .logo span { color: #333; }
+  .header .id-badge {
+    background: #eef;
+    color: #335;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  /* Layout */
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 20px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+  }
+
+  /* Cards */
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.08);
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .card-body { padding: 20px; }
+
+  /* Gallery */
+  .gallery {
+    position: relative;
+    background: #111;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+  }
+  .gallery .main-image {
+    width: 100%;
+    height: 480px;
+    object-fit: contain;
+    display: block;
+    cursor: zoom-in;
+    background: #000;
+  }
+  @media (max-width: 600px) {
+    .gallery .main-image { height: 280px; }
+  }
+  .gallery .nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,.55);
+    color: #fff;
+    border: none;
+    font-size: 26px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .2s;
+    user-select: none;
+  }
+  .gallery .nav-btn:hover { background: rgba(246,102,0,.9); }
+  .gallery .prev { left: 12px; }
+  .gallery .next { right: 12px; }
+  .gallery .counter {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    background: rgba(0,0,0,.65);
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 14px;
+    font-size: 13px;
+  }
+  .thumbs {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 12px;
+    background: #fff;
+    scrollbar-width: thin;
+  }
+  .thumbs img {
+    width: 90px;
+    height: 65px;
+    object-fit: cover;
+    border-radius: 6px;
+    cursor: pointer;
+    flex-shrink: 0;
+    opacity: .6;
+    border: 2px solid transparent;
+    transition: all .15s;
+  }
+  .thumbs img:hover { opacity: .95; }
+  .thumbs img.active {
+    opacity: 1;
+    border-color: #f60;
+  }
+
+  /* Title & price */
+  .title { font-size: 24px; font-weight: 700; margin-bottom: 6px; }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 14px;
+  }
+  .meta .loc::before { content: "📍 "; }
+  .meta .date::before { content: "🕒 "; }
+  .price {
+    font-size: 26px;
+    font-weight: 800;
+    color: #f60;
+    margin: 10px 0 4px;
+  }
+  .price small { font-size: 14px; color: #999; font-weight: 500; }
+
+  /* Specs */
+  .specs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .spec-item {
+    background: #f8f8f8;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 10px 14px;
+  }
+  .spec-item .k {
+    font-size: 12px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    margin-bottom: 2px;
+  }
+  .spec-item .v { font-size: 15px; font-weight: 600; }
+
+  /* Description */
+  .description { color: #444; white-space: pre-line; }
+
+  /* Seller */
+  .seller-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f60, #ffa34d);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .seller-name { font-weight: 700; font-size: 17px; }
+  .seller-store { color: #f60; font-size: 14px; font-weight: 600; }
+  .seller-type {
+    display: inline-block;
+    background: #e8f5e9;
+    color: #2e7d32;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 2px 10px;
+    border-radius: 12px;
+    margin-top: 4px;
+  }
+  .btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 14px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: filter .2s;
+    margin-top: 10px;
+  }
+  .btn:hover { filter: brightness(1.06); }
+  .btn-primary { background: #f60; color: #fff; }
+  .btn-outline {
+    background: #fff;
+    color: #f60;
+    border: 2px solid #f60;
+  }
+  .btn-note {
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+    margin-top: 10px;
+  }
+
+  /* Lightbox */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.92);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: 95%;
+    max-height: 90vh;
+    object-fit: contain;
+  }
+  .lightbox .close {
+    position: absolute;
+    top: 18px;
+    right: 24px;
+    color: #fff;
+    font-size: 40px;
+    cursor: pointer;
+    line-height: 1;
+    user-select: none;
+  }
+  .lightbox .nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,.15);
+    color: #fff;
+    border: none;
+    font-size: 30px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .lightbox .nav-btn:hover { background: rgba(246,102,0,.8); }
+  .lightbox .prev { left: 18px; }
+  .lightbox .next { right: 18px; }
+  .lightbox .counter {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    background: rgba(0,0,0,.6);
+    padding: 4px 14px;
+    border-radius: 14px;
+    font-size: 14px;
+  }
+  .section-title {
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+    color: #888;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="logo">oued<span>kniss</span></div>
+    <div class="id-badge">Annonce N° 58405977</div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="layout">
+
+    <!-- ================= LEFT COLUMN ================= -->
+    <div>
+      <!-- Gallery -->
+      <div class="card">
+        <div class="gallery">
+          <img id="mainImage" class="main-image" src="https://cdn8.ouedkniss.com/1600/medias/announcements/images/pgOJXV/Vr32FSa3QHqmOCrjw99dgbDFEZJhzhftCulyEHbm.jpg" alt="Volkswagen Tiguan 2024 R line">
+          <button class="nav-btn prev" onclick="prevImage()">‹</button>
+          <button class="nav-btn next" onclick="nextImage()">›</button>
+          <div class="counter"><span id="currentNum">1</span> / <span id="totalNum">26</span></div>
+        </div>
+        <div class="thumbs" id="thumbs"></div>
+      </div>
+
+      <!-- Title & Specs -->
+      <div class="card">
+        <div class="card-body">
+          <h1 class="title">Volkswagen Tiguan 2024 R line</h1>
+          <div class="meta">
+            <span class="loc">El eulma, Sétif</span>
+            <span class="date">Publié le 21/10/2026 à 18:53</span>
+          </div>
+          <div class="price">Prix sur demande</div>
+
+          <div class="section-title" style="margin-top:22px;">Caractéristiques</div>
+          <div class="specs-grid">
+            <div class="spec-item"><div class="k">Marque</div><div class="v">Volkswagen</div></div>
+            <div class="spec-item"><div class="k">Modèle</div><div class="v">Tiguan</div></div>
+            <div class="spec-item"><div class="k">Finition</div><div class="v">R line</div></div>
+            <div class="spec-item"><div class="k">Année</div><div class="v">2024</div></div>
+            <div class="spec-item"><div class="k">Moteur</div><div class="v">2.0 TDI 193 ch</div></div>
+            <div class="spec-item"><div class="k">Énergie</div><div class="v">Diesel</div></div>
+            <div class="spec-item"><div class="k">Boîte</div><div class="v">Automatique</div></div>
+            <div class="spec-item"><div class="k">Kilométrage</div><div class="v">35 000 km</div></div>
+            <div class="spec-item"><div class="k">Origine</div><div class="v">Autre</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div class="card">
+        <div class="card-body">
+          <div class="section-title">Description</div>
+          <p class="description">Aucune description fournie par le vendeur pour cette annonce.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= RIGHT COLUMN ================= -->
+    <div>
+      <!-- Seller -->
+      <div class="card">
+        <div class="card-body">
+          <div class="section-head" style="margin-bottom:14px;">
+            <div class="section-title" style="margin-bottom:0;border:none;padding:0;">Vendeur</div>
+          </div>
+          <div class="seller-head">
+            <div class="avatar">N</div>
+            <div>
+              <div class="seller-name">nid_ouu</div>
+              <div class="seller-store">An auto</div>
+              <span class="seller-type">Magasin</span>
+            </div>
+          </div>
+          <a class="btn btn-primary" href="tel:+000000000" id="phoneBtn">📞 Afficher le numéro</a>
+          <a class="btn btn-outline" href="https://www.ouedkniss.com/voitures-volkswagen-tiguan-2024-r-line-el-eulma-setif-algerie-d58405977" target="_blank" rel="noopener">Voir l'annonce originale</a>
+          <div class="btn-note">Annonce N° 58405977</div>
+        </div>
+      </div>
+
+      <!-- Info summary -->
+      <div class="card">
+        <div class="card-body">
+          <div class="section-title">Résumé</div>
+          <div class="specs-grid" style="grid-template-columns:1fr 1fr;">
+            <div class="spec-item"><div class="k">Ville</div><div class="v">El eulma</div></div>
+            <div class="spec-item"><div class="k">Région</div><div class="v">Sétif</div></div>
+            <div class="spec-item"><div class="k">Catégorie</div><div class="v">Voitures</div></div>
+            <div class="spec-item"><div class="k">Statut</div><div class="v">Publiée</div></div>
+            <div class="spec-item"><div class="k">Téléphone</div><div class="v">Oui</div></div>
+            <div class="spec-item"><div class="k">ID vendeur</div><div class="v">11146051</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ================= LIGHTBOX ================= -->
+<div class="lightbox" id="lightbox">
+  <span class="close" onclick="closeLightbox()">×</span>
+  <button class="nav-btn prev" onclick="prevImage()">‹</button>
+  <img id="lightboxImage" src="" alt="Aperçu">
+  <button class="nav-btn next" onclick="nextImage()">›</button>
+  <div class="counter"><span id="lightboxNum">1</span> / <span id="lightboxTotal">26</span></div>
+</div>
+
+<script>
+  // ====== Données de l'annonce (images) ======
+  const images = [
+    "https://cdn8.ouedkniss.com/1600/medias/announcements/images/pgOJXV/Vr32FSa3QHqmOCrjw99dgbDFEZJhzhftCulyEHbm.jpg",
+    "https://cdn9.ouedkniss.com/1600/medias/announcements/images/pgOJXV/8hjdBc2XD8Dj41c8Kn4Rw33mEEyeb3Eg97N4oayx.jpg",
+    "https://cdn9.ouedkniss.com/1600/medias/announcements/images/pgOJXV/vOpeo8hSWoboma93Oc6XwSXk7594PuULcGaSk0Dt.jpg",
+    "https://cdn8.ouedkniss.com/1600/medias/announcements/images/pgOJXV/Xm2Z4wqSlWOadpSmxFuEUWPJXb9800ebnp73JvrU.jpg",
+    "https://cdn8.ouedkniss.com/1600/medias/announcements/images/pgOJXV/eBDsUaBSOXkGUox10olpD4LsZJDe55q1nOEFbn6p.jpg",
+    "https://cdn9.ouedkniss.com/1600/medias/announcements/images/pgOJXV/7gTO6ByOPy8M5NizhORbb4PnJLNwHcczXGXVhexi.jpg",
+    "https://cdn9.ouedkniss.com/1600/medias/announcements/images/pgOJXV/L9bpdqINnMtNV9hiGAQRMrppZT2u2wXNaH6L5TvZ.jpg",
+    "https://cdn9.ouedkniss.com/1600/medias/announcements/images/pgOJXV/TYNWMLsKQ4DDoFOOI4hB3chbept6JcLHPTArQtDJ.jpg",
+    "https://cdn9.ouedkniss.com/1600/medias/announcements/images/pgOJXV/960mbUILH8OMmYy4Zez6MidUGDx1pvxlwPCPzJUQ.jpg",
+    "https://cdn8.ouedkniss.com/1600/medias/announcements/images/pgOJXV/u5CjkfUUPbtwizcWW1PeVBxRXncccEQaS4wOxQjP.jpg",
+    "https://cdn8.ouedkniss.com/1600/medias/announcements/images/pgOJXV/W6IXnaZQKdMQZXKwtU2aZ05ZeAOWeeGnxkvczvHo.jpg",
+    "https://cdn7.ouedkniss.com/1600/medias/announcements/images/pgOJXV/sw66Cpmf09JeTGKW84pgCep2bUkNtcjSISXke5j0.jpg",
+    "https://cdn7.ouedkniss.com/1600/medias/announcements/images/pgOJXV/i0ihXvSeXlJXVCPGQz1Yz5KvBqz1ovcCRUa94LhN.jpg",
+    "https://cdn9.ouedkniss.com/1600/medias/announcements/images/pgOJXV/Wwe8M810ogrtTvBlaRWb4tbFewSqPgEKl5Q0BUjP.jpg",
+    "https://cdn8.ouedkniss.com/1600/medias/announcements/images/pgOJXV/mNotdhDDdzsCOr8k1kmuOhY50FKLKMiV0BySxKOw.jpg",
+    "https://cdn8.ouedkniss.com/1600/medias/announcements/images/pgOJXV/sqm8O1568VvP4edHvRLd6bE4Us4TTC7NxGtIOIVz.jpg",
+    "https://cdn7.ouedkniss.com/1600/medias/announcements/images/pgOJXV/VVI4bQudgmnz7LqjjNOk4MP8zGNsZesKJFgLIbNe.jpg",
+    "https://cdn8.ouedkniss.com/1600/medias/announcements/images/pgOJXV/Nl72HmOIiYkFo9NZhDnt4O2wS65jKeuNgcYX3Erx.jpg",
+    "https://cdn9.ouedkniss.com/1600/medias/announcements/images/pgOJXV/Kn6Ig5IFm85rycwta69H3uN8dAyxg6S3R66H8TdF.jpg",
+    "https://cdn7.ouedkniss.com/1600/medias/announcements/images/pgOJXV/suGf5T7VXYylVKiXXYf849SaBwnVh0udSiMMFqyC.jpg",
+    "https://cdn7.ouedkniss.com/1600/medias/announcements/images/pgOJXV/3sJ8BwLpR4CaoDjUetTuvJs6RVppYpEc2GgA7ulF.jpg",
+    "https://cdn9.ouedkniss.com/1600/medias/announcements/images/pgOJXV/gqcEexOVQ63t55o9FAIyxr7waoiNoLCufoFRKyJO.jpg",
+    "https://cdn8.ouedkniss.com/1600/medias/announcements/images/pgOJXV/6GZumx4h8uTLiyK4XjKumf4YfVIrCAqPpcsjojOj.jpg",
+    "https://cdn8.ouedkniss.com/1600/medias/announcements/images/pgOJXV/lstcR4eYarFwJ8hCZaBnsnB3z6Qf1II6xqVEVVT8.jpg",
+    "https://cdn7.ouedkniss.com/1600/medias/announcements/images/pgOJXV/OyNA4zbX8MuHq4TOrMhU8JX78WLaVdBWnPVQltiM.jpg",
+    "https://cdn8.ouedkniss.com/1600/medias/announcements/images/pgOJXV/cxNG7elZg8XlWwtKyvFjXiNLKewxVROplFasAwmu.jpg"
+  ];
+
+  let current = 0;
+
+  const mainImage   = document.getElementById('mainImage');
+  const thumbsWrap  = document.getElementById('thumbs');
+  const currentNum  = document.getElementById('currentNum');
+  const totalNum    = document.getElementById('totalNum');
+  const lightbox    = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImage');
+  const lightboxNum = document.getElementById('lightboxNum');
+  const lightboxTotal = document.getElementById('lightboxTotal');
+
+  totalNum.textContent = images.length;
+  lightboxTotal.textContent = images.length;
+
+  // Build thumbnails
+  images.forEach((src, i) => {
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = 'Photo ' + (i + 1);
+    if (i === 0) img.classList.add('active');
+    img.addEventListener('click', () => { goTo(i); });
+    thumbsWrap.appendChild(img);
+  });
+
+  function updateThumbs() {
+    [...thumbsWrap.children].forEach((t, i) => {
+      t.classList.toggle('active', i === current);
+    });
+  }
+
+  function goTo(index) {
+    current = (index + images.length) % images.length;
+    mainImage.src = images[current];
+    lightboxImg.src = images[current];
+    currentNum.textContent = current + 1;
+    lightboxNum.textContent = current + 1;
+    updateThumbs();
+  }
+
+  function nextImage() { goTo(current + 1); }
+  function prevImage() { goTo(current - 1); }
+
+  // Open lightbox on click
+  mainImage.addEventListener('click', () => {
+    lightboxImg.src = images[current];
+    lightbox.classList.add('open');
+  });
+  function closeLightbox() { lightbox.classList.remove('open'); }
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  // Keyboard
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') nextImage();
+    if (e.key === 'ArrowLeft')  prevImage();
+    if (e.key === 'Escape')     closeLightbox();
+  });
+
+  // Phone reveal (démo)
+  document.getElementById('phoneBtn').addEventListener('click', function (e) {
+    e.preventDefault();
+    this.textContent = '📞 Le numéro est masqué (démo)';
+    this.style.background = '#999';
+    this.style.cursor = 'default';
+  });
+</script>
+
+</body>
+</html>

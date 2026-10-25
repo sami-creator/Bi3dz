@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل الإعلان الأصلية</title>
+    <style>
+        :root {
+            --bg-color: #16151a;
+            --card-bg: #211f26;
+            --text-main: #ffffff;
+            --text-muted: #a3a2a8;
+            --primary-pink: #e95e99;
+            --whatsapp-green: #25d366;
+            --border-color: #2c2a33;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            padding-bottom: 90px;
+        }
+
+        /* 1. قسم الصور العلوي */
+        .image-container {
+            position: relative;
+            width: 100%;
+            background-color: #1e1d24;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: 340px;
+            object-fit: contain;
+        }
+
+        .img-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 13px;
+        }
+
+        .img-more {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            color: var(--text-muted);
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* أزرار التفاعل أسفل الصورة */
+        .image-actions {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .action-icon {
+            color: var(--text-muted);
+            font-size: 18px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        /* الحاوية العامة للمحتوى */
+        .main-content {
+            padding: 16px;
+        }
+
+        /* 2. الكتلة الأساسية (Hero) */
+        .hero-block {
+            margin-bottom: 20px;
+        }
+
+        .badge-status {
+            display: inline-block;
+            background-color: #2c2a35;
+            color: var(--text-muted);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .main-title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        .main-price {
+            font-size: 24px;
+            color: var(--primary-pink);
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .price-text-arabic {
+            font-size: 16px;
+            color: var(--primary-pink);
+            margin-bottom: 6px;
+        }
+
+        .price-type {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        /* 3. أزرار قنوات الاتصال الوسطى النظيفة */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .bg-whatsapp { background-color: var(--whatsapp-green); }
+        .bg-phone { background-color: #2e2c35; }
+
+        /* 4. كبسولات البيانات والمواصفات */
+        .spec-section {
+            margin-top: 20px;
+        }
+
+        .spec-title {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .chips-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .chip {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+        }
+
+        .raw-description {
+            font-size: 15px;
+            color: var(--text-main);
+            line-height: 1.5;
+            margin-top: 10px;
+        }
+
+        /* 5. بطاقة البائع المجموعة */
+        .seller-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px;
+            margin: 20px 0;
+        }
+
+        .seller-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .seller-details {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .seller-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #555;
+        }
+
+        .seller-name {
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .seller-time {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        .delivery-line {
+            color: #ef4444;
+            font-size: 13px;
+            padding: 10px 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 10px;
+        }
+
+        .ad-meta-stats {
+            display: flex;
+            gap: 15px;
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        /* 6. منتجات مشابهة */
+        .similar-section {
+            margin-top: 25px;
+        }
+
+        .similar-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .similar-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .similar-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            height: 140px;
+        }
+
+        .similar-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 7. الشريط السفلي الثابت للـ CTA */
+        .fixed-bottom {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+        }
+
+        .btn-buy-now {
+            background-color: var(--primary-pink);
+            color: white;
+            border: none;
+            padding: 12px 0;
+            width: 75%;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .btn-back-arrow {
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 20px;
+            cursor: pointer;
+            width: 20%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. قسم الصور الأصلي -->
+    <div class="image-container">
+        <!-- تم وضع رابط صورة الطفلة الأصلية من لقطة الشاشة الخاصة بك للـتأكيد المعاين البصري -->
+        <img src="https://imgur.com" alt="Burkini Ad Image">
+        <div class="img-badge">1 / 5</div>
+        <div class="img-more">⋮</div>
+    </div>
+
+    <!-- أزرار التفاعل أسفل الصورة مباشرة -->
+    <div class="image-actions">
+        <button class="action-icon">🔗</button>
+        <button class="action-icon">📹</button>
+        <button class="action-icon">⇄</button>
+        <button class="action-icon">🔊</button>
+        <button class="action-icon">♡</button>
+    </div>
+
+    <div class="main-content">
+        
+        <!-- 2. الكتلة الأساسية (بدون تكرار السعر والعنوان) -->
+        <div class="hero-block">
+            <span class="badge-status">معدل</span>
+            <h1 class="main-title">Burkini</h1>
+            <div class="main-price">2 200 دج</div>
+            <div class="price-text-arabic">ميتين و عشرين ألف</div>
+            <div class="price-type">سعر ثابت</div>
+            
+            <!-- نقل موقع الإعلان إلى مكان بارز هنا -->
+            <div class="chip" style="display:inline-block; margin-top:5px; border-radius: 8px;">
+                📍 16. الجزائر، سيدي امحمد، باب الوادي
+            </div>
+        </div>
+
+        <!-- 3. قنوات التواصل المستطيلة النظيفة (بدون الصف الملون المكرر) -->
+        <div class="contact-grid">
+            <a href="https://wa.me" class="contact-btn bg-whatsapp">
+                WhatsApp 0541145221
+            </a>
+            <a href="tel:0541145221" class="contact-btn bg-phone">
+                0541145221
+            </a>
+        </div>
+
+        <!-- 4. تفاصيل المنتج مجزأة ومفصولة (Chunking) -->
+        <div class="spec-section">
+            <div class="spec-title">المقاسات المتاحة:</div>
+            <div class="chips-group">
+                <span class="chip">XS</span>
+                <span class="chip">S</span>
+                <span class="chip">50</span>
+                <span class="chip">52</span>
+            </div>
+
+            <div class="spec-title">الألوان:</div>
+            <div class="chips-group">
+                <span class="chip">أبيض</span>
+                <span class="chip">أحمر</span>
+            </div>
+

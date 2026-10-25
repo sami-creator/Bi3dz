@@ -1,0 +1,3510 @@
+{
+ "_comment": "قاموس لغوي لكل صنف فرعي (ar=عربية ودارجة، fr، en). لا يحتوي كلمات بذيئة: تُفحص عبر Sanitize.containsBadWords",
+ "version": 1,
+ "subs": {
+  "karakou": {
+   "ar": [
+    "كراكو",
+    "كراكوا",
+    "كاراكو",
+    "كراكو عاصمي",
+    "كراكو جزائري"
+   ],
+   "fr": [
+    "karakou",
+    "caracou",
+    "karakos",
+    "karako"
+   ],
+   "en": [
+    "karakou",
+    "algerian karakou"
+   ]
+  },
+  "gandoura_thakila": {
+   "ar": [
+    "قندورة",
+    "قندورا",
+    "قنادر",
+    "قندورة ثقيلة",
+    "قندورة عرس",
+    "قندورة مطرزة",
+    "قندورة بالفتلة"
+   ],
+   "fr": [
+    "gandoura",
+    "gandora",
+    "gandoura lourde",
+    "gandoura mariage",
+    "gandoura brodee",
+    "gandoura de mariage"
+   ],
+   "en": [
+    "gandoura",
+    "gandora",
+    "heavy gandoura",
+    "wedding gandoura"
+   ]
+  },
+  "gandoura_constantine": {
+   "ar": [
+    "قندورة قسنطينية",
+    "قندورة",
+    "قندورة الفتلة",
+    "قندورة مجبودة",
+    "فتلة",
+    "مجبود"
+   ],
+   "fr": [
+    "gandoura constantinoise",
+    "gandoura",
+    "fetla",
+    "medjboud",
+    "gandoura fetla"
+   ],
+   "en": [
+    "constantine gandoura",
+    "gandoura",
+    "constantinois gandoura"
+   ]
+  },
+  "chedda": {
+   "ar": [
+    "شدة",
+    "شدة تلمسانية",
+    "الشدة التلمسانية",
+    "شدة عروس",
+    "شدة تلمسان"
+   ],
+   "fr": [
+    "chedda",
+    "chedda tlemcenienne",
+    "chedda de mariee",
+    "chedda complete"
+   ],
+   "en": [
+    "chedda",
+    "tlemcen chedda",
+    "tlemcenian chedda"
+   ]
+  },
+  "takchita": {
+   "ar": [
+    "تكشيطة",
+    "تكشيطات",
+    "تقشيطة",
+    "تكشيطة مغربية"
+   ],
+   "fr": [
+    "takchita",
+    "tekchita",
+    "tkachita",
+    "takchita marocaine"
+   ],
+   "en": [
+    "takchita",
+    "moroccan takchita",
+    "tekchita"
+   ]
+  },
+  "bridal": {
+   "ar": [
+    "فستان زفاف",
+    "فساتين زفاف",
+    "فستان عروس",
+    "فستان العروس",
+    "عروس",
+    "عروسة",
+    "فستان خطوبة",
+    "ثوب زفاف",
+    "روبة عروس",
+    "روبة زفاف"
+   ],
+   "fr": [
+    "robe de mariee",
+    "robe mariee",
+    "robe de mariage",
+    "mariee",
+    "robe de fiancailles",
+    "robe fiancailles",
+    "robes de mariee"
+   ],
+   "en": [
+    "wedding dress",
+    "bridal dress",
+    "bridal gown",
+    "wedding gown",
+    "bride",
+    "bridal",
+    "engagement dress"
+   ]
+  },
+  "caftan": {
+   "ar": [
+    "قفطان",
+    "قفطانات",
+    "كفتان",
+    "قفطان مغربي",
+    "قفطان عروس"
+   ],
+   "fr": [
+    "caftan",
+    "kaftan",
+    "caftans",
+    "caftan marocain",
+    "caftan de mariee"
+   ],
+   "en": [
+    "caftan",
+    "kaftan",
+    "moroccan caftan"
+   ]
+  },
+  "wedding_top": {
+   "ar": [
+    "بلوزة عرس",
+    "بلوزة للعرس",
+    "بلوزة عروس",
+    "بلوزة حفل زفاف",
+    "توب عرس",
+    "بلوزة افراح"
+   ],
+   "fr": [
+    "haut de mariage",
+    "blouse de mariage",
+    "blouse mariage",
+    "haut mariage",
+    "haut pour mariage"
+   ],
+   "en": [
+    "wedding top",
+    "wedding blouse",
+    "blouse for wedding",
+    "bridal top"
+   ]
+  },
+  "jabador": {
+   "ar": [
+    "جابادور",
+    "جبادور",
+    "جبدور",
+    "جابادورات"
+   ],
+   "fr": [
+    "jabador",
+    "djabador",
+    "gabador",
+    "jabador femme"
+   ],
+   "en": [
+    "jabador",
+    "djellaba jabador"
+   ]
+  },
+  "melhfa": {
+   "ar": [
+    "ملحفة",
+    "ملاحف",
+    "ملحفة صحراوية",
+    "ملحفه سودانية",
+    "ملحفة ملونة"
+   ],
+   "fr": [
+    "melhfa",
+    "mlahfa",
+    "melehfa",
+    "melhfa saharienne"
+   ],
+   "en": [
+    "melhfa",
+    "saharan melhfa",
+    "melehfa"
+   ]
+  },
+  "flower_girl": {
+   "ar": [
+    "فستان عروس صغيرة",
+    "عروسة صغيرة",
+    "فستان بنت عرس",
+    "فستان وصيفة",
+    "وصيفة",
+    "وصيفات",
+    "فستان وصيفات",
+    "عروسة صغيرة فستان"
+   ],
+   "fr": [
+    "robe petite mariee",
+    "petite mariee",
+    "robe demoiselle d honneur",
+    "demoiselle d honneur",
+    "robe ceremonie fille",
+    "robe cortege"
+   ],
+   "en": [
+    "flower girl",
+    "flower girl dress",
+    "bridesmaid dress",
+    "junior bridesmaid",
+    "little bride dress"
+   ]
+  },
+  "wedding_accessories": {
+   "ar": [
+    "اكسسوارات عرس",
+    "اكسسوارات عروس",
+    "تاج عروس",
+    "تاج",
+    "طرحة",
+    "طرحة عروس",
+    "اكليل عروس",
+    "حزام عروس",
+    "قفازات عروس",
+    "مجوهرات عرس",
+    "طقم مجوهرات عروس",
+    "تاج العروس",
+    "خلخال عروس"
+   ],
+   "fr": [
+    "accessoires de mariage",
+    "accessoires mariee",
+    "couronne mariee",
+    "diademe",
+    "voile de mariee",
+    "voile mariee",
+    "bijoux de mariee",
+    "ceinture mariee",
+    "gants de mariee",
+    "parure mariee"
+   ],
+   "en": [
+    "wedding accessories",
+    "bridal accessories",
+    "tiara",
+    "bridal veil",
+    "bridal crown",
+    "bridal jewelry",
+    "bridal belt",
+    "bridal gloves",
+    "veil"
+   ]
+  },
+  "suit": {
+   "ar": [
+    "بدلة",
+    "بدلات",
+    "بدلة رسمية",
+    "تايور",
+    "تايير",
+    "طقم رسمي",
+    "بدلة نسائية",
+    "طقم تايور"
+   ],
+   "fr": [
+    "tailleur",
+    "costume",
+    "tailleur pantalon",
+    "tailleur jupe",
+    "ensemble tailleur",
+    "costume femme"
+   ],
+   "en": [
+    "suit",
+    "pant suit",
+    "business suit",
+    "blazer set",
+    "women suit",
+    "tailored suit"
+   ]
+  },
+  "shirt": {
+   "ar": [
+    "قميص",
+    "قمصان",
+    "كميزة",
+    "شميز",
+    "قميص نسائي",
+    "قميص رسمي",
+    "قميص ابيض"
+   ],
+   "fr": [
+    "chemise",
+    "chemises",
+    "chemise femme",
+    "chemise blanche",
+    "chemise classique"
+   ],
+   "en": [
+    "shirt",
+    "shirts",
+    "button up shirt",
+    "white shirt",
+    "dress shirt"
+   ]
+  },
+  "abaya": {
+   "ar": [
+    "عباءة",
+    "عباية",
+    "عبايات",
+    "عباءات",
+    "عباية مغربية",
+    "عباية عملية",
+    "عباية سوداء"
+   ],
+   "fr": [
+    "abaya",
+    "abayas",
+    "abaya noire",
+    "abaya de travail"
+   ],
+   "en": [
+    "abaya",
+    "abayas",
+    "black abaya"
+   ]
+  },
+  "pants": {
+   "ar": [
+    "بنطلون",
+    "بنطال",
+    "بناطيل",
+    "سروال",
+    "سروال قماش",
+    "بنطلونات",
+    "جينز",
+    "دجين",
+    "بنطلون جينز",
+    "بنطلون واسع",
+    "بنطلون كلاسيك"
+   ],
+   "fr": [
+    "pantalon",
+    "pantalons",
+    "pantalon large",
+    "pantalon cigarette",
+    "palazzo",
+    "jean",
+    "jeans",
+    "pantalon taille haute"
+   ],
+   "en": [
+    "pants",
+    "trousers",
+    "wide leg pants",
+    "jeans",
+    "denim",
+    "slacks",
+    "palazzo pants"
+   ]
+  },
+  "skirt": {
+   "ar": [
+    "جيبة",
+    "جيبات",
+    "تنورة",
+    "تنانير",
+    "جيبة طويلة",
+    "جيبة قصيرة",
+    "تنورة طويلة",
+    "جيبة قلم"
+   ],
+   "fr": [
+    "jupe",
+    "jupes",
+    "jupe longue",
+    "jupe crayon",
+    "jupe plissee",
+    "jupe courte"
+   ],
+   "en": [
+    "skirt",
+    "skirts",
+    "pencil skirt",
+    "long skirt",
+    "pleated skirt",
+    "mini skirt"
+   ]
+  },
+  "jacket": {
+   "ar": [
+    "جاكيت",
+    "جاكيتات",
+    "جاكيتة",
+    "معطف",
+    "مانطو",
+    "كابوط",
+    "بالطو",
+    "سترة",
+    "تريكو",
+    "بولوفر",
+    "بوليفر",
+    "كنزة",
+    "جاكيط"
+   ],
+   "fr": [
+    "veste",
+    "vestes",
+    "blazer",
+    "manteau",
+    "doudoune",
+    "tricot",
+    "pull",
+    "parka",
+    "trench",
+    "pull femme",
+    "tricots"
+   ],
+   "en": [
+    "jacket",
+    "coat",
+    "blazer",
+    "sweater",
+    "pullover",
+    "trench coat",
+    "parka",
+    "knitwear",
+    "jumper"
+   ]
+  },
+  "blouse": {
+   "ar": [
+    "بلوزة",
+    "بلوزات",
+    "بلوز",
+    "توب",
+    "تونيك",
+    "بلوزة نسائية",
+    "بلوزة قماش",
+    "تيشرت نسائي"
+   ],
+   "fr": [
+    "blouse",
+    "blouses",
+    "chemisier",
+    "tunique",
+    "top",
+    "chemisier femme",
+    "blouse femme"
+   ],
+   "en": [
+    "blouse",
+    "blouses",
+    "tunic",
+    "top",
+    "women blouse",
+    "tops"
+   ]
+  },
+  "uniform": {
+   "ar": [
+    "زي موحد",
+    "لباس موحد",
+    "بدلة عمل",
+    "مئزر",
+    "ميدعة",
+    "مريول",
+    "زي مدرسي",
+    "بلوزة عمل",
+    "زي عمل"
+   ],
+   "fr": [
+    "uniforme",
+    "uniformes",
+    "tenue de travail",
+    "blouse de travail",
+    "tablier",
+    "blouse ecole",
+    "tenue professionnelle",
+    "tenue de service"
+   ],
+   "en": [
+    "uniform",
+    "uniforms",
+    "work uniform",
+    "apron",
+    "school uniform",
+    "work wear",
+    "staff uniform"
+   ]
+  },
+  "medical_wear": {
+   "ar": [
+    "ملابس طبية",
+    "بلوزة طبية",
+    "بدلة طبية",
+    "لباس طبي",
+    "مئزر طبي",
+    "بلوزة ممرضة",
+    "مريول طبي",
+    "بلوزة طبيبة",
+    "زي طبي",
+    "سكراب"
+   ],
+   "fr": [
+    "tenue medicale",
+    "blouse medicale",
+    "blouse infirmiere",
+    "tenue infirmiere",
+    "blouse blanche",
+    "scrubs",
+    "tenue de bloc",
+    "tenue hospitaliere",
+    "tenues medicales"
+   ],
+   "en": [
+    "medical wear",
+    "scrubs",
+    "medical uniform",
+    "nurse uniform",
+    "lab coat",
+    "nursing uniform",
+    "medical scrubs"
+   ]
+  },
+  "swim": {
+   "ar": [
+    "ملابس سباحة",
+    "لباس سباحة",
+    "ملابس بحر",
+    "لباس بحر",
+    "مايوه",
+    "مايو",
+    "مايوهات",
+    "بدلة سباحة",
+    "ملابس السباحة"
+   ],
+   "fr": [
+    "maillot de bain",
+    "maillots de bain",
+    "maillot",
+    "tenue de bain",
+    "maillot femme"
+   ],
+   "en": [
+    "swimwear",
+    "swimsuit",
+    "bathing suit",
+    "swim suit",
+    "swimsuits"
+   ]
+  },
+  "burkini": {
+   "ar": [
+    "بوركيني",
+    "بروكيني",
+    "بوركينى",
+    "بوركينيات"
+   ],
+   "fr": [
+    "burkini",
+    "burkinis",
+    "burqini"
+   ],
+   "en": [
+    "burkini",
+    "burkinis",
+    "burqini"
+   ]
+  },
+  "cover": {
+   "ar": [
+    "ملابس شاطئ",
+    "لباس شاطئ",
+    "باريو",
+    "ساتر شاطئ",
+    "كفر شاطئ",
+    "ساتر بحر",
+    "فستان شاطئ",
+    "كيمونو شاطئ",
+    "كافر شاطئ"
+   ],
+   "fr": [
+    "pareo",
+    "cache maillot",
+    "cover up",
+    "tunique de plage",
+    "kimono de plage",
+    "robe de plage",
+    "paréo",
+    "vetement de plage"
+   ],
+   "en": [
+    "cover up",
+    "cover ups",
+    "sarong",
+    "pareo",
+    "beach cover",
+    "beach dress",
+    "beach kimono",
+    "beach tunic"
+   ]
+  },
+  "bikini": {
+   "ar": [
+    "بيكيني",
+    "بكيني",
+    "بيكينى",
+    "بيكينيات",
+    "بيكيني قطعتين"
+   ],
+   "fr": [
+    "bikini",
+    "bikinis",
+    "deux pieces",
+    "maillot deux pieces",
+    "maillot 2 pieces"
+   ],
+   "en": [
+    "bikini",
+    "bikinis",
+    "two piece",
+    "two piece swimsuit"
+   ]
+  },
+  "one_piece": {
+   "ar": [
+    "مايوه قطعة واحدة",
+    "مايو قطعة واحدة",
+    "لباس سباحة قطعة",
+    "قطعة واحدة مايوه",
+    "مايوه قطعة"
+   ],
+   "fr": [
+    "maillot une piece",
+    "maillot 1 piece",
+    "maillot une pièce",
+    "une piece maillot",
+    "maillot de bain une piece"
+   ],
+   "en": [
+    "one piece",
+    "one piece swimsuit",
+    "one piece swimwear",
+    "one-piece"
+   ]
+  },
+  "swim_shorts": {
+   "ar": [
+    "شورت سباحة",
+    "شورت بحر",
+    "سروال سباحة",
+    "بوكسر سباحة",
+    "شورت للسباحة"
+   ],
+   "fr": [
+    "short de bain",
+    "short bain",
+    "boxer de bain",
+    "short de plage"
+   ],
+   "en": [
+    "swim shorts",
+    "swim trunks",
+    "board shorts",
+    "swimming shorts"
+   ]
+  },
+  "beach_robe": {
+   "ar": [
+    "روب شاطئ",
+    "روب بحر",
+    "روب حمام",
+    "بنوار",
+    "روب الحمام"
+   ],
+   "fr": [
+    "peignoir de plage",
+    "peignoir",
+    "sortie de bain",
+    "peignoir de bain",
+    "peignoir femme"
+   ],
+   "en": [
+    "beach robe",
+    "bathrobe",
+    "beach cover robe",
+    "terry robe"
+   ]
+  },
+  "beach_sandals": {
+   "ar": [
+    "صندل شاطئ",
+    "صنادل شاطئ",
+    "شبشب بحر",
+    "شباشب شاطئ",
+    "صندل بحر",
+    "شبشب سباحة",
+    "شبشب شاطئ"
+   ],
+   "fr": [
+    "sandales de plage",
+    "tongs",
+    "claquettes de plage",
+    "sandales plage",
+    "tong"
+   ],
+   "en": [
+    "beach sandals",
+    "flip flops",
+    "pool sandals",
+    "beach slippers",
+    "beach slides"
+   ]
+  },
+  "beach_hat": {
+   "ar": [
+    "قبعة شاطئ",
+    "قبعة بحر",
+    "قبعة قش",
+    "قبعة شمس",
+    "قبعة",
+    "برنيطة",
+    "قبعات",
+    "قبعة واسعة"
+   ],
+   "fr": [
+    "chapeau de plage",
+    "chapeau de paille",
+    "capeline",
+    "chapeau",
+    "chapeau soleil",
+    "chapeaux"
+   ],
+   "en": [
+    "beach hat",
+    "sun hat",
+    "straw hat",
+    "hat",
+    "wide brim hat",
+    "hats"
+   ]
+  },
+  "dress": {
+   "ar": [
+    "فستان سهرة",
+    "فساتين سهرة",
+    "فستان",
+    "فساتين",
+    "فستان حفلات",
+    "روبة",
+    "روب سهرة",
+    "روبة سهرة",
+    "فستان مناسبات",
+    "فستان طويل",
+    "روبات",
+    "روبة طويلة",
+    "روبة حفلات"
+   ],
+   "fr": [
+    "robe de soiree",
+    "robe soiree",
+    "robe",
+    "robes",
+    "robe longue",
+    "robe de ceremonie",
+    "robe de cocktail",
+    "robe habillee"
+   ],
+   "en": [
+    "evening dress",
+    "evening gown",
+    "dress",
+    "dresses",
+    "cocktail dress",
+    "prom dress",
+    "gown",
+    "maxi dress",
+    "party dress"
+   ]
+  },
+  "jump": {
+   "ar": [
+    "جمبسوت",
+    "جمب سوت",
+    "جامبسوت",
+    "جمبسوت سهرة",
+    "اوفرول",
+    "سالوبيت"
+   ],
+   "fr": [
+    "combinaison",
+    "combinaisons",
+    "combi pantalon",
+    "combi short",
+    "jumpsuit",
+    "combinaison pantalon",
+    "combinaison de soiree"
+   ],
+   "en": [
+    "jumpsuit",
+    "jump suit",
+    "romper",
+    "playsuit",
+    "overall",
+    "jumpsuits"
+   ]
+  },
+  "evening_skirt": {
+   "ar": [
+    "تنورة سهرة",
+    "جيبة سهرة",
+    "جيبة سهرة طويلة",
+    "تنورة سهرة طويلة",
+    "جيبة حفلات"
+   ],
+   "fr": [
+    "jupe de soiree",
+    "jupe soiree",
+    "jupe de ceremonie",
+    "jupe habillee"
+   ],
+   "en": [
+    "evening skirt",
+    "party skirt",
+    "formal skirt",
+    "cocktail skirt"
+   ]
+  },
+  "evening_top": {
+   "ar": [
+    "بلوزة سهرة",
+    "توب سهرة",
+    "بلوزة حفلات",
+    "بلوزة مناسبات",
+    "توب حفلات"
+   ],
+   "fr": [
+    "haut de soiree",
+    "top de soiree",
+    "blouse de soiree",
+    "haut soiree",
+    "top soiree"
+   ],
+   "en": [
+    "evening top",
+    "evening blouse",
+    "party top",
+    "formal top",
+    "dressy top"
+   ]
+  },
+  "evening_suit": {
+   "ar": [
+    "بدلة سهرة",
+    "تايور سهرة",
+    "طقم سهرة",
+    "تايير سهرة",
+    "طقم مناسبات"
+   ],
+   "fr": [
+    "costume de soiree",
+    "tailleur de soiree",
+    "ensemble de soiree",
+    "tailleur soiree",
+    "tailleur habille"
+   ],
+   "en": [
+    "evening suit",
+    "party suit",
+    "tuxedo",
+    "evening set",
+    "formal suit",
+    "evening pantsuit"
+   ]
+  },
+  "evening_abaya": {
+   "ar": [
+    "عباءة سهرة",
+    "عباية سهرة",
+    "عباية مناسبات",
+    "عباءة مناسبات",
+    "عباية حفلات",
+    "عباية مطرزة"
+   ],
+   "fr": [
+    "abaya de soiree",
+    "abaya soiree",
+    "abaya de ceremonie",
+    "abaya habillee",
+    "abaya brodee"
+   ],
+   "en": [
+    "evening abaya",
+    "party abaya",
+    "formal abaya",
+    "embroidered abaya"
+   ]
+  },
+  "evening_cardigan": {
+   "ar": [
+    "كارديجان سهرة",
+    "كارديغان",
+    "كارديجان",
+    "بولير",
+    "بوليرو",
+    "شال سهرة",
+    "جاكيت سهرة",
+    "كاردغان"
+   ],
+   "fr": [
+    "gilet de soiree",
+    "cardigan",
+    "bolero",
+    "gilet",
+    "gilet long",
+    "cardigan de soiree",
+    "boléro"
+   ],
+   "en": [
+    "evening cardigan",
+    "cardigan",
+    "bolero",
+    "shrug",
+    "evening shawl",
+    "evening wrap"
+   ]
+  },
+  "g_dress": {
+   "ar": [
+    "فستان بنت",
+    "فستان بنات",
+    "فستان طفلة",
+    "فستان بنوتة",
+    "فساتين بنات",
+    "روبة بنت",
+    "روبة بنات",
+    "روبة طفلة",
+    "فستان اطفال",
+    "روبة اطفال",
+    "فستان لبنت صغيرة",
+    "فستان بيبي"
+   ],
+   "fr": [
+    "robe fille",
+    "robe fillette",
+    "robe enfant",
+    "robe bebe",
+    "robes filles",
+    "robe petite fille",
+    "robe bebe fille",
+    "robe pour fille"
+   ],
+   "en": [
+    "girls dress",
+    "girl dress",
+    "kids dress",
+    "baby dress",
+    "toddler dress",
+    "children dress",
+    "dress for girl"
+   ]
+  },
+  "g_set": {
+   "ar": [
+    "طقم بنات",
+    "طقم بنت",
+    "طقم اطفال",
+    "طقم طفلة",
+    "مجموعة بنات",
+    "طقم بنوتة",
+    "طقم بيبي"
+   ],
+   "fr": [
+    "ensemble fille",
+    "ensemble enfant",
+    "ensemble bebe",
+    "ensemble fillette",
+    "coordonne fille",
+    "ensemble pour fille"
+   ],
+   "en": [
+    "girls set",
+    "kids set",
+    "girls outfit",
+    "baby set",
+    "kids outfit",
+    "toddler set"
+   ]
+  },
+  "g_skirt": {
+   "ar": [
+    "تنورة بنات",
+    "جيبة بنات",
+    "جيبة بنت",
+    "تنورة طفلة",
+    "جيبة طفلة",
+    "تنانير بنات",
+    "جيبة اطفال"
+   ],
+   "fr": [
+    "jupe fille",
+    "jupe fillette",
+    "jupe enfant",
+    "jupe bebe",
+    "jupe pour fille"
+   ],
+   "en": [
+    "girls skirt",
+    "kids skirt",
+    "toddler skirt",
+    "skirt for girl"
+   ]
+  },
+  "g_pants": {
+   "ar": [
+    "بنطلون بنات",
+    "بنطلون بنت",
+    "بنطلون طفلة",
+    "سروال بنات",
+    "سروال بنت",
+    "بنطال اطفال",
+    "بنطلون اطفال",
+    "جينز بنات",
+    "ليغنز بنات"
+   ],
+   "fr": [
+    "pantalon fille",
+    "pantalon fillette",
+    "pantalon enfant",
+    "jean fille",
+    "legging fille",
+    "pantalon pour fille"
+   ],
+   "en": [
+    "girls pants",
+    "kids pants",
+    "girls jeans",
+    "kids trousers",
+    "girls leggings",
+    "pants for girl"
+   ]
+  },
+  "g_shirt": {
+   "ar": [
+    "قميص بنات",
+    "قميص بنت",
+    "قميص طفلة",
+    "بلوزة بنات",
+    "تيشرت بنات",
+    "تيشيرت بنت",
+    "قميص اطفال",
+    "بلوزة بنت",
+    "بلوزة طفلة"
+   ],
+   "fr": [
+    "chemise fille",
+    "chemise fillette",
+    "tee shirt fille",
+    "t shirt fille",
+    "chemise enfant",
+    "tshirt fille",
+    "haut fille",
+    "blouse fille"
+   ],
+   "en": [
+    "girls shirt",
+    "kids shirt",
+    "girls t shirt",
+    "girls tee",
+    "girls blouse",
+    "girls top"
+   ]
+  },
+  "g_jacket": {
+   "ar": [
+    "جاكيت بنات",
+    "جاكيت بنت",
+    "جاكيت طفلة",
+    "معطف بنات",
+    "مانطو بنات",
+    "جاكيت اطفال",
+    "بلوفر بنات",
+    "بالطو بنات",
+    "جاكيت بنوتة"
+   ],
+   "fr": [
+    "veste fille",
+    "veste fillette",
+    "veste enfant",
+    "manteau fille",
+    "blouson fille",
+    "doudoune fille",
+    "pull fille",
+    "gilet fille"
+   ],
+   "en": [
+    "girls jacket",
+    "kids jacket",
+    "girls coat",
+    "kids coat",
+    "girls sweater",
+    "girls hoodie"
+   ]
+  },
+  "g_sport": {
+   "ar": [
+    "ملابس رياضية بنات",
+    "ملابس رياضية بنت",
+    "طقم رياضي بنات",
+    "طقم رياضة بنات",
+    "بدلة رياضية بنات",
+    "ملابس رياضة اطفال",
+    "ليغنز رياضي بنات",
+    "بدلة رياضة بنت"
+   ],
+   "fr": [
+    "survetement fille",
+    "tenue de sport fille",
+    "jogging fille",
+    "legging fille",
+    "ensemble sport fille",
+    "vetement sport enfant",
+    "survet fille"
+   ],
+   "en": [
+    "girls sportswear",
+    "kids sportswear",
+    "girls tracksuit",
+    "girls activewear",
+    "kids activewear",
+    "girls gym wear"
+   ]
+  },
+  "g_pyjamas": {
+   "ar": [
+    "بيجامة بنات",
+    "بيجامة بنت",
+    "بيجامة طفلة",
+    "بيجامة اطفال",
+    "لباس نوم بنات",
+    "ملابس نوم بنات",
+    "قميص نوم بنات",
+    "بيجامة بنوتة"
+   ],
+   "fr": [
+    "pyjama fille",
+    "pyjama fillette",
+    "pyjama enfant",
+    "pyjama bebe",
+    "chemise de nuit fille",
+    "pyjama petite fille"
+   ],
+   "en": [
+    "girls pajamas",
+    "girls pyjamas",
+    "kids pajamas",
+    "kids pyjamas",
+    "girls nightwear",
+    "girls nightgown"
+   ]
+  },
+  "g_underwear": {
+   "ar": [
+    "ملابس داخلية بنات",
+    "لباس داخلي بنات",
+    "سليب بنات",
+    "كولوط بنات",
+    "صدرية بنات",
+    "ملابس داخلية اطفال",
+    "ستيان بنات",
+    "كيلوت بنات"
+   ],
+   "fr": [
+    "sous vetements fille",
+    "culotte fille",
+    "slip fille",
+    "brassiere fille",
+    "lingerie fille",
+    "sous vetement enfant",
+    "culottes fille"
+   ],
+   "en": [
+    "girls underwear",
+    "kids underwear",
+    "girls panties",
+    "girls bra",
+    "training bra",
+    "girls briefs"
+   ]
+  },
+  "g_shoes": {
+   "ar": [
+    "حذاء بنات",
+    "حذاء بنت",
+    "احذية بنات",
+    "صباط بنات",
+    "صباط بنت",
+    "حذاء طفلة",
+    "سباط بنات",
+    "صندل بنات",
+    "حذاء اطفال",
+    "صباط اطفال",
+    "بالرينات بنات",
+    "سباط بنت"
+   ],
+   "fr": [
+    "chaussure fille",
+    "chaussures fille",
+    "chaussures fillette",
+    "chaussures enfant",
+    "baskets fille",
+    "sandales fille",
+    "ballerines fille",
+    "chaussure enfant"
+   ],
+   "en": [
+    "girls shoes",
+    "kids shoes",
+    "girls sneakers",
+    "girls sandals",
+    "toddler shoes",
+    "girl shoes"
+   ]
+  },
+  "g_hair_accessories": {
+   "ar": [
+    "اكسسوارات شعر بنات",
+    "اكسسوار شعر",
+    "ربطة شعر",
+    "ربطات شعر",
+    "توكة",
+    "توكات",
+    "اكسسوارات شعر",
+    "مشبك شعر",
+    "مشابك شعر",
+    "اطواق شعر",
+    "سكرنشي",
+    "شريطة شعر",
+    "ربطة شعر بنات"
+   ],
+   "fr": [
+    "accessoires cheveux",
+    "accessoires cheveux fille",
+    "barrette",
+    "barrettes",
+    "elastique cheveux",
+    "chouchou",
+    "serre tete",
+    "bandeau cheveux",
+    "pince cheveux",
+    "headband"
+   ],
+   "en": [
+    "hair accessories",
+    "hair clips",
+    "hair clip",
+    "hair band",
+    "headband",
+    "scrunchie",
+    "hair ties",
+    "hair bow",
+    "barrette"
+   ]
+  },
+  "heels": {
+   "ar": [
+    "كعب عالي",
+    "كعب",
+    "كعوب",
+    "طالون",
+    "طالونات",
+    "حذاء كعب",
+    "صباط كعب",
+    "صباط طالون",
+    "سباط كعب",
+    "حذاء بكعب",
+    "حذاء كعب عالي",
+    "حذاء بكعب عالي",
+    "ستيليتو",
+    "كعب رفيع"
+   ],
+   "fr": [
+    "talon",
+    "talons",
+    "talons hauts",
+    "escarpins",
+    "escarpin",
+    "chaussures a talons",
+    "chaussure a talon",
+    "stiletto",
+    "talon aiguille",
+    "escarpins femme"
+   ],
+   "en": [
+    "heels",
+    "high heels",
+    "stilettos",
+    "pumps",
+    "stiletto",
+    "platform heels",
+    "heeled shoes",
+    "block heels"
+   ]
+  },
+  "flats": {
+   "ar": [
+    "مسطحة",
+    "حذاء مسطح",
+    "احذية مسطحة",
+    "صباط مسطح",
+    "بالرينات",
+    "بالرين",
+    "باليرينا",
+    "حذاء بدون كعب",
+    "صباط سطح",
+    "حذاء مسطح نسائي"
+   ],
+   "fr": [
+    "ballerines",
+    "ballerine",
+    "chaussures plates",
+    "plates",
+    "mocassins",
+    "mocassin",
+    "chaussures plates femme"
+   ],
+   "en": [
+    "flats",
+    "flat shoes",
+    "ballet flats",
+    "ballerinas",
+    "loafers",
+    "moccasins",
+    "flat ballerinas"
+   ]
+  },
+  "sneakers": {
+   "ar": [
+    "رياضية",
+    "حذاء رياضي",
+    "احذية رياضية",
+    "صباط رياضي",
+    "كونفارس",
+    "كونفرس",
+    "باسكيت",
+    "سنيكرز",
+    "حذاء جري",
+    "صباط باسكيت"
+   ],
+   "fr": [
+    "baskets",
+    "basket",
+    "sneakers",
+    "sneaker",
+    "converse",
+    "tennis",
+    "chaussures de sport",
+    "air force",
+    "air max",
+    "chaussures de running"
+   ],
+   "en": [
+    "sneakers",
+    "trainers",
+    "running shoes",
+    "athletic shoes",
+    "converse",
+    "sport shoes",
+    "sneaker",
+    "gym shoes"
+   ]
+  },
+  "wedding_shoes": {
+   "ar": [
+    "حذاء عرس",
+    "احذية اعراس",
+    "صباط عرس",
+    "صباط عروس",
+    "حذاء عروس",
+    "حذاء زفاف",
+    "صباط زفاف",
+    "حذاء مناسبات",
+    "حذاء حفلات",
+    "صباط سهرة",
+    "حذاء سهرة"
+   ],
+   "fr": [
+    "chaussures de mariage",
+    "chaussures mariee",
+    "chaussure de mariee",
+    "chaussures de soiree",
+    "chaussures de ceremonie",
+    "escarpins de mariee",
+    "chaussures soiree"
+   ],
+   "en": [
+    "wedding shoes",
+    "bridal shoes",
+    "party shoes",
+    "evening shoes",
+    "prom shoes",
+    "formal shoes"
+   ]
+  },
+  "sandals": {
+   "ar": [
+    "صندل",
+    "صنادل",
+    "صندل نسائي",
+    "صندل مسطح",
+    "سانديل",
+    "صنادل صيفية",
+    "صندل صيفي"
+   ],
+   "fr": [
+    "sandales",
+    "sandale",
+    "sandales plates",
+    "sandales a talons",
+    "nu pieds",
+    "sandales femme"
+   ],
+   "en": [
+    "sandals",
+    "sandal",
+    "summer sandals",
+    "gladiator sandals",
+    "women sandals"
+   ]
+  },
+  "boots": {
+   "ar": [
+    "بوت",
+    "بوتات",
+    "بوت طويل",
+    "جزمة",
+    "جزمات",
+    "بوط",
+    "بوطات",
+    "حذاء شتوي",
+    "بوت ركبة",
+    "بوت شتوي"
+   ],
+   "fr": [
+    "bottes",
+    "botte",
+    "bottes hautes",
+    "cuissardes",
+    "bottes cavalieres",
+    "bottes de pluie",
+    "bottes femme"
+   ],
+   "en": [
+    "boots",
+    "boot",
+    "knee high boots",
+    "long boots",
+    "riding boots",
+    "thigh high boots",
+    "rain boots",
+    "winter boots"
+   ]
+  },
+  "ankle_boots": {
+   "ar": [
+    "بوت قصير",
+    "بوت كاحل",
+    "بوتي",
+    "بوتيت",
+    "بوط قصير",
+    "نصف بوت",
+    "حذاء الكاحل",
+    "بوتي قصير"
+   ],
+   "fr": [
+    "bottines",
+    "bottine",
+    "boots courtes",
+    "bottines a talons",
+    "low boots",
+    "bottines femme"
+   ],
+   "en": [
+    "ankle boots",
+    "ankle boot",
+    "booties",
+    "short boots",
+    "chelsea boots",
+    "bootie"
+   ]
+  },
+  "mules": {
+   "ar": [
+    "مول",
+    "مولز",
+    "شبشب كعب",
+    "خف",
+    "خفاف",
+    "ميول",
+    "شباشب مفتوحة",
+    "ميلز",
+    "مول بكعب"
+   ],
+   "fr": [
+    "mules",
+    "mule",
+    "sabots",
+    "sabot",
+    "mules a talons",
+    "mules femme"
+   ],
+   "en": [
+    "mules",
+    "mule",
+    "clogs",
+    "slip on heels",
+    "backless shoes",
+    "backless mules"
+   ]
+  },
+  "flat_sneakers": {
+   "ar": [
+    "حذاء رياضي مسطح",
+    "احذية رياضية مسطحة",
+    "باسكيت مسطح",
+    "صباط رياضي مسطح",
+    "رياضي مسطح",
+    "سليب اون"
+   ],
+   "fr": [
+    "baskets plates",
+    "basket plate",
+    "baskets sans talon",
+    "sneakers plates",
+    "slip on",
+    "baskets plates femme"
+   ],
+   "en": [
+    "flat sneakers",
+    "flat trainers",
+    "slip on sneakers",
+    "slip on",
+    "canvas shoes",
+    "vans",
+    "flat sport shoes"
+   ]
+  },
+  "medical_shoes": {
+   "ar": [
+    "حذاء طبي",
+    "احذية طبية",
+    "صباط طبي",
+    "صباط ممرضة",
+    "حذاء ممرضة",
+    "حذاء مستشفى",
+    "كروكس",
+    "جزمة طبية",
+    "حذاء طبيب"
+   ],
+   "fr": [
+    "chaussures medicales",
+    "chaussure medicale",
+    "chaussures infirmiere",
+    "sabots medicaux",
+    "sabot medical",
+    "chaussures de bloc",
+    "crocs",
+    "chaussures orthopediques"
+   ],
+   "en": [
+    "medical shoes",
+    "nurse shoes",
+    "nursing shoes",
+    "clinical shoes",
+    "orthopedic shoes",
+    "crocs",
+    "healthcare shoes"
+   ]
+  },
+  "slippers": {
+   "ar": [
+    "شباشب",
+    "شبشب",
+    "شباشب منزلية",
+    "خف منزلي",
+    "شبشب حمام",
+    "بابوش",
+    "بابوج",
+    "بابوج منزلي",
+    "شحاطة",
+    "نعال",
+    "شبشب منزلي"
+   ],
+   "fr": [
+    "claquettes",
+    "claquette",
+    "chaussons",
+    "chausson",
+    "pantoufles",
+    "pantoufle",
+    "tongs",
+    "mules de maison"
+   ],
+   "en": [
+    "slippers",
+    "slipper",
+    "slides",
+    "flip flops",
+    "house shoes",
+    "house slippers",
+    "bath slippers"
+   ]
+  },
+  "face_wash": {
+   "ar": [
+    "غسول الوجه",
+    "غسول وجه",
+    "غسول",
+    "جل غسيل الوجه",
+    "منظف الوجه",
+    "منظف وجه",
+    "فوم غسيل",
+    "ماء ميسيلار",
+    "ميسيلار",
+    "تونر",
+    "ميسلار",
+    "فوم تنظيف"
+   ],
+   "fr": [
+    "nettoyant visage",
+    "gel nettoyant",
+    "mousse nettoyante",
+    "gel moussant",
+    "eau micellaire",
+    "micellaire",
+    "demaquillant",
+    "lotion tonique",
+    "tonique visage",
+    "nettoyant"
+   ],
+   "en": [
+    "face wash",
+    "cleanser",
+    "facial cleanser",
+    "micellar water",
+    "makeup remover",
+    "toner",
+    "foam cleanser",
+    "face cleanser"
+   ]
+  },
+  "shampoo": {
+   "ar": [
+    "شامبو",
+    "شامبوان",
+    "شامبوين",
+    "شامبوهات",
+    "شامبو شعر",
+    "بلسم",
+    "بلسم شعر",
+    "كوندشنر",
+    "غسول الشعر",
+    "بلسم الشعر"
+   ],
+   "fr": [
+    "shampoing",
+    "shampooing",
+    "shampoings",
+    "apres shampoing",
+    "conditionneur",
+    "revitalisant",
+    "apres shampooing"
+   ],
+   "en": [
+    "shampoo",
+    "shampoos",
+    "conditioner",
+    "hair wash",
+    "hair conditioner"
+   ]
+  },
+  "makeup_p": {
+   "ar": [
+    "مكياج",
+    "مستحضرات تجميل",
+    "ميك اب",
+    "مستحضر تجميل",
+    "احمر شفاه",
+    "روج",
+    "كحل",
+    "ماسكارا",
+    "بودرة",
+    "فاونديشن",
+    "كريم اساس",
+    "ايشادو",
+    "ظلال عيون",
+    "بلاشر",
+    "هايلايتر",
+    "كونسيلر",
+    "ايلاينر",
+    "قلم عيون",
+    "ليب جلوس",
+    "ملمع شفاه",
+    "ريميل",
+    "باليت",
+    "اي شادو"
+   ],
+   "fr": [
+    "maquillage",
+    "produits de maquillage",
+    "cosmetiques",
+    "rouge a levres",
+    "fond de teint",
+    "mascara",
+    "poudre",
+    "fard a paupieres",
+    "fard",
+    "blush",
+    "highlighter",
+    "correcteur",
+    "eyeliner",
+    "gloss",
+    "palette",
+    "anticernes",
+    "produits cosmetiques"
+   ],
+   "en": [
+    "makeup",
+    "make up",
+    "cosmetics",
+    "lipstick",
+    "foundation",
+    "mascara",
+    "eyeshadow",
+    "blush",
+    "concealer",
+    "highlighter",
+    "eyeliner",
+    "lip gloss",
+    "powder",
+    "palette"
+   ]
+  },
+  "hair_dye": {
+   "ar": [
+    "صبغة شعر",
+    "صبغات شعر",
+    "صبغة",
+    "صبغات",
+    "لون شعر",
+    "كولوراسيون",
+    "اوكسيدان",
+    "اوكسيجان",
+    "ديكولوراسيون",
+    "مبيض شعر",
+    "صبغه"
+   ],
+   "fr": [
+    "coloration",
+    "colorations",
+    "coloration cheveux",
+    "teinture cheveux",
+    "teinture",
+    "decoloration",
+    "oxydant",
+    "coloration capillaire"
+   ],
+   "en": [
+    "hair dye",
+    "hair color",
+    "hair colour",
+    "hair colorant",
+    "bleach",
+    "hair tint",
+    "color cream",
+    "hair dyes"
+   ]
+  },
+  "wig": {
+   "ar": [
+    "شعر مستعار",
+    "باروكة",
+    "باروكات",
+    "شعر طبيعي مستعار",
+    "باروك",
+    "بيروكة",
+    "باروكة طبيعية",
+    "شعر صناعي",
+    "باروكه"
+   ],
+   "fr": [
+    "perruque",
+    "perruques",
+    "perruque naturelle",
+    "perruque lace",
+    "lace front",
+    "cheveux naturels perruque",
+    "perruque cheveux naturels"
+   ],
+   "en": [
+    "wig",
+    "wigs",
+    "lace front wig",
+    "lace wig",
+    "human hair wig",
+    "synthetic wig",
+    "hair wig"
+   ]
+  },
+  "nails_p": {
+   "ar": [
+    "اظافر اصطناعية",
+    "اظافر صناعية",
+    "اظافر مزيفة",
+    "اظافر جاهزة",
+    "اظافر لاصقة",
+    "ظفر اصطناعي",
+    "اظافر بلاستيكية",
+    "اظافر ملصقة",
+    "اظافر جيل جاهزة"
+   ],
+   "fr": [
+    "faux ongles",
+    "ongles artificiels",
+    "faux ongles adhesifs",
+    "press on nails",
+    "capsules ongles",
+    "kit faux ongles",
+    "ongles postiches"
+   ],
+   "en": [
+    "fake nails",
+    "artificial nails",
+    "press on nails",
+    "false nails",
+    "stick on nails",
+    "nail tips",
+    "acrylic nails kit"
+   ]
+  },
+  "face_cream": {
+   "ar": [
+    "كريم وجه",
+    "كريم الوجه",
+    "كريمات الوجه",
+    "كريم مرطب",
+    "مرطب وجه",
+    "كريم ليلي",
+    "كريم نهاري",
+    "كريم مضاد التجاعيد",
+    "كريم تفتيح",
+    "كريم للوجه",
+    "كريم بشرة",
+    "مرطب"
+   ],
+   "fr": [
+    "creme visage",
+    "creme de jour",
+    "creme de nuit",
+    "creme hydratante",
+    "creme anti rides",
+    "creme eclaircissante",
+    "hydratant visage",
+    "creme anti age",
+    "creme pour le visage"
+   ],
+   "en": [
+    "face cream",
+    "moisturizer",
+    "moisturiser",
+    "day cream",
+    "night cream",
+    "anti aging cream",
+    "anti wrinkle cream",
+    "facial cream"
+   ]
+  },
+  "serum": {
+   "ar": [
+    "سيروم",
+    "سيروم الوجه",
+    "سيروم فيتامين سي",
+    "سيروم هيالورونيك",
+    "سيروم شعر",
+    "سيروم نيا سيناميد",
+    "سيروم تفتيح",
+    "سيروم ريتينول",
+    "سيرم",
+    "سرم وجه"
+   ],
+   "fr": [
+    "serum",
+    "serums",
+    "serum visage",
+    "serum vitamine c",
+    "serum hyaluronique",
+    "serum cheveux",
+    "serum niacinamide",
+    "serum retinol"
+   ],
+   "en": [
+    "serum",
+    "serums",
+    "face serum",
+    "vitamin c serum",
+    "hyaluronic serum",
+    "hair serum",
+    "niacinamide serum",
+    "retinol serum"
+   ]
+  },
+  "sunscreen": {
+   "ar": [
+    "واقي شمس",
+    "واقي الشمس",
+    "كريم واقي شمس",
+    "كريم الشمس",
+    "حماية من الشمس",
+    "سبف",
+    "واقي من الشمس",
+    "سن بلوك",
+    "صن بلوك",
+    "كريم حماية من الشمس"
+   ],
+   "fr": [
+    "creme solaire",
+    "ecran solaire",
+    "protection solaire",
+    "spf",
+    "anti uv",
+    "creme solaire visage",
+    "ecran total",
+    "lait solaire"
+   ],
+   "en": [
+    "sunscreen",
+    "sun screen",
+    "sunblock",
+    "sun block",
+    "spf",
+    "sun cream",
+    "sun protection"
+   ]
+  },
+  "deodorant": {
+   "ar": [
+    "مزيل عرق",
+    "مزيل العرق",
+    "مزيلات العرق",
+    "ديودورنت",
+    "ديودران",
+    "رول اون",
+    "بخاخ عرق",
+    "مزيل رائحة العرق",
+    "ديو",
+    "مضاد التعرق"
+   ],
+   "fr": [
+    "deodorant",
+    "deodorants",
+    "deo",
+    "anti transpirant",
+    "roll on",
+    "deodorant roll on",
+    "deodorant spray",
+    "stick deodorant"
+   ],
+   "en": [
+    "deodorant",
+    "deodorants",
+    "antiperspirant",
+    "anti perspirant",
+    "roll on",
+    "deo spray",
+    "deo stick"
+   ]
+  },
+  "perfume": {
+   "ar": [
+    "عطر",
+    "عطور",
+    "عطر نسائي",
+    "عطور نسائية",
+    "بيرفيوم",
+    "برفان",
+    "بارفان",
+    "مسك",
+    "بخور",
+    "عود",
+    "عطر فرنسي",
+    "عطر اصلي",
+    "بخاخ عطر",
+    "ماء عطر",
+    "عطر جسم"
+   ],
+   "fr": [
+    "parfum",
+    "parfums",
+    "parfum femme",
+    "eau de parfum",
+    "eau de toilette",
+    "brume parfumee",
+    "brume corporelle",
+    "musc",
+    "oud",
+    "bakhour",
+    "parfum original",
+    "edp",
+    "edt"
+   ],
+   "en": [
+    "perfume",
+    "perfumes",
+    "fragrance",
+    "eau de parfum",
+    "eau de toilette",
+    "body mist",
+    "women perfume",
+    "cologne",
+    "oud",
+    "musk"
+   ]
+  },
+  "hair_oils": {
+   "ar": [
+    "زيت شعر",
+    "زيوت شعر",
+    "زيت الشعر",
+    "زيت الارغان",
+    "زيت ارغان",
+    "زيت جوز الهند",
+    "زيت الخروع",
+    "زيت اللوز",
+    "زيت الحبة السوداء",
+    "زيت لتطويل الشعر",
+    "زيت الاركان",
+    "زيت روزماري",
+    "زيت الجوجوبا"
+   ],
+   "fr": [
+    "huile cheveux",
+    "huiles capillaires",
+    "huile capillaire",
+    "huile d argan",
+    "huile de coco",
+    "huile de ricin",
+    "huile d amande",
+    "huile de jojoba",
+    "huile de romarin",
+    "huile de nigelle"
+   ],
+   "en": [
+    "hair oil",
+    "hair oils",
+    "argan oil",
+    "coconut oil",
+    "castor oil",
+    "almond oil",
+    "jojoba oil",
+    "rosemary oil",
+    "black seed oil"
+   ]
+  },
+  "hair_masks": {
+   "ar": [
+    "ماسك شعر",
+    "ماسكات شعر",
+    "ماسك الشعر",
+    "ماسك كيراتين",
+    "قناع الشعر",
+    "قناع شعر",
+    "ماسك بروتين",
+    "كيراتين",
+    "ماسك ترطيب",
+    "ماسك للشعر",
+    "حمام كريم",
+    "بروتين الشعر"
+   ],
+   "fr": [
+    "masque cheveux",
+    "masques capillaires",
+    "masque capillaire",
+    "masque keratine",
+    "masque a la keratine",
+    "masque proteine",
+    "bain de creme",
+    "soin capillaire",
+    "masque hydratant cheveux",
+    "keratine"
+   ],
+   "en": [
+    "hair mask",
+    "hair masks",
+    "keratin mask",
+    "protein mask",
+    "deep conditioner",
+    "hair treatment mask",
+    "hair treatment",
+    "keratin treatment"
+   ]
+  },
+  "makeup_tools": {
+   "ar": [
+    "ادوات تجميل",
+    "ادوات مكياج",
+    "اكسسوارات مكياج",
+    "اسفنجة مكياج",
+    "اسفنج مكياج",
+    "بيوتي بلندر",
+    "ملقط حواجب",
+    "مجعد رموش",
+    "مرآة مكياج",
+    "مرايا مكياج",
+    "منظم مكياج",
+    "حقيبة مكياج",
+    "حقيبة تجميل",
+    "مبرد اظافر",
+    "قصاصة اظافر"
+   ],
+   "fr": [
+    "outils de maquillage",
+    "accessoires de maquillage",
+    "eponge maquillage",
+    "beauty blender",
+    "pince a epiler",
+    "recourbe cils",
+    "miroir maquillage",
+    "trousse de maquillage",
+    "trousse maquillage",
+    "organisateur maquillage",
+    "accessoires beaute"
+   ],
+   "en": [
+    "makeup tools",
+    "makeup accessories",
+    "makeup sponge",
+    "beauty blender",
+    "tweezers",
+    "eyelash curler",
+    "makeup mirror",
+    "makeup bag",
+    "makeup organizer",
+    "beauty tools"
+   ]
+  },
+  "makeup_brushes": {
+   "ar": [
+    "فرش مكياج",
+    "فرشاة مكياج",
+    "فرشاة",
+    "طقم فرش",
+    "فرش تجميل",
+    "فرشاة بودرة",
+    "فرشاة فاونديشن",
+    "فرشاة ظلال",
+    "فرشاة بلاشر",
+    "فرشاة كونتور",
+    "فرش ايشادو",
+    "فرشاة العيون",
+    "فرش ميكب",
+    "فرش المكياج"
+   ],
+   "fr": [
+    "pinceaux maquillage",
+    "pinceau maquillage",
+    "pinceaux",
+    "pinceau",
+    "set de pinceaux",
+    "kit pinceaux",
+    "pinceau fond de teint",
+    "pinceau poudre",
+    "pinceau fard"
+   ],
+   "en": [
+    "makeup brushes",
+    "makeup brush",
+    "brush set",
+    "brushes",
+    "foundation brush",
+    "powder brush",
+    "eyeshadow brush",
+    "blush brush",
+    "contour brush"
+   ]
+  },
+  "nail_polish": {
+   "ar": [
+    "طلاء اظافر",
+    "طلاء الاظافر",
+    "مناكير",
+    "مانيكير",
+    "اطلية اظافر",
+    "طلاء اظافر جل",
+    "كوتكس",
+    "مناكير جل",
+    "طلاء جل",
+    "لاك اظافر",
+    "جل اظافر"
+   ],
+   "fr": [
+    "vernis a ongles",
+    "vernis",
+    "vernis semi permanent",
+    "vernis gel",
+    "vernis ongles",
+    "top coat",
+    "base coat",
+    "gel polish"
+   ],
+   "en": [
+    "nail polish",
+    "nail varnish",
+    "gel polish",
+    "nail lacquer",
+    "manicure polish",
+    "top coat",
+    "base coat",
+    "nail enamel"
+   ]
+  },
+  "nail_remover": {
+   "ar": [
+    "مزيل طلاء",
+    "مزيل طلاء الاظافر",
+    "مزيل مناكير",
+    "ازالة الطلاء",
+    "مزيل الكوتكس",
+    "مزيل اظافر",
+    "اسيتون",
+    "اسيتون اظافر",
+    "مزيل جل",
+    "مزيل الطلاء"
+   ],
+   "fr": [
+    "dissolvant",
+    "dissolvant ongles",
+    "dissolvant vernis",
+    "acetone",
+    "dissolvant sans acetone",
+    "enleveur de vernis",
+    "remover vernis"
+   ],
+   "en": [
+    "nail polish remover",
+    "nail remover",
+    "acetone",
+    "polish remover",
+    "remover",
+    "gel remover"
+   ]
+  },
+  "contact_lenses": {
+   "ar": [
+    "عدسات لاصقة",
+    "عدسات",
+    "عدسة لاصقة",
+    "عدسات ملونة",
+    "لانس",
+    "لونس",
+    "لونسات",
+    "عدسات طبية",
+    "عدسات تجميلية",
+    "لانسات"
+   ],
+   "fr": [
+    "lentilles de contact",
+    "lentilles",
+    "lentille",
+    "lentilles colorees",
+    "lentilles couleur",
+    "lentilles mensuelles",
+    "lentilles journalieres",
+    "lentille de contact"
+   ],
+   "en": [
+    "contact lenses",
+    "contacts",
+    "colored contacts",
+    "coloured lenses",
+    "contact lens",
+    "cosmetic lenses",
+    "lenses"
+   ]
+  },
+  "intimate_products": {
+   "ar": [
+    "منتجات حميمة",
+    "منتجات نسائية حميمة",
+    "غسول حميم",
+    "غسول حميمي",
+    "غسول المنطقة الحساسة",
+    "غسول النظافة الحميمة",
+    "فوط صحية",
+    "فوطة صحية",
+    "فوط نسائية",
+    "فوط يومية",
+    "الفوط الصحية",
+    "سدادات قطنية",
+    "تامبون",
+    "تامبونات",
+    "منتجات النظافة الحميمة"
+   ],
+   "fr": [
+    "produits intimes",
+    "hygiene intime",
+    "gel intime",
+    "savon intime",
+    "serviettes hygieniques",
+    "serviette hygienique",
+    "protege slip",
+    "tampons",
+    "cup menstruelle",
+    "coupe menstruelle",
+    "lingette intime",
+    "culotte menstruelle"
+   ],
+   "en": [
+    "intimate products",
+    "intimate wash",
+    "feminine hygiene",
+    "intimate hygiene",
+    "sanitary pads",
+    "sanitary napkins",
+    "tampons",
+    "menstrual cup",
+    "panty liners",
+    "period underwear"
+   ]
+  },
+  "haircut": {
+   "ar": [
+    "قص شعر",
+    "قصة شعر",
+    "حلاقة شعر",
+    "قص الشعر",
+    "كوافيرة",
+    "كوافير",
+    "تقصير الشعر",
+    "تسريحة",
+    "تسريحات",
+    "سشوار",
+    "مسك شعر",
+    "خدمة تسريح"
+   ],
+   "fr": [
+    "coiffure",
+    "coiffeuse",
+    "coiffeur",
+    "coupe de cheveux",
+    "coupe cheveux",
+    "brushing",
+    "coiffure a domicile",
+    "salon de coiffure",
+    "mise en plis",
+    "chignon"
+   ],
+   "en": [
+    "haircut",
+    "hair cut",
+    "hairdresser",
+    "hairstylist",
+    "hair stylist",
+    "hair styling",
+    "blow dry",
+    "hair salon",
+    "trim"
+   ]
+  },
+  "nails": {
+   "ar": [
+    "اظافر",
+    "خدمة اظافر",
+    "تركيب اظافر",
+    "مانيكير",
+    "بديكير",
+    "باديكير",
+    "مناكير وبديكير",
+    "نيلز",
+    "نايل ارت",
+    "رسم اظافر",
+    "اكريليك",
+    "تركيب جل",
+    "خدمة مناكير",
+    "نيل ارت"
+   ],
+   "fr": [
+    "ongles",
+    "pose d ongles",
+    "pose ongles",
+    "manucure",
+    "pedicure",
+    "prothesiste ongulaire",
+    "nail art",
+    "gel ongles",
+    "onglerie",
+    "pose gel"
+   ],
+   "en": [
+    "nails",
+    "nail service",
+    "nail technician",
+    "manicure",
+    "pedicure",
+    "nail art",
+    "nail extensions",
+    "acrylic nails",
+    "gel nails",
+    "nail salon",
+    "nail tech"
+   ]
+  },
+  "care": {
+   "ar": [
+    "عناية",
+    "خدمات عناية",
+    "عناية بالجسم",
+    "جلسة عناية",
+    "جلسة تجميل",
+    "عناية شخصية",
+    "سبا",
+    "سبا منزلي",
+    "عناية نسائية",
+    "بيوتي سنتر",
+    "صالون تجميل",
+    "مركز تجميل"
+   ],
+   "fr": [
+    "soins",
+    "soins du corps",
+    "soin du corps",
+    "institut de beaute",
+    "institut",
+    "spa",
+    "spa a domicile",
+    "soins esthetiques",
+    "soin esthetique",
+    "beaute a domicile",
+    "estheticienne"
+   ],
+   "en": [
+    "body care service",
+    "beauty salon",
+    "beauty center",
+    "spa",
+    "beauty services",
+    "esthetician",
+    "beauty treatment",
+    "personal care service",
+    "home spa"
+   ]
+  },
+  "makeup": {
+   "ar": [
+    "مكياج",
+    "ماكياج",
+    "مكياج عروس",
+    "مكياج عرائس",
+    "مكياج سهرة",
+    "خبيرة مكياج",
+    "خبيرة تجميل",
+    "ميكب ارتست",
+    "ميك اب ارتيست",
+    "مكياج في المنزل",
+    "مكياج على الطلب",
+    "ماكيير",
+    "مكياج احترافي"
+   ],
+   "fr": [
+    "maquillage",
+    "maquilleuse",
+    "maquillage mariee",
+    "maquillage professionnel",
+    "maquillage a domicile",
+    "makeup artist",
+    "maquillage soiree",
+    "maquilleuse professionnelle"
+   ],
+   "en": [
+    "makeup",
+    "makeup artist",
+    "bridal makeup",
+    "makeup service",
+    "professional makeup",
+    "mua",
+    "party makeup",
+    "makeup at home"
+   ]
+  },
+  "dj": {
+   "ar": [
+    "دي جي",
+    "دجاي",
+    "ديجي",
+    "فرقة نسائية",
+    "فرق نسائية",
+    "فرقة موسيقية",
+    "اوركسترا",
+    "فرقة غناء",
+    "مطربة",
+    "فرقة اعراس",
+    "حفلات نسائية",
+    "دي جي نسائي",
+    "اورطة"
+   ],
+   "fr": [
+    "dj",
+    "disc jockey",
+    "troupe feminine",
+    "troupe de femmes",
+    "orchestre feminin",
+    "troupe musicale",
+    "animation musicale",
+    "sonorisation",
+    "chanteuse",
+    "orchestre",
+    "groupe musical",
+    "animatrice dj"
+   ],
+   "en": [
+    "dj",
+    "disc jockey",
+    "female band",
+    "women band",
+    "wedding band",
+    "live band",
+    "music band",
+    "singer",
+    "sound system",
+    "party dj"
+   ]
+  },
+  "cooking": {
+   "ar": [
+    "طبخ منزلي",
+    "طباخة",
+    "طبخ",
+    "اكل منزلي",
+    "اكلات منزلية",
+    "وجبات منزلية",
+    "طبخ حفلات",
+    "طباخة اعراس",
+    "طبخ بالطلب",
+    "طبخ جزائري",
+    "طبخ تقليدي",
+    "اطباق منزلية"
+   ],
+   "fr": [
+    "cuisine maison",
+    "cuisine a domicile",
+    "cuisiniere",
+    "traiteur",
+    "plats maison",
+    "plats cuisines",
+    "cuisine traditionnelle",
+    "repas maison",
+    "traiteur a domicile",
+    "plats faits maison"
+   ],
+   "en": [
+    "home cooking",
+    "home cooked",
+    "homemade meals",
+    "home chef",
+    "catering",
+    "cook",
+    "cooking service",
+    "traditional cooking",
+    "meal prep",
+    "caterer"
+   ]
+  },
+  "events": {
+   "ar": [
+    "تنظيم حفلات",
+    "تنظيم حفل",
+    "تنظيم اعراس",
+    "منظمة حفلات",
+    "تنظيم حفلات زفاف",
+    "تنظيم اعياد ميلاد",
+    "تنظيم مناسبات",
+    "تنظيم خطوبة",
+    "تنظيم حفلة",
+    "تنظيم افراح",
+    "حفلة مفاجأة",
+    "ايفنت"
+   ],
+   "fr": [
+    "organisation de fetes",
+    "organisation fete",
+    "organisation d evenements",
+    "organisatrice",
+    "wedding planner",
+    "organisation mariage",
+    "organisation anniversaire",
+    "event planner",
+    "organisation de soirees",
+    "evenementiel"
+   ],
+   "en": [
+    "event planning",
+    "event planner",
+    "party planning",
+    "party planner",
+    "wedding planner",
+    "event organizer",
+    "event organiser",
+    "birthday planning",
+    "celebration planning",
+    "event coordination"
+   ]
+  },
+  "rental": {
+   "ar": [
+    "كراء فساتين",
+    "كراء فستان",
+    "كراء اكسسوارات",
+    "تأجير فساتين",
+    "تاجير فساتين",
+    "كراء قنادر",
+    "كراء كراكو",
+    "كراء ملابس",
+    "تأجير ملابس",
+    "كراء تكشيطة",
+    "كراء قفطان",
+    "كراء بدلات",
+    "كراء اكسسوار",
+    "كراء ازياء",
+    "كراء مجوهرات",
+    "كراء روبات"
+   ],
+   "fr": [
+    "location de robes",
+    "location robe",
+    "location robes",
+    "location d accessoires",
+    "location accessoires",
+    "location de tenues",
+    "location tenue",
+    "location de karakou",
+    "location karakou",
+    "location gandoura",
+    "location caftan",
+    "location de costumes",
+    "louer robe"
+   ],
+   "en": [
+    "dress rental",
+    "rent dress",
+    "dress for rent",
+    "accessories rental",
+    "rent accessories",
+    "costume rental",
+    "outfit rental",
+    "gown rental",
+    "renting dresses"
+   ]
+  },
+  "sweets": {
+   "ar": [
+    "حلويات منزلية",
+    "حلويات",
+    "حلويات تقليدية",
+    "حلويات اعراس",
+    "حلويات عصرية",
+    "حلوى",
+    "كعك",
+    "قاطو",
+    "غاتو",
+    "مقروط",
+    "بقلاوة",
+    "تشاراك",
+    "حلويات العيد",
+    "قريوش",
+    "كيك",
+    "تورتة",
+    "تارت",
+    "ميل فاي",
+    "حلويات بالطلب",
+    "معجنات",
+    "سابلي",
+    "كيكة",
+    "كاب كيك",
+    "طورطة"
+   ],
+   "fr": [
+    "patisserie maison",
+    "patisserie",
+    "patisseries",
+    "gateaux",
+    "gateau",
+    "gateaux traditionnels",
+    "gateaux algeriens",
+    "makrout",
+    "baklawa",
+    "tcharek",
+    "cupcake",
+    "cupcakes",
+    "tarte",
+    "cake",
+    "sables",
+    "patisserie orientale",
+    "gateaux de fete",
+    "mille feuille",
+    "patisserie algerienne"
+   ],
+   "en": [
+    "home sweets",
+    "homemade sweets",
+    "pastries",
+    "pastry",
+    "cakes",
+    "cake",
+    "desserts",
+    "baklava",
+    "cupcakes",
+    "cookies",
+    "traditional sweets",
+    "algerian sweets",
+    "cake maker",
+    "baker"
+   ]
+  },
+  "hair_coloring": {
+   "ar": [
+    "صبغ شعر",
+    "تلوين شعر",
+    "خدمة صبغ",
+    "صبغ",
+    "اومبري",
+    "هايلايت",
+    "بالياج",
+    "صبغ جذور",
+    "تفتيح شعر",
+    "ميش",
+    "ميشات",
+    "تغيير لون الشعر",
+    "خدمة صبغة"
+   ],
+   "fr": [
+    "coloration cheveux",
+    "coloration",
+    "teinture a domicile",
+    "balayage",
+    "ombre hair",
+    "meches",
+    "mechage",
+    "coloration a domicile",
+    "decoloration cheveux",
+    "tie and dye",
+    "racines"
+   ],
+   "en": [
+    "hair coloring",
+    "hair colouring",
+    "hair coloring service",
+    "balayage",
+    "ombre",
+    "highlights",
+    "hair color service",
+    "root touch up",
+    "bleaching hair",
+    "color service"
+   ]
+  },
+  "hair_straightening": {
+   "ar": [
+    "تمليس شعر",
+    "تمليس",
+    "تمليس بروتين",
+    "تمليس كيراتين",
+    "فرد الشعر",
+    "فرد شعر",
+    "تنعيم الشعر",
+    "كيراتين برازيلي",
+    "بوتوكس شعر",
+    "بوتوكس الشعر",
+    "تمليس برازيلي",
+    "ليسيج",
+    "فرد بروتين"
+   ],
+   "fr": [
+    "lissage cheveux",
+    "lissage",
+    "lissage bresilien",
+    "lissage keratine",
+    "lissage proteine",
+    "lissage tanin",
+    "defrisage",
+    "botox capillaire",
+    "keratine bresilienne",
+    "lissage a domicile",
+    "tanino"
+   ],
+   "en": [
+    "hair straightening",
+    "straightening",
+    "brazilian blowout",
+    "keratin treatment",
+    "keratin straightening",
+    "smoothing treatment",
+    "hair smoothing",
+    "hair botox",
+    "protein straightening",
+    "relaxer"
+   ]
+  },
+  "hair_curling": {
+   "ar": [
+    "تجعيد شعر",
+    "تجعيد",
+    "بوكلات",
+    "بوكلة",
+    "بيرم",
+    "بيرمنت",
+    "تجعيد الشعر",
+    "تموج الشعر",
+    "تمويج الشعر",
+    "كيرلي",
+    "تجعيد دائم",
+    "ويفي",
+    "تموج"
+   ],
+   "fr": [
+    "bouclage cheveux",
+    "bouclage",
+    "boucles",
+    "permanente",
+    "curly",
+    "ondulation",
+    "ondulations",
+    "boucles a domicile",
+    "cheveux boucles",
+    "curl"
+   ],
+   "en": [
+    "hair curling",
+    "curling",
+    "perm",
+    "permanent wave",
+    "hair waves",
+    "beach waves",
+    "curls",
+    "curly hair",
+    "hair crimping"
+   ]
+  },
+  "hair_extensions": {
+   "ar": [
+    "تركيب شعر",
+    "تركيب الشعر",
+    "تركيب شعر طبيعي",
+    "اكستنشن",
+    "اكستنشنز",
+    "اكستنشن شعر",
+    "تطويل الشعر",
+    "وصلات شعر",
+    "وصلات",
+    "خصل شعر",
+    "تركيب خصل",
+    "تركيب كيراتين",
+    "تركيب شعر مستعار",
+    "ويفينغ",
+    "نسج شعر",
+    "تركيب باروكة"
+   ],
+   "fr": [
+    "extensions cheveux",
+    "extension cheveux",
+    "pose extensions",
+    "pose d extensions",
+    "extensions a clips",
+    "extensions keratine",
+    "rajouts cheveux",
+    "tissage",
+    "tissage cheveux",
+    "pose tissage",
+    "pose perruque"
+   ],
+   "en": [
+    "hair extensions",
+    "hair extension",
+    "extensions installation",
+    "install extensions",
+    "weave installation",
+    "hair weave",
+    "tape in extensions",
+    "clip in extensions",
+    "sew in weave",
+    "wig installation"
+   ]
+  },
+  "waxing": {
+   "ar": [
+    "حلاقة",
+    "ازالة الشعر",
+    "إزالة الشعر",
+    "ازالة شعر",
+    "واكس",
+    "شمع ازالة الشعر",
+    "حلاوة",
+    "حلاوة بالسكر",
+    "تنظيف الشعر الزائد",
+    "خيط حواجب",
+    "تشقير",
+    "تهذيب الحواجب",
+    "خدمة ازالة الشعر",
+    "تنتيف",
+    "ليزر ازالة الشعر"
+   ],
+   "fr": [
+    "epilation",
+    "epilation a la cire",
+    "epilation au sucre",
+    "epilation a domicile",
+    "epilation laser",
+    "cire",
+    "cire epilation",
+    "waxing",
+    "epilation sourcils",
+    "fil sourcils",
+    "epilation visage"
+   ],
+   "en": [
+    "waxing",
+    "hair removal",
+    "hair removal service",
+    "sugaring",
+    "threading",
+    "eyebrow threading",
+    "wax",
+    "laser hair removal",
+    "body waxing",
+    "brow waxing"
+   ]
+  },
+  "skincare": {
+   "ar": [
+    "عناية بالبشرة",
+    "تنظيف بشرة",
+    "تنظيف الوجه",
+    "تنظيف الوجه العميق",
+    "فيشل",
+    "جلسة وجه",
+    "تقشير",
+    "تقشير كيميائي",
+    "ميزوثيرابي",
+    "ميزو",
+    "تفتيح البشرة",
+    "علاج حب الشباب",
+    "خدمة بشرة",
+    "هيدرافيشل",
+    "بلازما",
+    "ديرما بن",
+    "ديرمابن",
+    "مايكرونيدلينغ"
+   ],
+   "fr": [
+    "soins du visage",
+    "soin du visage",
+    "soins de la peau",
+    "nettoyage de peau",
+    "nettoyage de visage",
+    "nettoyage visage",
+    "peeling",
+    "hydrafacial",
+    "facial",
+    "microneedling",
+    "dermapen",
+    "mesotherapie",
+    "esthetique visage",
+    "traitement acne",
+    "soin anti acne"
+   ],
+   "en": [
+    "skincare",
+    "skin care",
+    "facial",
+    "facial treatment",
+    "skin treatment",
+    "face cleaning",
+    "deep cleansing",
+    "peeling",
+    "hydrafacial",
+    "microneedling",
+    "dermapen",
+    "mesotherapy",
+    "acne treatment",
+    "chemical peel"
+   ]
+  },
+  "massage": {
+   "ar": [
+    "مساج",
+    "تدليك",
+    "جلسة مساج",
+    "مساج استرخاء",
+    "مساج علاجي",
+    "مساج رياضي",
+    "تدليك علاجي",
+    "مساج منزلي",
+    "مساج بالزيوت",
+    "مساج حجر ساخن",
+    "مساج تايلندي",
+    "مساج للتنحيف",
+    "مساجيرة",
+    "مدلكة",
+    "حجامة"
+   ],
+   "fr": [
+    "massage",
+    "massages",
+    "masseuse",
+    "massage relaxant",
+    "massage therapeutique",
+    "massage a domicile",
+    "massage californien",
+    "massage thai",
+    "massage aux huiles",
+    "massage minceur",
+    "drainage lymphatique",
+    "massage de relaxation"
+   ],
+   "en": [
+    "massage",
+    "massages",
+    "masseuse",
+    "massage therapy",
+    "relaxing massage",
+    "therapeutic massage",
+    "thai massage",
+    "home massage",
+    "deep tissue massage",
+    "swedish massage",
+    "massage service"
+   ]
+  },
+  "hammam": {
+   "ar": [
+    "حمام مغربي",
+    "حمام تقليدي",
+    "حمام بخار",
+    "جلسة حمام",
+    "حمام اعراس",
+    "حمام العروس",
+    "كيسة",
+    "كيس حمام",
+    "صابون بلدي",
+    "غسول طيني",
+    "الغاسول",
+    "حمام مغربي منزلي",
+    "حمام زفاف",
+    "ساونا",
+    "جاكوزي",
+    "تكييس"
+   ],
+   "fr": [
+    "hammam",
+    "hammam marocain",
+    "bain maure",
+    "gommage hammam",
+    "savon noir",
+    "gant kessa",
+    "kessa",
+    "gommage corps",
+    "rassoul",
+    "ghassoul",
+    "rituel hammam",
+    "hammam a domicile",
+    "hammam mariee",
+    "sauna"
+   ],
+   "en": [
+    "hammam",
+    "moroccan bath",
+    "turkish bath",
+    "steam bath",
+    "moroccan hammam",
+    "body scrub ritual",
+    "steam room",
+    "spa hammam",
+    "bridal hammam",
+    "sauna"
+   ]
+  },
+  "photography": {
+   "ar": [
+    "تصوير فوتوغرافي",
+    "مصورة",
+    "مصور",
+    "تصوير اعراس",
+    "تصوير حفلات",
+    "جلسة تصوير",
+    "فوتوغراف",
+    "ستوديو تصوير",
+    "تصوير مناسبات",
+    "تصوير خطوبة",
+    "تصوير منتجات",
+    "تصوير عرس",
+    "فوتوغرافية",
+    "تصوير اطفال",
+    "تصوير مواليد",
+    "سيشن"
+   ],
+   "fr": [
+    "photographie",
+    "photographe",
+    "seance photo",
+    "shooting photo",
+    "photographe mariage",
+    "photographe evenement",
+    "photographe professionnel",
+    "studio photo",
+    "photographie de mariage",
+    "photo de mariage",
+    "photographe a domicile",
+    "photos mariage"
+   ],
+   "en": [
+    "photography",
+    "photographer",
+    "photo shoot",
+    "photoshoot",
+    "wedding photography",
+    "event photography",
+    "photo session",
+    "portrait photography",
+    "product photography",
+    "studio photography",
+    "newborn photography"
+   ]
+  },
+  "videography": {
+   "ar": [
+    "تصوير فيديو",
+    "مصورة فيديو",
+    "مصور فيديو",
+    "تصوير فيديو اعراس",
+    "مونتاج",
+    "مونتاج فيديو",
+    "كليب",
+    "فيديوغراف",
+    "تصوير سينمائي",
+    "فيديو زفاف",
+    "تصوير بالدرون",
+    "درون",
+    "تصوير جوي",
+    "تصوير ريلز",
+    "تصوير تيك توك",
+    "كاميرامان",
+    "تصوير فيلم"
+   ],
+   "fr": [
+    "videaste",
+    "video mariage",
+    "tournage",
+    "videographie",
+    "montage video",
+    "captation video",
+    "film de mariage",
+    "tournage mariage",
+    "tournage evenement",
+    "reportage video",
+    "drone",
+    "prise de vue drone"
+   ],
+   "en": [
+    "videography",
+    "videographer",
+    "video shoot",
+    "wedding video",
+    "video editing",
+    "video production",
+    "wedding film",
+    "cinematography",
+    "drone footage",
+    "drone video",
+    "event video"
+   ]
+  },
+  "hall_decoration": {
+   "ar": [
+    "ديكور قاعات",
+    "ديكور قاعة",
+    "ديكور حفلات",
+    "ديكور اعراس",
+    "تزيين قاعات",
+    "تزيين القاعة",
+    "تزيين حفلات",
+    "ديكورات",
+    "ديكور عرس",
+    "ديكور خطوبة",
+    "ديكور عيد ميلاد",
+    "بالونات ديكور",
+    "تنسيق ورود",
+    "تنسيق زهور",
+    "كوشة",
+    "ديكور مناسبات",
+    "زينة حفلات",
+    "تزيين مناسبات",
+    "ديكور بالبالونات",
+    "باكدروب"
+   ],
+   "fr": [
+    "decoration de salle",
+    "decoration salle",
+    "decoration de salles",
+    "decoration mariage",
+    "decoration de fete",
+    "decoration evenement",
+    "decoratrice",
+    "decoration ballons",
+    "decoration florale",
+    "arche de mariage",
+    "decoration de table",
+    "decoration fiancailles",
+    "decoration anniversaire",
+    "decor de salle"
+   ],
+   "en": [
+    "hall decoration",
+    "venue decoration",
+    "event decoration",
+    "wedding decoration",
+    "party decoration",
+    "balloon decoration",
+    "floral decoration",
+    "wedding decor",
+    "decorator",
+    "backdrop decor",
+    "event decor",
+    "table decoration"
+   ]
+  },
+  "chair_table_rental": {
+   "ar": [
+    "تأجير كراسي وطاولات",
+    "كراء كراسي",
+    "كراء طاولات",
+    "كراء كراسي وطاولات",
+    "تأجير كراسي",
+    "تاجير طاولات",
+    "تأجير طاولات",
+    "كراء معدات حفلات",
+    "كراء عتاد حفلات",
+    "كراء خيم",
+    "كراء سرادق",
+    "كراء الكراسي",
+    "كراء كراسي اعراس",
+    "كراء معدات اعراس",
+    "كراء الطاولات",
+    "تاجير كراسي وطاولات",
+    "كراء الصحون",
+    "كراء ادوات الطعام",
+    "كراء اطباق"
+   ],
+   "fr": [
+    "location chaises et tables",
+    "location de chaises",
+    "location de tables",
+    "location chaises",
+    "location tables",
+    "location materiel de fete",
+    "location materiel mariage",
+    "location vaisselle",
+    "location de vaisselle",
+    "location de materiel",
+    "location tente",
+    "chaises a louer",
+    "tables a louer",
+    "location mobilier evenementiel",
+    "location mobilier"
+   ],
+   "en": [
+    "chair and table rental",
+    "chair rental",
+    "table rental",
+    "chairs for rent",
+    "tables for rent",
+    "event rental",
+    "party rental equipment",
+    "tent rental",
+    "tableware rental",
+    "furniture rental",
+    "event equipment rental"
+   ]
+  },
+  "waitstaff": {
+   "ar": [
+    "خدمة تقديم",
+    "خدمة التقديم",
+    "نادلات",
+    "نادلة",
+    "نادلين",
+    "خدمة ضيافة",
+    "ضيافة",
+    "تقديم الطعام",
+    "تقديم الضيافة",
+    "ضيافة حفلات",
+    "عاملات تقديم",
+    "ضيافة اعراس",
+    "نادل",
+    "خدمة الضيوف",
+    "فريق خدمة",
+    "فريق ضيافة",
+    "خدمة طاولات",
+    "استقبال الضيوف",
+    "طاقم خدمة"
+   ],
+   "fr": [
+    "service de serveurs",
+    "serveuses",
+    "serveuse",
+    "serveur",
+    "serveurs",
+    "service traiteur",
+    "personnel de service",
+    "service en salle",
+    "hotesse",
+    "hotesses",
+    "service de table",
+    "equipe de service",
+    "service evenementiel",
+    "majordome",
+    "personnel evenementiel"
+   ],
+   "en": [
+    "waitstaff",
+    "waitress",
+    "waitresses",
+    "waiter",
+    "waiters",
+    "catering staff",
+    "serving staff",
+    "event staff",
+    "hostess",
+    "hostesses",
+    "service staff",
+    "banquet staff",
+    "serving service",
+    "table service"
+   ]
+  },
+  "bridal_transport": {
+   "ar": [
+    "نقل عرائس",
+    "نقل العروس",
+    "سيارة عروس",
+    "سيارات عرائس",
+    "كراء سيارة عرس",
+    "كراء سيارة زفاف",
+    "سيارة زفة",
+    "زفة",
+    "سيارة افراح",
+    "نقل المعازيم",
+    "نقل المدعوات",
+    "نقل مدعوات",
+    "سيارة اعراس",
+    "ليموزين",
+    "ليموزين اعراس",
+    "حافلة اعراس",
+    "باص اعراس",
+    "كراء حافلة",
+    "تأجير سيارة زفاف",
+    "سيارة خطوبة",
+    "كراء ميني باص",
+    "تاجير سيارة اعراس",
+    "كراء سيارات اعراس"
+   ],
+   "fr": [
+    "transport de mariee",
+    "transport mariee",
+    "voiture de mariee",
+    "voiture mariage",
+    "location voiture mariage",
+    "location voiture de mariage",
+    "limousine",
+    "limousine mariage",
+    "cortege",
+    "cortege mariage",
+    "transport invitees",
+    "minibus mariage",
+    "bus mariage",
+    "location bus mariage",
+    "voiture decoree",
+    "chauffeur mariage"
+   ],
+   "en": [
+    "bridal transport",
+    "bridal car",
+    "wedding car",
+    "wedding car rental",
+    "bridal limousine",
+    "wedding limousine",
+    "wedding transport",
+    "guest transport",
+    "wedding bus",
+    "wedding shuttle",
+    "bridal chauffeur",
+    "car for bride"
+   ]
+  },
+  "tailoring": {
+   "ar": [
+    "خياطة",
+    "خياطة وتعديل",
+    "خياطة وتفصيل",
+    "تفصيل",
+    "تفصيل ملابس",
+    "تعديل ملابس",
+    "تعديل فساتين",
+    "تقصير فستان",
+    "تضييق فستان",
+    "خياطة قنادر",
+    "خياطة كراكو",
+    "خياطة فساتين",
+    "خياطة حسب الطلب",
+    "خياطة على الطلب",
+    "خياطة تقليدية",
+    "خياطة عصرية",
+    "خياطة عباءات",
+    "خياطة ستائر",
+    "ترقيع",
+    "تطريز",
+    "تطريز يدوي",
+    "خياط",
+    "خياطة منزلية",
+    "طرز",
+    "خياطة اعراس",
+    "مخيطة"
+   ],
+   "fr": [
+    "couture",
+    "retouche",
+    "retouches",
+    "couture et retouche",
+    "couturiere",
+    "tailleur couturier",
+    "sur mesure",
+    "confection",
+    "couture sur mesure",
+    "retouche vetements",
+    "retouche robe",
+    "retouches de vetements",
+    "couture a domicile",
+    "atelier de couture",
+    "confection sur mesure",
+    "broderie",
+    "broderie main",
+    "creation sur mesure"
+   ],
+   "en": [
+    "tailoring",
+    "alterations",
+    "tailor",
+    "seamstress",
+    "dressmaker",
+    "sewing",
+    "sewing service",
+    "custom tailoring",
+    "clothing alterations",
+    "dress alterations",
+    "made to measure",
+    "bespoke",
+    "hemming",
+    "embroidery",
+    "custom made",
+    "dressmaking"
+   ]
+  }
+ }
+}

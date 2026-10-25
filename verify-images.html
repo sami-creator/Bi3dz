@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>فحص الصور - NSFWJS</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.0.0/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/nsfwjs@4.2.1/dist/browser/nsfwjs.min.js"></script>
+
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+    background: #f4f6f8;
+    margin: 0;
+    padding: 20px;
+    direction: rtl;
+  }
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+  h1 {
+    font-size: 20px;
+    margin: 0 0 18px;
+    color: #1a1a1a;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 12px;
+  }
+  .upload-area {
+    border: 2px dashed #d1d5db;
+    border-radius: 10px;
+    padding: 24px;
+    text-align: center;
+    margin-bottom: 16px;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+  .upload-area:hover { border-color: #2563eb; }
+  .upload-area input { display: none; }
+  .upload-area label {
+    cursor: pointer;
+    color: #2563eb;
+    font-weight: 600;
+    font-size: 16px;
+  }
+  .upload-area p { margin: 8px 0 0; color: #6b7280; font-size: 13px; }
+  .preview {
+    max-width: 100%;
+    max-height: 280px;
+    border-radius: 8px;
+    display: none;
+    margin: 0 auto 16px;
+  }
+  button {
+    background: #2563eb;
+    color: #fff;
+    border: none;
+    padding: 11px 24px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    width: 100%;
+  }
+  button:hover:not(:disabled) { background: #1d4ed8; }
+  button:disabled { background: #9ca3af; cursor: not-allowed; }
+  .status {
+    margin-top: 14px;
+    font-size: 14px;
+    color: #6b7280;
+    text-align: center;
+  }
+  .status.error { color: #dc2626; }
+  .result {
+    margin-top: 18px;
+    padding: 16px;
+    border-radius: 8px;
+    font-size: 14px;
+  }
+  .result.ok { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .result.bad { background: #fef2f2; border: 1px solid #fecaca; }
+  .result h3 { margin: 0 0 10px; font-size: 16px; }
+  .class-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    font-weight: 600;
+  }
+  .class-prob { font-family: Consolas, monospace; direction: ltr; }
+  .bar {
+    height: 6px;
+    background: #e5e7eb;
+    border-radius: 3px;
+    margin-bottom: 8px;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.3s;
+  }
+  .console {
+    margin-top: 18px;
+    background: #0f172a;
+    color: #e2e8f0;
+    padding: 14px;
+    border-radius: 8px;
+    font-family: Consolas, 'Courier New', monospace;
+    font-size: 12px;
+    direction: ltr;
+    text-align: left;
+    max-height: 240px;
+    overflow: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>فحص الصور — NSFWJS (محلي)</h1>
+
+  <div class="upload-area" id="uploadArea">
+    <input type="file" id="fileInput" accept="image/*">
+    <label for="fileInput">اضغط لاختيار صورة</label>
+    <p>يتم التحليل بالكامل داخل المتصفح</p>
+  </div>
+
+  <img id="preview" class="preview" alt="معاينة">
+
+  <button id="sendBtn" disabled>إرسال</button>
+
+  <div class="status" id="status">جارٍ تحميل الموديل...</div>
+  <div class="result hidden" id="result"></div>
+  <div class="console" id="console">[سجل]</div>
+</div>
+
+<script>
+const fileInput = document.getElementById("fileInput");
+const preview   = document.getElementById("preview");
+const sendBtn   = document.getElementById("sendBtn");
+const statusEl  = document.getElementById("status");
+const resultEl  = document.getElementById("result");
+const consoleEl = document.getElementById("console");
+
+let currentFile = null;
+let model = null;
+
+function log(msg) {
+  consoleEl.textContent += "\n" + msg;
+  consoleEl.scrollTop = consoleEl.scrollHeight;
+}
+
+function setStatus(msg, isError = false) {
+  statusEl.textContent = msg;
+  statusEl.className = "status" + (isError ? " error" : "");
+}
+
+/* =========================================================
+   تحميل الموديل من المجلد المحلي
+   ========================================================= */
+(async function initModel() {
+  log("[بدء تحميل الموديل من ./model/ ...]");
+  try {
+    tf.enableProdMode();
+    model = await nsfwjs.load("./model/");
+    log("[الموديل جاهز]");
+    setStatus("الموديل جاهز. اختر صورة.");
+  } catch (e) {
+    log("[خطأ في تحميل الموديل] " + e.message);
+    setStatus("فشل تحميل الموديل. راجع الكونسول.", true);
+  }
+})();
+
+/* =========================================================
+   اختيار الصورة
+   ========================================================= */
+fileInput.addEventListener("change", (e) => {
+  const file = e.target.files[0];
+  if (!file) {
+    log("[لم يتم اختيار ملف]");
+    return;
+  }
+  log("[تم اختيار: " + file.name + " — " + (file.size/1024).toFixed(1) + " KB]");
+
+  currentFile = file;
+  const url = URL.createObjectURL(file);
+  preview.src = url;
+  preview.style.display = "block";
+  sendBtn.disabled = false;
+  resultEl.classList.add("hidden");
+  setStatus("الصورة جاهزة. اضغط إرسال.");
+});
+
+/* =========================================================
+   التحليل
+   ========================================================= */
+sendBtn.addEventListener("click", async () => {
+  if (!currentFile) {
+    setStatus("اختر صورة أولاً.", true);
+    return;
+  }
+  if (!model) {
+    setStatus("الموديل لم يُحمَّل بعد.", true);
+    return;
+  }
+
+  sendBtn.disabled = true;
+  resultEl.classList.add("hidden");
+  setStatus("جارٍ التحليل...");
+  log("[بدء التحليل]");
+
+  try {
+    const predictions = await model.classify(preview, 5);
+    log("[النتائج] " + JSON.stringify(predictions));
+    showResults(predictions);
+    setStatus("تم.");
+  } catch (e) {
+    setStatus("خطأ: " + e.message, true);
+    log("[خطأ] " + e.message);
+  } finally {
+    sendBtn.disabled = false;
+  }
+});
+
+/* =========================================================
+   عرض النتائج
+   ========================================================= */
+function showResults(predictions) {
+  const map = {};
+  for (const p of predictions) map[p.className] = p.probability;
+
+  const porn   = map["Porn"] || 0;
+  const hentai = map["Hentai"] || 0;
+  const sexy   = map["Sexy"] || 0;
+  const nsfwProb = porn + hentai + sexy;
+
+  const isBad = nsfwProb > 0.7;
+
+  let html = '<h3>' + (isBad ? "❌ محتوى غير لائق" : "✅ محتوى آمن") + '</h3>';
+
+  const order = ["Porn", "Hentai", "Sexy", "Neutral", "Drawing"];
+  const labels = {
+    "Porn": "إباحي",
+    "Hentai": "هنتاي",
+    "Sexy": "مثير",
+    "Neutral": "محايد",
+    "Drawing": "رسم"
+  };
+
+  for (const cls of order) {
+    const p = map[cls] || 0;
+    const pct = (p * 100).toFixed(1);
+    let color = "#22c55e";
+    if (cls === "Porn" || cls === "Hentai" || cls === "Sexy") {
+      color = p > 0.7 ? "#dc2626" : p > 0.3 ? "#f59e0b" : "#22c55e";
+    }
+    html += '<div class="class-row"><span>' + labels[cls] + '</span><span class="class-prob">' + pct + '%</span></div>';
+    html += '<div class="bar"><div class="bar-fill" style="width:' + pct + '%;background:' + color + '"></div></div>';
+  }
+
+  html += '<div style="margin-top:10px;font-size:12px;color:#6b7280;">NSFW الإجمالي: ' + (nsfwProb * 100).toFixed(1) + '%</div>';
+
+  resultEl.innerHTML = html;
+  resultEl.className = "result " + (isBad ? "bad" : "ok");
+  resultEl.classList.remove("hidden");
+}
+</script>
+
+</body>
+</html>

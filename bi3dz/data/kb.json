@@ -1,0 +1,236 @@
+[
+  {
+    "id": "reset_password",
+    "keywords": {
+      "ar": ["كلمة السر", "باسورد", "نسيت", "استرجاع", "تغيير كلمة السر", "تعيين", "اعادة تعيين"],
+      "fr": ["mot de passe", "oublié", "réinitialiser", "changer mot de passe", "récupérer"],
+      "en": ["password", "forgot", "reset", "change password", "recover"]
+    },
+    "answer": {
+      "ar": "لإعادة تعيين كلمة السر:\n1. افتح التطبيق > الإعدادات > الأمان > تغيير كلمة السر.\n2. أدخلي بريدك الإلكتروني ثم اتبعي الرابط المرسل إليك.\n3. إن لم يصلك البريد، تحققي من مجلد الرسائل غير المرغوبة (Spam).\n4. إن استمرت المشكلة، تواصلي مع الدعم.",
+      "fr": "Pour réinitialiser votre mot de passe :\n1. Ouvrez l'application > Paramètres > Sécurité > Changer mot de passe.\n2. Entrez votre email et suivez le lien envoyé.\n3. Vérifiez vos spams si vous ne le recevez pas.\n4. Si le problème persiste, contactez le support.",
+      "en": "To reset your password:\n1. Open the app > Settings > Security > Change Password.\n2. Enter your email and follow the sent link.\n3. Check your spam folder if you don't receive it.\n4. If the issue persists, contact support."
+    }
+  },
+  {
+    "id": "payment_failed",
+    "keywords": {
+      "ar": ["دفع", "بطاقة", "فشل الدفع", "اشتراك", "شراء", "مبلغ", "فيزا", "CIB", "دحرجة"],
+      "fr": ["paiement", "carte", "échec paiement", "abonnement", "achat", "virement", "CIB"],
+      "en": ["payment", "card", "payment failed", "subscription", "purchase", "visa", "transaction"]
+    },
+    "answer": {
+      "ar": "إذا فشل الدفع:\n1. تحققي من صحة بيانات البطاقة.\n2. تأكدي من وجود رصيد كافٍ.\n3. جربي بطاقة أخرى أو طريقة دفع مختلفة.\n4. إن استمرت المشكلة، أرسلي رقم العملية لفريق الدعم وسنتحقق خلال 24 ساعة.",
+      "fr": "Si le paiement échoue :\n1. Vérifiez les informations de votre carte.\n2. Assurez-vous d'avoir suffisamment de fonds.\n3. Essayez une autre carte ou méthode de paiement.\n4. Si le problème persiste, envoyez le numéro de transaction au support.",
+      "en": "If payment fails:\n1. Check your card details.\n2. Make sure you have sufficient funds.\n3. Try another card or payment method.\n4. If the issue persists, send the transaction number to support."
+    }
+  },
+  {
+    "id": "refund",
+    "keywords": {
+      "ar": ["استرجاع", "استرداد", "إلغاء", "ارجاع المبلغ", "ارجاع فلوس", "ارد فلوسي"],
+      "fr": ["remboursement", "rembourser", "annuler commande", "retour", "réclamation"],
+      "en": ["refund", "cancel order", "return", "get money back", "chargeback"]
+    },
+    "answer": {
+      "ar": "يمكن طلب استرجاع المبلغ خلال 14 يومًا من الشراء:\n1. اذهبي إلى حسابي > الطلبات > اختاري الطلب > طلب استرجاع.\n2. اختاري سبب الاسترجاع.\n3. تتم المعالجة خلال 5-7 أيام عمل.\nملاحظة: الخدمات المُستهلكة غير قابلة للاسترجاع.",
+      "fr": "Vous pouvez demander un remboursement dans les 14 jours suivant l'achat :\n1. Allez dans Mon compte > Commandes > Sélectionnez la commande > Demande de remboursement.\n2. Sélectionnez la raison du remboursement.\n3. Le traitement prend 5 à 7 jours ouvrables.\nRemarque : les services consommés ne sont pas remboursables.",
+      "en": "You can request a refund within 14 days of purchase:\n1. Go to My Account > Orders > Select Order > Request Refund.\n2. Choose the refund reason.\n3. Processing takes 5–7 business days.\nNote: Consumed services are non-refundable."
+    }
+  },
+  {
+    "id": "app_slow",
+    "keywords": {
+      "ar": ["بطيء", "بطئ", "ثقيل", "تعليق", "يعلق", "التطبيق بطيء", "يتأخر", "بطئت"],
+      "fr": ["lent", "lenteur", "application lente", "lag", "freeze", "ralentissement"],
+      "en": ["slow", "lag", "freezing", "app is slow", "performance", "laggy"]
+    },
+    "answer": {
+      "ar": "لتحسين أداء التطبيق:\n1. أغلقي التطبيقات الأخرى في الخلفية.\n2. امسحي ذاكرة التخزين المؤقت من الإعدادات > التخزين > مسح الذاكرة.\n3. تأكدي من تحديث التطبيق لآخر إصدار.\n4. أعيدي تشغيل الجهاز.\n5. تحققي من سرعة الإنترنت لديك.",
+      "fr": "Pour améliorer les performances de l'application :\n1. Fermez les autres applications en arrière-plan.\n2. Videz le cache depuis Paramètres > Stockage > Vider le cache.\n3. Assurez-vous que l'application est à jour.\n4. Redémarrez votre appareil.\n5. Vérifiez votre connexion Internet.",
+      "en": "To improve app performance:\n1. Close background apps.\n2. Clear cache from Settings > Storage > Clear Cache.\n3. Ensure the app is up to date.\n4. Restart your device.\n5. Check your internet speed."
+    }
+  },
+  {
+    "id": "app_crash",
+    "keywords": {
+      "ar": ["لا يعمل", "لايعمل", "معطل", "توقف", "انهار", "مش يفتح", "مايفتحش", "خطأ", "error"],
+      "fr": ["ne fonctionne pas", "crash", "erreur", "application fermée", "bug", "plantage"],
+      "en": ["not working", "crash", "error", "app closed", "won't open", "force close", "bug"]
+    },
+    "answer": {
+      "ar": "إذا كان التطبيق لا يعمل:\n1. تأكدي من تحديثه لآخر إصدار.\n2. أعيدي تشغيل الجهاز.\n3. أعيدي تثبيت التطبيق (لن تفقدي بياناتك المسجلة).\n4. إن استمرت المشكلة، أرسلي لنا: طراز جهازك، إصدار النظام، ووصف الخطأ.",
+      "fr": "Si l'application ne fonctionne pas :\n1. Vérifiez que la version est à jour.\n2. Redémarrez votre appareil.\n3. Réinstallez l'application (vos données enregistrées seront conservées).\n4. Si le problème persiste, envoyez-nous : votre modèle d'appareil, la version du système, et une description de l'erreur.",
+      "en": "If the app is not working:\n1. Update to the latest version.\n2. Restart your device.\n3. Reinstall the app (your saved data will be kept).\n4. If the issue continues, send us your device model, OS version, and a description of the error."
+    }
+  },
+  {
+    "id": "login_issue",
+    "keywords": {
+      "ar": ["تسجيل الدخول", "ما نقدرش ندخل", "لا أستطيع الدخول", "حسابي", "لوجان", "دخول", "يدخل"],
+      "fr": ["connexion", "login", "se connecter", "accès", "je n'arrive pas à me connecter"],
+      "en": ["login", "sign in", "can't log in", "access", "account login", "log in"]
+    },
+    "answer": {
+      "ar": "لمشاكل تسجيل الدخول:\n1. تأكدي من صحة البريد الإلكتروني وكلمة السر.\n2. استخدمي زر 'نسيت كلمة السر' لإعادة التعيين.\n3. إن كان حسابك موقوفًا، تواصلي معنا.\n4. تأكدي من اتصالك بالإنترنت.\n5. جربي تسجيل الخروج ثم الدخول مجددًا.",
+      "fr": "Pour les problèmes de connexion :\n1. Vérifiez votre email et mot de passe.\n2. Utilisez 'Mot de passe oublié' pour le réinitialiser.\n3. Si votre compte est suspendu, contactez-nous.\n4. Vérifiez votre connexion Internet.\n5. Essayez de vous déconnecter puis de vous reconnecter.",
+      "en": "For login issues:\n1. Verify your email and password.\n2. Use 'Forgot Password' to reset.\n3. If your account is suspended, contact us.\n4. Check your internet connection.\n5. Try logging out and back in."
+    }
+  },
+  {
+    "id": "profile_edit",
+    "keywords": {
+      "ar": ["ملف شخصي", "بروفايل", "صورة الحساب", "اسم الحساب", "تعديل الملف", "تغيير الاسم"],
+      "fr": ["profil", "modifier profil", "photo de profil", "changer nom", "mettre à jour profil"],
+      "en": ["profile", "edit profile", "profile picture", "change name", "update profile"]
+    },
+    "answer": {
+      "ar": "لتعديل ملفك الشخصي:\n1. اذهبي إلى حسابي > الملف الشخصي > تعديل.\n2. يمكنك تغيير: الصورة، الاسم، والبريد الإلكتروني.\n3. لا يمكن تغيير رقم الهاتف إلا بالتواصل مع الدعم.\n4. احفظي التعديلات بالضغط على 'حفظ'.",
+      "fr": "Pour modifier votre profil :\n1. Allez dans Mon compte > Profil > Modifier.\n2. Vous pouvez changer : la photo, le nom et l'email.\n3. Le numéro de téléphone ne peut être modifié qu'en contactant le support.\n4. Sauvegardez en appuyant sur 'Enregistrer'.",
+      "en": "To edit your profile:\n1. Go to My Account > Profile > Edit.\n2. You can change: picture, name, and email.\n3. Phone number can only be changed by contacting support.\n4. Save your changes by pressing 'Save'."
+    }
+  },
+  {
+    "id": "notifications",
+    "keywords": {
+      "ar": ["إشعار", "اشعار", "تنبيه", "ما تجيش الإشعارات", "لا تصل", "نوتيفيكاشن"],
+      "fr": ["notification", "notifications", "ne reçois pas", "alertes", "push notification"],
+      "en": ["notification", "not receiving", "push notifications", "alerts", "no notifications"]
+    },
+    "answer": {
+      "ar": "إذا لم تصلك الإشعارات:\n1. تحققي من إعدادات الإشعارات في هاتفك (الإعدادات > التطبيقات > souk nsa > الإشعارات).\n2. تأكدي من تفعيل الإشعارات داخل التطبيق من الإعدادات.\n3. تأكدي من عدم تفعيل وضع 'عدم الإزعاج'.\n4. أعيدي تثبيت التطبيق إن استمرت المشكلة.",
+      "fr": "Si vous ne recevez pas les notifications :\n1. Vérifiez les paramètres de notifications dans votre téléphone.\n2. Activez les notifications dans l'application depuis les Paramètres.\n3. Assurez-vous que le mode 'Ne pas déranger' est désactivé.\n4. Réinstallez l'application si le problème persiste.",
+      "en": "If you're not receiving notifications:\n1. Check notification settings in your phone (Settings > Apps > souk nsa > Notifications).\n2. Enable notifications inside the app via Settings.\n3. Make sure 'Do Not Disturb' mode is off.\n4. Reinstall the app if the issue persists."
+    }
+  },
+  {
+    "id": "search_no_results",
+    "keywords": {
+      "ar": ["بحث", "نتائج", "ما يلقاش", "ما لقيتش", "لا يجد", "ما يظهرش", "بحثت ما لقيت"],
+      "fr": ["recherche", "pas de résultats", "aucun résultat", "ne trouve pas"],
+      "en": ["search", "no results", "can't find", "search not working", "nothing found"]
+    },
+    "answer": {
+      "ar": "إذا لم يعطِ البحث نتائج:\n1. تحققي من الإملاء.\n2. جربي كلمات مفتاحية أقصر أو أعم.\n3. أزيلي الفلاتر المطبقة وحاولي مجددًا.\n4. تأكدي من تحديث التطبيق.\n5. امسحي ذاكرة التخزين المؤقت.",
+      "fr": "Si la recherche ne donne pas de résultats :\n1. Vérifiez l'orthographe.\n2. Essayez des mots-clés plus courts ou plus généraux.\n3. Supprimez les filtres appliqués et réessayez.\n4. Assurez-vous que l'application est à jour.\n5. Videz le cache.",
+      "en": "If search returns no results:\n1. Check spelling.\n2. Try shorter or more general keywords.\n3. Remove applied filters and try again.\n4. Make sure the app is up to date.\n5. Clear the cache."
+    }
+  },
+  {
+    "id": "delete_account",
+    "keywords": {
+      "ar": ["حذف الحساب", "إلغاء الحساب", "إغلاق الحساب", "مسح الحساب", "ما نبغيش الحساب"],
+      "fr": ["supprimer compte", "fermer compte", "désactiver compte", "effacer compte"],
+      "en": ["delete account", "close account", "remove account", "deactivate account"]
+    },
+    "answer": {
+      "ar": "لحذف حسابك نهائيًا:\n1. اذهبي إلى الإعدادات > الحساب > حذف الحساب.\n⚠️ تحذير: هذا الإجراء لا يمكن التراجع عنه وستفقدين جميع بياناتك.\n2. يمكنك تنزيل نسخة من بياناتك قبل الحذف.\n3. إن كنت تريدين إيقاف الحساب مؤقتًا فقط، اختاري 'إيقاف' عوض الحذف.",
+      "fr": "Pour supprimer définitivement votre compte :\n1. Allez dans Paramètres > Compte > Supprimer le compte.\n⚠️ Attention : Cette action est irréversible et vous perdrez toutes vos données.\n2. Vous pouvez télécharger une copie de vos données avant suppression.\n3. Si vous souhaitez seulement désactiver temporairement, choisissez 'Désactiver'.",
+      "en": "To permanently delete your account:\n1. Go to Settings > Account > Delete Account.\n⚠️ Warning: This action is irreversible and you will lose all your data.\n2. You can download a copy of your data before deletion.\n3. If you want to temporarily deactivate, choose 'Deactivate' instead."
+    }
+  },
+  {
+    "id": "post_ad",
+    "keywords": {
+      "ar": ["نشر إعلان", "إضافة إعلان", "كيف تنشر", "نشر منتج", "بيع", "إعلاني", "ما نقدر ننشر"],
+      "fr": ["publier annonce", "ajouter annonce", "poster", "créer annonce", "vendre"],
+      "en": ["post ad", "add listing", "publish ad", "create ad", "how to sell", "post product"]
+    },
+    "answer": {
+      "ar": "لنشر إعلان جديد:\n1. اضغطي على زر '+' في شريط التنقل السفلي.\n2. اختاري الصنف المناسب.\n3. أضيفي العنوان، الوصف، والسعر.\n4. أرفقي من 1 إلى 10 صور.\n5. اضغطي 'نشر'.\nيجب أن يكون حسابك مكتملًا لنشر الإعلانات.",
+      "fr": "Pour publier une annonce :\n1. Appuyez sur le bouton '+' dans la barre de navigation en bas.\n2. Choisissez la catégorie appropriée.\n3. Ajoutez le titre, la description et le prix.\n4. Ajoutez 1 à 10 photos.\n5. Appuyez sur 'Publier'.\nVotre profil doit être complet pour publier des annonces.",
+      "en": "To post a new ad:\n1. Tap the '+' button in the bottom navigation bar.\n2. Choose the appropriate category.\n3. Add the title, description, and price.\n4. Add 1–10 photos.\n5. Tap 'Publish'.\nYour profile must be complete to post ads."
+    }
+  },
+  {
+    "id": "verify_account",
+    "keywords": {
+      "ar": ["توثيق", "حساب موثق", "كيف أوثق", "التوثيق", "badge", "شارة"],
+      "fr": ["vérification", "compte vérifié", "comment vérifier", "badge vérification"],
+      "en": ["verify account", "verified badge", "how to verify", "account verification", "blue tick"]
+    },
+    "answer": {
+      "ar": "لتوثيق حسابك:\n1. اذهبي إلى الملف الشخصي > توثيق الحساب.\n2. أرفقي صورة الهوية الوطنية (أمام وخلف).\n3. أدخلي رقم هاتفك وتحققي منه بالكود.\n4. انتظري مراجعة الفريق خلال 24-48 ساعة.\nمزايا الحساب الموثق: ثقة أكبر، إمكانية إظهار رقم الهاتف، وميزات إضافية.",
+      "fr": "Pour vérifier votre compte :\n1. Allez dans Profil > Vérification du compte.\n2. Joignez une photo de votre carte d'identité (recto et verso).\n3. Entrez votre numéro de téléphone et vérifiez-le avec le code.\n4. Attendez l'examen par l'équipe sous 24 à 48 heures.\nAvantages : plus de confiance, possibilité d'afficher votre numéro de téléphone.",
+      "en": "To verify your account:\n1. Go to Profile > Verify Account.\n2. Upload your ID card photo (front and back).\n3. Enter your phone number and verify it with the code.\n4. Wait for team review within 24–48 hours.\nBenefits: more trust, ability to show phone number, and extra features."
+    }
+  },
+  {
+    "id": "chat_messages",
+    "keywords": {
+      "ar": ["محادثة", "رسائل", "دردشة", "مسجات", "تواصل مع البائع", "ما يوصلش رسالة"],
+      "fr": ["chat", "messages", "messagerie", "conversation", "contacter vendeur"],
+      "en": ["chat", "messages", "messaging", "conversation", "contact seller", "inbox"]
+    },
+    "answer": {
+      "ar": "للتواصل عبر المحادثة:\n1. افتحي الإعلان ثم اضغطي على 'محادثة داخل التطبيق'.\n2. الرسائل تُحفظ في قسم المحادثات في حسابك.\n3. إن لم تصلك ردود، تأكدي من تفعيل الإشعارات.\n4. يمكنك حظر أي مستخدم من داخل المحادثة.",
+      "fr": "Pour communiquer via le chat :\n1. Ouvrez l'annonce et appuyez sur 'Chat dans l'application'.\n2. Les messages sont sauvegardés dans la section Messages de votre compte.\n3. Si vous ne recevez pas de réponses, activez les notifications.\n4. Vous pouvez bloquer un utilisateur depuis le chat.",
+      "en": "To communicate via chat:\n1. Open the ad and tap 'Chat in app'.\n2. Messages are saved in the Messages section of your account.\n3. If you don't receive replies, enable notifications.\n4. You can block any user from within the chat."
+    }
+  },
+  {
+    "id": "upgrade_account",
+    "keywords": {
+      "ar": ["ترقية", "اشتراك مدفوع", "حساب مميز", "PRO", "ترقية الحساب", "خطة"],
+      "fr": ["mise à niveau", "abonnement payant", "compte premium", "passer premium", "upgrade"],
+      "en": ["upgrade", "premium account", "paid subscription", "pro plan", "premium features"]
+    },
+    "answer": {
+      "ar": "لترقية حسابك والحصول على مميزات مدفوعة:\n1. تواصلي مع فريق الدعم عبر واتساب أو تلغرام.\n2. ستحصلين على: إعلانات مميزة، إحصائيات مفصلة، أولوية في الظهور.\n3. الدفع يتم عبر CIB أو وسائل الدفع المتاحة.\nتواصلي معنا لمعرفة الأسعار الحالية.",
+      "fr": "Pour mettre à niveau votre compte :\n1. Contactez l'équipe support via WhatsApp ou Telegram.\n2. Vous obtiendrez : des annonces mises en avant, des statistiques détaillées, une priorité d'affichage.\n3. Le paiement se fait via CIB ou autres méthodes disponibles.\nContactez-nous pour connaître les tarifs actuels.",
+      "en": "To upgrade your account:\n1. Contact the support team via WhatsApp or Telegram.\n2. You'll get: featured ads, detailed statistics, priority display.\n3. Payment via CIB or other available methods.\nContact us to learn about current pricing."
+    }
+  },
+  {
+    "id": "image_upload",
+    "keywords": {
+      "ar": ["رفع صورة", "صورة ما ترفعش", "صور إعلان", "فشل رفع", "صورة كبيرة", "تحميل صورة"],
+      "fr": ["télécharger image", "upload photo", "image trop grande", "erreur téléchargement", "photo annonce"],
+      "en": ["upload image", "photo upload", "image too large", "upload failed", "ad photos", "can't upload"]
+    },
+    "answer": {
+      "ar": "لرفع الصور بنجاح:\n1. الصيغ المدعومة: JPG، PNG، WEBP فقط.\n2. الحد الأقصى لكل صورة: 5MB.\n3. يمكن رفع من 1 إلى 10 صور لكل إعلان.\n4. إن فشل الرفع، تحققي من اتصالك بالإنترنت وحجم الصورة.\n5. جربي ضغط الصورة قبل الرفع.",
+      "fr": "Pour télécharger des images avec succès :\n1. Formats acceptés : JPG, PNG, WEBP uniquement.\n2. Taille maximale par image : 5 Mo.\n3. De 1 à 10 images par annonce.\n4. Si l'upload échoue, vérifiez votre connexion et la taille.\n5. Essayez de compresser l'image avant l'envoi.",
+      "en": "To upload images successfully:\n1. Supported formats: JPG, PNG, WEBP only.\n2. Max size per image: 5MB.\n3. 1 to 10 images per ad.\n4. If upload fails, check your connection and image size.\n5. Try compressing the image before uploading."
+    }
+  },
+  {
+    "id": "delivery",
+    "keywords": {
+      "ar": ["توصيل", "ليفري", "شحن", "delivery", "كيف يوصل", "هل التوصيل متاح", "سعر التوصيل"],
+      "fr": ["livraison", "expédition", "frais de livraison", "comment livrer", "service livraison"],
+      "en": ["delivery", "shipping", "delivery cost", "how to deliver", "shipping fee", "ship order"]
+    },
+    "answer": {
+      "ar": "للاستفسار عن التوصيل:\n1. يمكن للبائع تحديد أسعار التوصيل لكل ولاية.\n2. اضغطي على 'معلومات التوصيل' في صفحة الإعلان لرؤية الأسعار.\n3. إن لم يكن التوصيل متاحًا، يظهر 'التوصيل غير متاح'.\n4. تواصلي مع البائع مباشرة للتفاصيل.",
+      "fr": "Pour les informations de livraison :\n1. Le vendeur peut définir les prix de livraison par wilaya.\n2. Appuyez sur 'Informations de livraison' sur la page de l'annonce.\n3. Si la livraison n'est pas disponible, cela sera indiqué.\n4. Contactez le vendeur directement pour plus de détails.",
+      "en": "For delivery information:\n1. Sellers can set delivery prices per wilaya.\n2. Tap 'Delivery Info' on the ad page to see prices.\n3. If delivery is not available, it will say so.\n4. Contact the seller directly for more details."
+    }
+  },
+  {
+    "id": "report_user",
+    "keywords": {
+      "ar": ["إبلاغ", "بلاغ", "نصاب", "احتيال", "تبليغ عن مستخدم", "شخص مشبوه"],
+      "fr": ["signaler", "signalement", "escroquerie", "arnaquer", "utilisateur suspect"],
+      "en": ["report", "scammer", "fraud", "report user", "suspicious user", "fake account"]
+    },
+    "answer": {
+      "ar": "للإبلاغ عن مستخدم أو إعلان:\n1. افتحي الإعلان أو الملف الشخصي للمستخدم.\n2. اضغطي على أيقونة '⋮' أو 'الإبلاغ'.\n3. اختاري سبب البلاغ.\n4. سيراجع الفريق البلاغ خلال 24 ساعة.\nإن تعرضتِ لاحتيال، تواصلي معنا مباشرة عبر واتساب أو تلغرام.",
+      "fr": "Pour signaler un utilisateur ou une annonce :\n1. Ouvrez l'annonce ou le profil de l'utilisateur.\n2. Appuyez sur '⋮' ou 'Signaler'.\n3. Choisissez la raison du signalement.\n4. L'équipe examinera le signalement sous 24 heures.\nEn cas d'arnaque, contactez-nous directement via WhatsApp ou Telegram.",
+      "en": "To report a user or ad:\n1. Open the ad or user profile.\n2. Tap '⋮' or 'Report'.\n3. Choose the reason for the report.\n4. The team will review within 24 hours.\nIf you've been scammed, contact us directly via WhatsApp or Telegram."
+    }
+  },
+  {
+    "id": "account_banned",
+    "keywords": {
+      "ar": ["حسابي موقوف", "حظر", "محظور", "الحساب مغلق", "لا يمكن الوصول", "حسابي اتحذف"],
+      "fr": ["compte suspendu", "compte banni", "compte bloqué", "plus accès compte"],
+      "en": ["account suspended", "account banned", "account blocked", "can't access account", "account removed"]
+    },
+    "answer": {
+      "ar": "إذا كان حسابك موقوفًا:\n1. تواصلي مع فريق الدعم عبر واتساب أو تلغرام لمعرفة السبب.\n2. قدمي رقم هاتفك أو بريدك الإلكتروني المسجل.\n3. إن كان الإيقاف بسبب خطأ، سيتم مراجعته وإعادة الحساب.\nملاحظة: يُوقف الحساب في حال انتهاك شروط الاستخدام.",
+      "fr": "Si votre compte est suspendu :\n1. Contactez l'équipe support via WhatsApp ou Telegram pour connaître la raison.\n2. Fournissez votre numéro de téléphone ou email enregistré.\n3. En cas d'erreur, votre compte sera rétabli après vérification.\nNote : Les comptes sont suspendus en cas de violation des conditions d'utilisation.",
+      "en": "If your account is suspended:\n1. Contact support via WhatsApp or Telegram to learn the reason.\n2. Provide your registered phone number or email.\n3. If it was a mistake, your account will be reinstated after review.\nNote: Accounts are suspended for violations of the terms of use."
+    }
+  }
+]
