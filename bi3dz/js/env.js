@@ -10,6 +10,8 @@ window.__ENV__ = {
   IMAGE_CDN_BASE: 'https://ik.imagekit.io/6injqmphyw',
   IMAGEKIT_PUBLIC_KEY: 'public_58JXOtc2yxRY+H2IhUy/1bFM00g=',
   IMAGEKIT_URL_ENDPOINT: 'https://ik.imagekit.io/6injqmphyw',
+  B2_BUCKET: 'racimlayan',
+  B2_CDN_URL: 'https://b2-proxy.houssemhoussam25.workers.dev',
   LOGGER_HASH: 'ac0850f88d4d245658a49d292e93e4de1437fab8f0f49fa9a50b851be57a800d', 
   TELEGRAM_BOT_USERNAME: 'souknsa_bot',
   FIREBASE: { apiKey: 'AIzaSyDNMQXIqXHqtQSkBskA9V-R7fXEYLhrIUQ', authDomain: 'souk-nsa-1df82.firebaseapp.com', projectId: 'souk-nsa-1df82', storageBucket: 'souk-nsa-1df82.firebasestorage.app', messagingSenderId: '1050290395122', appId: '1:1050290395122:web:cd3225105ce58e73bf3d6b', vapidKey: 'BBXRNp0gCKnrJz-DYpwxfNhgiGsXCq7wlRq95_Lxesny5NWC3VJrNL1QrML6ez07qVM1LoTyHdJhJngdzX8i7aI' }

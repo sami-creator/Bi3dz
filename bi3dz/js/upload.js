@@ -28,30 +28,42 @@
 
   /* ---- ImageKit ---- */
   async function uploadToImageKit(blob, fileName) {
-    const env = window.__ENV__ || {};
-    const publicKey   = env.IMAGEKIT_PUBLIC_KEY;
-    const urlEndpoint = env.IMAGEKIT_URL_ENDPOINT;
-    if (!publicKey || !urlEndpoint) throw new Error('ImageKit غير مضبوط في env.js');
-
-    const { data: authData, error: authError } = await SB.db.functions.invoke('imagekit-auth');
-    if (authError) throw authError;
-
-    const formData = new FormData();
-    formData.append('file',      blob, fileName);
-    formData.append('fileName',  fileName);
-    formData.append('publicKey', publicKey);
-    formData.append('signature', authData.signature);
-    formData.append('expire',    authData.expire);
-    formData.append('token',     authData.token);
-    formData.append('folder',    authData.folder || '/ads');
-
-    const res = await fetch('https://upload.imagekit.io/api/v1/files/upload', {
-      method: 'POST', body: formData
-    });
-    if (!res.ok) { const err = await res.json(); throw new Error(err.message || 'ImageKit upload failed'); }
-    const r = await res.json();
-    return { url: r.url, fileId: r.fileId };
+  const env = window.__ENV__ || {};
+  if (!env.B2_CDN_URL) throw new Error('B2 غير مضبوط في env.js');
+  
+  const { data: auth, error } = await SB.db.functions.invoke('imagekit-auth');
+  if (error) throw error;
+  
+  const path = `${auth.folder}/${fileName}`;
+  
+  async function hmac(key, data) {
+    const k = key instanceof Uint8Array ? key : new TextEncoder().encode(key);
+    const ck = await crypto.subtle.importKey('raw', k, { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
+    return new Uint8Array(await crypto.subtle.sign('HMAC', ck, new TextEncoder().encode(data)));
   }
+  
+  const signingKey = new Uint8Array(auth.signingKeyHex.match(/.{2}/g).map(b => parseInt(b, 16)));
+  const canonicalRequest = `PUT\n/${path}\n\ncontent-type:${blob.type}\nhost:${auth.host}\nx-amz-content-sha256:${auth.payloadHash}\nx-amz-date:${auth.amzDate}\n\ncontent-type;host;x-amz-content-sha256;x-amz-date\n${auth.payloadHash}`;
+  const sha256 = async (d) => Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(d)))).map(b => b.toString(16).padStart(2, '0')).join('');
+  const stringToSign = `AWS4-HMAC-SHA256\n${auth.amzDate}\n${auth.credentialScope}\n${await sha256(canonicalRequest)}`;
+  const signature = Array.from(await hmac(signingKey, stringToSign)).map(b => b.toString(16).padStart(2, '0')).join('');
+  const authorization = `AWS4-HMAC-SHA256 Credential=${auth.keyId}/${auth.credentialScope}, SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=${signature}`;
+  
+  const res = await fetch(`https://${auth.host}/${path}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': blob.type || 'image/webp',
+      'x-amz-date': auth.amzDate,
+      'x-amz-content-sha256': auth.payloadHash,
+      'Authorization': authorization,
+    },
+    body: blob
+  });
+  if (!res.ok) throw new Error('B2 upload failed: ' + res.status);
+  
+  const url = `${env.IMAGE_CDN_BASE}/${path}`;
+  return { url, fileId: path };
+}
 
   /* ================================================================
      نافذة تحذير موحّدة (queue) لجميع الصور المشبوهة/الممنوعة
