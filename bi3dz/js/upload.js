@@ -51,7 +51,7 @@
     const signature = Array.from(await hmac(signingKey, stringToSign)).map(b => b.toString(16).padStart(2, '0')).join('');
     const authorization = `AWS4-HMAC-SHA256 Credential=${auth.keyId}/${auth.credentialScope}, SignedHeaders=content-type;host;x-amz-content-sha256;x-amz-date, Signature=${signature}`;
     
-    const res = await fetch(`https://${auth.host}/${path}`, {
+    const res = await fetch(`${env.B2_CDN_URL}/${path}`, {
       method: 'PUT',
       headers: {
         'Content-Type': blob.type || 'image/webp',
