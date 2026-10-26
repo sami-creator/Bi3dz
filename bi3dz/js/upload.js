@@ -270,7 +270,7 @@
           const fileName = `${uid}_${adId}_${i}_${k}.webp`;
           const { url, fileId } = await uploadToImageKit(blobs[k], fileName);
           rec['path_' + k] = url;
-          if (k === 'large') rec.imagekit_file_id = fileId;
+          if (k === 'large') rec.b2_path = fileId;
         }
         /* حفظ وصف وكلمات مفتاحية من نتيجة الفحص */
         const thisModRes = Array.isArray(modRes) ? modRes[i] : modRes;
