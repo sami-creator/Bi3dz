@@ -385,6 +385,7 @@
           }
         }
         const ad = { category_id: S.category_id, subcategory_id: S.subcategory_id, attrs: buildAttrs(), title: S.title, description: S.description, price: S.price, discount_pct: S.discount_pct, negotiable: S.negotiable, delivery: Categories.isService(S.category_id) ? false : !!S.delivery, show_phone: S.show_phone, video_url: S.video_url, faq: S.faq, wilaya_id: S.wilaya_id, daira_id: S.daira_id, commune_id: S.commune_id, lat: S.lat, lng: S.lng };
+        console.log('[DEBUG] payload', JSON.stringify({ mode: editId ? 'update' : 'create', id, ad, images }));
         const { data, error } = await SB.fn('submit-ad', { mode: editId ? 'update' : 'create', id, ad, images });
         if (error || (data && data.error)) throw error || new Error(data.error);
         Utils.Store.remove(window.CONFIG.STORAGE_KEYS.DRAFT);
