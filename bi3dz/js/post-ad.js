@@ -76,7 +76,7 @@
         Categories.filtersFor(s.value).forEach(f => {
           if (Categories.isMulti(f.key) && f.type === 'select') { attrs.append(field(Categories.keyLabel(f.key, f) + ' (' + t('ad.multi_hint') + ')', multiPick(f), null, true)); return; }
           const i = f.type === 'select' ? el('select', { class: 'input' }) : el('input', { class: 'input', maxlength: f.max || 30 });
-          if (f.type === 'select') { i.append(new Option('—', '')); f.options.forEach(o => i.append(new Option(o, o))); }
+          if (f.type === 'select') { i.append(new Option('—', '')); f.options.forEach(o => { const lbl = typeof o === 'object' ? (o[I18n.lang] || o.ar) : o; i.append(new Option(lbl, lbl)); }); }
           i.value = S.attrs[f.key] || '';
           i.addEventListener('input', () => { const v = Sanitize.cleanText(i.value, 30); v ? S.attrs[f.key] = v : delete S.attrs[f.key]; saveDraft(); });
           attrs.append(field(Categories.keyLabel(f.key, f), i, null, true));
