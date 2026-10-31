@@ -1,690 +1,2235 @@
 [
  {
-  "id": "clothes_wedding",
-  "ar": "ملابس الأعراس",
-  "fr": "Tenues de mariage",
-  "en": "Wedding wear",
+  "id": "alimentaire",
+  "ar": "المواد الغذائية",
+  "fr": "Alimentaire",
+  "en": "Food",
   "sub": [
    {
-    "id": "karakou",
-    "ar": "كراكو",
-    "fr": "Karakou",
-    "en": "Karakou",
+    "id": "bio_dietetique",
+    "ar": "غذاء صحي وعضوي",
+    "fr": "Diététique & Bio",
+    "en": "Organic",
+    "filters": []
+   },
+   {
+    "id": "boissons",
+    "ar": "مشروبات",
+    "fr": "Boissons",
+    "en": "Beverages",
+    "filters": []
+   },
+   {
+    "id": "boulangerie",
+    "ar": "مخبزة وحلويات",
+    "fr": "Boulangerie",
+    "en": "Bakery",
+    "filters": []
+   },
+   {
+    "id": "epicerie",
+    "ar": "بقالة ومعلبات",
+    "fr": "Épicerie",
+    "en": "Grocery",
+    "filters": []
+   },
+   {
+    "id": "fruits_legumes",
+    "ar": "فواكه وخضروات",
+    "fr": "Fruits & Légumes",
+    "en": "Fruits & Vegetables",
+    "filters": []
+   },
+   {
+    "id": "huiles_epices",
+    "ar": "زيوت وتوابل",
+    "fr": "Huiles & Épices",
+    "en": "Oils & Spices",
+    "filters": []
+   },
+   {
+    "id": "produits_frais",
+    "ar": "منتجات طازجة",
+    "fr": "Produits frais",
+    "en": "Fresh Products",
+    "filters": []
+   },
+   {
+    "id": "produits_laitiers",
+    "ar": "منتجات الألبان",
+    "fr": "Produits laitiers",
+    "en": "Dairy",
+    "filters": []
+   },
+   {
+    "id": "viandes",
+    "ar": "لحوم ودواجن",
+    "fr": "Viandes",
+    "en": "Meat",
+    "filters": []
+   }
+  ]
+ },
+ {
+  "id": "animaux",
+  "ar": "الحيوانات",
+  "fr": "Animaux",
+  "en": "Animals",
+  "sub": [
+   {
+    "id": "accessoires_animaux",
+    "ar": "لوازم الحيوانات",
+    "fr": "Accessoires animaux",
+    "en": "Pet Accessories",
+    "filters": []
+   },
+   {
+    "id": "autres_animaux",
+    "ar": "حيوانات أخرى",
+    "fr": "Autres animaux",
+    "en": "Other Animals",
+    "filters": []
+   },
+   {
+    "id": "chiens_chats",
+    "ar": "كلاب وقطط",
+    "fr": "Chiens & Chats",
+    "en": "Dogs & Cats",
+    "filters": []
+   },
+   {
+    "id": "oiseaux",
+    "ar": "طيور",
+    "fr": "Oiseaux",
+    "en": "Birds",
+    "filters": []
+   },
+   {
+    "id": "ovins_equins",
+    "ar": "أغنام وخيول",
+    "fr": "Ovins & Équins",
+    "en": "Livestock",
+    "filters": []
+   }
+  ]
+ },
+ {
+  "id": "automobiles",
+  "ar": "مركبات",
+  "fr": "Automobiles",
+  "en": "Vehicles",
+  "sub": [
+   {
+    "id": "bateaux",
+    "ar": "أدوات بحرية",
+    "fr": "Bateaux",
+    "en": "Boats",
+    "filters": []
+   },
+   {
+    "id": "engins_tracteurs",
+    "ar": "معدات ثقيلة وجرارات",
+    "fr": "Engins & Tracteurs",
+    "en": "Heavy Equipment",
+    "filters": []
+   },
+   {
+    "id": "motos",
+    "ar": "دراجات نارية",
+    "fr": "Motos",
+    "en": "Motorcycles",
+    "filters": []
+   },
+   {
+    "id": "quads",
+    "ar": "عربات رباعية الدفع",
+    "fr": "Quads",
+    "en": "Quads",
+    "filters": []
+   },
+   {
+    "id": "utilitaires",
+    "ar": "مركبات نفعية وشاحنات",
+    "fr": "Utilitaires",
+    "en": "Trucks",
+    "filters": []
+   },
+   {
+    "id": "voitures",
+    "ar": "سيارات",
+    "fr": "Voitures",
+    "en": "Cars",
+    "filters": []
+   }
+  ]
+ },
+ {
+  "id": "electronique_electromenager",
+  "ar": "إلكترونيات وأجهزة منزلية",
+  "fr": "Électronique",
+  "en": "Electronics",
+  "sub": [
+   {
+    "id": "abonnements_iptv",
+    "ar": "اشتراكات IPTV",
+    "fr": "Abonnements IPTV",
+    "en": "IPTV",
+    "filters": []
+   },
+   {
+    "id": "audio_hifi",
+    "ar": "صوتيات وهاي فاي",
+    "fr": "Audio & Hi-fi",
+    "en": "Audio",
+    "filters": []
+   },
+   {
+    "id": "cameras_elec",
+    "ar": "كاميرا وفيديو",
+    "fr": "Caméras",
+    "en": "Cameras",
+    "filters": []
+   },
+   {
+    "id": "climatiseurs",
+    "ar": "مكيفات ومدفئات",
+    "fr": "Climatiseurs",
+    "en": "AC",
+    "filters": []
+   },
+   {
+    "id": "composants_elec",
+    "ar": "مكونات إلكترونية",
+    "fr": "Composants électroniques",
+    "en": "Electronics Parts",
+    "filters": []
+   },
+   {
+    "id": "demodulateurs",
+    "ar": "رسيفر وبوكس",
+    "fr": "Démodulateurs",
+    "en": "Decoders",
+    "filters": []
+   },
+   {
+    "id": "fours_cuisinieres",
+    "ar": "أفران وطباخات",
+    "fr": "Fours & Cuisinières",
+    "en": "Ovens",
+    "filters": []
+   },
+   {
+    "id": "lave_vaisselle",
+    "ar": "غسالات أطباق",
+    "fr": "Lave-vaisselles",
+    "en": "Dishwashers",
+    "filters": []
+   },
+   {
+    "id": "machines_coudre",
+    "ar": "آلات الخياطة",
+    "fr": "Machines à coudre",
+    "en": "Sewing Machines",
+    "filters": []
+   },
+   {
+    "id": "machines_laver",
+    "ar": "غسالات",
+    "fr": "Machines à laver",
+    "en": "Washing Machines",
+    "filters": []
+   },
+   {
+    "id": "paraboles",
+    "ar": "دشوش وسويتش",
+    "fr": "Paraboles",
+    "en": "Satellite Dishes",
+    "filters": []
+   },
+   {
+    "id": "refrigerateurs",
+    "ar": "ثلاجات ومجمدات",
+    "fr": "Réfrigérateurs",
+    "en": "Fridges",
+    "filters": []
+   },
+   {
+    "id": "securite_alarme",
+    "ar": "نظم الأمن والإنذار",
+    "fr": "Sécurité & Alarme",
+    "en": "Security",
+    "filters": []
+   },
+   {
+    "id": "televiseurs",
+    "ar": "تلفزيونات",
+    "fr": "Téléviseurs",
+    "en": "TVs",
+    "filters": []
+   }
+  ]
+ },
+ {
+  "id": "emploi",
+  "ar": "الوظائف",
+  "fr": "Emploi",
+  "en": "Jobs",
+  "sub": [
+   {
+    "id": "demandes_emploi",
+    "ar": "طلبات عمل",
+    "fr": "Demandes emploi",
+    "en": "Job Requests",
+    "filters": []
+   },
+   {
+    "id": "offres_emploi",
+    "ar": "عروض عمل",
+    "fr": "Offres emploi",
+    "en": "Job Offers",
+    "filters": []
+   }
+  ]
+ },
+ {
+  "id": "immobilier",
+  "ar": "العقارات",
+  "fr": "Immobilier",
+  "en": "Real Estate",
+  "sub": [
+   {
+    "id": "appartement",
+    "ar": "شقق سكنية",
+    "fr": "Appartement",
+    "en": "Apartment",
+    "filters": []
+   },
+   {
+    "id": "bungalow_immo",
+    "ar": "بنغالو",
+    "fr": "Bungalow",
+    "en": "Bungalow",
+    "filters": []
+   },
+   {
+    "id": "bureau",
+    "ar": "مكاتب تجارية",
+    "fr": "Bureau",
+    "en": "Office",
+    "filters": []
+   },
+   {
+    "id": "hangar_usine",
+    "ar": "مستودعات ومصانع",
+    "fr": "Hangar & Usine",
+    "en": "Warehouse",
+    "filters": []
+   },
+   {
+    "id": "immeuble",
+    "ar": "عمارة",
+    "fr": "Immeuble",
+    "en": "Building",
+    "filters": []
+   },
+   {
+    "id": "local_commercial",
+    "ar": "محلات تجارية",
+    "fr": "Local commercial",
+    "en": "Commercial",
+    "filters": []
+   },
+   {
+    "id": "maison_populaire",
+    "ar": "بيوت شعبية",
+    "fr": "Maison traditionnelle",
+    "en": "Traditional House",
+    "filters": []
+   },
+   {
+    "id": "terrain",
+    "ar": "أراضي",
+    "fr": "Terrain",
+    "en": "Land",
+    "filters": []
+   },
+   {
+    "id": "terrain_agricole",
+    "ar": "أراضي فلاحية",
+    "fr": "Terrain agricole",
+    "en": "Agricultural Land",
+    "filters": []
+   },
+   {
+    "id": "villa",
+    "ar": "فيلا سكنية",
+    "fr": "Villa",
+    "en": "Villa",
+    "filters": []
+   }
+  ]
+ },
+ {
+  "id": "informatique",
+  "ar": "معلوماتية",
+  "fr": "Informatique",
+  "en": "IT",
+  "sub": [
+   {
+    "id": "composants_pc",
+    "ar": "قطع غيار الكمبيوتر",
+    "fr": "Composants PC",
+    "en": "PC Parts",
+    "filters": []
+   },
+   {
+    "id": "datashows",
+    "ar": "داتاشو وبروجكتور",
+    "fr": "Datashows",
+    "en": "Projectors",
+    "filters": []
+   },
+   {
+    "id": "ecrans",
+    "ar": "شاشات",
+    "fr": "Écrans",
+    "en": "Monitors",
+    "filters": []
+   },
+   {
+    "id": "imprimantes",
+    "ar": "طابعات وحبر",
+    "fr": "Imprimantes",
+    "en": "Printers",
+    "filters": []
+   },
+   {
+    "id": "laptops",
+    "ar": "لابتوب",
+    "fr": "Ordinateurs portables",
+    "en": "Laptops",
+    "filters": []
+   },
+   {
+    "id": "logiciels",
+    "ar": "برامج واشتراكات",
+    "fr": "Logiciels",
+    "en": "Software",
+    "filters": []
+   },
+   {
+    "id": "onduleurs",
+    "ar": "أحواض الطاقة",
+    "fr": "Onduleurs",
+    "en": "UPS",
+    "filters": []
+   },
+   {
+    "id": "pc_bureau",
+    "ar": "كمبيوتر مكتبي",
+    "fr": "PC de bureau",
+    "en": "Desktop PC",
+    "filters": []
+   },
+   {
+    "id": "peripheriques",
+    "ar": "لوحة مفاتيح وفأرة",
+    "fr": "Périphériques",
+    "en": "Peripherals",
+    "filters": []
+   },
+   {
+    "id": "reseau",
+    "ar": "شبكات واتصال",
+    "fr": "Réseau",
+    "en": "Network",
+    "filters": []
+   },
+   {
+    "id": "sacoche_cartable",
+    "ar": "حقائب الكمبيوتر",
+    "fr": "Sacoches",
+    "en": "Laptop Bags",
+    "filters": []
+   },
+   {
+    "id": "stockage_externe",
+    "ar": "تخزين خارجي",
+    "fr": "Stockage externe",
+    "en": "External Storage",
+    "filters": []
+   },
+   {
+    "id": "tablettes_graphiques",
+    "ar": "لوحات الرسم الرقمية",
+    "fr": "Tablettes graphiques",
+    "en": "Drawing Tablets",
+    "filters": []
+   },
+   {
+    "id": "vr_info",
+    "ar": "الواقع الافتراضي",
+    "fr": "Réalité virtuelle",
+    "en": "VR",
+    "filters": []
+   }
+  ]
+ },
+ {
+  "id": "jeux_video",
+  "ar": "ألعاب إلكترونية وكونسول",
+  "fr": "Jeux vidéo",
+  "en": "Video Games",
+  "sub": [
+   {
+    "id": "consoles",
+    "ar": "كونسول",
+    "fr": "Consoles",
+    "en": "Consoles",
+    "filters": []
+   },
+   {
+    "id": "jeux",
+    "ar": "ألعاب",
+    "fr": "Jeux",
+    "en": "Games",
+    "filters": []
+   },
+   {
+    "id": "manettes",
+    "ar": "يدات وإكسسوارات",
+    "fr": "Manettes",
+    "en": "Controllers",
+    "filters": []
+   },
+   {
+    "id": "vr_gaming",
+    "ar": "الواقع الافتراضي",
+    "fr": "VR Gaming",
+    "en": "VR Gaming",
+    "filters": []
+   }
+  ]
+ },
+ {
+  "id": "loisirs",
+  "ar": "ترفيه وهوايات",
+  "fr": "Loisirs",
+  "en": "Leisure",
+  "sub": [
+   {
+    "id": "antiquites",
+    "ar": "التحف والمقتنيات",
+    "fr": "Antiquités",
+    "en": "Antiques",
+    "filters": []
+   },
+   {
+    "id": "cadeaux",
+    "ar": "هدايا",
+    "fr": "Cadeaux",
+    "en": "Gifts",
+    "filters": []
+   },
+   {
+    "id": "charite",
+    "ar": "خيرية وتبرعات",
+    "fr": "Charité & Dons",
+    "en": "Charity",
+    "filters": []
+   },
+   {
+    "id": "cinema_series",
+    "ar": "أفلام ومسلسلات",
+    "fr": "Cinéma & Séries",
+    "en": "Movies",
+    "filters": []
+   },
+   {
+    "id": "collections_art",
+    "ar": "مقتنيات وفن",
+    "fr": "Collections & Art",
+    "en": "Art & Collectibles",
+    "filters": []
+   },
+   {
+    "id": "instruments_musique",
+    "ar": "آلات موسيقية",
+    "fr": "Instruments de musique",
+    "en": "Music Instruments",
+    "filters": []
+   },
+   {
+    "id": "jouets_enfants",
+    "ar": "العاب الأطفال",
+    "fr": "Jouets enfants",
+    "en": "Kids Toys",
+    "filters": []
+   },
+   {
+    "id": "livres_magazines",
+    "ar": "كتب ومجلات",
+    "fr": "Livres & Magazines",
+    "en": "Books",
+    "filters": []
+   }
+  ]
+ },
+ {
+  "id": "materiaux_equipement",
+  "ar": "مواد ومعدات",
+  "fr": "Matériaux",
+  "en": "Materials",
+  "sub": [
+   {
+    "id": "echafaudages",
+    "ar": "سقالات",
+    "fr": "Échafaudages",
+    "en": "Scaffolding",
+    "filters": []
+   },
+   {
+    "id": "equipement_agricole",
+    "ar": "معدات فلاحية",
+    "fr": "Équipement agricole",
+    "en": "Agricultural Equipment",
+    "filters": []
+   },
+   {
+    "id": "equipement_bureau",
+    "ar": "معدات المكتب",
+    "fr": "Équipement bureau",
+    "en": "Office Equipment",
+    "filters": []
+   },
+   {
+    "id": "equipement_medical",
+    "ar": "معدات طبية",
+    "fr": "Équipement médical",
+    "en": "Medical Equipment",
+    "filters": []
+   },
+   {
+    "id": "generateurs",
+    "ar": "مولدات كهربائية",
+    "fr": "Générateurs",
+    "en": "Generators",
+    "filters": []
+   },
+   {
+    "id": "machines_industrielles",
+    "ar": "آلات صناعية",
+    "fr": "Machines industrielles",
+    "en": "Industrial Machines",
+    "filters": []
+   },
+   {
+    "id": "materiaux_construction",
+    "ar": "مواد البناء",
+    "fr": "Matériaux de construction",
+    "en": "Construction Materials",
+    "filters": []
+   },
+   {
+    "id": "outillage",
+    "ar": "عتاد وأدوات",
+    "fr": "Outillage",
+    "en": "Tools",
+    "filters": []
+   },
+   {
+    "id": "pompes_compresseurs",
+    "ar": "مضخات وضواغط",
+    "fr": "Pompes & Compresseurs",
+    "en": "Pumps",
+    "filters": []
+   }
+  ]
+ },
+ {
+  "id": "meubles_maison",
+  "ar": "أثاث ومنزل",
+  "fr": "Meubles",
+  "en": "Furniture",
+  "sub": [
+   {
+    "id": "artisanat",
+    "ar": "صناعة تقليدية",
+    "fr": "Artisanat",
+    "en": "Crafts",
+    "filters": []
+   },
+   {
+    "id": "chambre",
+    "ar": "غرفة النوم",
+    "fr": "Chambre",
+    "en": "Bedroom",
+    "filters": []
+   },
+   {
+    "id": "coffres_rangements",
+    "ar": "خزائن وتخزين",
+    "fr": "Rangements",
+    "en": "Storage",
+    "filters": []
+   },
+   {
+    "id": "cuisine_sdb",
+    "ar": "مطبخ وحمام",
+    "fr": "Cuisine & SDB",
+    "en": "Kitchen & Bathroom",
+    "filters": []
+   },
+   {
+    "id": "decoration",
+    "ar": "ديكور",
+    "fr": "Décoration",
+    "en": "Decoration",
+    "filters": []
+   },
+   {
+    "id": "electromenager_cuisine",
+    "ar": "أجهزة مطبخ صغيرة",
+    "fr": "Électroménager cuisine",
+    "en": "Kitchen Appliances",
+    "filters": []
+   },
+   {
+    "id": "jardinage",
+    "ar": "بستنة",
+    "fr": "Jardinage",
+    "en": "Gardening",
+    "filters": []
+   },
+   {
+    "id": "linge_maison",
+    "ar": "مفروشات",
+    "fr": "Linge de maison",
+    "en": "Linens",
+    "filters": []
+   },
+   {
+    "id": "luminaires",
+    "ar": "إضاءة",
+    "fr": "Luminaires",
+    "en": "Lighting",
+    "filters": []
+   },
+   {
+    "id": "salon",
+    "ar": "صالون",
+    "fr": "Salon",
+    "en": "Living Room",
+    "filters": []
+   },
+   {
+    "id": "vaisselle",
+    "ar": "أواني ومستلزمات",
+    "fr": "Vaisselle",
+    "en": "Kitchenware",
+    "filters": []
+   }
+  ]
+ },
+ {
+  "id": "pieces_detachees",
+  "ar": "قطع غيار وإكسسوارات",
+  "fr": "Pièces détachées",
+  "en": "Spare Parts",
+  "sub": [
+   {
+    "id": "accessoires_auto",
+    "ar": "إكسسوارات السيارة",
+    "fr": "Accessoires auto",
+    "en": "Car Accessories",
+    "filters": []
+   },
+   {
+    "id": "equipement_atelier",
+    "ar": "معدات الورشة",
+    "fr": "Équipement atelier",
+    "en": "Workshop Equipment",
+    "filters": []
+   },
+   {
+    "id": "huiles",
+    "ar": "زيوت ومزلقات",
+    "fr": "Huiles & Lubrifiants",
+    "en": "Oils",
+    "filters": []
+   },
+   {
+    "id": "pieces_auto",
+    "ar": "قطع غيار سيارات",
+    "fr": "Pièces auto",
+    "en": "Car Parts",
+    "filters": []
+   },
+   {
+    "id": "pieces_moto",
+    "ar": "قطع غيار دراجات",
+    "fr": "Pièces moto",
+    "en": "Moto Parts",
+    "filters": []
+   },
+   {
+    "id": "pneus_jantes",
+    "ar": "إطارات وجنطات",
+    "fr": "Pneus & Jantes",
+    "en": "Tires & Rims",
+    "filters": []
+   },
+   {
+    "id": "vitrage",
+    "ar": "زجاج ومرايا",
+    "fr": "Vitrages",
+    "en": "Windshields",
+    "filters": []
+   }
+  ]
+ },
+ {
+  "id": "sante_beaute",
+  "ar": "الصحة والجمال",
+  "fr": "Santé & Beauté",
+  "en": "Health & Beauty",
+  "sub": [
+   {
+    "id": "appareils_sport_sante",
+    "ar": "أجهزة رياضة وصحة",
+    "fr": "Appareils sport",
+    "en": "Health Devices",
+    "filters": []
+   },
+   {
+    "id": "complements_alimentaires",
+    "ar": "مكملات غذائية",
+    "fr": "Compléments alimentaires",
+    "en": "Supplements",
+    "filters": []
+   },
+   {
+    "id": "cosmetiques",
+    "ar": "مستحضرات وعطور",
+    "fr": "Cosmétiques",
+    "en": "Cosmetics",
+    "filters": []
+   },
+   {
+    "id": "materiel_medical",
+    "ar": "معدات طبية",
+    "fr": "Matériel médical",
+    "en": "Medical Equipment",
+    "filters": []
+   },
+   {
+    "id": "soins_capillaires",
+    "ar": "العناية بالشعر",
+    "fr": "Soins capillaires",
+    "en": "Hair Care",
+    "filters": []
+   },
+   {
+    "id": "soins_corps",
+    "ar": "العناية بالجسم",
+    "fr": "Soins du corps",
+    "en": "Body Care",
+    "filters": []
+   }
+  ]
+ },
+ {
+  "id": "services",
+  "ar": "خدمات",
+  "fr": "Services",
+  "en": "Services",
+  "sub": [
+   {
+    "id": "bridal_transport",
+    "ar": "نقل عرائس",
+    "fr": "Transport mariées",
+    "en": "Bridal transport",
     "filters": [
      {
-      "key": "size",
+      "key": "mobility",
       "type": "select",
       "options": [
-       "XS",
-       "S",
-       "M",
-       "L",
-       "XL",
-       "XXL",
-       "3XL",
-       "34",
-       "36",
-       "38",
-       "40",
-       "42",
-       "44",
-       "46",
-       "48",
-       "50",
-       "52",
-       "54",
-       "56"
+       "ينتقل إلى الزبون",
+       "في مقر الخدمة",
+       "الاثنان معًا"
       ]
      },
      {
-      "key": "fabric",
+      "key": "experience",
       "type": "select",
       "options": [
-       "حرير",
-       "قفطان",
-       "دانتيل",
-       "ساتان",
-       "قطن"
+       "أقل من سنة",
+       "1 - 3 سنوات",
+       "أكثر من 3 سنوات"
       ]
      },
      {
-      "key": "color",
+      "key": "price_type",
       "type": "select",
       "options": [
-       "أبيض",
-       "أسود",
-       "أحمر",
-       "وردي",
-       "ذهبي",
-       "أزرق",
-       "أخضر",
-       "بيج",
-       "فضي",
-       "بنفسجي",
-       "برتقالي",
-       "أصفر",
-       "بني",
-       "رمادي",
-       "كحلي",
-       "تركوازي",
-       "عنابي",
-       "زهري فاتح",
-       "سماوي",
-       "كاكي"
+       "للخدمة",
+       "للساعة",
+       "لليوم",
+       "للشخص"
       ]
      }
     ]
    },
    {
-    "id": "gandoura_thakila",
-    "ar": "قندورة ثقيلة",
-    "fr": "Gandoura lourde",
-    "en": "Heavy gandoura",
+    "id": "care",
+    "ar": "عناية",
+    "fr": "Soin",
+    "en": "Care",
     "filters": [
      {
-      "key": "size",
+      "key": "mobility",
       "type": "select",
       "options": [
-       "XS",
-       "S",
-       "M",
-       "L",
-       "XL",
-       "XXL",
-       "3XL",
-       "34",
-       "36",
-       "38",
-       "40",
-       "42",
-       "44",
-       "46",
-       "48",
-       "50",
-       "52",
-       "54",
-       "56"
+       "ينتقل إلى الزبون",
+       "في مقر الخدمة",
+       "الاثنان معًا"
       ]
      },
      {
-      "key": "fabric",
+      "key": "experience",
       "type": "select",
       "options": [
-       "حرير",
-       "قفطان",
-       "دانتيل",
-       "ساتان",
-       "قطن"
+       "أقل من سنة",
+       "1 - 3 سنوات",
+       "أكثر من 3 سنوات"
       ]
      },
      {
-      "key": "color",
+      "key": "price_type",
       "type": "select",
       "options": [
-       "أبيض",
-       "أسود",
-       "أحمر",
-       "وردي",
-       "ذهبي",
-       "أزرق",
-       "أخضر",
-       "بيج",
-       "فضي",
-       "بنفسجي",
-       "برتقالي",
-       "أصفر",
-       "بني",
-       "رمادي",
-       "كحلي",
-       "تركوازي",
-       "عنابي",
-       "زهري فاتح",
-       "سماوي",
-       "كاكي"
+       "للخدمة",
+       "للساعة",
+       "لليوم",
+       "للشخص"
       ]
      }
     ]
    },
    {
-    "id": "gandoura_constantine",
-    "ar": "قندورة قسنطينية",
-    "fr": "Gandoura constantinoise",
-    "en": "Constantine gandoura",
+    "id": "chair_table_rental",
+    "ar": "تأجير كراسي وطاولات",
+    "fr": "Location chaises",
+    "en": "Chair & table rental",
     "filters": [
      {
-      "key": "size",
+      "key": "mobility",
       "type": "select",
       "options": [
-       "XS",
-       "S",
-       "M",
-       "L",
-       "XL",
-       "XXL",
-       "3XL",
-       "34",
-       "36",
-       "38",
-       "40",
-       "42",
-       "44",
-       "46",
-       "48",
-       "50",
-       "52",
-       "54",
-       "56"
+       "ينتقل إلى الزبون",
+       "في مقر الخدمة",
+       "الاثنان معًا"
       ]
      },
      {
-      "key": "fabric",
+      "key": "experience",
       "type": "select",
       "options": [
-       "حرير",
-       "قفطان",
-       "دانتيل",
-       "ساتان",
-       "قطن"
+       "أقل من سنة",
+       "1 - 3 سنوات",
+       "أكثر من 3 سنوات"
       ]
      },
      {
-      "key": "color",
+      "key": "price_type",
       "type": "select",
       "options": [
-       "أبيض",
-       "أسود",
-       "أحمر",
-       "وردي",
-       "ذهبي",
-       "أزرق",
-       "أخضر",
-       "بيج",
-       "فضي",
-       "بنفسجي",
-       "برتقالي",
-       "أصفر",
-       "بني",
-       "رمادي",
-       "كحلي",
-       "تركوازي",
-       "عنابي",
-       "زهري فاتح",
-       "سماوي",
-       "كاكي"
+       "للخدمة",
+       "للساعة",
+       "لليوم",
+       "للشخص"
       ]
      }
     ]
    },
    {
-    "id": "chedda",
-    "ar": "شدة تلمسانية",
-    "fr": "Chedda tlemcénienne",
-    "en": "Tlemcen chedda",
+    "id": "cooking",
+    "ar": "طبخ",
+    "fr": "Cuisine",
+    "en": "Cooking",
     "filters": [
      {
-      "key": "size",
+      "key": "mobility",
       "type": "select",
       "options": [
-       "XS",
-       "S",
-       "M",
-       "L",
-       "XL",
-       "XXL",
-       "3XL",
-       "34",
-       "36",
-       "38",
-       "40",
-       "42",
-       "44",
-       "46",
-       "48",
-       "50",
-       "52",
-       "54",
-       "56"
+       "ينتقل إلى الزبون",
+       "في مقر الخدمة",
+       "الاثنان معًا"
       ]
      },
      {
-      "key": "color",
+      "key": "experience",
       "type": "select",
       "options": [
-       "أبيض",
-       "أسود",
-       "أحمر",
-       "وردي",
-       "ذهبي",
-       "أزرق",
-       "أخضر",
-       "بيج",
-       "فضي",
-       "بنفسجي",
-       "برتقالي",
-       "أصفر",
-       "بني",
-       "رمادي",
-       "كحلي",
-       "تركوازي",
-       "عنابي",
-       "زهري فاتح",
-       "سماوي",
-       "كاكي"
+       "أقل من سنة",
+       "1 - 3 سنوات",
+       "أكثر من 3 سنوات"
+      ]
+     },
+     {
+      "key": "price_type",
+      "type": "select",
+      "options": [
+       "للخدمة",
+       "للساعة",
+       "لليوم",
+       "للشخص"
       ]
      }
     ]
    },
    {
-    "id": "takchita",
-    "ar": "تكشيطة",
-    "fr": "Tekchita",
-    "en": "Takchita",
+    "id": "dj",
+    "ar": "دي جي",
+    "fr": "DJ",
+    "en": "DJ",
     "filters": [
      {
-      "key": "size",
+      "key": "mobility",
       "type": "select",
       "options": [
-       "XS",
-       "S",
-       "M",
-       "L",
-       "XL",
-       "XXL",
-       "3XL",
-       "34",
-       "36",
-       "38",
-       "40",
-       "42",
-       "44",
-       "46",
-       "48",
-       "50",
-       "52",
-       "54",
-       "56"
+       "ينتقل إلى الزبون",
+       "في مقر الخدمة",
+       "الاثنان معًا"
       ]
      },
      {
-      "key": "fabric",
+      "key": "experience",
       "type": "select",
       "options": [
-       "حرير",
-       "قفطان",
-       "دانتيل",
-       "ساتان",
-       "قطن"
+       "أقل من سنة",
+       "1 - 3 سنوات",
+       "أكثر من 3 سنوات"
       ]
      },
      {
-      "key": "color",
+      "key": "price_type",
       "type": "select",
       "options": [
-       "أبيض",
-       "أسود",
-       "أحمر",
-       "وردي",
-       "ذهبي",
-       "أزرق",
-       "أخضر",
-       "بيج",
-       "فضي",
-       "بنفسجي",
-       "برتقالي",
-       "أصفر",
-       "بني",
-       "رمادي",
-       "كحلي",
-       "تركوازي",
-       "عنابي",
-       "زهري فاتح",
-       "سماوي",
-       "كاكي"
+       "للخدمة",
+       "للساعة",
+       "لليوم",
+       "للشخص"
       ]
      }
     ]
    },
    {
-    "id": "bridal",
-    "ar": "فساتين زفاف",
-    "fr": "Robes de mariée",
-    "en": "Bridal dresses",
+    "id": "events",
+    "ar": "تنظيم أحداث",
+    "fr": "Organisation",
+    "en": "Events",
     "filters": [
      {
-      "key": "size",
+      "key": "mobility",
       "type": "select",
       "options": [
-       "XS",
-       "S",
-       "M",
-       "L",
-       "XL",
-       "XXL",
-       "3XL",
-       "34",
-       "36",
-       "38",
-       "40",
-       "42",
-       "44",
-       "46",
-       "48",
-       "50",
-       "52",
-       "54",
-       "56"
+       "ينتقل إلى الزبون",
+       "في مقر الخدمة",
+       "الاثنان معًا"
       ]
      },
      {
-      "key": "color",
+      "key": "experience",
       "type": "select",
       "options": [
-       "أبيض",
-       "أسود",
-       "أحمر",
-       "وردي",
-       "ذهبي",
-       "أزرق",
-       "أخضر",
-       "بيج",
-       "فضي",
-       "بنفسجي",
-       "برتقالي",
-       "أصفر",
-       "بني",
-       "رمادي",
-       "كحلي",
-       "تركوازي",
-       "عنابي",
-       "زهري فاتح",
-       "سماوي",
-       "كاكي"
+       "أقل من سنة",
+       "1 - 3 سنوات",
+       "أكثر من 3 سنوات"
+      ]
+     },
+     {
+      "key": "price_type",
+      "type": "select",
+      "options": [
+       "للخدمة",
+       "للساعة",
+       "لليوم",
+       "للشخص"
       ]
      }
     ]
    },
    {
-    "id": "caftan",
-    "ar": "قفطان",
-    "fr": "Caftan",
-    "en": "Caftan",
+    "id": "hair_coloring",
+    "ar": "صبغة شعر",
+    "fr": "Coloration cheveux",
+    "en": "Hair coloring",
     "filters": [
      {
-      "key": "size",
+      "key": "mobility",
       "type": "select",
       "options": [
-       "XS",
-       "S",
-       "M",
-       "L",
-       "XL",
-       "XXL",
-       "3XL",
-       "34",
-       "36",
-       "38",
-       "40",
-       "42",
-       "44",
-       "46",
-       "48",
-       "50",
-       "52",
-       "54",
-       "56"
+       "ينتقل إلى الزبون",
+       "في مقر الخدمة",
+       "الاثنان معًا"
       ]
      },
      {
-      "key": "fabric",
+      "key": "experience",
       "type": "select",
       "options": [
-       "حرير",
-       "قفطان",
-       "دانتيل",
-       "ساتان",
-       "قطن"
+       "أقل من سنة",
+       "1 - 3 سنوات",
+       "أكثر من 3 سنوات"
       ]
      },
      {
-      "key": "color",
+      "key": "price_type",
       "type": "select",
       "options": [
-       "أبيض",
-       "أسود",
-       "أحمر",
-       "وردي",
-       "ذهبي",
-       "أزرق",
-       "أخضر",
-       "بيج",
-       "فضي",
-       "بنفسجي",
-       "برتقالي",
-       "أصفر",
-       "بني",
-       "رمادي",
-       "كحلي",
-       "تركوازي",
-       "عنابي",
-       "زهري فاتح",
-       "سماوي",
-       "كاكي"
+       "للخدمة",
+       "للساعة",
+       "لليوم",
+       "للشخص"
       ]
      }
     ]
    },
    {
-    "id": "wedding_top",
-    "ar": "بلوزة عرس",
-    "fr": "Haut de mariage",
-    "en": "Wedding top",
+    "id": "hair_curling",
+    "ar": "تجعيد شعر",
+    "fr": "Bouclage cheveux",
+    "en": "Hair curling",
     "filters": [
      {
-      "key": "size",
+      "key": "mobility",
       "type": "select",
       "options": [
-       "XS",
-       "S",
-       "M",
-       "L",
-       "XL",
-       "XXL",
-       "3XL",
-       "34",
-       "36",
-       "38",
-       "40",
-       "42",
-       "44",
-       "46",
-       "48",
-       "50",
-       "52",
-       "54",
-       "56"
+       "ينتقل إلى الزبون",
+       "في مقر الخدمة",
+       "الاثنان معًا"
       ]
      },
      {
-      "key": "color",
+      "key": "experience",
       "type": "select",
       "options": [
-       "أبيض",
-       "أسود",
-       "أحمر",
-       "وردي",
-       "ذهبي",
-       "أزرق",
-       "أخضر",
-       "بيج",
-       "فضي",
-       "بنفسجي",
-       "برتقالي",
-       "أصفر",
-       "بني",
-       "رمادي",
-       "كحلي",
-       "تركوازي",
-       "عنابي",
-       "زهري فاتح",
-       "سماوي",
-       "كاكي"
+       "أقل من سنة",
+       "1 - 3 سنوات",
+       "أكثر من 3 سنوات"
+      ]
+     },
+     {
+      "key": "price_type",
+      "type": "select",
+      "options": [
+       "للخدمة",
+       "للساعة",
+       "لليوم",
+       "للشخص"
       ]
      }
     ]
    },
    {
-    "id": "jabador",
-    "ar": "جابادور",
-    "fr": "Jabador",
-    "en": "Jabador",
+    "id": "hair_extensions",
+    "ar": "تركيب شعر",
+    "fr": "Extensions cheveux",
+    "en": "Hair extensions",
     "filters": [
      {
-      "key": "size",
+      "key": "mobility",
       "type": "select",
       "options": [
-       "XS",
-       "S",
-       "M",
-       "L",
-       "XL",
-       "XXL",
-       "3XL",
-       "34",
-       "36",
-       "38",
-       "40",
-       "42",
-       "44",
-       "46",
-       "48",
-       "50",
-       "52",
-       "54",
-       "56"
+       "ينتقل إلى الزبون",
+       "في مقر الخدمة",
+       "الاثنان معًا"
       ]
      },
      {
-      "key": "fabric",
+      "key": "experience",
       "type": "select",
       "options": [
-       "حرير",
-       "قفطان",
-       "دانتيل",
-       "ساتان",
-       "قطن"
+       "أقل من سنة",
+       "1 - 3 سنوات",
+       "أكثر من 3 سنوات"
       ]
      },
      {
-      "key": "color",
+      "key": "price_type",
       "type": "select",
       "options": [
-       "أبيض",
-       "أسود",
-       "أحمر",
-       "وردي",
-       "ذهبي",
-       "أزرق",
-       "أخضر",
-       "بيج",
-       "فضي",
-       "بنفسجي",
-       "برتقالي",
-       "أصفر",
-       "بني",
-       "رمادي",
-       "كحلي",
-       "تركوازي",
-       "عنابي",
-       "زهري فاتح",
-       "سماوي",
-       "كاكي"
+       "للخدمة",
+       "للساعة",
+       "لليوم",
+       "للشخص"
       ]
      }
     ]
    },
    {
-    "id": "melhfa",
-    "ar": "ملحفة",
-    "fr": "Melhfa",
-    "en": "Melhfa",
+    "id": "hair_straightening",
+    "ar": "تمليس شعر",
+    "fr": "Lissage cheveux",
+    "en": "Hair straightening",
     "filters": [
      {
-      "key": "color",
+      "key": "mobility",
       "type": "select",
       "options": [
-       "أبيض",
-       "أسود",
-       "أحمر",
-       "وردي",
-       "ذهبي",
-       "أزرق",
-       "أخضر",
-       "بيج",
-       "فضي",
-       "بنفسجي",
-       "برتقالي",
-       "أصفر",
-       "بني",
-       "رمادي",
-       "كحلي",
-       "تركوازي",
-       "عنابي",
-       "زهري فاتح",
-       "سماوي",
-       "كاكي"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "flower_girl",
-    "ar": "فستان عروس صغيرة",
-    "fr": "Robe de petite mariée",
-    "en": "Flower girl dress",
-    "filters": [
-     {
-      "key": "age",
-      "type": "select",
-      "options": [
-       "0-2",
-       "3-5",
-       "6-9",
-       "10-14"
+       "ينتقل إلى الزبون",
+       "في مقر الخدمة",
+       "الاثنان معًا"
       ]
      },
      {
-      "key": "color",
+      "key": "experience",
       "type": "select",
       "options": [
-       "أبيض",
-       "أسود",
-       "أحمر",
-       "وردي",
-       "ذهبي",
-       "أزرق",
-       "أخضر",
-       "بيج",
-       "فضي",
-       "بنفسجي",
-       "برتقالي",
-       "أصفر",
-       "بني",
-       "رمادي",
-       "كحلي",
-       "تركوازي",
-       "عنابي",
-       "زهري فاتح",
-       "سماوي",
-       "كاكي"
+       "أقل من سنة",
+       "1 - 3 سنوات",
+       "أكثر من 3 سنوات"
+      ]
+     },
+     {
+      "key": "price_type",
+      "type": "select",
+      "options": [
+       "للخدمة",
+       "للساعة",
+       "لليوم",
+       "للشخص"
       ]
      }
     ]
    },
    {
-    "id": "wedding_accessories",
-    "ar": "إكسسوارات عرس",
-    "fr": "Accessoires de mariage",
-    "en": "Wedding accessories",
+    "id": "haircut",
+    "ar": "قص شعر",
+    "fr": "Coiffure",
+    "en": "Haircut",
+    "filters": [
+     {
+      "key": "mobility",
+      "type": "select",
+      "options": [
+       "ينتقل إلى الزبون",
+       "في مقر الخدمة",
+       "الاثنان معًا"
+      ]
+     },
+     {
+      "key": "experience",
+      "type": "select",
+      "options": [
+       "أقل من سنة",
+       "1 - 3 سنوات",
+       "أكثر من 3 سنوات"
+      ]
+     },
+     {
+      "key": "price_type",
+      "type": "select",
+      "options": [
+       "للخدمة",
+       "للساعة",
+       "لليوم",
+       "للشخص"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "hall_decoration",
+    "ar": "ديكور قاعات",
+    "fr": "Décoration salles",
+    "en": "Hall decoration",
+    "filters": [
+     {
+      "key": "mobility",
+      "type": "select",
+      "options": [
+       "ينتقل إلى الزبون",
+       "في مقر الخدمة",
+       "الاثنان معًا"
+      ]
+     },
+     {
+      "key": "experience",
+      "type": "select",
+      "options": [
+       "أقل من سنة",
+       "1 - 3 سنوات",
+       "أكثر من 3 سنوات"
+      ]
+     },
+     {
+      "key": "price_type",
+      "type": "select",
+      "options": [
+       "للخدمة",
+       "للساعة",
+       "لليوم",
+       "للشخص"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "hammam",
+    "ar": "حمام مغربي",
+    "fr": "Hammam",
+    "en": "Hammam",
+    "filters": [
+     {
+      "key": "mobility",
+      "type": "select",
+      "options": [
+       "ينتقل إلى الزبون",
+       "في مقر الخدمة",
+       "الاثنان معًا"
+      ]
+     },
+     {
+      "key": "experience",
+      "type": "select",
+      "options": [
+       "أقل من سنة",
+       "1 - 3 سنوات",
+       "أكثر من 3 سنوات"
+      ]
+     },
+     {
+      "key": "price_type",
+      "type": "select",
+      "options": [
+       "للخدمة",
+       "للساعة",
+       "لليوم",
+       "للشخص"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "makeup",
+    "ar": "مكياج",
+    "fr": "Maquillage",
+    "en": "Makeup",
+    "filters": [
+     {
+      "key": "mobility",
+      "type": "select",
+      "options": [
+       "ينتقل إلى الزبون",
+       "في مقر الخدمة",
+       "الاثنان معًا"
+      ]
+     },
+     {
+      "key": "experience",
+      "type": "select",
+      "options": [
+       "أقل من سنة",
+       "1 - 3 سنوات",
+       "أكثر من 3 سنوات"
+      ]
+     },
+     {
+      "key": "price_type",
+      "type": "select",
+      "options": [
+       "للخدمة",
+       "للساعة",
+       "لليوم",
+       "للشخص"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "massage",
+    "ar": "مساج",
+    "fr": "Massage",
+    "en": "Massage",
+    "filters": [
+     {
+      "key": "mobility",
+      "type": "select",
+      "options": [
+       "ينتقل إلى الزبون",
+       "في مقر الخدمة",
+       "الاثنان معًا"
+      ]
+     },
+     {
+      "key": "experience",
+      "type": "select",
+      "options": [
+       "أقل من سنة",
+       "1 - 3 سنوات",
+       "أكثر من 3 سنوات"
+      ]
+     },
+     {
+      "key": "price_type",
+      "type": "select",
+      "options": [
+       "للخدمة",
+       "للساعة",
+       "لليوم",
+       "للشخص"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "nails",
+    "ar": "أظافر",
+    "fr": "Ongles",
+    "en": "Nails",
+    "filters": [
+     {
+      "key": "mobility",
+      "type": "select",
+      "options": [
+       "ينتقل إلى الزبون",
+       "في مقر الخدمة",
+       "الاثنان معًا"
+      ]
+     },
+     {
+      "key": "experience",
+      "type": "select",
+      "options": [
+       "أقل من سنة",
+       "1 - 3 سنوات",
+       "أكثر من 3 سنوات"
+      ]
+     },
+     {
+      "key": "price_type",
+      "type": "select",
+      "options": [
+       "للخدمة",
+       "للساعة",
+       "لليوم",
+       "للشخص"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "photography",
+    "ar": "تصوير فوتوغرافي",
+    "fr": "Photographie",
+    "en": "Photography",
+    "filters": [
+     {
+      "key": "mobility",
+      "type": "select",
+      "options": [
+       "ينتقل إلى الزبون",
+       "في مقر الخدمة",
+       "الاثنان معًا"
+      ]
+     },
+     {
+      "key": "experience",
+      "type": "select",
+      "options": [
+       "أقل من سنة",
+       "1 - 3 سنوات",
+       "أكثر من 3 سنوات"
+      ]
+     },
+     {
+      "key": "price_type",
+      "type": "select",
+      "options": [
+       "للخدمة",
+       "للساعة",
+       "لليوم",
+       "للشخص"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "rental",
+    "ar": "تأجير",
+    "fr": "Location",
+    "en": "Rental",
+    "filters": [
+     {
+      "key": "mobility",
+      "type": "select",
+      "options": [
+       "ينتقل إلى الزبون",
+       "في مقر الخدمة",
+       "الاثنان معًا"
+      ]
+     },
+     {
+      "key": "experience",
+      "type": "select",
+      "options": [
+       "أقل من سنة",
+       "1 - 3 سنوات",
+       "أكثر من 3 سنوات"
+      ]
+     },
+     {
+      "key": "price_type",
+      "type": "select",
+      "options": [
+       "للخدمة",
+       "للساعة",
+       "لليوم",
+       "للشخص"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "skincare",
+    "ar": "عناية بالبشرة",
+    "fr": "Soins peau",
+    "en": "Skincare",
+    "filters": [
+     {
+      "key": "mobility",
+      "type": "select",
+      "options": [
+       "ينتقل إلى الزبون",
+       "في مقر الخدمة",
+       "الاثنان معًا"
+      ]
+     },
+     {
+      "key": "experience",
+      "type": "select",
+      "options": [
+       "أقل من سنة",
+       "1 - 3 سنوات",
+       "أكثر من 3 سنوات"
+      ]
+     },
+     {
+      "key": "price_type",
+      "type": "select",
+      "options": [
+       "للخدمة",
+       "للساعة",
+       "لليوم",
+       "للشخص"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "sweets",
+    "ar": "حلويات",
+    "fr": "Pâtisserie",
+    "en": "Sweets",
+    "filters": [
+     {
+      "key": "mobility",
+      "type": "select",
+      "options": [
+       "ينتقل إلى الزبون",
+       "في مقر الخدمة",
+       "الاثنان معًا"
+      ]
+     },
+     {
+      "key": "experience",
+      "type": "select",
+      "options": [
+       "أقل من سنة",
+       "1 - 3 سنوات",
+       "أكثر من 3 سنوات"
+      ]
+     },
+     {
+      "key": "price_type",
+      "type": "select",
+      "options": [
+       "للخدمة",
+       "للساعة",
+       "لليوم",
+       "للشخص"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "tailoring",
+    "ar": "خياطة وتعديل",
+    "fr": "Couture",
+    "en": "Tailoring",
+    "filters": [
+     {
+      "key": "mobility",
+      "type": "select",
+      "options": [
+       "ينتقل إلى الزبون",
+       "في مقر الخدمة",
+       "الاثنان معًا"
+      ]
+     },
+     {
+      "key": "experience",
+      "type": "select",
+      "options": [
+       "أقل من سنة",
+       "1 - 3 سنوات",
+       "أكثر من 3 سنوات"
+      ]
+     },
+     {
+      "key": "price_type",
+      "type": "select",
+      "options": [
+       "للخدمة",
+       "للساعة",
+       "لليوم",
+       "للشخص"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "videography",
+    "ar": "تصوير فيديو",
+    "fr": "Vidéographie",
+    "en": "Videography",
+    "filters": [
+     {
+      "key": "mobility",
+      "type": "select",
+      "options": [
+       "ينتقل إلى الزبون",
+       "في مقر الخدمة",
+       "الاثنان معًا"
+      ]
+     },
+     {
+      "key": "experience",
+      "type": "select",
+      "options": [
+       "أقل من سنة",
+       "1 - 3 سنوات",
+       "أكثر من 3 سنوات"
+      ]
+     },
+     {
+      "key": "price_type",
+      "type": "select",
+      "options": [
+       "للخدمة",
+       "للساعة",
+       "لليوم",
+       "للشخص"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "waitstaff",
+    "ar": "خدمة تقديم",
+    "fr": "Service serveurs",
+    "en": "Waitstaff",
+    "filters": [
+     {
+      "key": "mobility",
+      "type": "select",
+      "options": [
+       "ينتقل إلى الزبون",
+       "في مقر الخدمة",
+       "الاثنان معًا"
+      ]
+     },
+     {
+      "key": "experience",
+      "type": "select",
+      "options": [
+       "أقل من سنة",
+       "1 - 3 سنوات",
+       "أكثر من 3 سنوات"
+      ]
+     },
+     {
+      "key": "price_type",
+      "type": "select",
+      "options": [
+       "للخدمة",
+       "للساعة",
+       "لليوم",
+       "للشخص"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "waxing",
+    "ar": "حلاقة",
+    "fr": "Épilation",
+    "en": "Waxing",
+    "filters": [
+     {
+      "key": "mobility",
+      "type": "select",
+      "options": [
+       "ينتقل إلى الزبون",
+       "في مقر الخدمة",
+       "الاثنان معًا"
+      ]
+     },
+     {
+      "key": "experience",
+      "type": "select",
+      "options": [
+       "أقل من سنة",
+       "1 - 3 سنوات",
+       "أكثر من 3 سنوات"
+      ]
+     },
+     {
+      "key": "price_type",
+      "type": "select",
+      "options": [
+       "للخدمة",
+       "للساعة",
+       "لليوم",
+       "للشخص"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "services_general",
+  "ar": "خدمات عامة",
+  "fr": "Services généraux",
+  "en": "General Services",
+  "sub": [
+   {
+    "id": "comptabilite",
+    "ar": "محاسبة واقتصاد",
+    "fr": "Comptabilité",
+    "en": "Accounting",
+    "filters": []
+   },
+   {
+    "id": "construction_bat",
+    "ar": "بناء وتشييد",
+    "fr": "Construction",
+    "en": "Construction",
+    "filters": []
+   },
+   {
+    "id": "couture_gen",
+    "ar": "خياطة وتفصيل",
+    "fr": "Couture",
+    "en": "Tailoring",
+    "filters": []
+   },
+   {
+    "id": "deco_amenagement",
+    "ar": "ديكور وتهيئة",
+    "fr": "Décoration",
+    "en": "Interior Design",
+    "filters": []
+   },
+   {
+    "id": "esthetique_gen",
+    "ar": "تجميل وجمال",
+    "fr": "Esthétique",
+    "en": "Beauty Services",
+    "filters": []
+   },
+   {
+    "id": "evenements_gen",
+    "ar": "مناسبات وترفيه",
+    "fr": "Événements",
+    "en": "Events",
+    "filters": []
+   },
+   {
+    "id": "formation",
+    "ar": "تعليم وتكوين",
+    "fr": "Formation",
+    "en": "Education",
+    "filters": []
+   },
+   {
+    "id": "froid_clim",
+    "ar": "تبريد وتكييف",
+    "fr": "Froid & Clim",
+    "en": "AC Services",
+    "filters": []
+   },
+   {
+    "id": "image_son",
+    "ar": "صورة وصوت",
+    "fr": "Image & Son",
+    "en": "Photography",
+    "filters": []
+   },
+   {
+    "id": "juridique",
+    "ar": "قانوني",
+    "fr": "Juridique",
+    "en": "Legal",
+    "filters": []
+   },
+   {
+    "id": "livraison",
+    "ar": "توصيل",
+    "fr": "Livraison",
+    "en": "Delivery",
+    "filters": []
+   },
+   {
+    "id": "maintenance_informatique",
+    "ar": "صيانة إعلام آلي",
+    "fr": "Maintenance info",
+    "en": "IT Support",
+    "filters": []
+   },
+   {
+    "id": "menuiserie",
+    "ar": "نجارة وأثاث",
+    "fr": "Menuiserie",
+    "en": "Carpentry",
+    "filters": []
+   },
+   {
+    "id": "nettoyage",
+    "ar": "خدمات التنظيف والبستنة",
+    "fr": "Nettoyage",
+    "en": "Cleaning",
+    "filters": []
+   },
+   {
+    "id": "pub_communication",
+    "ar": "إشهار واتصال",
+    "fr": "Publicité",
+    "en": "Advertising",
+    "filters": []
+   },
+   {
+    "id": "reparation_auto",
+    "ar": "إصلاح وتشخيص السيارات",
+    "fr": "Réparation auto",
+    "en": "Auto Repair",
+    "filters": []
+   },
+   {
+    "id": "reparation_electromenager",
+    "ar": "إصلاح الأجهزة المنزلية",
+    "fr": "Réparation électroménager",
+    "en": "Appliance Repair",
+    "filters": []
+   },
+   {
+    "id": "reparation_electronique",
+    "ar": "إصلاح إلكترونيات وهواتف",
+    "fr": "Réparation électronique",
+    "en": "Electronics Repair",
+    "filters": []
+   },
+   {
+    "id": "sante_medecine",
+    "ar": "طب وصحة",
+    "fr": "Médecine & Santé",
+    "en": "Healthcare",
+    "filters": []
+   },
+   {
+    "id": "services_entreprises",
+    "ar": "خدمات الشركات",
+    "fr": "Services entreprises",
+    "en": "Business Services",
+    "filters": []
+   },
+   {
+    "id": "services_etrangers",
+    "ar": "خدمات في الخارج",
+    "fr": "Services à l'étranger",
+    "en": "Abroad Services",
+    "filters": []
+   },
+   {
+    "id": "traiteurs",
+    "ar": "طبخ وحلويات",
+    "fr": "Traiteurs & Gâteaux",
+    "en": "Catering",
+    "filters": []
+   },
+   {
+    "id": "transport_demenagement",
+    "ar": "نقل السلع والأثاث",
+    "fr": "Transport & Déménagement",
+    "en": "Moving",
+    "filters": []
+   }
+  ]
+ },
+ {
+  "id": "sport",
+  "ar": "الرياضة واللياقة",
+  "fr": "Sport",
+  "en": "Sport",
+  "sub": [
+   {
+    "id": "arts_martiaux",
+    "ar": "فنون قتالية",
+    "fr": "Arts martiaux",
+    "en": "Martial Arts",
+    "filters": []
+   },
+   {
+    "id": "chasse_peche",
+    "ar": "صيد وقنص",
+    "fr": "Chasse & Pêche",
+    "en": "Hunting & Fishing",
+    "filters": []
+   },
+   {
+    "id": "cyclisme",
+    "ar": "دراجات هوائية",
+    "fr": "Cyclisme",
+    "en": "Cycling",
+    "filters": []
+   },
+   {
+    "id": "fitness_musculation",
+    "ar": "لياقة بدنية وكمال أجسام",
+    "fr": "Fitness",
+    "en": "Fitness",
+    "filters": []
+   },
+   {
+    "id": "football",
+    "ar": "كرة القدم",
+    "fr": "Football",
+    "en": "Football",
+    "filters": []
+   },
+   {
+    "id": "sports_collectifs",
+    "ar": "رياضات جماعية",
+    "fr": "Sports collectifs",
+    "en": "Team Sports",
+    "filters": []
+   },
+   {
+    "id": "sports_nautiques",
+    "ar": "رياضات مائية",
+    "fr": "Sports nautiques",
+    "en": "Water Sports",
+    "filters": []
+   }
+  ]
+ },
+ {
+  "id": "telephones",
+  "ar": "هواتف وإكسسوارات",
+  "fr": "Téléphones",
+  "en": "Phones",
+  "sub": [
+   {
+    "id": "batteries_externes",
+    "ar": "بطاريات خارجية",
+    "fr": "Batteries externes",
+    "en": "Power Banks",
+    "filters": []
+   },
+   {
+    "id": "cartes_memoire",
+    "ar": "بطاقات ذاكرة",
+    "fr": "Cartes mémoire",
+    "en": "Memory Cards",
+    "filters": []
+   },
+   {
+    "id": "chargeurs",
+    "ar": "شواحن وكابلات",
+    "fr": "Chargeurs",
+    "en": "Chargers",
+    "filters": []
+   },
+   {
+    "id": "coques_protection",
+    "ar": "أغطية وحماية",
+    "fr": "Coques",
+    "en": "Cases",
+    "filters": []
+   },
+   {
+    "id": "ecouteurs",
+    "ar": "سماعات",
+    "fr": "Écouteurs",
+    "en": "Earphones",
+    "filters": []
+   },
+   {
+    "id": "huawei_tel",
+    "ar": "هواوي",
+    "fr": "Huawei",
+    "en": "Huawei",
+    "filters": []
+   },
+   {
+    "id": "ipad",
+    "ar": "ايباد",
+    "fr": "iPad",
+    "en": "iPad",
+    "filters": []
+   },
+   {
+    "id": "iphone",
+    "ar": "ايفون",
+    "fr": "iPhone",
+    "en": "iPhone",
+    "filters": []
+   },
+   {
+    "id": "offres_abonnements",
+    "ar": "عروض واشتراكات",
+    "fr": "Offres & Abonnements",
+    "en": "Subscriptions",
+    "filters": []
+   },
+   {
+    "id": "pieces_telephone",
+    "ar": "قطع الغيار",
+    "fr": "Pièces téléphone",
+    "en": "Phone Parts",
+    "filters": []
+   },
+   {
+    "id": "samsung_tel",
+    "ar": "سامسونج",
+    "fr": "Samsung",
+    "en": "Samsung",
+    "filters": []
+   },
+   {
+    "id": "smartphones",
+    "ar": "سمارتفون",
+    "fr": "Smartphones",
+    "en": "Smartphones",
+    "filters": []
+   },
+   {
+    "id": "smartwatch",
+    "ar": "الساعات الذكية",
+    "fr": "Smartwatches",
+    "en": "Smartwatches",
+    "filters": []
+   },
+   {
+    "id": "tablettes",
+    "ar": "تابلت",
+    "fr": "Tablettes",
+    "en": "Tablets",
+    "filters": []
+   },
+   {
+    "id": "telephones_fixes",
+    "ar": "هواتف ثابتة وفاكس",
+    "fr": "Téléphones fixes",
+    "en": "Landlines",
+    "filters": []
+   },
+   {
+    "id": "xiaomi_tel",
+    "ar": "شاومي",
+    "fr": "Xiaomi",
+    "en": "Xiaomi",
+    "filters": []
+   }
+  ]
+ },
+ {
+  "id": "vetements_mode",
+  "ar": "الملابس والموضة",
+  "fr": "Vêtements",
+  "en": "Fashion",
+  "sub": [
+   {
+    "id": "bijoux",
+    "ar": "مجوهرات وإكسسوارات",
+    "fr": "Bijoux",
+    "en": "Jewelry",
+    "filters": []
+   },
+   {
+    "id": "chaussures_enfant",
+    "ar": "أحذية أطفال",
+    "fr": "Chaussures Enfant",
+    "en": "Kids Shoes",
+    "filters": []
+   },
+   {
+    "id": "chaussures_femme",
+    "ar": "أحذية نسائية",
+    "fr": "Chaussures Femme",
+    "en": "Women Shoes",
+    "filters": []
+   },
+   {
+    "id": "chaussures_homme",
+    "ar": "أحذية رجالية",
+    "fr": "Chaussures Homme",
+    "en": "Men Shoes",
+    "filters": []
+   },
+   {
+    "id": "maillots_bain",
+    "ar": "ملابس سباحة",
+    "fr": "Maillots de bain",
+    "en": "Swimwear",
+    "filters": []
+   },
+   {
+    "id": "montres",
+    "ar": "ساعات",
+    "fr": "Montres",
+    "en": "Watches",
+    "filters": []
+   },
+   {
+    "id": "sacs_maroquinerie",
+    "ar": "حقائب وجلديات",
+    "fr": "Sacs",
+    "en": "Bags",
+    "filters": []
+   },
+   {
+    "id": "sous_vetements",
+    "ar": "ملابس داخلية",
+    "fr": "Sous-vêtements",
+    "en": "Underwear",
+    "filters": []
+   },
+   {
+    "id": "sport_wear",
+    "ar": "ملابس رياضية",
+    "fr": "Vêtements de sport",
+    "en": "Sportswear",
+    "filters": []
+   },
+   {
+    "id": "tenues_traditionnelles",
+    "ar": "اللباس التقليدي",
+    "fr": "Tenues traditionnelles",
+    "en": "Traditional Wear",
+    "filters": []
+   },
+   {
+    "id": "vetements_enfant",
+    "ar": "ملابس أطفال",
+    "fr": "Vêtements Enfant",
+    "en": "Kids Clothes",
+    "filters": []
+   },
+   {
+    "id": "vetements_femme",
+    "ar": "ملابس نسائية",
+    "fr": "Vêtements Femme",
+    "en": "Women Clothes",
+    "filters": []
+   },
+   {
+    "id": "vetements_homme",
+    "ar": "ملابس رجالية",
+    "fr": "Vêtements Homme",
+    "en": "Men Clothes",
+    "filters": []
+   }
+  ]
+ },
+ {
+  "id": "voyages",
+  "ar": "سفر ورحلات",
+  "fr": "Voyages",
+  "en": "Travel",
+  "sub": [
+   {
+    "id": "billets_avion",
+    "ar": "تذاكر طيران",
+    "fr": "Billets d'avion",
+    "en": "Flights",
+    "filters": []
+   },
+   {
+    "id": "excursions",
+    "ar": "رحلات وتخييم",
+    "fr": "Excursions",
+    "en": "Excursions",
+    "filters": []
+   },
+   {
+    "id": "hebergement",
+    "ar": "إيواء",
+    "fr": "Hébergement",
+    "en": "Accommodation",
+    "filters": []
+   },
+   {
+    "id": "location_vacances",
+    "ar": "إيجار موسمي",
+    "fr": "Location vacances",
+    "en": "Vacation Rental",
+    "filters": []
+   },
+   {
+    "id": "omra_hadj",
+    "ar": "عمرة وحج",
+    "fr": "Omra & Hadj",
+    "en": "Omra & Hajj",
+    "filters": []
+   },
+   {
+    "id": "sejours_circuits",
+    "ar": "رحلات سياحية",
+    "fr": "Séjours & Circuits",
+    "en": "Tours",
+    "filters": []
+   },
+   {
+    "id": "transport_touristique",
+    "ar": "نقل سياحي",
+    "fr": "Transport touristique",
+    "en": "Tourist Transport",
+    "filters": []
+   },
+   {
+    "id": "visa",
+    "ar": "تأشيرات وإجراءات",
+    "fr": "Visa",
+    "en": "Visa",
+    "filters": []
+   }
+  ]
+ },
+ {
+  "id": "clothes_beach",
+  "ar": "ملابس الشاطئ",
+  "fr": "Vêtements de plage",
+  "en": "Beachwear",
+  "sub": [
+   {
+    "id": "beach_hat",
+    "ar": "قبعة شاطئ",
+    "fr": "Chapeau de plage",
+    "en": "Beach hat",
     "filters": [
      {
       "key": "material",
@@ -701,22 +2246,40 @@
        "خشب",
        "ستانلس"
       ]
+     },
+     {
+      "key": "color",
+      "type": "select",
+      "options": [
+       "أبيض",
+       "أسود",
+       "أحمر",
+       "وردي",
+       "ذهبي",
+       "أزرق",
+       "أخضر",
+       "بيج",
+       "فضي",
+       "بنفسجي",
+       "برتقالي",
+       "أصفر",
+       "بني",
+       "رمادي",
+       "كحلي",
+       "تركوازي",
+       "عنابي",
+       "زهري فاتح",
+       "سماوي",
+       "كاكي"
+      ]
      }
     ]
-   }
-  ]
- },
- {
-  "id": "clothes_work",
-  "ar": "ملابس العمل",
-  "fr": "Tenues de travail",
-  "en": "Work wear",
-  "sub": [
+   },
    {
-    "id": "suit",
-    "ar": "بدلات",
-    "fr": "Tailleurs",
-    "en": "Suits",
+    "id": "beach_robe",
+    "ar": "روب شاطئ",
+    "fr": "Peignoir",
+    "en": "Beach robe",
     "filters": [
      {
       "key": "size",
@@ -772,34 +2335,30 @@
     ]
    },
    {
-    "id": "shirt",
-    "ar": "قمصان",
-    "fr": "Chemises",
-    "en": "Shirts",
+    "id": "beach_sandals",
+    "ar": "صندل شاطئ",
+    "fr": "Sandales de plage",
+    "en": "Beach sandals",
     "filters": [
      {
-      "key": "size",
+      "key": "shoe_size",
       "type": "select",
       "options": [
-       "XS",
-       "S",
-       "M",
-       "L",
-       "XL",
-       "XXL",
-       "3XL",
+       "33",
        "34",
+       "35",
        "36",
+       "37",
        "38",
+       "39",
        "40",
+       "41",
        "42",
+       "43",
        "44",
+       "45",
        "46",
-       "48",
-       "50",
-       "52",
-       "54",
-       "56"
+       "47"
       ]
      },
      {
@@ -831,431 +2390,10 @@
     ]
    },
    {
-    "id": "abaya",
-    "ar": "عباءات",
-    "fr": "Abayas",
-    "en": "Abayas",
-    "filters": [
-     {
-      "key": "size",
-      "type": "select",
-      "options": [
-       "XS",
-       "S",
-       "M",
-       "L",
-       "XL",
-       "XXL",
-       "3XL",
-       "34",
-       "36",
-       "38",
-       "40",
-       "42",
-       "44",
-       "46",
-       "48",
-       "50",
-       "52",
-       "54",
-       "56"
-      ]
-     },
-     {
-      "key": "color",
-      "type": "select",
-      "options": [
-       "أبيض",
-       "أسود",
-       "أحمر",
-       "وردي",
-       "ذهبي",
-       "أزرق",
-       "أخضر",
-       "بيج",
-       "فضي",
-       "بنفسجي",
-       "برتقالي",
-       "أصفر",
-       "بني",
-       "رمادي",
-       "كحلي",
-       "تركوازي",
-       "عنابي",
-       "زهري فاتح",
-       "سماوي",
-       "كاكي"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "pants",
-    "ar": "بناطيل",
-    "fr": "Pantalons",
-    "en": "Pants",
-    "filters": [
-     {
-      "key": "size",
-      "type": "select",
-      "options": [
-       "XS",
-       "S",
-       "M",
-       "L",
-       "XL",
-       "XXL",
-       "3XL",
-       "34",
-       "36",
-       "38",
-       "40",
-       "42",
-       "44",
-       "46",
-       "48",
-       "50",
-       "52",
-       "54",
-       "56"
-      ]
-     },
-     {
-      "key": "color",
-      "type": "select",
-      "options": [
-       "أبيض",
-       "أسود",
-       "أحمر",
-       "وردي",
-       "ذهبي",
-       "أزرق",
-       "أخضر",
-       "بيج",
-       "فضي",
-       "بنفسجي",
-       "برتقالي",
-       "أصفر",
-       "بني",
-       "رمادي",
-       "كحلي",
-       "تركوازي",
-       "عنابي",
-       "زهري فاتح",
-       "سماوي",
-       "كاكي"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "skirt",
-    "ar": "جيبات",
-    "fr": "Jupes",
-    "en": "Skirts",
-    "filters": [
-     {
-      "key": "size",
-      "type": "select",
-      "options": [
-       "XS",
-       "S",
-       "M",
-       "L",
-       "XL",
-       "XXL",
-       "3XL",
-       "34",
-       "36",
-       "38",
-       "40",
-       "42",
-       "44",
-       "46",
-       "48",
-       "50",
-       "52",
-       "54",
-       "56"
-      ]
-     },
-     {
-      "key": "color",
-      "type": "select",
-      "options": [
-       "أبيض",
-       "أسود",
-       "أحمر",
-       "وردي",
-       "ذهبي",
-       "أزرق",
-       "أخضر",
-       "بيج",
-       "فضي",
-       "بنفسجي",
-       "برتقالي",
-       "أصفر",
-       "بني",
-       "رمادي",
-       "كحلي",
-       "تركوازي",
-       "عنابي",
-       "زهري فاتح",
-       "سماوي",
-       "كاكي"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "jacket",
-    "ar": "جاكيتات",
-    "fr": "Vestes",
-    "en": "Jackets",
-    "filters": [
-     {
-      "key": "size",
-      "type": "select",
-      "options": [
-       "XS",
-       "S",
-       "M",
-       "L",
-       "XL",
-       "XXL",
-       "3XL",
-       "34",
-       "36",
-       "38",
-       "40",
-       "42",
-       "44",
-       "46",
-       "48",
-       "50",
-       "52",
-       "54",
-       "56"
-      ]
-     },
-     {
-      "key": "color",
-      "type": "select",
-      "options": [
-       "أبيض",
-       "أسود",
-       "أحمر",
-       "وردي",
-       "ذهبي",
-       "أزرق",
-       "أخضر",
-       "بيج",
-       "فضي",
-       "بنفسجي",
-       "برتقالي",
-       "أصفر",
-       "بني",
-       "رمادي",
-       "كحلي",
-       "تركوازي",
-       "عنابي",
-       "زهري فاتح",
-       "سماوي",
-       "كاكي"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "blouse",
-    "ar": "بلوزات",
-    "fr": "Blouses",
-    "en": "Blouses",
-    "filters": [
-     {
-      "key": "size",
-      "type": "select",
-      "options": [
-       "XS",
-       "S",
-       "M",
-       "L",
-       "XL",
-       "XXL",
-       "3XL",
-       "34",
-       "36",
-       "38",
-       "40",
-       "42",
-       "44",
-       "46",
-       "48",
-       "50",
-       "52",
-       "54",
-       "56"
-      ]
-     },
-     {
-      "key": "color",
-      "type": "select",
-      "options": [
-       "أبيض",
-       "أسود",
-       "أحمر",
-       "وردي",
-       "ذهبي",
-       "أزرق",
-       "أخضر",
-       "بيج",
-       "فضي",
-       "بنفسجي",
-       "برتقالي",
-       "أصفر",
-       "بني",
-       "رمادي",
-       "كحلي",
-       "تركوازي",
-       "عنابي",
-       "زهري فاتح",
-       "سماوي",
-       "كاكي"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "uniform",
-    "ar": "زي موحد",
-    "fr": "Uniforme",
-    "en": "Uniform",
-    "filters": [
-     {
-      "key": "size",
-      "type": "select",
-      "options": [
-       "XS",
-       "S",
-       "M",
-       "L",
-       "XL",
-       "XXL",
-       "3XL",
-       "34",
-       "36",
-       "38",
-       "40",
-       "42",
-       "44",
-       "46",
-       "48",
-       "50",
-       "52",
-       "54",
-       "56"
-      ]
-     },
-     {
-      "key": "color",
-      "type": "select",
-      "options": [
-       "أبيض",
-       "أسود",
-       "أحمر",
-       "وردي",
-       "ذهبي",
-       "أزرق",
-       "أخضر",
-       "بيج",
-       "فضي",
-       "بنفسجي",
-       "برتقالي",
-       "أصفر",
-       "بني",
-       "رمادي",
-       "كحلي",
-       "تركوازي",
-       "عنابي",
-       "زهري فاتح",
-       "سماوي",
-       "كاكي"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "medical_wear",
-    "ar": "ملابس طبية",
-    "fr": "Tenues médicales",
-    "en": "Medical wear",
-    "filters": [
-     {
-      "key": "size",
-      "type": "select",
-      "options": [
-       "XS",
-       "S",
-       "M",
-       "L",
-       "XL",
-       "XXL",
-       "3XL",
-       "34",
-       "36",
-       "38",
-       "40",
-       "42",
-       "44",
-       "46",
-       "48",
-       "50",
-       "52",
-       "54",
-       "56"
-      ]
-     },
-     {
-      "key": "color",
-      "type": "select",
-      "options": [
-       "أبيض",
-       "أسود",
-       "أحمر",
-       "وردي",
-       "ذهبي",
-       "أزرق",
-       "أخضر",
-       "بيج",
-       "فضي",
-       "بنفسجي",
-       "برتقالي",
-       "أصفر",
-       "بني",
-       "رمادي",
-       "كحلي",
-       "تركوازي",
-       "عنابي",
-       "زهري فاتح",
-       "سماوي",
-       "كاكي"
-      ]
-     }
-    ]
-   }
-  ]
- },
- {
-  "id": "clothes_beach",
-  "ar": "ملابس البحر",
-  "fr": "Maillots",
-  "en": "Beachwear",
-  "sub": [
-   {
-    "id": "swim",
-    "ar": "ملابس سباحة",
-    "fr": "Maillots de bain",
-    "en": "Swimwear",
+    "id": "bikini",
+    "ar": "بيكيني",
+    "fr": "Bikini",
+    "en": "Bikini",
     "filters": [
      {
       "key": "size",
@@ -1371,68 +2509,9 @@
    },
    {
     "id": "cover",
-    "ar": "ملابس شاطئ",
-    "fr": "Paréos",
-    "en": "Cover-ups",
-    "filters": [
-     {
-      "key": "size",
-      "type": "select",
-      "options": [
-       "XS",
-       "S",
-       "M",
-       "L",
-       "XL",
-       "XXL",
-       "3XL",
-       "34",
-       "36",
-       "38",
-       "40",
-       "42",
-       "44",
-       "46",
-       "48",
-       "50",
-       "52",
-       "54",
-       "56"
-      ]
-     },
-     {
-      "key": "color",
-      "type": "select",
-      "options": [
-       "أبيض",
-       "أسود",
-       "أحمر",
-       "وردي",
-       "ذهبي",
-       "أزرق",
-       "أخضر",
-       "بيج",
-       "فضي",
-       "بنفسجي",
-       "برتقالي",
-       "أصفر",
-       "بني",
-       "رمادي",
-       "كحلي",
-       "تركوازي",
-       "عنابي",
-       "زهري فاتح",
-       "سماوي",
-       "كاكي"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "bikini",
-    "ar": "بيكيني",
-    "fr": "Bikini",
-    "en": "Bikini",
+    "ar": "غطاء",
+    "fr": "Couverture",
+    "en": "Cover",
     "filters": [
      {
       "key": "size",
@@ -1491,7 +2570,66 @@
     "id": "one_piece",
     "ar": "مايوه قطعة واحدة",
     "fr": "Maillot une pièce",
-    "en": "One-piece swimsuit",
+    "en": "One-piece",
+    "filters": [
+     {
+      "key": "size",
+      "type": "select",
+      "options": [
+       "XS",
+       "S",
+       "M",
+       "L",
+       "XL",
+       "XXL",
+       "3XL",
+       "34",
+       "36",
+       "38",
+       "40",
+       "42",
+       "44",
+       "46",
+       "48",
+       "50",
+       "52",
+       "54",
+       "56"
+      ]
+     },
+     {
+      "key": "color",
+      "type": "select",
+      "options": [
+       "أبيض",
+       "أسود",
+       "أحمر",
+       "وردي",
+       "ذهبي",
+       "أزرق",
+       "أخضر",
+       "بيج",
+       "فضي",
+       "بنفسجي",
+       "برتقالي",
+       "أصفر",
+       "بني",
+       "رمادي",
+       "كحلي",
+       "تركوازي",
+       "عنابي",
+       "زهري فاتح",
+       "سماوي",
+       "كاكي"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "swim",
+    "ar": "مايوه",
+    "fr": "Maillot",
+    "en": "Swimsuit",
     "filters": [
      {
       "key": "size",
@@ -1604,184 +2742,20 @@
       ]
      }
     ]
-   },
-   {
-    "id": "beach_robe",
-    "ar": "روب شاطئ",
-    "fr": "Peignoir de plage",
-    "en": "Beach robe",
-    "filters": [
-     {
-      "key": "size",
-      "type": "select",
-      "options": [
-       "XS",
-       "S",
-       "M",
-       "L",
-       "XL",
-       "XXL",
-       "3XL",
-       "34",
-       "36",
-       "38",
-       "40",
-       "42",
-       "44",
-       "46",
-       "48",
-       "50",
-       "52",
-       "54",
-       "56"
-      ]
-     },
-     {
-      "key": "color",
-      "type": "select",
-      "options": [
-       "أبيض",
-       "أسود",
-       "أحمر",
-       "وردي",
-       "ذهبي",
-       "أزرق",
-       "أخضر",
-       "بيج",
-       "فضي",
-       "بنفسجي",
-       "برتقالي",
-       "أصفر",
-       "بني",
-       "رمادي",
-       "كحلي",
-       "تركوازي",
-       "عنابي",
-       "زهري فاتح",
-       "سماوي",
-       "كاكي"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "beach_sandals",
-    "ar": "صندل شاطئ",
-    "fr": "Sandales de plage",
-    "en": "Beach sandals",
-    "filters": [
-     {
-      "key": "shoe_size",
-      "type": "select",
-      "options": [
-       "33",
-       "34",
-       "35",
-       "36",
-       "37",
-       "38",
-       "39",
-       "40",
-       "41",
-       "42",
-       "43",
-       "44",
-       "45",
-       "46",
-       "47"
-      ]
-     },
-     {
-      "key": "color",
-      "type": "select",
-      "options": [
-       "أبيض",
-       "أسود",
-       "أحمر",
-       "وردي",
-       "ذهبي",
-       "أزرق",
-       "أخضر",
-       "بيج",
-       "فضي",
-       "بنفسجي",
-       "برتقالي",
-       "أصفر",
-       "بني",
-       "رمادي",
-       "كحلي",
-       "تركوازي",
-       "عنابي",
-       "زهري فاتح",
-       "سماوي",
-       "كاكي"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "beach_hat",
-    "ar": "قبعة شاطئ",
-    "fr": "Chapeau de plage",
-    "en": "Beach hat",
-    "filters": [
-     {
-      "key": "material",
-      "type": "select",
-      "options": [
-       "ذهب",
-       "فضة",
-       "لؤلؤ",
-       "كريستال",
-       "قماش",
-       "جلد",
-       "بلاستيك",
-       "معدن",
-       "خشب",
-       "ستانلس"
-      ]
-     },
-     {
-      "key": "color",
-      "type": "select",
-      "options": [
-       "أبيض",
-       "أسود",
-       "أحمر",
-       "وردي",
-       "ذهبي",
-       "أزرق",
-       "أخضر",
-       "بيج",
-       "فضي",
-       "بنفسجي",
-       "برتقالي",
-       "أصفر",
-       "بني",
-       "رمادي",
-       "كحلي",
-       "تركوازي",
-       "عنابي",
-       "زهري فاتح",
-       "سماوي",
-       "كاكي"
-      ]
-     }
-    ]
    }
   ]
  },
  {
   "id": "clothes_evening",
-  "ar": "ملابس السهرات",
-  "fr": "Tenues de soirée",
-  "en": "Evening wear",
+  "ar": "ملابس السهرة",
+  "fr": "Vêtements de soirée",
+  "en": "Evening Wear",
   "sub": [
    {
     "id": "dress",
-    "ar": "فساتين سهرة",
-    "fr": "Robes de soirée",
-    "en": "Evening dresses",
+    "ar": "فستان",
+    "fr": "Robe",
+    "en": "Dress",
     "filters": [
      {
       "key": "size",
@@ -1817,242 +2791,6 @@
        "دانتيل",
        "ساتان",
        "قطن"
-      ]
-     },
-     {
-      "key": "color",
-      "type": "select",
-      "options": [
-       "أبيض",
-       "أسود",
-       "أحمر",
-       "وردي",
-       "ذهبي",
-       "أزرق",
-       "أخضر",
-       "بيج",
-       "فضي",
-       "بنفسجي",
-       "برتقالي",
-       "أصفر",
-       "بني",
-       "رمادي",
-       "كحلي",
-       "تركوازي",
-       "عنابي",
-       "زهري فاتح",
-       "سماوي",
-       "كاكي"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "jump",
-    "ar": "جمبسوت",
-    "fr": "Combinaisons",
-    "en": "Jumpsuits",
-    "filters": [
-     {
-      "key": "size",
-      "type": "select",
-      "options": [
-       "XS",
-       "S",
-       "M",
-       "L",
-       "XL",
-       "XXL",
-       "3XL",
-       "34",
-       "36",
-       "38",
-       "40",
-       "42",
-       "44",
-       "46",
-       "48",
-       "50",
-       "52",
-       "54",
-       "56"
-      ]
-     },
-     {
-      "key": "color",
-      "type": "select",
-      "options": [
-       "أبيض",
-       "أسود",
-       "أحمر",
-       "وردي",
-       "ذهبي",
-       "أزرق",
-       "أخضر",
-       "بيج",
-       "فضي",
-       "بنفسجي",
-       "برتقالي",
-       "أصفر",
-       "بني",
-       "رمادي",
-       "كحلي",
-       "تركوازي",
-       "عنابي",
-       "زهري فاتح",
-       "سماوي",
-       "كاكي"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "evening_skirt",
-    "ar": "تنورة سهرة",
-    "fr": "Jupe de soirée",
-    "en": "Evening skirt",
-    "filters": [
-     {
-      "key": "size",
-      "type": "select",
-      "options": [
-       "XS",
-       "S",
-       "M",
-       "L",
-       "XL",
-       "XXL",
-       "3XL",
-       "34",
-       "36",
-       "38",
-       "40",
-       "42",
-       "44",
-       "46",
-       "48",
-       "50",
-       "52",
-       "54",
-       "56"
-      ]
-     },
-     {
-      "key": "color",
-      "type": "select",
-      "options": [
-       "أبيض",
-       "أسود",
-       "أحمر",
-       "وردي",
-       "ذهبي",
-       "أزرق",
-       "أخضر",
-       "بيج",
-       "فضي",
-       "بنفسجي",
-       "برتقالي",
-       "أصفر",
-       "بني",
-       "رمادي",
-       "كحلي",
-       "تركوازي",
-       "عنابي",
-       "زهري فاتح",
-       "سماوي",
-       "كاكي"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "evening_top",
-    "ar": "بلوزة سهرة",
-    "fr": "Haut de soirée",
-    "en": "Evening top",
-    "filters": [
-     {
-      "key": "size",
-      "type": "select",
-      "options": [
-       "XS",
-       "S",
-       "M",
-       "L",
-       "XL",
-       "XXL",
-       "3XL",
-       "34",
-       "36",
-       "38",
-       "40",
-       "42",
-       "44",
-       "46",
-       "48",
-       "50",
-       "52",
-       "54",
-       "56"
-      ]
-     },
-     {
-      "key": "color",
-      "type": "select",
-      "options": [
-       "أبيض",
-       "أسود",
-       "أحمر",
-       "وردي",
-       "ذهبي",
-       "أزرق",
-       "أخضر",
-       "بيج",
-       "فضي",
-       "بنفسجي",
-       "برتقالي",
-       "أصفر",
-       "بني",
-       "رمادي",
-       "كحلي",
-       "تركوازي",
-       "عنابي",
-       "زهري فاتح",
-       "سماوي",
-       "كاكي"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "evening_suit",
-    "ar": "بدلة سهرة",
-    "fr": "Costume de soirée",
-    "en": "Evening suit",
-    "filters": [
-     {
-      "key": "size",
-      "type": "select",
-      "options": [
-       "XS",
-       "S",
-       "M",
-       "L",
-       "XL",
-       "XXL",
-       "3XL",
-       "34",
-       "36",
-       "38",
-       "40",
-       "42",
-       "44",
-       "46",
-       "48",
-       "50",
-       "52",
-       "54",
-       "56"
       ]
      },
      {
@@ -2200,20 +2938,256 @@
       ]
      }
     ]
+   },
+   {
+    "id": "evening_skirt",
+    "ar": "تنورة سهرة",
+    "fr": "Jupe de soirée",
+    "en": "Evening skirt",
+    "filters": [
+     {
+      "key": "size",
+      "type": "select",
+      "options": [
+       "XS",
+       "S",
+       "M",
+       "L",
+       "XL",
+       "XXL",
+       "3XL",
+       "34",
+       "36",
+       "38",
+       "40",
+       "42",
+       "44",
+       "46",
+       "48",
+       "50",
+       "52",
+       "54",
+       "56"
+      ]
+     },
+     {
+      "key": "color",
+      "type": "select",
+      "options": [
+       "أبيض",
+       "أسود",
+       "أحمر",
+       "وردي",
+       "ذهبي",
+       "أزرق",
+       "أخضر",
+       "بيج",
+       "فضي",
+       "بنفسجي",
+       "برتقالي",
+       "أصفر",
+       "بني",
+       "رمادي",
+       "كحلي",
+       "تركوازي",
+       "عنابي",
+       "زهري فاتح",
+       "سماوي",
+       "كاكي"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "evening_suit",
+    "ar": "بدلة سهرة",
+    "fr": "Costume de soirée",
+    "en": "Evening suit",
+    "filters": [
+     {
+      "key": "size",
+      "type": "select",
+      "options": [
+       "XS",
+       "S",
+       "M",
+       "L",
+       "XL",
+       "XXL",
+       "3XL",
+       "34",
+       "36",
+       "38",
+       "40",
+       "42",
+       "44",
+       "46",
+       "48",
+       "50",
+       "52",
+       "54",
+       "56"
+      ]
+     },
+     {
+      "key": "color",
+      "type": "select",
+      "options": [
+       "أبيض",
+       "أسود",
+       "أحمر",
+       "وردي",
+       "ذهبي",
+       "أزرق",
+       "أخضر",
+       "بيج",
+       "فضي",
+       "بنفسجي",
+       "برتقالي",
+       "أصفر",
+       "بني",
+       "رمادي",
+       "كحلي",
+       "تركوازي",
+       "عنابي",
+       "زهري فاتح",
+       "سماوي",
+       "كاكي"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "evening_top",
+    "ar": "بلوزة سهرة",
+    "fr": "Haut de soirée",
+    "en": "Evening top",
+    "filters": [
+     {
+      "key": "size",
+      "type": "select",
+      "options": [
+       "XS",
+       "S",
+       "M",
+       "L",
+       "XL",
+       "XXL",
+       "3XL",
+       "34",
+       "36",
+       "38",
+       "40",
+       "42",
+       "44",
+       "46",
+       "48",
+       "50",
+       "52",
+       "54",
+       "56"
+      ]
+     },
+     {
+      "key": "color",
+      "type": "select",
+      "options": [
+       "أبيض",
+       "أسود",
+       "أحمر",
+       "وردي",
+       "ذهبي",
+       "أزرق",
+       "أخضر",
+       "بيج",
+       "فضي",
+       "بنفسجي",
+       "برتقالي",
+       "أصفر",
+       "بني",
+       "رمادي",
+       "كحلي",
+       "تركوازي",
+       "عنابي",
+       "زهري فاتح",
+       "سماوي",
+       "كاكي"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "jump",
+    "ar": "جمبسوت",
+    "fr": "Combinaison",
+    "en": "Jumpsuit",
+    "filters": [
+     {
+      "key": "size",
+      "type": "select",
+      "options": [
+       "XS",
+       "S",
+       "M",
+       "L",
+       "XL",
+       "XXL",
+       "3XL",
+       "34",
+       "36",
+       "38",
+       "40",
+       "42",
+       "44",
+       "46",
+       "48",
+       "50",
+       "52",
+       "54",
+       "56"
+      ]
+     },
+     {
+      "key": "color",
+      "type": "select",
+      "options": [
+       "أبيض",
+       "أسود",
+       "أحمر",
+       "وردي",
+       "ذهبي",
+       "أزرق",
+       "أخضر",
+       "بيج",
+       "فضي",
+       "بنفسجي",
+       "برتقالي",
+       "أصفر",
+       "بني",
+       "رمادي",
+       "كحلي",
+       "تركوازي",
+       "عنابي",
+       "زهري فاتح",
+       "سماوي",
+       "كاكي"
+      ]
+     }
+    ]
    }
   ]
  },
  {
   "id": "clothes_girls",
-  "ar": "ملابس البنات الصغار",
+  "ar": "ملابس بناتي",
   "fr": "Vêtements filles",
-  "en": "Girls clothing",
+  "en": "Girls Clothes",
   "sub": [
    {
     "id": "g_dress",
-    "ar": "فساتين",
-    "fr": "Robes",
-    "en": "Dresses",
+    "ar": "فستان بناتي",
+    "fr": "Robe fille",
+    "en": "Girls dress",
     "filters": [
      {
       "key": "age",
@@ -2254,19 +3228,25 @@
     ]
    },
    {
-    "id": "g_set",
-    "ar": "أطقم",
-    "fr": "Ensembles",
-    "en": "Sets",
+    "id": "g_hair_accessories",
+    "ar": "إكسسوارات شعر",
+    "fr": "Accessoires cheveux",
+    "en": "Hair accessories",
     "filters": [
      {
-      "key": "age",
+      "key": "material",
       "type": "select",
       "options": [
-       "0-2",
-       "3-5",
-       "6-9",
-       "10-14"
+       "ذهب",
+       "فضة",
+       "لؤلؤ",
+       "كريستال",
+       "قماش",
+       "جلد",
+       "بلاستيك",
+       "معدن",
+       "خشب",
+       "ستانلس"
       ]
      },
      {
@@ -2298,10 +3278,10 @@
     ]
    },
    {
-    "id": "g_skirt",
-    "ar": "تنانير",
-    "fr": "Jupes",
-    "en": "Skirts",
+    "id": "g_jacket",
+    "ar": "جاكيتات",
+    "fr": "Vestes",
+    "en": "Jackets",
     "filters": [
      {
       "key": "age",
@@ -2386,138 +3366,6 @@
     ]
    },
    {
-    "id": "g_shirt",
-    "ar": "قمصان",
-    "fr": "Chemises",
-    "en": "Shirts",
-    "filters": [
-     {
-      "key": "age",
-      "type": "select",
-      "options": [
-       "0-2",
-       "3-5",
-       "6-9",
-       "10-14"
-      ]
-     },
-     {
-      "key": "color",
-      "type": "select",
-      "options": [
-       "أبيض",
-       "أسود",
-       "أحمر",
-       "وردي",
-       "ذهبي",
-       "أزرق",
-       "أخضر",
-       "بيج",
-       "فضي",
-       "بنفسجي",
-       "برتقالي",
-       "أصفر",
-       "بني",
-       "رمادي",
-       "كحلي",
-       "تركوازي",
-       "عنابي",
-       "زهري فاتح",
-       "سماوي",
-       "كاكي"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "g_jacket",
-    "ar": "جاكيتات",
-    "fr": "Vestes",
-    "en": "Jackets",
-    "filters": [
-     {
-      "key": "age",
-      "type": "select",
-      "options": [
-       "0-2",
-       "3-5",
-       "6-9",
-       "10-14"
-      ]
-     },
-     {
-      "key": "color",
-      "type": "select",
-      "options": [
-       "أبيض",
-       "أسود",
-       "أحمر",
-       "وردي",
-       "ذهبي",
-       "أزرق",
-       "أخضر",
-       "بيج",
-       "فضي",
-       "بنفسجي",
-       "برتقالي",
-       "أصفر",
-       "بني",
-       "رمادي",
-       "كحلي",
-       "تركوازي",
-       "عنابي",
-       "زهري فاتح",
-       "سماوي",
-       "كاكي"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "g_sport",
-    "ar": "ملابس رياضية",
-    "fr": "Vêtements de sport",
-    "en": "Sportswear",
-    "filters": [
-     {
-      "key": "age",
-      "type": "select",
-      "options": [
-       "0-2",
-       "3-5",
-       "6-9",
-       "10-14"
-      ]
-     },
-     {
-      "key": "color",
-      "type": "select",
-      "options": [
-       "أبيض",
-       "أسود",
-       "أحمر",
-       "وردي",
-       "ذهبي",
-       "أزرق",
-       "أخضر",
-       "بيج",
-       "فضي",
-       "بنفسجي",
-       "برتقالي",
-       "أصفر",
-       "بني",
-       "رمادي",
-       "كحلي",
-       "تركوازي",
-       "عنابي",
-       "زهري فاتح",
-       "سماوي",
-       "كاكي"
-      ]
-     }
-    ]
-   },
-   {
     "id": "g_pyjamas",
     "ar": "ملابس نوم",
     "fr": "Pyjamas",
@@ -2562,10 +3410,54 @@
     ]
    },
    {
-    "id": "g_underwear",
-    "ar": "ملابس داخلية",
-    "fr": "Sous-vêtements",
-    "en": "Underwear",
+    "id": "g_set",
+    "ar": "طقم بناتي",
+    "fr": "Ensemble fille",
+    "en": "Girls set",
+    "filters": [
+     {
+      "key": "age",
+      "type": "select",
+      "options": [
+       "0-2",
+       "3-5",
+       "6-9",
+       "10-14"
+      ]
+     },
+     {
+      "key": "color",
+      "type": "select",
+      "options": [
+       "أبيض",
+       "أسود",
+       "أحمر",
+       "وردي",
+       "ذهبي",
+       "أزرق",
+       "أخضر",
+       "بيج",
+       "فضي",
+       "بنفسجي",
+       "برتقالي",
+       "أصفر",
+       "بني",
+       "رمادي",
+       "كحلي",
+       "تركوازي",
+       "عنابي",
+       "زهري فاتح",
+       "سماوي",
+       "كاكي"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "g_shirt",
+    "ar": "قمصان",
+    "fr": "Chemises",
+    "en": "Shirts",
     "filters": [
      {
       "key": "age",
@@ -2665,25 +3557,107 @@
     ]
    },
    {
-    "id": "g_hair_accessories",
-    "ar": "إكسسوارات شعر",
-    "fr": "Accessoires cheveux",
-    "en": "Hair accessories",
+    "id": "g_skirt",
+    "ar": "تنانير",
+    "fr": "Jupes",
+    "en": "Skirts",
     "filters": [
      {
-      "key": "material",
+      "key": "age",
       "type": "select",
       "options": [
-       "ذهب",
-       "فضة",
-       "لؤلؤ",
-       "كريستال",
-       "قماش",
-       "جلد",
-       "بلاستيك",
-       "معدن",
-       "خشب",
-       "ستانلس"
+       "0-2",
+       "3-5",
+       "6-9",
+       "10-14"
+      ]
+     },
+     {
+      "key": "color",
+      "type": "select",
+      "options": [
+       "أبيض",
+       "أسود",
+       "أحمر",
+       "وردي",
+       "ذهبي",
+       "أزرق",
+       "أخضر",
+       "بيج",
+       "فضي",
+       "بنفسجي",
+       "برتقالي",
+       "أصفر",
+       "بني",
+       "رمادي",
+       "كحلي",
+       "تركوازي",
+       "عنابي",
+       "زهري فاتح",
+       "سماوي",
+       "كاكي"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "g_sport",
+    "ar": "ملابس رياضية",
+    "fr": "Vêtements de sport",
+    "en": "Sportswear",
+    "filters": [
+     {
+      "key": "age",
+      "type": "select",
+      "options": [
+       "0-2",
+       "3-5",
+       "6-9",
+       "10-14"
+      ]
+     },
+     {
+      "key": "color",
+      "type": "select",
+      "options": [
+       "أبيض",
+       "أسود",
+       "أحمر",
+       "وردي",
+       "ذهبي",
+       "أزرق",
+       "أخضر",
+       "بيج",
+       "فضي",
+       "بنفسجي",
+       "برتقالي",
+       "أصفر",
+       "بني",
+       "رمادي",
+       "كحلي",
+       "تركوازي",
+       "عنابي",
+       "زهري فاتح",
+       "سماوي",
+       "كاكي"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "g_underwear",
+    "ar": "ملابس داخلية",
+    "fr": "Sous-vêtements",
+    "en": "Underwear",
+    "filters": [
+     {
+      "key": "age",
+      "type": "select",
+      "options": [
+       "0-2",
+       "3-5",
+       "6-9",
+       "10-14"
       ]
      },
      {
@@ -2717,36 +3691,40 @@
   ]
  },
  {
-  "id": "shoes",
-  "ar": "أحذية نسائية",
-  "fr": "Chaussures femme",
-  "en": "Women shoes",
+  "id": "clothes_wedding",
+  "ar": "ملابس الزفاف",
+  "fr": "Vêtements de mariage",
+  "en": "Wedding Wear",
   "sub": [
    {
-    "id": "heels",
-    "ar": "كعب عالي",
-    "fr": "Talons",
-    "en": "Heels",
+    "id": "bridal",
+    "ar": "فستان عروس",
+    "fr": "Robe de mariée",
+    "en": "Bridal dress",
     "filters": [
      {
-      "key": "shoe_size",
+      "key": "size",
       "type": "select",
       "options": [
-       "33",
+       "XS",
+       "S",
+       "M",
+       "L",
+       "XL",
+       "XXL",
+       "3XL",
        "34",
-       "35",
        "36",
-       "37",
        "38",
-       "39",
        "40",
-       "41",
        "42",
-       "43",
        "44",
-       "45",
        "46",
-       "47"
+       "48",
+       "50",
+       "52",
+       "54",
+       "56"
       ]
      },
      {
@@ -2778,30 +3756,45 @@
     ]
    },
    {
-    "id": "flats",
-    "ar": "مسطحة",
-    "fr": "Ballerines",
-    "en": "Flats",
+    "id": "caftan",
+    "ar": "قفطان",
+    "fr": "Caftan",
+    "en": "Caftan",
     "filters": [
      {
-      "key": "shoe_size",
+      "key": "size",
       "type": "select",
       "options": [
-       "33",
+       "XS",
+       "S",
+       "M",
+       "L",
+       "XL",
+       "XXL",
+       "3XL",
        "34",
-       "35",
        "36",
-       "37",
        "38",
-       "39",
        "40",
-       "41",
        "42",
-       "43",
        "44",
-       "45",
        "46",
-       "47"
+       "48",
+       "50",
+       "52",
+       "54",
+       "56"
+      ]
+     },
+     {
+      "key": "fabric",
+      "type": "select",
+      "options": [
+       "حرير",
+       "قفطان",
+       "دانتيل",
+       "ساتان",
+       "قطن"
       ]
      },
      {
@@ -2833,30 +3826,34 @@
     ]
    },
    {
-    "id": "sneakers",
-    "ar": "رياضية",
-    "fr": "Baskets",
-    "en": "Sneakers",
+    "id": "chedda",
+    "ar": "شدة",
+    "fr": "Chedda",
+    "en": "Chedda",
     "filters": [
      {
-      "key": "shoe_size",
+      "key": "size",
       "type": "select",
       "options": [
-       "33",
+       "XS",
+       "S",
+       "M",
+       "L",
+       "XL",
+       "XXL",
+       "3XL",
        "34",
-       "35",
        "36",
-       "37",
        "38",
-       "39",
        "40",
-       "41",
        "42",
-       "43",
        "44",
-       "45",
        "46",
-       "47"
+       "48",
+       "50",
+       "52",
+       "54",
+       "56"
       ]
      },
      {
@@ -2888,30 +3885,19 @@
     ]
    },
    {
-    "id": "wedding_shoes",
-    "ar": "أحذية أعراس",
-    "fr": "Chaussures de mariage",
-    "en": "Wedding shoes",
+    "id": "flower_girl",
+    "ar": "فستان عروس صغيرة",
+    "fr": "Robe de petite mariée",
+    "en": "Flower girl",
     "filters": [
      {
-      "key": "shoe_size",
+      "key": "age",
       "type": "select",
       "options": [
-       "33",
-       "34",
-       "35",
-       "36",
-       "37",
-       "38",
-       "39",
-       "40",
-       "41",
-       "42",
-       "43",
-       "44",
-       "45",
-       "46",
-       "47"
+       "0-2",
+       "3-5",
+       "6-9",
+       "10-14"
       ]
      },
      {
@@ -2943,10 +3929,1182 @@
     ]
    },
    {
-    "id": "sandals",
-    "ar": "صنادل",
-    "fr": "Sandales",
-    "en": "Sandals",
+    "id": "gandoura_constantine",
+    "ar": "قندورة قسنطينية",
+    "fr": "Gandoura constantinoise",
+    "en": "Gandoura constantine",
+    "filters": [
+     {
+      "key": "size",
+      "type": "select",
+      "options": [
+       "XS",
+       "S",
+       "M",
+       "L",
+       "XL",
+       "XXL",
+       "3XL",
+       "34",
+       "36",
+       "38",
+       "40",
+       "42",
+       "44",
+       "46",
+       "48",
+       "50",
+       "52",
+       "54",
+       "56"
+      ]
+     },
+     {
+      "key": "fabric",
+      "type": "select",
+      "options": [
+       "حرير",
+       "قفطان",
+       "دانتيل",
+       "ساتان",
+       "قطن"
+      ]
+     },
+     {
+      "key": "color",
+      "type": "select",
+      "options": [
+       "أبيض",
+       "أسود",
+       "أحمر",
+       "وردي",
+       "ذهبي",
+       "أزرق",
+       "أخضر",
+       "بيج",
+       "فضي",
+       "بنفسجي",
+       "برتقالي",
+       "أصفر",
+       "بني",
+       "رمادي",
+       "كحلي",
+       "تركوازي",
+       "عنابي",
+       "زهري فاتح",
+       "سماوي",
+       "كاكي"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "gandoura_thakila",
+    "ar": "قندورة ثقيلة",
+    "fr": "Gandoura lourde",
+    "en": "Heavy gandoura",
+    "filters": [
+     {
+      "key": "size",
+      "type": "select",
+      "options": [
+       "XS",
+       "S",
+       "M",
+       "L",
+       "XL",
+       "XXL",
+       "3XL",
+       "34",
+       "36",
+       "38",
+       "40",
+       "42",
+       "44",
+       "46",
+       "48",
+       "50",
+       "52",
+       "54",
+       "56"
+      ]
+     },
+     {
+      "key": "fabric",
+      "type": "select",
+      "options": [
+       "حرير",
+       "قفطان",
+       "دانتيل",
+       "ساتان",
+       "قطن"
+      ]
+     },
+     {
+      "key": "color",
+      "type": "select",
+      "options": [
+       "أبيض",
+       "أسود",
+       "أحمر",
+       "وردي",
+       "ذهبي",
+       "أزرق",
+       "أخضر",
+       "بيج",
+       "فضي",
+       "بنفسجي",
+       "برتقالي",
+       "أصفر",
+       "بني",
+       "رمادي",
+       "كحلي",
+       "تركوازي",
+       "عنابي",
+       "زهري فاتح",
+       "سماوي",
+       "كاكي"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "jabador",
+    "ar": "جابادور",
+    "fr": "Jabador",
+    "en": "Jabador",
+    "filters": [
+     {
+      "key": "size",
+      "type": "select",
+      "options": [
+       "XS",
+       "S",
+       "M",
+       "L",
+       "XL",
+       "XXL",
+       "3XL",
+       "34",
+       "36",
+       "38",
+       "40",
+       "42",
+       "44",
+       "46",
+       "48",
+       "50",
+       "52",
+       "54",
+       "56"
+      ]
+     },
+     {
+      "key": "fabric",
+      "type": "select",
+      "options": [
+       "حرير",
+       "قفطان",
+       "دانتيل",
+       "ساتان",
+       "قطن"
+      ]
+     },
+     {
+      "key": "color",
+      "type": "select",
+      "options": [
+       "أبيض",
+       "أسود",
+       "أحمر",
+       "وردي",
+       "ذهبي",
+       "أزرق",
+       "أخضر",
+       "بيج",
+       "فضي",
+       "بنفسجي",
+       "برتقالي",
+       "أصفر",
+       "بني",
+       "رمادي",
+       "كحلي",
+       "تركوازي",
+       "عنابي",
+       "زهري فاتح",
+       "سماوي",
+       "كاكي"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "melhfa",
+    "ar": "ملحفة",
+    "fr": "Melhfa",
+    "en": "Melhfa",
+    "filters": [
+     {
+      "key": "color",
+      "type": "select",
+      "options": [
+       "أبيض",
+       "أسود",
+       "أحمر",
+       "وردي",
+       "ذهبي",
+       "أزرق",
+       "أخضر",
+       "بيج",
+       "فضي",
+       "بنفسجي",
+       "برتقالي",
+       "أصفر",
+       "بني",
+       "رمادي",
+       "كحلي",
+       "تركوازي",
+       "عنابي",
+       "زهري فاتح",
+       "سماوي",
+       "كاكي"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "takchita",
+    "ar": "تكشيطة",
+    "fr": "Takchita",
+    "en": "Takchita",
+    "filters": [
+     {
+      "key": "size",
+      "type": "select",
+      "options": [
+       "XS",
+       "S",
+       "M",
+       "L",
+       "XL",
+       "XXL",
+       "3XL",
+       "34",
+       "36",
+       "38",
+       "40",
+       "42",
+       "44",
+       "46",
+       "48",
+       "50",
+       "52",
+       "54",
+       "56"
+      ]
+     },
+     {
+      "key": "fabric",
+      "type": "select",
+      "options": [
+       "حرير",
+       "قفطان",
+       "دانتيل",
+       "ساتان",
+       "قطن"
+      ]
+     },
+     {
+      "key": "color",
+      "type": "select",
+      "options": [
+       "أبيض",
+       "أسود",
+       "أحمر",
+       "وردي",
+       "ذهبي",
+       "أزرق",
+       "أخضر",
+       "بيج",
+       "فضي",
+       "بنفسجي",
+       "برتقالي",
+       "أصفر",
+       "بني",
+       "رمادي",
+       "كحلي",
+       "تركوازي",
+       "عنابي",
+       "زهري فاتح",
+       "سماوي",
+       "كاكي"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "wedding_accessories",
+    "ar": "إكسسوارات عرس",
+    "fr": "Accessoires mariage",
+    "en": "Wedding accessories",
+    "filters": [
+     {
+      "key": "material",
+      "type": "select",
+      "options": [
+       "ذهب",
+       "فضة",
+       "لؤلؤ",
+       "كريستال",
+       "قماش",
+       "جلد",
+       "بلاستيك",
+       "معدن",
+       "خشب",
+       "ستانلس"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "wedding_top",
+    "ar": "بلوزة عرس",
+    "fr": "Haut de mariage",
+    "en": "Wedding top",
+    "filters": [
+     {
+      "key": "size",
+      "type": "select",
+      "options": [
+       "XS",
+       "S",
+       "M",
+       "L",
+       "XL",
+       "XXL",
+       "3XL",
+       "34",
+       "36",
+       "38",
+       "40",
+       "42",
+       "44",
+       "46",
+       "48",
+       "50",
+       "52",
+       "54",
+       "56"
+      ]
+     },
+     {
+      "key": "color",
+      "type": "select",
+      "options": [
+       "أبيض",
+       "أسود",
+       "أحمر",
+       "وردي",
+       "ذهبي",
+       "أزرق",
+       "أخضر",
+       "بيج",
+       "فضي",
+       "بنفسجي",
+       "برتقالي",
+       "أصفر",
+       "بني",
+       "رمادي",
+       "كحلي",
+       "تركوازي",
+       "عنابي",
+       "زهري فاتح",
+       "سماوي",
+       "كاكي"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "clothes_work",
+  "ar": "ملابس العمل",
+  "fr": "Vêtements de travail",
+  "en": "Work Wear",
+  "sub": [
+   {
+    "id": "abaya",
+    "ar": "عباءة",
+    "fr": "Abaya",
+    "en": "Abaya",
+    "filters": [
+     {
+      "key": "size",
+      "type": "select",
+      "options": [
+       "XS",
+       "S",
+       "M",
+       "L",
+       "XL",
+       "XXL",
+       "3XL",
+       "34",
+       "36",
+       "38",
+       "40",
+       "42",
+       "44",
+       "46",
+       "48",
+       "50",
+       "52",
+       "54",
+       "56"
+      ]
+     },
+     {
+      "key": "color",
+      "type": "select",
+      "options": [
+       "أبيض",
+       "أسود",
+       "أحمر",
+       "وردي",
+       "ذهبي",
+       "أزرق",
+       "أخضر",
+       "بيج",
+       "فضي",
+       "بنفسجي",
+       "برتقالي",
+       "أصفر",
+       "بني",
+       "رمادي",
+       "كحلي",
+       "تركوازي",
+       "عنابي",
+       "زهري فاتح",
+       "سماوي",
+       "كاكي"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "blouse",
+    "ar": "بلوزات",
+    "fr": "Blouses",
+    "en": "Blouses",
+    "filters": [
+     {
+      "key": "size",
+      "type": "select",
+      "options": [
+       "XS",
+       "S",
+       "M",
+       "L",
+       "XL",
+       "XXL",
+       "3XL",
+       "34",
+       "36",
+       "38",
+       "40",
+       "42",
+       "44",
+       "46",
+       "48",
+       "50",
+       "52",
+       "54",
+       "56"
+      ]
+     },
+     {
+      "key": "color",
+      "type": "select",
+      "options": [
+       "أبيض",
+       "أسود",
+       "أحمر",
+       "وردي",
+       "ذهبي",
+       "أزرق",
+       "أخضر",
+       "بيج",
+       "فضي",
+       "بنفسجي",
+       "برتقالي",
+       "أصفر",
+       "بني",
+       "رمادي",
+       "كحلي",
+       "تركوازي",
+       "عنابي",
+       "زهري فاتح",
+       "سماوي",
+       "كاكي"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "jacket",
+    "ar": "جاكيتات",
+    "fr": "Vestes",
+    "en": "Jackets",
+    "filters": [
+     {
+      "key": "size",
+      "type": "select",
+      "options": [
+       "XS",
+       "S",
+       "M",
+       "L",
+       "XL",
+       "XXL",
+       "3XL",
+       "34",
+       "36",
+       "38",
+       "40",
+       "42",
+       "44",
+       "46",
+       "48",
+       "50",
+       "52",
+       "54",
+       "56"
+      ]
+     },
+     {
+      "key": "color",
+      "type": "select",
+      "options": [
+       "أبيض",
+       "أسود",
+       "أحمر",
+       "وردي",
+       "ذهبي",
+       "أزرق",
+       "أخضر",
+       "بيج",
+       "فضي",
+       "بنفسجي",
+       "برتقالي",
+       "أصفر",
+       "بني",
+       "رمادي",
+       "كحلي",
+       "تركوازي",
+       "عنابي",
+       "زهري فاتح",
+       "سماوي",
+       "كاكي"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "medical_wear",
+    "ar": "ملابس طبية",
+    "fr": "Tenues médicales",
+    "en": "Medical wear",
+    "filters": [
+     {
+      "key": "size",
+      "type": "select",
+      "options": [
+       "XS",
+       "S",
+       "M",
+       "L",
+       "XL",
+       "XXL",
+       "3XL",
+       "34",
+       "36",
+       "38",
+       "40",
+       "42",
+       "44",
+       "46",
+       "48",
+       "50",
+       "52",
+       "54",
+       "56"
+      ]
+     },
+     {
+      "key": "color",
+      "type": "select",
+      "options": [
+       "أبيض",
+       "أسود",
+       "أحمر",
+       "وردي",
+       "ذهبي",
+       "أزرق",
+       "أخضر",
+       "بيج",
+       "فضي",
+       "بنفسجي",
+       "برتقالي",
+       "أصفر",
+       "بني",
+       "رمادي",
+       "كحلي",
+       "تركوازي",
+       "عنابي",
+       "زهري فاتح",
+       "سماوي",
+       "كاكي"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "pants",
+    "ar": "بناطيل",
+    "fr": "Pantalons",
+    "en": "Pants",
+    "filters": [
+     {
+      "key": "size",
+      "type": "select",
+      "options": [
+       "XS",
+       "S",
+       "M",
+       "L",
+       "XL",
+       "XXL",
+       "3XL",
+       "34",
+       "36",
+       "38",
+       "40",
+       "42",
+       "44",
+       "46",
+       "48",
+       "50",
+       "52",
+       "54",
+       "56"
+      ]
+     },
+     {
+      "key": "color",
+      "type": "select",
+      "options": [
+       "أبيض",
+       "أسود",
+       "أحمر",
+       "وردي",
+       "ذهبي",
+       "أزرق",
+       "أخضر",
+       "بيج",
+       "فضي",
+       "بنفسجي",
+       "برتقالي",
+       "أصفر",
+       "بني",
+       "رمادي",
+       "كحلي",
+       "تركوازي",
+       "عنابي",
+       "زهري فاتح",
+       "سماوي",
+       "كاكي"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "shirt",
+    "ar": "قميص",
+    "fr": "Chemise",
+    "en": "Shirt",
+    "filters": [
+     {
+      "key": "size",
+      "type": "select",
+      "options": [
+       "XS",
+       "S",
+       "M",
+       "L",
+       "XL",
+       "XXL",
+       "3XL",
+       "34",
+       "36",
+       "38",
+       "40",
+       "42",
+       "44",
+       "46",
+       "48",
+       "50",
+       "52",
+       "54",
+       "56"
+      ]
+     },
+     {
+      "key": "color",
+      "type": "select",
+      "options": [
+       "أبيض",
+       "أسود",
+       "أحمر",
+       "وردي",
+       "ذهبي",
+       "أزرق",
+       "أخضر",
+       "بيج",
+       "فضي",
+       "بنفسجي",
+       "برتقالي",
+       "أصفر",
+       "بني",
+       "رمادي",
+       "كحلي",
+       "تركوازي",
+       "عنابي",
+       "زهري فاتح",
+       "سماوي",
+       "كاكي"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "skirt",
+    "ar": "جيبات",
+    "fr": "Jupes",
+    "en": "Skirts",
+    "filters": [
+     {
+      "key": "size",
+      "type": "select",
+      "options": [
+       "XS",
+       "S",
+       "M",
+       "L",
+       "XL",
+       "XXL",
+       "3XL",
+       "34",
+       "36",
+       "38",
+       "40",
+       "42",
+       "44",
+       "46",
+       "48",
+       "50",
+       "52",
+       "54",
+       "56"
+      ]
+     },
+     {
+      "key": "color",
+      "type": "select",
+      "options": [
+       "أبيض",
+       "أسود",
+       "أحمر",
+       "وردي",
+       "ذهبي",
+       "أزرق",
+       "أخضر",
+       "بيج",
+       "فضي",
+       "بنفسجي",
+       "برتقالي",
+       "أصفر",
+       "بني",
+       "رمادي",
+       "كحلي",
+       "تركوازي",
+       "عنابي",
+       "زهري فاتح",
+       "سماوي",
+       "كاكي"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "suit",
+    "ar": "بدلة",
+    "fr": "Costume",
+    "en": "Suit",
+    "filters": [
+     {
+      "key": "size",
+      "type": "select",
+      "options": [
+       "XS",
+       "S",
+       "M",
+       "L",
+       "XL",
+       "XXL",
+       "3XL",
+       "34",
+       "36",
+       "38",
+       "40",
+       "42",
+       "44",
+       "46",
+       "48",
+       "50",
+       "52",
+       "54",
+       "56"
+      ]
+     },
+     {
+      "key": "color",
+      "type": "select",
+      "options": [
+       "أبيض",
+       "أسود",
+       "أحمر",
+       "وردي",
+       "ذهبي",
+       "أزرق",
+       "أخضر",
+       "بيج",
+       "فضي",
+       "بنفسجي",
+       "برتقالي",
+       "أصفر",
+       "بني",
+       "رمادي",
+       "كحلي",
+       "تركوازي",
+       "عنابي",
+       "زهري فاتح",
+       "سماوي",
+       "كاكي"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "uniform",
+    "ar": "زي موحد",
+    "fr": "Uniforme",
+    "en": "Uniform",
+    "filters": [
+     {
+      "key": "size",
+      "type": "select",
+      "options": [
+       "XS",
+       "S",
+       "M",
+       "L",
+       "XL",
+       "XXL",
+       "3XL",
+       "34",
+       "36",
+       "38",
+       "40",
+       "42",
+       "44",
+       "46",
+       "48",
+       "50",
+       "52",
+       "54",
+       "56"
+      ]
+     },
+     {
+      "key": "color",
+      "type": "select",
+      "options": [
+       "أبيض",
+       "أسود",
+       "أحمر",
+       "وردي",
+       "ذهبي",
+       "أزرق",
+       "أخضر",
+       "بيج",
+       "فضي",
+       "بنفسجي",
+       "برتقالي",
+       "أصفر",
+       "بني",
+       "رمادي",
+       "كحلي",
+       "تركوازي",
+       "عنابي",
+       "زهري فاتح",
+       "سماوي",
+       "كاكي"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "products",
+  "ar": "منتجات",
+  "fr": "Produits",
+  "en": "Products",
+  "sub": [
+   {
+    "id": "contact_lenses",
+    "ar": "عدسات لاصقة",
+    "fr": "Lentilles",
+    "en": "Contact lenses",
+    "filters": [
+     {
+      "key": "color",
+      "type": "select",
+      "options": [
+       "أبيض",
+       "أسود",
+       "أحمر",
+       "وردي",
+       "ذهبي",
+       "أزرق",
+       "أخضر",
+       "بيج",
+       "فضي",
+       "بنفسجي",
+       "برتقالي",
+       "أصفر",
+       "بني",
+       "رمادي",
+       "كحلي",
+       "تركوازي",
+       "عنابي",
+       "زهري فاتح",
+       "سماوي",
+       "كاكي"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "deodorant",
+    "ar": "مزيل عرق",
+    "fr": "Déodorant",
+    "en": "Deodorant",
+    "filters": []
+   },
+   {
+    "id": "face_cream",
+    "ar": "كريم وجه",
+    "fr": "Crème visage",
+    "en": "Face cream",
+    "filters": []
+   },
+   {
+    "id": "face_wash",
+    "ar": "غسول وجه",
+    "fr": "Nettoyant visage",
+    "en": "Face wash",
+    "filters": []
+   },
+   {
+    "id": "hair_dye",
+    "ar": "صبغة شعر",
+    "fr": "Teinture",
+    "en": "Hair dye",
+    "filters": [
+     {
+      "key": "loreal_no",
+      "type": "text",
+      "max": 30
+     }
+    ]
+   },
+   {
+    "id": "hair_masks",
+    "ar": "ماسكات شعر",
+    "fr": "Masques capillaires",
+    "en": "Hair masks",
+    "filters": []
+   },
+   {
+    "id": "hair_oils",
+    "ar": "زيوت شعر",
+    "fr": "Huiles capillaires",
+    "en": "Hair oils",
+    "filters": []
+   },
+   {
+    "id": "intimate_products",
+    "ar": "منتجات نسائية حميمة",
+    "fr": "Produits intimes",
+    "en": "Intimate products",
+    "filters": []
+   },
+   {
+    "id": "makeup_brushes",
+    "ar": "فرش مكياج",
+    "fr": "Pinceaux maquillage",
+    "en": "Makeup brushes",
+    "filters": []
+   },
+   {
+    "id": "makeup_p",
+    "ar": "مكياج",
+    "fr": "Maquillage",
+    "en": "Makeup",
+    "filters": []
+   },
+   {
+    "id": "makeup_tools",
+    "ar": "أدوات تجميل",
+    "fr": "Outils maquillage",
+    "en": "Makeup tools",
+    "filters": []
+   },
+   {
+    "id": "nail_polish",
+    "ar": "طلاء أظافر",
+    "fr": "Vernis à ongles",
+    "en": "Nail polish",
+    "filters": [
+     {
+      "key": "color",
+      "type": "select",
+      "options": [
+       "أبيض",
+       "أسود",
+       "أحمر",
+       "وردي",
+       "ذهبي",
+       "أزرق",
+       "أخضر",
+       "بيج",
+       "فضي",
+       "بنفسجي",
+       "برتقالي",
+       "أصفر",
+       "بني",
+       "رمادي",
+       "كحلي",
+       "تركوازي",
+       "عنابي",
+       "زهري فاتح",
+       "سماوي",
+       "كاكي"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "nail_remover",
+    "ar": "مزيل طلاء",
+    "fr": "Dissolvant",
+    "en": "Nail remover",
+    "filters": []
+   },
+   {
+    "id": "nails_p",
+    "ar": "أظافر",
+    "fr": "Ongles",
+    "en": "Nails",
+    "filters": []
+   },
+   {
+    "id": "perfume",
+    "ar": "عطور",
+    "fr": "Parfums",
+    "en": "Perfumes",
+    "filters": []
+   },
+   {
+    "id": "serum",
+    "ar": "سيروم",
+    "fr": "Sérum",
+    "en": "Serum",
+    "filters": []
+   },
+   {
+    "id": "shampoo",
+    "ar": "شامبو",
+    "fr": "Shampooing",
+    "en": "Shampoo",
+    "filters": []
+   },
+   {
+    "id": "sunscreen",
+    "ar": "واقي شمس",
+    "fr": "Crème solaire",
+    "en": "Sunscreen",
+    "filters": []
+   },
+   {
+    "id": "wig",
+    "ar": "باروكة",
+    "fr": "Perruque",
+    "en": "Wig",
+    "filters": [
+     {
+      "key": "color",
+      "type": "select",
+      "options": [
+       "أبيض",
+       "أسود",
+       "أحمر",
+       "وردي",
+       "ذهبي",
+       "أزرق",
+       "أخضر",
+       "بيج",
+       "فضي",
+       "بنفسجي",
+       "برتقالي",
+       "أصفر",
+       "بني",
+       "رمادي",
+       "كحلي",
+       "تركوازي",
+       "عنابي",
+       "زهري فاتح",
+       "سماوي",
+       "كاكي"
+      ]
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "shoes",
+  "ar": "أحذية",
+  "fr": "Chaussures",
+  "en": "Shoes",
+  "sub": [
+   {
+    "id": "ankle_boots",
+    "ar": "بوت قصير",
+    "fr": "Bottines",
+    "en": "Ankle boots",
     "filters": [
      {
       "key": "shoe_size",
@@ -3053,120 +5211,120 @@
     ]
    },
    {
-    "id": "ankle_boots",
-    "ar": "بوت قصير",
-    "fr": "Bottines",
-    "en": "Ankle boots",
-    "filters": [
-     {
-      "key": "shoe_size",
-      "type": "select",
-      "options": [
-       "33",
-       "34",
-       "35",
-       "36",
-       "37",
-       "38",
-       "39",
-       "40",
-       "41",
-       "42",
-       "43",
-       "44",
-       "45",
-       "46",
-       "47"
-      ]
-     },
-     {
-      "key": "color",
-      "type": "select",
-      "options": [
-       "أبيض",
-       "أسود",
-       "أحمر",
-       "وردي",
-       "ذهبي",
-       "أزرق",
-       "أخضر",
-       "بيج",
-       "فضي",
-       "بنفسجي",
-       "برتقالي",
-       "أصفر",
-       "بني",
-       "رمادي",
-       "كحلي",
-       "تركوازي",
-       "عنابي",
-       "زهري فاتح",
-       "سماوي",
-       "كاكي"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "mules",
-    "ar": "مول",
-    "fr": "Mules",
-    "en": "Mules",
-    "filters": [
-     {
-      "key": "shoe_size",
-      "type": "select",
-      "options": [
-       "33",
-       "34",
-       "35",
-       "36",
-       "37",
-       "38",
-       "39",
-       "40",
-       "41",
-       "42",
-       "43",
-       "44",
-       "45",
-       "46",
-       "47"
-      ]
-     },
-     {
-      "key": "color",
-      "type": "select",
-      "options": [
-       "أبيض",
-       "أسود",
-       "أحمر",
-       "وردي",
-       "ذهبي",
-       "أزرق",
-       "أخضر",
-       "بيج",
-       "فضي",
-       "بنفسجي",
-       "برتقالي",
-       "أصفر",
-       "بني",
-       "رمادي",
-       "كحلي",
-       "تركوازي",
-       "عنابي",
-       "زهري فاتح",
-       "سماوي",
-       "كاكي"
-      ]
-     }
-    ]
-   },
-   {
     "id": "flat_sneakers",
     "ar": "أحذية رياضية مسطحة",
     "fr": "Baskets plates",
     "en": "Flat sneakers",
+    "filters": [
+     {
+      "key": "shoe_size",
+      "type": "select",
+      "options": [
+       "33",
+       "34",
+       "35",
+       "36",
+       "37",
+       "38",
+       "39",
+       "40",
+       "41",
+       "42",
+       "43",
+       "44",
+       "45",
+       "46",
+       "47"
+      ]
+     },
+     {
+      "key": "color",
+      "type": "select",
+      "options": [
+       "أبيض",
+       "أسود",
+       "أحمر",
+       "وردي",
+       "ذهبي",
+       "أزرق",
+       "أخضر",
+       "بيج",
+       "فضي",
+       "بنفسجي",
+       "برتقالي",
+       "أصفر",
+       "بني",
+       "رمادي",
+       "كحلي",
+       "تركوازي",
+       "عنابي",
+       "زهري فاتح",
+       "سماوي",
+       "كاكي"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "flats",
+    "ar": "مسطح",
+    "fr": "Plates",
+    "en": "Flats",
+    "filters": [
+     {
+      "key": "shoe_size",
+      "type": "select",
+      "options": [
+       "33",
+       "34",
+       "35",
+       "36",
+       "37",
+       "38",
+       "39",
+       "40",
+       "41",
+       "42",
+       "43",
+       "44",
+       "45",
+       "46",
+       "47"
+      ]
+     },
+     {
+      "key": "color",
+      "type": "select",
+      "options": [
+       "أبيض",
+       "أسود",
+       "أحمر",
+       "وردي",
+       "ذهبي",
+       "أزرق",
+       "أخضر",
+       "بيج",
+       "فضي",
+       "بنفسجي",
+       "برتقالي",
+       "أصفر",
+       "بني",
+       "رمادي",
+       "كحلي",
+       "تركوازي",
+       "عنابي",
+       "زهري فاتح",
+       "سماوي",
+       "كاكي"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "heels",
+    "ar": "كعب",
+    "fr": "Talons",
+    "en": "Heels",
     "filters": [
      {
       "key": "shoe_size",
@@ -3273,6 +5431,116 @@
     ]
    },
    {
+    "id": "mules",
+    "ar": "مول",
+    "fr": "Mules",
+    "en": "Mules",
+    "filters": [
+     {
+      "key": "shoe_size",
+      "type": "select",
+      "options": [
+       "33",
+       "34",
+       "35",
+       "36",
+       "37",
+       "38",
+       "39",
+       "40",
+       "41",
+       "42",
+       "43",
+       "44",
+       "45",
+       "46",
+       "47"
+      ]
+     },
+     {
+      "key": "color",
+      "type": "select",
+      "options": [
+       "أبيض",
+       "أسود",
+       "أحمر",
+       "وردي",
+       "ذهبي",
+       "أزرق",
+       "أخضر",
+       "بيج",
+       "فضي",
+       "بنفسجي",
+       "برتقالي",
+       "أصفر",
+       "بني",
+       "رمادي",
+       "كحلي",
+       "تركوازي",
+       "عنابي",
+       "زهري فاتح",
+       "سماوي",
+       "كاكي"
+      ]
+     }
+    ]
+   },
+   {
+    "id": "sandals",
+    "ar": "صندل",
+    "fr": "Sandales",
+    "en": "Sandals",
+    "filters": [
+     {
+      "key": "shoe_size",
+      "type": "select",
+      "options": [
+       "33",
+       "34",
+       "35",
+       "36",
+       "37",
+       "38",
+       "39",
+       "40",
+       "41",
+       "42",
+       "43",
+       "44",
+       "45",
+       "46",
+       "47"
+      ]
+     },
+     {
+      "key": "color",
+      "type": "select",
+      "options": [
+       "أبيض",
+       "أسود",
+       "أحمر",
+       "وردي",
+       "ذهبي",
+       "أزرق",
+       "أخضر",
+       "بيج",
+       "فضي",
+       "بنفسجي",
+       "برتقالي",
+       "أصفر",
+       "بني",
+       "رمادي",
+       "كحلي",
+       "تركوازي",
+       "عنابي",
+       "زهري فاتح",
+       "سماوي",
+       "كاكي"
+      ]
+     }
+    ]
+   },
+   {
     "id": "slippers",
     "ar": "شباشب",
     "fr": "Claquettes",
@@ -3326,55 +5594,34 @@
       ]
      }
     ]
-   }
-  ]
- },
- {
-  "id": "products",
-  "ar": "منتجات نسائية",
-  "fr": "Produits féminins",
-  "en": "Women products",
-  "sub": [
-   {
-    "id": "face_wash",
-    "ar": "غسول الوجه",
-    "fr": "Nettoyant visage",
-    "en": "Face wash",
-    "filters": []
    },
    {
-    "id": "shampoo",
-    "ar": "شامبوان",
-    "fr": "Shampoings",
-    "en": "Shampoo",
-    "filters": []
-   },
-   {
-    "id": "makeup_p",
-    "ar": "مستحضرات تجميل",
-    "fr": "Cosmétiques",
-    "en": "Cosmetics",
-    "filters": []
-   },
-   {
-    "id": "hair_dye",
-    "ar": "صبغة شعر",
-    "fr": "Colorations",
-    "en": "Hair dye",
+    "id": "sneakers",
+    "ar": "رياضي",
+    "fr": "Baskets",
+    "en": "Sneakers",
     "filters": [
      {
-      "key": "loreal_no",
-      "type": "text",
-      "max": 30
-     }
-    ]
-   },
-   {
-    "id": "wig",
-    "ar": "شعر مستعار",
-    "fr": "Perruques",
-    "en": "Wigs",
-    "filters": [
+      "key": "shoe_size",
+      "type": "select",
+      "options": [
+       "33",
+       "34",
+       "35",
+       "36",
+       "37",
+       "38",
+       "39",
+       "40",
+       "41",
+       "42",
+       "43",
+       "44",
+       "45",
+       "46",
+       "47"
+      ]
+     },
      {
       "key": "color",
       "type": "select",
@@ -3404,81 +5651,32 @@
     ]
    },
    {
-    "id": "nails_p",
-    "ar": "أظافر اصطناعية",
-    "fr": "Faux ongles",
-    "en": "Fake nails",
-    "filters": []
-   },
-   {
-    "id": "face_cream",
-    "ar": "كريم وجه",
-    "fr": "Crème visage",
-    "en": "Face cream",
-    "filters": []
-   },
-   {
-    "id": "serum",
-    "ar": "سيروم",
-    "fr": "Sérum",
-    "en": "Serum",
-    "filters": []
-   },
-   {
-    "id": "sunscreen",
-    "ar": "واقي شمس",
-    "fr": "Crème solaire",
-    "en": "Sunscreen",
-    "filters": []
-   },
-   {
-    "id": "deodorant",
-    "ar": "مزيل عرق",
-    "fr": "Déodorant",
-    "en": "Deodorant",
-    "filters": []
-   },
-   {
-    "id": "perfume",
-    "ar": "عطور",
-    "fr": "Parfums",
-    "en": "Perfumes",
-    "filters": []
-   },
-   {
-    "id": "hair_oils",
-    "ar": "زيوت شعر",
-    "fr": "Huiles capillaires",
-    "en": "Hair oils",
-    "filters": []
-   },
-   {
-    "id": "hair_masks",
-    "ar": "ماسكات شعر",
-    "fr": "Masques capillaires",
-    "en": "Hair masks",
-    "filters": []
-   },
-   {
-    "id": "makeup_tools",
-    "ar": "أدوات تجميل",
-    "fr": "Outils de maquillage",
-    "en": "Makeup tools",
-    "filters": []
-   },
-   {
-    "id": "makeup_brushes",
-    "ar": "فرش مكياج",
-    "fr": "Pinceaux maquillage",
-    "en": "Makeup brushes",
-    "filters": []
-   },
-   {
-    "id": "nail_polish",
-    "ar": "طلاء أظافر",
-    "fr": "Vernis à ongles",
-    "en": "Nail polish",
+    "id": "wedding_shoes",
+    "ar": "أحذية زفاف",
+    "fr": "Chaussures mariage",
+    "en": "Wedding shoes",
     "filters": [
+     {
+      "key": "shoe_size",
+      "type": "select",
+      "options": [
+       "33",
+       "34",
+       "35",
+       "36",
+       "37",
+       "38",
+       "39",
+       "40",
+       "41",
+       "42",
+       "43",
+       "44",
+       "45",
+       "46",
+       "47"
+      ]
+     },
      {
       "key": "color",
       "type": "select",
@@ -3506,954 +5704,6 @@
       ]
      }
     ]
-   },
-   {
-    "id": "nail_remover",
-    "ar": "مزيل طلاء",
-    "fr": "Dissolvant",
-    "en": "Nail polish remover",
-    "filters": []
-   },
-   {
-    "id": "contact_lenses",
-    "ar": "عدسات لاصقة",
-    "fr": "Lentilles de contact",
-    "en": "Contact lenses",
-    "filters": [
-     {
-      "key": "color",
-      "type": "select",
-      "options": [
-       "أبيض",
-       "أسود",
-       "أحمر",
-       "وردي",
-       "ذهبي",
-       "أزرق",
-       "أخضر",
-       "بيج",
-       "فضي",
-       "بنفسجي",
-       "برتقالي",
-       "أصفر",
-       "بني",
-       "رمادي",
-       "كحلي",
-       "تركوازي",
-       "عنابي",
-       "زهري فاتح",
-       "سماوي",
-       "كاكي"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "intimate_products",
-    "ar": "منتجات نسائية حميمة",
-    "fr": "Produits intimes",
-    "en": "Intimate products",
-    "filters": []
-   }
-  ]
- },
- {
-  "id": "services",
-  "ar": "خدمات",
-  "fr": "Services",
-  "en": "Services",
-  "sub": [
-   {
-    "id": "haircut",
-    "ar": "قص شعر",
-    "fr": "Coiffure",
-    "en": "Haircut",
-    "filters": [
-     {
-      "key": "mobility",
-      "type": "select",
-      "options": [
-       "ينتقل إلى الزبون",
-       "في مقر الخدمة",
-       "الاثنان معًا"
-      ]
-     },
-     {
-      "key": "experience",
-      "type": "select",
-      "options": [
-       "أقل من سنة",
-       "1 - 3 سنوات",
-       "أكثر من 3 سنوات"
-      ]
-     },
-     {
-      "key": "price_type",
-      "type": "select",
-      "options": [
-       "للخدمة",
-       "للساعة",
-       "لليوم",
-       "للشخص"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "nails",
-    "ar": "أظافر",
-    "fr": "Ongles",
-    "en": "Nails",
-    "filters": [
-     {
-      "key": "mobility",
-      "type": "select",
-      "options": [
-       "ينتقل إلى الزبون",
-       "في مقر الخدمة",
-       "الاثنان معًا"
-      ]
-     },
-     {
-      "key": "experience",
-      "type": "select",
-      "options": [
-       "أقل من سنة",
-       "1 - 3 سنوات",
-       "أكثر من 3 سنوات"
-      ]
-     },
-     {
-      "key": "price_type",
-      "type": "select",
-      "options": [
-       "للخدمة",
-       "للساعة",
-       "لليوم",
-       "للشخص"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "care",
-    "ar": "عناية",
-    "fr": "Soins",
-    "en": "Care",
-    "filters": [
-     {
-      "key": "mobility",
-      "type": "select",
-      "options": [
-       "ينتقل إلى الزبون",
-       "في مقر الخدمة",
-       "الاثنان معًا"
-      ]
-     },
-     {
-      "key": "experience",
-      "type": "select",
-      "options": [
-       "أقل من سنة",
-       "1 - 3 سنوات",
-       "أكثر من 3 سنوات"
-      ]
-     },
-     {
-      "key": "price_type",
-      "type": "select",
-      "options": [
-       "للخدمة",
-       "للساعة",
-       "لليوم",
-       "للشخص"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "makeup",
-    "ar": "مكياج",
-    "fr": "Maquillage",
-    "en": "Makeup",
-    "filters": [
-     {
-      "key": "mobility",
-      "type": "select",
-      "options": [
-       "ينتقل إلى الزبون",
-       "في مقر الخدمة",
-       "الاثنان معًا"
-      ]
-     },
-     {
-      "key": "experience",
-      "type": "select",
-      "options": [
-       "أقل من سنة",
-       "1 - 3 سنوات",
-       "أكثر من 3 سنوات"
-      ]
-     },
-     {
-      "key": "price_type",
-      "type": "select",
-      "options": [
-       "للخدمة",
-       "للساعة",
-       "لليوم",
-       "للشخص"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "dj",
-    "ar": "DJ وفرق نسائية",
-    "fr": "DJ et troupes féminines",
-    "en": "DJ & bands",
-    "filters": [
-     {
-      "key": "mobility",
-      "type": "select",
-      "options": [
-       "ينتقل إلى الزبون",
-       "في مقر الخدمة",
-       "الاثنان معًا"
-      ]
-     },
-     {
-      "key": "experience",
-      "type": "select",
-      "options": [
-       "أقل من سنة",
-       "1 - 3 سنوات",
-       "أكثر من 3 سنوات"
-      ]
-     },
-     {
-      "key": "price_type",
-      "type": "select",
-      "options": [
-       "للخدمة",
-       "للساعة",
-       "لليوم",
-       "للشخص"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "cooking",
-    "ar": "طبخ منزلي",
-    "fr": "Cuisine maison",
-    "en": "Home cooking",
-    "filters": [
-     {
-      "key": "mobility",
-      "type": "select",
-      "options": [
-       "ينتقل إلى الزبون",
-       "في مقر الخدمة",
-       "الاثنان معًا"
-      ]
-     },
-     {
-      "key": "experience",
-      "type": "select",
-      "options": [
-       "أقل من سنة",
-       "1 - 3 سنوات",
-       "أكثر من 3 سنوات"
-      ]
-     },
-     {
-      "key": "price_type",
-      "type": "select",
-      "options": [
-       "للخدمة",
-       "للساعة",
-       "لليوم",
-       "للشخص"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "events",
-    "ar": "تنظيم حفلات",
-    "fr": "Organisation de fêtes",
-    "en": "Event planning",
-    "filters": [
-     {
-      "key": "mobility",
-      "type": "select",
-      "options": [
-       "ينتقل إلى الزبون",
-       "في مقر الخدمة",
-       "الاثنان معًا"
-      ]
-     },
-     {
-      "key": "experience",
-      "type": "select",
-      "options": [
-       "أقل من سنة",
-       "1 - 3 سنوات",
-       "أكثر من 3 سنوات"
-      ]
-     },
-     {
-      "key": "price_type",
-      "type": "select",
-      "options": [
-       "للخدمة",
-       "للساعة",
-       "لليوم",
-       "للشخص"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "rental",
-    "ar": "كراء فساتين وإكسسوارات",
-    "fr": "Location robes et accessoires",
-    "en": "Dress & accessory rental",
-    "filters": [
-     {
-      "key": "mobility",
-      "type": "select",
-      "options": [
-       "ينتقل إلى الزبون",
-       "في مقر الخدمة",
-       "الاثنان معًا"
-      ]
-     },
-     {
-      "key": "experience",
-      "type": "select",
-      "options": [
-       "أقل من سنة",
-       "1 - 3 سنوات",
-       "أكثر من 3 سنوات"
-      ]
-     },
-     {
-      "key": "price_type",
-      "type": "select",
-      "options": [
-       "للخدمة",
-       "للساعة",
-       "لليوم",
-       "للشخص"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "sweets",
-    "ar": "حلويات منزلية",
-    "fr": "Pâtisserie maison",
-    "en": "Home sweets",
-    "filters": [
-     {
-      "key": "mobility",
-      "type": "select",
-      "options": [
-       "ينتقل إلى الزبون",
-       "في مقر الخدمة",
-       "الاثنان معًا"
-      ]
-     },
-     {
-      "key": "experience",
-      "type": "select",
-      "options": [
-       "أقل من سنة",
-       "1 - 3 سنوات",
-       "أكثر من 3 سنوات"
-      ]
-     },
-     {
-      "key": "price_type",
-      "type": "select",
-      "options": [
-       "للخدمة",
-       "للساعة",
-       "لليوم",
-       "للشخص"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "hair_coloring",
-    "ar": "صبغة شعر",
-    "fr": "Coloration cheveux",
-    "en": "Hair coloring",
-    "filters": [
-     {
-      "key": "mobility",
-      "type": "select",
-      "options": [
-       "ينتقل إلى الزبون",
-       "في مقر الخدمة",
-       "الاثنان معًا"
-      ]
-     },
-     {
-      "key": "experience",
-      "type": "select",
-      "options": [
-       "أقل من سنة",
-       "1 - 3 سنوات",
-       "أكثر من 3 سنوات"
-      ]
-     },
-     {
-      "key": "price_type",
-      "type": "select",
-      "options": [
-       "للخدمة",
-       "للساعة",
-       "لليوم",
-       "للشخص"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "hair_straightening",
-    "ar": "تمليس شعر",
-    "fr": "Lissage cheveux",
-    "en": "Hair straightening",
-    "filters": [
-     {
-      "key": "mobility",
-      "type": "select",
-      "options": [
-       "ينتقل إلى الزبون",
-       "في مقر الخدمة",
-       "الاثنان معًا"
-      ]
-     },
-     {
-      "key": "experience",
-      "type": "select",
-      "options": [
-       "أقل من سنة",
-       "1 - 3 سنوات",
-       "أكثر من 3 سنوات"
-      ]
-     },
-     {
-      "key": "price_type",
-      "type": "select",
-      "options": [
-       "للخدمة",
-       "للساعة",
-       "لليوم",
-       "للشخص"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "hair_curling",
-    "ar": "تجعيد شعر",
-    "fr": "Bouclage cheveux",
-    "en": "Hair curling",
-    "filters": [
-     {
-      "key": "mobility",
-      "type": "select",
-      "options": [
-       "ينتقل إلى الزبون",
-       "في مقر الخدمة",
-       "الاثنان معًا"
-      ]
-     },
-     {
-      "key": "experience",
-      "type": "select",
-      "options": [
-       "أقل من سنة",
-       "1 - 3 سنوات",
-       "أكثر من 3 سنوات"
-      ]
-     },
-     {
-      "key": "price_type",
-      "type": "select",
-      "options": [
-       "للخدمة",
-       "للساعة",
-       "لليوم",
-       "للشخص"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "hair_extensions",
-    "ar": "تركيب شعر",
-    "fr": "Extensions cheveux",
-    "en": "Hair extensions",
-    "filters": [
-     {
-      "key": "mobility",
-      "type": "select",
-      "options": [
-       "ينتقل إلى الزبون",
-       "في مقر الخدمة",
-       "الاثنان معًا"
-      ]
-     },
-     {
-      "key": "experience",
-      "type": "select",
-      "options": [
-       "أقل من سنة",
-       "1 - 3 سنوات",
-       "أكثر من 3 سنوات"
-      ]
-     },
-     {
-      "key": "price_type",
-      "type": "select",
-      "options": [
-       "للخدمة",
-       "للساعة",
-       "لليوم",
-       "للشخص"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "waxing",
-    "ar": "حلاقة",
-    "fr": "Épilation",
-    "en": "Waxing",
-    "filters": [
-     {
-      "key": "mobility",
-      "type": "select",
-      "options": [
-       "ينتقل إلى الزبون",
-       "في مقر الخدمة",
-       "الاثنان معًا"
-      ]
-     },
-     {
-      "key": "experience",
-      "type": "select",
-      "options": [
-       "أقل من سنة",
-       "1 - 3 سنوات",
-       "أكثر من 3 سنوات"
-      ]
-     },
-     {
-      "key": "price_type",
-      "type": "select",
-      "options": [
-       "للخدمة",
-       "للساعة",
-       "لليوم",
-       "للشخص"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "skincare",
-    "ar": "عناية بالبشرة",
-    "fr": "Soins de la peau",
-    "en": "Skincare",
-    "filters": [
-     {
-      "key": "mobility",
-      "type": "select",
-      "options": [
-       "ينتقل إلى الزبون",
-       "في مقر الخدمة",
-       "الاثنان معًا"
-      ]
-     },
-     {
-      "key": "experience",
-      "type": "select",
-      "options": [
-       "أقل من سنة",
-       "1 - 3 سنوات",
-       "أكثر من 3 سنوات"
-      ]
-     },
-     {
-      "key": "price_type",
-      "type": "select",
-      "options": [
-       "للخدمة",
-       "للساعة",
-       "لليوم",
-       "للشخص"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "massage",
-    "ar": "مساج",
-    "fr": "Massage",
-    "en": "Massage",
-    "filters": [
-     {
-      "key": "mobility",
-      "type": "select",
-      "options": [
-       "ينتقل إلى الزبون",
-       "في مقر الخدمة",
-       "الاثنان معًا"
-      ]
-     },
-     {
-      "key": "experience",
-      "type": "select",
-      "options": [
-       "أقل من سنة",
-       "1 - 3 سنوات",
-       "أكثر من 3 سنوات"
-      ]
-     },
-     {
-      "key": "price_type",
-      "type": "select",
-      "options": [
-       "للخدمة",
-       "للساعة",
-       "لليوم",
-       "للشخص"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "hammam",
-    "ar": "حمام مغربي",
-    "fr": "Hammam",
-    "en": "Hammam",
-    "filters": [
-     {
-      "key": "mobility",
-      "type": "select",
-      "options": [
-       "ينتقل إلى الزبون",
-       "في مقر الخدمة",
-       "الاثنان معًا"
-      ]
-     },
-     {
-      "key": "experience",
-      "type": "select",
-      "options": [
-       "أقل من سنة",
-       "1 - 3 سنوات",
-       "أكثر من 3 سنوات"
-      ]
-     },
-     {
-      "key": "price_type",
-      "type": "select",
-      "options": [
-       "للخدمة",
-       "للساعة",
-       "لليوم",
-       "للشخص"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "photography",
-    "ar": "تصوير فوتوغرافي",
-    "fr": "Photographie",
-    "en": "Photography",
-    "filters": [
-     {
-      "key": "mobility",
-      "type": "select",
-      "options": [
-       "ينتقل إلى الزبون",
-       "في مقر الخدمة",
-       "الاثنان معًا"
-      ]
-     },
-     {
-      "key": "experience",
-      "type": "select",
-      "options": [
-       "أقل من سنة",
-       "1 - 3 سنوات",
-       "أكثر من 3 سنوات"
-      ]
-     },
-     {
-      "key": "price_type",
-      "type": "select",
-      "options": [
-       "للخدمة",
-       "للساعة",
-       "لليوم",
-       "للشخص"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "videography",
-    "ar": "تصوير فيديو",
-    "fr": "Vidéographie",
-    "en": "Videography",
-    "filters": [
-     {
-      "key": "mobility",
-      "type": "select",
-      "options": [
-       "ينتقل إلى الزبون",
-       "في مقر الخدمة",
-       "الاثنان معًا"
-      ]
-     },
-     {
-      "key": "experience",
-      "type": "select",
-      "options": [
-       "أقل من سنة",
-       "1 - 3 سنوات",
-       "أكثر من 3 سنوات"
-      ]
-     },
-     {
-      "key": "price_type",
-      "type": "select",
-      "options": [
-       "للخدمة",
-       "للساعة",
-       "لليوم",
-       "للشخص"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "hall_decoration",
-    "ar": "ديكور قاعات",
-    "fr": "Décoration de salles",
-    "en": "Hall decoration",
-    "filters": [
-     {
-      "key": "mobility",
-      "type": "select",
-      "options": [
-       "ينتقل إلى الزبون",
-       "في مقر الخدمة",
-       "الاثنان معًا"
-      ]
-     },
-     {
-      "key": "experience",
-      "type": "select",
-      "options": [
-       "أقل من سنة",
-       "1 - 3 سنوات",
-       "أكثر من 3 سنوات"
-      ]
-     },
-     {
-      "key": "price_type",
-      "type": "select",
-      "options": [
-       "للخدمة",
-       "للساعة",
-       "لليوم",
-       "للشخص"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "chair_table_rental",
-    "ar": "تأجير كراسي وطاولات",
-    "fr": "Location chaises et tables",
-    "en": "Chair & table rental",
-    "filters": [
-     {
-      "key": "mobility",
-      "type": "select",
-      "options": [
-       "ينتقل إلى الزبون",
-       "في مقر الخدمة",
-       "الاثنان معًا"
-      ]
-     },
-     {
-      "key": "experience",
-      "type": "select",
-      "options": [
-       "أقل من سنة",
-       "1 - 3 سنوات",
-       "أكثر من 3 سنوات"
-      ]
-     },
-     {
-      "key": "price_type",
-      "type": "select",
-      "options": [
-       "للخدمة",
-       "للساعة",
-       "لليوم",
-       "للشخص"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "waitstaff",
-    "ar": "خدمة تقديم",
-    "fr": "Service de serveurs",
-    "en": "Waitstaff service",
-    "filters": [
-     {
-      "key": "mobility",
-      "type": "select",
-      "options": [
-       "ينتقل إلى الزبون",
-       "في مقر الخدمة",
-       "الاثنان معًا"
-      ]
-     },
-     {
-      "key": "experience",
-      "type": "select",
-      "options": [
-       "أقل من سنة",
-       "1 - 3 سنوات",
-       "أكثر من 3 سنوات"
-      ]
-     },
-     {
-      "key": "price_type",
-      "type": "select",
-      "options": [
-       "للخدمة",
-       "للساعة",
-       "لليوم",
-       "للشخص"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "bridal_transport",
-    "ar": "نقل عرائس",
-    "fr": "Transport de mariées",
-    "en": "Bridal transport",
-    "filters": [
-     {
-      "key": "mobility",
-      "type": "select",
-      "options": [
-       "ينتقل إلى الزبون",
-       "في مقر الخدمة",
-       "الاثنان معًا"
-      ]
-     },
-     {
-      "key": "experience",
-      "type": "select",
-      "options": [
-       "أقل من سنة",
-       "1 - 3 سنوات",
-       "أكثر من 3 سنوات"
-      ]
-     },
-     {
-      "key": "price_type",
-      "type": "select",
-      "options": [
-       "للخدمة",
-       "للساعة",
-       "لليوم",
-       "للشخص"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "tailoring",
-    "ar": "خياطة وتعديل",
-    "fr": "Couture et retouche",
-    "en": "Tailoring & alterations",
-    "filters": [
-     {
-      "key": "mobility",
-      "type": "select",
-      "options": [
-       "ينتقل إلى الزبون",
-       "في مقر الخدمة",
-       "الاثنان معًا"
-      ]
-     },
-     {
-      "key": "experience",
-      "type": "select",
-      "options": [
-       "أقل من سنة",
-       "1 - 3 سنوات",
-       "أكثر من 3 سنوات"
-      ]
-     },
-     {
-      "key": "price_type",
-      "type": "select",
-      "options": [
-       "للخدمة",
-       "للساعة",
-       "لليوم",
-       "للشخص"
-      ]
-     }
-    ]
-   },
-   {
-    "id": "construction",
-    "ar": "بناء وتشييد",
-    "fr": "Construction & Bâtiment",
-    "en": "بناء وتشييد",
-    "filters": []
-   },
-   {
-    "id": "evenements",
-    "ar": "مناسبات وترفيه",
-    "fr": "Événements & Divertissement",
-    "en": "مناسبات وترفيه",
-    "filters": []
-   },
-   {
-    "id": "couture",
-    "ar": "خياطة وتفصيل",
-    "fr": "Couture & Confection",
-    "en": "خياطة وتفصيل",
-    "filters": []
-   },
-   {
-    "id": "esthetique",
-    "ar": "تجميل وجمال",
-    "fr": "Esthétique & Beauté",
-    "en": "تجميل وجمال",
-    "filters": []
    }
   ]
  }
