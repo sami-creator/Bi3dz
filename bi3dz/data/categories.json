@@ -4426,6 +4426,34 @@
       ]
      }
     ]
+   },
+   {
+    "id": "construction",
+    "ar": "بناء وتشييد",
+    "fr": "Construction & Bâtiment",
+    "en": "بناء وتشييد",
+    "filters": []
+   },
+   {
+    "id": "evenements",
+    "ar": "مناسبات وترفيه",
+    "fr": "Événements & Divertissement",
+    "en": "مناسبات وترفيه",
+    "filters": []
+   },
+   {
+    "id": "couture",
+    "ar": "خياطة وتفصيل",
+    "fr": "Couture & Confection",
+    "en": "خياطة وتفصيل",
+    "filters": []
+   },
+   {
+    "id": "esthetique",
+    "ar": "تجميل وجمال",
+    "fr": "Esthétique & Beauté",
+    "en": "تجميل وجمال",
+    "filters": []
    }
   ]
  }

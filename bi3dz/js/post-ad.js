@@ -17,7 +17,7 @@
     const editId = Utils.qs('id');
     // delivery: غير متوفر افتراضيًا، والناشرة تغيّره عند الحاجة
     const S = { category_id: '', subcategory_id: '', attrs: {}, title: '', description: '', price: '', discount_pct: 0, negotiable: false, delivery: false, show_phone: false, video_url: '', faq: [], lat: null, lng: null, wilaya_id: st.profile.wilaya_id, daira_id: st.profile.daira_id, commune_id: st.profile.commune_id, used: false, grade: 9, deal: 'sale', rent_price: '' };
-    let imgs = [], step = new URLSearchParams(location.search).get('step') === '4' ? 4 : 1, orig = null, imgDirty = false;   // imgs: [{ old } | { file, mod }]
+    let imgs = [], step = 1, orig = null, imgDirty = false;   // imgs: [{ old } | { file, mod }]
     let _modPromise = null;   // Promise ينتهي عند اكتمال فحص كل الصور الجارية
 
     // الحقول الإضافية المخزّنة داخل attrs تُفصل عن سمات الصنف
@@ -74,12 +74,12 @@
       const fillAttrs = () => {
         attrs.replaceChildren();
         Categories.filtersFor(s.value).forEach(f => {
-          if (Categories.isMulti(f.key) && f.type === 'select') { attrs.append(field(Categories.keyLabel(f.key) + ' (' + t('ad.multi_hint') + ')', multiPick(f), null, true)); return; }
+          if (Categories.isMulti(f.key) && f.type === 'select') { attrs.append(field(Categories.keyLabel(f.key, f) + ' (' + t('ad.multi_hint') + ')', multiPick(f), null, true)); return; }
           const i = f.type === 'select' ? el('select', { class: 'input' }) : el('input', { class: 'input', maxlength: f.max || 30 });
           if (f.type === 'select') { i.append(new Option('—', '')); f.options.forEach(o => i.append(new Option(o, o))); }
           i.value = S.attrs[f.key] || '';
           i.addEventListener('input', () => { const v = Sanitize.cleanText(i.value, 30); v ? S.attrs[f.key] = v : delete S.attrs[f.key]; saveDraft(); });
-          attrs.append(field(Categories.keyLabel(f.key), i, null, true));
+          attrs.append(field(Categories.keyLabel(f.key, f), i, null, true));
         });
       };
       let vc = null;
@@ -292,7 +292,8 @@
           missing.map(k => el('span', { class: 'badge', text: (SOCIAL_ICONS[k] || '') + ' ' + (k === 'maps_url' ? 'Maps' : k === 'phone' ? t('ad.phone') : k.charAt(0).toUpperCase() + k.slice(1)) }))
         ),
         el('button', { class: 'btn btn--ghost', type: 'button', onclick: () => {
-          Utils.Store.set(window.CONFIG.STORAGE_KEYS.RETURN_TO, R.POST + (location.search ? location.search + '&step=4' : '?step=4'));
+          const returnUrl = location.href;
+          Utils.Store.set('post_ad_return', returnUrl);
           Utils.go(R.EDIT_PROFILE);
         }}, t('ad.contact_setup_go'))
       ]) : null;

@@ -3505,6 +3505,160 @@
     "custom made",
     "dressmaking"
    ]
+  },
+  "bungalow": {
+   "ar": [
+    "بنغالو",
+    "بونغالو"
+   ],
+   "fr": [
+    "bungalow"
+   ],
+   "en": [
+    "bungalow"
+   ]
+  },
+  "samsung": {
+   "ar": [
+    "سامسونج",
+    "samsung"
+   ],
+   "fr": [
+    "samsung"
+   ],
+   "en": [
+    "samsung"
+   ]
+  },
+  "huawei": {
+   "ar": [
+    "هواوي",
+    "huawei"
+   ],
+   "fr": [
+    "huawei"
+   ],
+   "en": [
+    "huawei"
+   ]
+  },
+  "xiaomi": {
+   "ar": [
+    "شاومي",
+    "xiaomi"
+   ],
+   "fr": [
+    "xiaomi"
+   ],
+   "en": [
+    "xiaomi"
+   ]
+  },
+  "vr": {
+   "ar": [
+    "واقع افتراضي",
+    "vr",
+    "نظارات vr"
+   ],
+   "fr": [
+    "réalité virtuelle",
+    "vr"
+   ],
+   "en": [
+    "virtual reality",
+    "vr"
+   ]
+  },
+  "cameras": {
+   "ar": [
+    "كاميرا",
+    "كاميرات",
+    "تصوير"
+   ],
+   "fr": [
+    "caméra",
+    "appareil photo"
+   ],
+   "en": [
+    "camera",
+    "cameras"
+   ]
+  },
+  "construction": {
+   "ar": [
+    "بناء",
+    "تشييد",
+    "مقاولة"
+   ],
+   "fr": [
+    "construction",
+    "bâtiment"
+   ],
+   "en": [
+    "construction",
+    "building"
+   ]
+  },
+  "evenements": {
+   "ar": [
+    "مناسبات",
+    "أعراس",
+    "حفلات",
+    "تنظيم"
+   ],
+   "fr": [
+    "événements",
+    "organisation"
+   ],
+   "en": [
+    "events",
+    "organization"
+   ]
+  },
+  "couture": {
+   "ar": [
+    "خياطة",
+    "تفصيل",
+    "تعديل"
+   ],
+   "fr": [
+    "couture",
+    "confection"
+   ],
+   "en": [
+    "tailoring",
+    "sewing"
+   ]
+  },
+  "esthetique": {
+   "ar": [
+    "تجميل",
+    "جمال",
+    "كوافير"
+   ],
+   "fr": [
+    "esthétique",
+    "beauté"
+   ],
+   "en": [
+    "beauty",
+    "aesthetics"
+   ]
+  },
+  "charité": {
+   "ar": [
+    "خيرية",
+    "تبرعات",
+    "صدقة"
+   ],
+   "fr": [
+    "charité",
+    "dons"
+   ],
+   "en": [
+    "charity",
+    "donations"
+   ]
   }
  }
 }
