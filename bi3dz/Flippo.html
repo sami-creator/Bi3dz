@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flappy Bird - Simple</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            user-select: none;
+        }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(145deg, #1a2a32 0%, #0f1a1f 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            padding: 16px;
+            position: relative;
+        }
+
+        /* ===== زر اختيار اللغة ===== */
+        .lang-selector {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            z-index: 1000;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+        }
+
+        .lang-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #f5d742;
+            border: none;
+            padding: 9px 16px;
+            border-radius: 40px;
+            font-weight: bold;
+            font-size: 1rem;
+            color: #1e2d38;
+            box-shadow: 0 5px 0 #b38f1a, 0 6px 12px rgba(0,0,0,0.5);
+            cursor: pointer;
+            transition: all 0.07s;
+            letter-spacing: 0.5px;
+        }
+        .lang-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 1px 0 #b38f1a, 0 3px 8px rgba(0,0,0,0.5);
+        }
+        .lang-btn .arrow {
+            display: inline-block;
+            transition: transform 0.2s;
+            font-size: 0.8rem;
+        }
+        .lang-btn.open .arrow {
+            transform: rotate(180deg);
+        }
+
+        .lang-menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #1f2e38;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6), inset 0 0 0 1px #5f8aa0;
+            overflow: hidden;
+            display: none;
+            min-width: 140px;
+            animation: fadeIn 0.15s ease-out;
+        }
+        .lang-menu.show {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .lang-option {
+            display: block;
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: #eaf6ff;
+            padding: 12px 18px;
+            text-align: left;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.12s;
+            font-family: inherit;
+        }
+        .lang-option:hover {
+            background: #2e4a5c;
+            color: #f5d742;
+        }
+        .lang-option.active {
+            background: #2e4a5c;
+            color: #f5d742;
+            font-weight: bold;
+        }
+        .lang-option.active::before {
+            content: '✓ ';
+            color: #f5d742;
+        }
+
+        /* ===== اللعبة ===== */
+        .game-wrapper {
+            background: #2e4a5c;
+            padding: 20px 20px 25px;
+            border-radius: 48px 48px 32px 32px;
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.6), inset 0 0 10px #5f8aa0;
+        }
+        canvas {
+            display: block;
+            width: 100%;
+            max-width: 480px;
+            height: auto;
+            border-radius: 28px;
+            box-shadow: inset 0 0 0 3px #a6c9db, 0 10px 15px -5px black;
+            background: #70c5ce;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+        canvas:active {
+            transform: scale(0.99);
+        }
+        .info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 18px;
+            color: #eaf6ff;
+            padding: 0 12px;
+            font-weight: bold;
+            text-shadow: 0 2px 3px black;
+            letter-spacing: 1px;
+        }
+        .score-box {
+            background: #1f2e38;
+            padding: 8px 22px;
+            border-radius: 40px;
+            font-size: 1.5rem;
+            box-shadow: inset 0 -3px 0 #0b1418, 0 6px 0 #0b1418;
+            color: #f5d742;
+            border: 1px solid #ffea8f;
+        }
+        .restart-btn {
+            background: #f5d742;
+            border: none;
+            padding: 10px 28px;
+            border-radius: 40px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #1e2d38;
+            box-shadow: 0 7px 0 #b38f1a, 0 8px 12px black;
+            cursor: pointer;
+            transition: all 0.07s;
+            letter-spacing: 0.5px;
+        }
+        .restart-btn:active {
+            transform: translateY(5px);
+            box-shadow: 0 2px 0 #b38f1a, 0 5px 10px black;
+        }
+        .hint {
+            color: #b9d6e8;
+            font-size: 0.95rem;
+            text-align: center;
+            margin-top: 12px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== زر اختيار اللغة ===== -->
+<div class="lang-selector">
+    <button class="lang-btn" id="langButton">
+        <span id="langLabel">EN</span>
+        <span class="arrow">▼</span>
+    </button>
+    <div class="lang-menu" id="langMenu">
+        <button class="lang-option" data-lang="en">English</button>
+        <button class="lang-option" data-lang="ar">العربية</button>
+        <button class="lang-option" data-lang="fr">Français</button>
+    </div>
+</div>
+
+<div class="game-wrapper">
+    <canvas id="gameCanvas" width="480" height="640"></canvas>
+    <div class="info">
+        <div class="score-box"><span id="scoreLabel">Score</span>: <span id="scoreDisplay">0</span></div>
+        <button class="restart-btn" id="restartButton">Restart</button>
+    </div>
+    <div class="hint" id="hintText">🖱️ Click on screen or press Space to fly</div>
+</div>
+
+<script>
+    (function() {
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const scoreSpan = document.getElementById('scoreDisplay');
+        const scoreLabel = document.getElementById('scoreLabel');
+        const restartBtn = document.getElementById('restartButton');
+        const hintText = document.getElementById('hintText');
+        const langButton = document.getElementById('langButton');
+        const langLabel = document.getElementById('langLabel');
+        const langMenu = document.getElementById('langMenu');
+        const langOptions = document.querySelectorAll('.lang-option');
+
+        // ============ الترجمات ============
+        const translations = {
+            en: {
+                lang: 'EN',
+                score: 'Score',
+                restart: 'Restart',
+                hint: '🖱️ Click on screen or press Space to fly',
+                gameOverTitle: '💀 Game Over!',
+                gameOverScore: 'Score: ',
+                gameOverRetry: 'Click to try again',
+                dir: 'ltr'
+            },
+            ar: {
+                lang: 'ع',
+                score: 'النقاط',
+                restart: 'إعادة',
+                hint: '🖱️ انقر على الشاشة أو المسافة للطيران',
+                gameOverTitle: '💀 خسرت!',
+                gameOverScore: 'النقاط: ',
+                gameOverRetry: 'انقر لإعادة المحاولة',
+                dir: 'rtl'
+            },
+            fr: {
+                lang: 'FR',
+                score: 'Score',
+                restart: 'Rejouer',
+                hint: '🖱️ Cliquez ou appuyez sur Espace pour voler',
+                gameOverTitle: '💀 Perdu !',
+                gameOverScore: 'Score : ',
+                gameOverRetry: 'Cliquez pour réessayer',
+                dir: 'ltr'
+            }
+        };
+
+        let currentLang = 'en'; // اللغة الافتراضية
+
+        // ============ دوال اللغة ============
+        function applyLanguage(lang) {
+            currentLang = lang;
+            const t = translations[lang];
+
+            // تحديث زر اللغة
+            langLabel.textContent = t.lang;
+
+            // تحديث واجهة المستخدم
+            scoreLabel.textContent = t.score;
+            restartBtn.textContent = t.restart;
+            hintText.textContent = t.hint;
+
+            // تحديث الاتجاه
+            document.documentElement.dir = t.dir;
+            document.documentElement.lang = lang;
+
+            // تمييز الخيار النشط
+            langOptions.forEach(opt => {
+                opt.classList.toggle('active', opt.dataset.lang === lang);
+            });
+
+            // إعادة رسم اللعبة (لتحديث النصوص داخل الكانفس)
+            draw();
+
+            // حفظ التفضيل
+            try { localStorage.setItem('flappyLang', lang); } catch(e) {}
+        }
+
+        // فتح/غلق القائمة
+        langButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            langMenu.classList.toggle('show');
+            langButton.classList.toggle('open');
+        });
+
+        // اختيار لغة
+        langOptions.forEach(opt => {
+            opt.addEventListener('click', (e) => {
+                e.stopPropagation();
+                applyLanguage(opt.dataset.lang);
+                langMenu.classList.remove('show');
+                langButton.classList.remove('open');
+            });
+        });
+
+        // إغلاق القائمة عند النقر خارجها
+        document.addEventListener('click', () => {
+            langMenu.classList.remove('show');
+            langButton.classList.remove('open');
+        });
+
+        // ============ إعدادات اللعبة ============
+        const CW = 480;
+        const CH = 640;
+        const BIRD_RADIUS = 14;
+        const BIRD_X = 110;
+        const GRAVITY = 0.32;
+        const JUMP_FORCE = -7.2;
+        const PIPE_WIDTH = 60;
+        const PIPE_GAP = 150;
+        const PIPE_SPEED = 2.4;
+        const PIPE_SPACING = 240;
+        const FIRST_PIPE_X = CW + 100;
+
+        let birdY = CH / 2;
+        let birdVelocity = 0;
+        let pipes = [];
+        let score = 0;
+        let gameActive = false;
+        let gameOver = false;
+        let frameRequest;
+
+        // ============ دوال اللعبة ============
+        function resetGame() {
+            birdY = CH / 2;
+            birdVelocity = 0;
+            score = 0;
+            updateScoreDisplay();
+            gameOver = false;
+            gameActive = true;
+
+            pipes = [];
+            for (let i = 0; i < 4; i++) {
+                const pipeX = FIRST_PIPE_X + i * PIPE_SPACING;
+                const topHeight = Math.floor(Math.random() * 200) + 80;
+                const bottomHeight = CH - PIPE_GAP - topHeight;
+                pipes.push({
+                    x: pipeX,
+                    topHeight: topHeight,
+                    bottomHeight: bottomHeight,
+                    scored: false
+                });
+            }
+
+            if (frameRequest) {
+                cancelAnimationFrame(frameRequest);
+                frameRequest = null;
+            }
+            frameRequest = requestAnimationFrame(gameLoop);
+        }
+
+        function updateScoreDisplay() {
+            scoreSpan.textContent = score;
+        }
+
+        function flap() {
+            if (!gameActive || gameOver) return;
+            birdVelocity = JUMP_FORCE;
+        }
+
+        function handleCanvasClick(e) {
+            e.preventDefault();
+            if (gameOver) {
+                resetGame();
+            } else {
+                flap();
+            }
+        }
+
+        function checkCollision() {
+            if (birdY + BIRD_RADIUS > CH || birdY - BIRD_RADIUS < 0) {
+                return true;
+            }
+            for (let p of pipes) {
+                if (p.x < BIRD_X + BIRD_RADIUS && p.x + PIPE_WIDTH > BIRD_X - BIRD_RADIUS) {
+                    const topPipeBottom = p.topHeight;
+                    const bottomPipeTop = CH - p.bottomHeight;
+                    if (birdY - BIRD_RADIUS < topPipeBottom || birdY + BIRD_RADIUS > bottomPipeTop) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        function update() {
+            if (!gameActive || gameOver) return;
+
+            birdVelocity += GRAVITY;
+            birdY += birdVelocity;
+
+            if (birdY - BIRD_RADIUS < 0) {
+                birdY = BIRD_RADIUS;
+                birdVelocity = 0;
+            }
+
+            for (let p of pipes) {
+                p.x -= PIPE_SPEED;
+                if (!p.scored && p.x + PIPE_WIDTH < BIRD_X - BIRD_RADIUS) {
+                    p.scored = true;
+                    score++;
+                    updateScoreDisplay();
+                }
+            }
+
+            if (pipes.length > 0) {
+                const lastPipe = pipes[pipes.length - 1];
+                if (lastPipe.x < CW - PIPE_SPACING) {
+                    const topHeight = Math.floor(Math.random() * 200) + 80;
+                    const bottomHeight = CH - PIPE_GAP - topHeight;
+                    pipes.push({
+                        x: CW + 20,
+                        topHeight: topHeight,
+                        bottomHeight: bottomHeight,
+                        scored: false
+                    });
+                }
+            }
+
+            pipes = pipes.filter(p => p.x + PIPE_WIDTH > -20);
+
+            if (checkCollision()) {
+                gameActive = false;
+                gameOver = true;
+            }
+
+            if (birdY + BIRD_RADIUS > CH) {
+                birdY = CH - BIRD_RADIUS;
+                if (gameActive) {
+                    gameActive = false;
+                    gameOver = true;
+                }
+            }
+        }
+
+        function draw() {
+            const t = translations[currentLang];
+            ctx.clearRect(0, 0, CW, CH);
+
+            // السماء
+            const skyGrad = ctx.createLinearGradient(0, 0, 0, CH);
+            skyGrad.addColorStop(0, '#70c5ce');
+            skyGrad.addColorStop(0.7, '#9fd9e6');
+            ctx.fillStyle = skyGrad;
+            ctx.fillRect(0, 0, CW, CH);
+
+            // السحاب
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+            ctx.beginPath();
+            ctx.arc(80, 100, 40, 0, Math.PI * 2);
+            ctx.arc(130, 70, 35, 0, Math.PI * 2);
+            ctx.arc(170, 100, 30, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(380, 180, 45, 0, Math.PI * 2);
+            ctx.arc(430, 150, 35, 0, Math.PI * 2);
+            ctx.arc(330, 160, 30, 0, Math.PI * 2);
+            ctx.fill();
+
+            // الأنابيب
+            pipes.forEach(p => {
+                ctx.fillStyle = '#4ca052';
+                ctx.shadowColor = '#1e4a22';
+                ctx.shadowBlur = 8;
+                ctx.shadowOffsetY = 4;
+                ctx.fillRect(p.x, 0, PIPE_WIDTH, p.topHeight);
+                ctx.fillStyle = '#2d6b32';
+                ctx.fillRect(p.x, p.topHeight - 18, PIPE_WIDTH, 18);
+                ctx.fillStyle = '#6fc276';
+                ctx.fillRect(p.x - 5, p.topHeight - 22, PIPE_WIDTH + 10, 8);
+
+                ctx.fillStyle = '#4ca052';
+                const bottomY = CH - p.bottomHeight;
+                ctx.fillRect(p.x, bottomY, PIPE_WIDTH, p.bottomHeight);
+                ctx.fillStyle = '#2d6b32';
+                ctx.fillRect(p.x, bottomY, PIPE_WIDTH, 18);
+                ctx.fillStyle = '#6fc276';
+                ctx.fillRect(p.x - 5, bottomY - 4, PIPE_WIDTH + 10, 8);
+
+                ctx.shadowBlur = 0;
+                ctx.shadowOffsetY = 0;
+            });
+
+            // الأرض
+            ctx.fillStyle = '#ded895';
+            ctx.fillRect(0, CH - 20, CW, 20);
+            ctx.fillStyle = '#b3a86a';
+            for (let i = 0; i < CW; i += 30) {
+                ctx.fillRect(i, CH - 24, 18, 6);
+            }
+
+            // الطائر
+            ctx.shadowColor = '#2a2a2a';
+            ctx.shadowBlur = 10;
+            ctx.shadowOffsetY = 4;
+            ctx.beginPath();
+            ctx.arc(BIRD_X, birdY, BIRD_RADIUS, 0, Math.PI * 2);
+            ctx.fillStyle = '#f5d742';
+            ctx.fill();
+            ctx.strokeStyle = '#c9a227';
+            ctx.lineWidth = 2.5;
+            ctx.stroke();
+
+            ctx.shadowBlur = 0;
+            ctx.shadowOffsetY = 0;
+            ctx.beginPath();
+            ctx.arc(BIRD_X + 5, birdY - 4, 5, 0, Math.PI * 2);
+            ctx.fillStyle = '#ffffff';
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(BIRD_X + 8, birdY - 6, 2.8, 0, Math.PI * 2);
+            ctx.fillStyle = '#1e1e1e';
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.moveTo(BIRD_X + 12, birdY - 2);
+            ctx.lineTo(BIRD_X + 22, birdY + 2);
+            ctx.lineTo(BIRD_X + 12, birdY + 8);
+            ctx.closePath();
+            ctx.fillStyle = '#f08c2e';
+            ctx.fill();
+            ctx.strokeStyle = '#b35f1b';
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.ellipse(BIRD_X - 6, birdY + 3, 7, 5, -0.3, 0, Math.PI * 2);
+            ctx.fillStyle = '#e0b62b';
+            ctx.fill();
+            ctx.strokeStyle = '#b38f1a';
+            ctx.lineWidth = 1.2;
+            ctx.stroke();
+
+            // شاشة النهاية
+            if (gameOver) {
+                ctx.shadowBlur = 0;
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.6)';
+                ctx.fillRect(0, 0, CW, CH);
+
+                ctx.font = 'bold 44px "Segoe UI", Tahoma, sans-serif';
+                ctx.fillStyle = '#fff3d1';
+                ctx.shadowColor = '#1a1a1a';
+                ctx.shadowBlur = 14;
+                ctx.shadowOffsetY = 6;
+                ctx.textAlign = 'center';
+                ctx.fillText(t.gameOverTitle, CW/2, CH/2 - 40);
+
+                ctx.font = 'bold 32px "Segoe UI", Tahoma, sans-serif';
+                ctx.fillStyle = '#f5d742';
+                ctx.fillText(t.gameOverScore + score, CW/2, CH/2 + 50);
+
+                ctx.font = '24px "Segoe UI", Tahoma, sans-serif';
+                ctx.fillStyle = '#e0f2ff';
+                ctx.fillText(t.gameOverRetry, CW/2, CH/2 + 120);
+
+                ctx.shadowBlur = 0;
+                ctx.shadowOffsetY = 0;
+                ctx.textAlign = 'left';
+            }
+
+            // النقاط أثناء اللعب
+            if (!gameOver && gameActive) {
+                ctx.font = 'bold 38px "Segoe UI", Tahoma, sans-serif';
+                ctx.fillStyle = '#fff9e6';
+                ctx.shadowColor = '#2f4f5f';
+                ctx.shadowBlur = 10;
+                ctx.shadowOffsetY = 4;
+                ctx.textAlign = 'center';
+                ctx.fillText(score, CW/2, 95);
+                ctx.textAlign = 'left';
+                ctx.shadowBlur = 0;
+                ctx.shadowOffsetY = 0;
+            }
+        }
+
+        function gameLoop() {
+            if (gameActive && !gameOver) {
+                update();
+            }
+            draw();
+            if (!gameOver) {
+                frameRequest = requestAnimationFrame(gameLoop);
+            } else {
+                frameRequest = null;
+            }
+        }
+
+        function restartGame() {
+            resetGame();
+        }
+
+        // ============ الأحداث ============
+        canvas.addEventListener('click', handleCanvasClick);
+        canvas.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            handleCanvasClick(e);
+        }, { passive: false });
+
+        restartBtn.addEventListener('click', restartGame);
+
+        window.addEventListener('keydown', (e) => {
+            if (e.code === 'Space' || e.key === ' ') {
+                e.preventDefault();
+                if (gameOver) {
+                    resetGame();
+                } else {
+                    flap();
+                }
+            }
+        });
+        window.addEventListener('keyup', (e) => {
+            if (e.code === 'Space' || e.key === ' ') {
+                e.preventDefault();
+            }
+        });
+
+        // ============ التهيئة ============
+        // استرجاع اللغة المحفوظة أو الإنجليزية افتراضياً
+        let savedLang = 'en';
+        try {
+            const stored = localStorage.getItem('flappyLang');
+            if (stored && translations[stored]) savedLang = stored;
+        } catch(e) {}
+        applyLanguage(savedLang);
+        resetGame();
+    })();
+</script>
+</body>
+</html>
